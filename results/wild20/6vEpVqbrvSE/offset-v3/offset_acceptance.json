@@ -1,0 +1,45 @@
+{
+  "format_version": "madeleine.wild-offset-acceptance.v3",
+  "video_id": "6vEpVqbrvSE",
+  "created_at": "2026-07-28T15:39:04.208571+00:00",
+  "decision": {
+    "approved": true,
+    "contact_sheet_reviewed": true,
+    "reviewer_identity": "Bryan",
+    "reviewer_kind": "human_with_ai_assistance",
+    "uncertain_tier_acknowledged": true,
+    "notes": "Owner reviewed the 12-row dash-hitstop contact sheet 2026-07-28: freeze-then-rebound pattern verified at the claimed offset."
+  },
+  "calibration": {
+    "path": "offset_calibration.json",
+    "sha256": "3b8cfdcc82845ba7818e23425d5f32c711005986ed5f934646bf8219a189176d",
+    "format_version": "madeleine.dash-hitstop-offset.v3",
+    "contact_sheet": {
+      "path": "dash_offset_contact.png",
+      "sha256": "c59464e84537e2cda76cf07b0bc252ad7e05847d84f912743ed54a4432c23283"
+    }
+  },
+  "input_layout": {
+    "path": "layout.reviewed-unmeasured.json",
+    "sha256": "4de8e94f71b062de47fbf52f33fa3e7b08795eaac9cba982b1d2854ca0603b6a"
+  },
+  "layout_review_acceptance": {
+    "path": "layout_acceptance.json",
+    "sha256": "65c1eb488495a76f36c6ca18a884909310f33bd401521a28e61eac22740a94bf",
+    "format_version": "madeleine.wild-layout-acceptance.v1",
+    "review_manifest_sha256": "c7e2fbe4dd0902d36a8b19489bd69d2451f05077ce9881a3f18777e8ec43d609",
+    "reviewed_layout_sha256": "4de8e94f71b062de47fbf52f33fa3e7b08795eaac9cba982b1d2854ca0603b6a",
+    "reviewer_kind": "human_with_ai_assistance",
+    "human_reviewed": true
+  },
+  "output_layout": {
+    "path": "layout.final.json",
+    "sha256": "a15cf47e3483be48e2c89d33b0dd7d2c0252fb4cda6a58aee512781bbe7ac1d6"
+  },
+  "accepted_offset_frames": 0,
+  "accepted_offset_confidence": 1.0,
+  "accepted_offset_source": "dash_hitstop_v1+reviewed_acceptance:3b8cfdcc82845ba7818e23425d5f32c711005986ed5f934646bf8219a189176d",
+  "accepted_tier": "uncertain_adjacent",
+  "accepted_offset_uncertainty_frames": 1,
+  "source_video_sha256": "b8ccccc80cdc98b4f94a7c235ffc994e5f7502772d01768a7ddd622c5da45f2f"
+}

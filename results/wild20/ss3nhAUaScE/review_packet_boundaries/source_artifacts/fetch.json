@@ -1,0 +1,69 @@
+{
+  "format_version": "madeleine.wild-fetch.v2",
+  "video_id": "ss3nhAUaScE",
+  "source": "youtube",
+  "origin_url": "https://youtu.be/ss3nhAUaScE",
+  "source_file": "ss3nhAUaScE.mp4",
+  "sha256": "b6b5302c5d79eafb8d96f289bdfd175a5b80c438e4d12f5725cd51823b715544",
+  "pts_sidecar": {
+    "path": "frame_pts.npy",
+    "manifest": "frame_pts.json",
+    "sha256": "28b31524e24bac3484703ffc569306656ec232abfa36d46fca250359a8006ec1",
+    "frames": 420180
+  },
+  "candidate": {
+    "run_id": "yoqq895z",
+    "category": "100%",
+    "place": 1,
+    "duration_s": 5889.004,
+    "platform": "PC"
+  },
+  "policy": {
+    "yt_dlp_path": "/opt/wildenv/bin/yt-dlp",
+    "deno_path": "/usr/local/bin/deno",
+    "max_height": 720,
+    "min_preferred_fps": 50,
+    "sleep_requests_s": 1.0,
+    "sleep_min_s": 2.0,
+    "sleep_max_s": 5.0
+  },
+  "media": {
+    "codec": "h264",
+    "resolution_wh": [
+      1280,
+      720
+    ],
+    "r_frame_rate": 60.0,
+    "avg_frame_rate": 60.0,
+    "time_base": "1/15360",
+    "start_time_s": 0.0,
+    "duration_s": 7003.0,
+    "declared_frames": null,
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "size_bytes": 2332268239,
+    "pts": {
+      "frames": 420180,
+      "first_s": 0.0,
+      "last_s": 7002.983333,
+      "median_dt_s": 0.016666999999870313,
+      "p01_dt_s": 0.016665999999531778,
+      "p99_dt_s": 0.016667000000779808,
+      "effective_fps": 59.99880002446638,
+      "nonmonotonic_intervals": 0,
+      "large_gap_intervals": 0,
+      "largest_gap_s": 0.016667000000779808,
+      "vfr_ratio_p99_p01": 1.0000600024749826
+    }
+  },
+  "run_window": {
+    "resolved": false,
+    "start_resolved": false,
+    "end_resolved": false,
+    "start_s": null,
+    "end_s": null,
+    "nominal_loadless_duration_s": 5889.004,
+    "start_source": "unresolved",
+    "end_source": "unresolved",
+    "reason": "start boundary needs reviewed wall-clock evidence; end boundary needs reviewed wall-clock evidence; leaderboard duration is loadless"
+  }
+}

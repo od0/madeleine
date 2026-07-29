@@ -1,0 +1,246 @@
+{
+  "schema_version": "madeleine.dynamics-pretraining-exploratory-cd.v1",
+  "study_id": "photon_inspired_celeste_dynamics_exploratory_cd_s0_v1",
+  "status": "owner_authorized_post_phase0_exploratory_override_before_optimizer_step_one",
+  "authorization": {
+    "authorized_by": "repository_owner",
+    "authorized_on": "2026-07-28",
+    "scope": [
+      "C",
+      "D"
+    ],
+    "phase0_gate_overridden": true,
+    "reason": "The owner explicitly authorized the more expensive C/D runs after being told that the frozen Phase-0 automatic-promotion gate did not pass.",
+    "not_authorized": [
+      "Arm B",
+      "seeds 1 or 2",
+      "B1 access before the y4n decision is committed",
+      "sealed untouched-session access"
+    ]
+  },
+  "provenance": {
+    "parent_preregistration": "results/idm/DYNAMICS_PRETRAINING_PREREGISTRATION.md",
+    "parent_machine_contract": "experiments/configs/dynamics_pretraining_v1.json",
+    "phase0_report": "results/idm/dynamics_offset_probe_own_v3_v1/dynamics_offset_probe_score.json",
+    "phase0_decision": {
+      "dynamics_pretraining_allowed": false,
+      "C_and_D_remain_blocked": true,
+      "interpretation": "The frozen automatic-promotion rule failed and remains historically true. This contract is an explicit exploratory override, not a rewrite or retrospective pass."
+    },
+    "consulted_followup": "results/idm/ORACLE_WINDOW_LOCALIZATION.md"
+  },
+  "claims": {
+    "allowed": [
+      "candidate encoder comparison against the historical ImageNet reference",
+      "D versus C comparison of pre-pooling adjacent ordered-pair context under the same future objective"
+    ],
+    "forbidden": [
+      "confirmatory test of the frozen preregistration",
+      "Photon-1 reproduction",
+      "proof that future prediction beats ordinary Celeste domain adaptation without Arm B",
+      "proof that the explicit signed-difference channels alone cause a D-versus-C difference",
+      "final-test evidence"
+    ]
+  },
+  "embargo": {
+    "sealed_untouched_session": "rec_20260727_220000_test",
+    "rule": "forbidden for discovery, inventory construction, caching, pretraining, supervised fitting, inference, thresholding, calibration, selection, or diagnostics",
+    "other_exclusions": [
+      "own-v3 val-A session rec_20260724_171305_5min",
+      "all B1 data",
+      "all val-B data",
+      "the entire y4nQHqYSObI video during cache construction and pretraining"
+    ],
+    "y4n_export_policy": "The whole y4nQHqYSObI video may be encoded only after C/D pretraining is terminal, solely to create the frozen downstream y4n evaluation features."
+  },
+  "arms": {
+    "C": {
+      "name": "celeste_future_latent",
+      "online_input": "masked frame t",
+      "target_input": "masked frame t+h"
+    },
+    "D": {
+      "name": "celeste_future_latent_ordered_pair",
+      "online_input": "ordered masked pair (t-1,t)",
+      "target_input": "ordered masked pair (t+h-1,t+h)",
+      "interpretation": "Tests access to adjacent ordered-pair context before pooling; the redundant signed-difference slice is not separately isolated."
+    }
+  },
+  "data": {
+    "sources": {
+      "nitrogen": {
+        "videos": 210,
+        "holdout_video_excluded": "y4nQHqYSObI",
+        "role": "masked unlabeled training video"
+      },
+      "wild_provisional": {
+        "videos": 7,
+        "sessions": 2058,
+        "frames": 4835638,
+        "admitted_hours": 0.0,
+        "role": "masked unlabeled provisional video; decoded action values are never opened"
+      },
+      "local": {
+        "sessions": [
+          "rec_20260724_190233",
+          "rec_20260725_015612",
+          "rec_20260725_021338"
+        ],
+        "role": "corrected own-v3 masked video; engine-truth values are never opened"
+      }
+    },
+    "labels_consumed": false,
+    "sampled_windows": 60000,
+    "window_offsets_native_frames": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "sampling_seed": 2026072801,
+    "source_sampling": "proportional to validated eligible windows",
+    "horizons_native_frames": [
+      1,
+      2,
+      4
+    ],
+    "horizon_choice": "Post-Phase-0 exploratory restriction to the registered offsets nearest the only secure action-specific signal (dash onset first visible at +1 and strongest at +3). This is not the frozen preregistration's horizon-pruning result.",
+    "motion_strata": {
+      "definition": "mean absolute masked-pixel luma endpoint difference",
+      "thresholds": "separate training-population median within every source and horizon",
+      "draw_mix_within_source_horizon": {
+        "static": 0.5,
+        "change_heavy": 0.5
+      }
+    },
+    "cache": {
+      "rgb_dtype": "uint8",
+      "layout": "NCHW-window memmap represented on disk as [window,offset,height,width,channel]",
+      "height": 128,
+      "width": 128,
+      "atomic_publication": true,
+      "content_hash_every_artifact": true
+    }
+  },
+  "training": {
+    "seed": 0,
+    "steps": 30000,
+    "batch_size": 192,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "precision": "bfloat16_cuda_autocast_with_float32_optimizer_state",
+    "ema": {
+      "start": 0.998,
+      "end": 1.0,
+      "schedule": "linear_over_fixed_step_budget"
+    },
+    "loss": "mean per-example L1 between L2-normalized prediction and stop-gradient target latent",
+    "augmentation": {
+      "crop_scale_min": 0.8,
+      "brightness": 0.2,
+      "contrast": 0.2,
+      "flips": false,
+      "constant_within_each_ordered_pair": true,
+      "independent_online_and_target_views": true
+    },
+    "matched_schedule": {
+      "counter_seed": 2026072802,
+      "identical_tuple_ids_C_and_D": true,
+      "equal_horizon_quota": true,
+      "source_probability": "validated eligible-window fraction",
+      "equal_static_change_within_source_horizon": true
+    },
+    "checkpoint": {
+      "interval_steps": 1000,
+      "atomic": true,
+      "required_resume_state": [
+        "online encoder",
+        "EMA target encoder",
+        "predictor",
+        "optimizer",
+        "completed step",
+        "sample counter",
+        "Python RNG",
+        "NumPy RNG",
+        "Torch CPU RNG",
+        "Torch CUDA RNG",
+        "online augmentation generator",
+        "target augmentation generator",
+        "failure counters"
+      ],
+      "selection": "final weights only"
+    }
+  },
+  "preflight": {
+    "measured_steps": 100,
+    "maximum_projected_hours_per_arm": 8.0,
+    "maximum_cuda_memory_gib": 76.0,
+    "resume_identity_required": true,
+    "gap_safe_D_export_identity_required": true,
+    "on_failure": "preserve evidence and stop; do not resize, tune, or silently restart under a changed recipe"
+  },
+  "collapse_monitor": {
+    "fixed_panel_tuples": 2048,
+    "panel_balance": "deterministic horizon-by-stratum cell counts differ by at most one; source composition follows validated eligible proportions",
+    "interval_steps": 250,
+    "consecutive_failures_to_stop": 3,
+    "relative_to_step_zero": {
+      "target_median_per_dimension_std_min_fraction": 0.25,
+      "online_median_per_dimension_std_min_fraction": 0.25,
+      "target_covariance_effective_rank_min_fraction": 0.25,
+      "online_covariance_effective_rank_min_fraction": 0.25
+    },
+    "absolute": {
+      "covariance_effective_rank_min": 8.0,
+      "mean_pairwise_cosine_max": 0.995,
+      "nearest_neighbor_unique_fraction_min": 0.25
+    },
+    "required_baselines": [
+      "identity-current-latent",
+      "mean-target",
+      "shuffled-future"
+    ],
+    "report_by_motion_stratum": true
+  },
+  "feature_export": {
+    "encoder_state": "final EMA target only",
+    "value": "raw unnormalized 512-D global-average-pooled output",
+    "dtype": "float16",
+    "dimension": 512,
+    "D_boundary_policy": "previous equals current at each session boundary; never cross a gap",
+    "training_videos": 210,
+    "evaluation_video": "y4nQHqYSObI",
+    "sealed_untouched_excluded": true
+  },
+  "downstream": {
+    "reference_run": "nitrogen_full_210train_y4n_holdout_26m_128x3_s0",
+    "architecture": "unchanged 25.7M centered GRU over frozen 512-D features with post-pool deltas",
+    "steps": 20458,
+    "seed": 0,
+    "checkpoint": "final only",
+    "evaluation": "mapped y4n later-eight on identical support",
+    "threshold": 0.5,
+    "primary_metrics": [
+      "segment-bounded combined onset/release exact event F1",
+      "segment-bounded combined onset/release plus-or-minus-2-frame event F1"
+    ],
+    "secondary_metrics": [
+      "macro and per-key AP with prevalence",
+      "state F1",
+      "micro and joint key-state accuracy",
+      "predicted-positive rates",
+      "BCE",
+      "Brier",
+      "equal-mass ECE"
+    ],
+    "B1_policy": "forbidden until the complete y4n C/D decision and checkpoint hashes are committed"
+  },
+  "promotion": {
+    "reference_A": "historical ImageNet encoder result; candidate comparison only because B is absent",
+    "D_vs_C_rule": "D plus-or-minus-2 event F1 improves by at least 0.010 absolute, exact event F1 loses at most 0.002, and macro AP loses at most 0.005",
+    "replication": "Any promoted recipe requires a separate authorization and must repeat the full SSL plus downstream pipeline for seeds 1 and 2."
+  }
+}

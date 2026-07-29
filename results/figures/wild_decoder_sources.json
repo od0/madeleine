@@ -1,0 +1,23 @@
+[
+ {
+  "figure": "fig_wild_decoder_layout",
+  "video_id": "v498642684",
+  "platform": "twitch",
+  "url": "https://www.twitch.tv/videos/498642684",
+  "note": "Reviewed geometry exhibit derived from one public gameplay frame: cyan gameplay crop, magenta complete HUD mask, and seven green luma sample cells. The hash-bound mapping was approved by a human with AI assistance; compositor timing remained unmeasured."
+ },
+ {
+  "figure": "fig_wild_decoder_states",
+  "video_id": "v498642684",
+  "platform": "twitch",
+  "url": "https://www.twitch.tv/videos/498642684",
+  "note": "Six selected public gameplay frames show reviewed released/pressed evidence for A to left, Space to jump, and U to dash. These are distributed semantic examples, not adjacent timing pairs."
+ },
+ {
+  "figure": "fig_wild_decoder_sequence",
+  "video_id": "v498642684",
+  "platform": "twitch",
+  "url": "https://www.twitch.tv/videos/498642684",
+  "note": "Six exact-PTS crops from source frames 783117 through 783127 show U filling, the visible dash response, and release. This supports semantic mapping only and is not presented as compositor-offset calibration."
+ }
+]

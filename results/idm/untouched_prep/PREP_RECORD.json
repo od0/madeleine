@@ -1,0 +1,652 @@
+{
+  "purpose": "Development-surface preparation for the untouched engine-truth test. val-A (rec_20260724_171305_5min) only; the sealed test shard and val-B were not accessed; no repo tracked path was written; the two running trainings were not modified.",
+  "created_at": "2026-07-28T04:00:33.994141+00:00",
+  "node": "madeleine-codex",
+  "env": {
+    "python": "3.12.13",
+    "torch": "2.13.0+cu129",
+    "cuda": "12.9",
+    "cudnn": 92000,
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "driver": "565.57.01"
+  },
+  "code_trees": {
+    "dirty": {
+      "path": "/ephemeral/madeleine",
+      "head": "d13ef3edfdd5ab2e38dd43919d00b854b64abf15",
+      "status_porcelain_sha256": "3e4d1a333a391eb04a87e092822577e78838024caebb93b4004460eed0dbc56e",
+      "tracked_diff_sha256": "f3d1672ebd8e1e633634c3d97a441ea36e76371e2ba6e7a63dae7afe866a79b0",
+      "used_for": [
+        "full-corpus final-endpoint val-A threshold evals",
+        "e2e 37m/113m selected-weights val-A reproduction"
+      ],
+      "access": "read-only; evals run with cwd+PYTHONPATH on this tree"
+    },
+    "pinned_a9a4144": {
+      "path": "/ephemeral/madeleine-pinned",
+      "head": "a9a414452c07fb101d26faee9fa13864dde922b4",
+      "created_by": "git clone --no-hardlinks /ephemeral/madeleine /ephemeral/madeleine-pinned && git checkout a9a4144",
+      "used_for": [
+        "own_features_32nc_s0..2 and foreign_tier_b_13p45h_32nc_s0..2 val-A reproduction under training-era (old segment-global feature-delta) semantics"
+      ]
+    }
+  },
+  "eval_entrypoint": "PYTHONPATH=<tree> <tree-or-dirty>/.venv/bin/python -m badeline.eval --run /ephemeral/results/takeover/<run> --data <data> --sessions /ephemeral/data/own/val_a.txt --out <out> --device cuda [--weights final|selected on the dirty tree only]; same flow as experiments/run_full_corpus_b1_eval.sh (commit 840b6a2)",
+  "val_a_inputs": {
+    "features": "/ephemeral/data/own_features (resnet18_imagenet_avgpool_float16_v1, 512-dim)",
+    "pixels": "/ephemeral/data/own",
+    "session_list": "/ephemeral/data/own/val_a.txt = rec_20260724_171305_5min",
+    "note": "same inputs the eight prior val-A reports consumed; no new feature build was needed for the 128x3 geometry because the window/stride live in each run's config.json, not in the shard"
+  },
+  "checkpoint_sha256_reverified": {
+    "own_features_32nc_s0": "98a0420f638f7896a492d6994f09fd5814d654d979ac1a0c91b3396f3dbece9d",
+    "own_features_32nc_s1": "3d805c35348587dc9e25e30f9d754fcee4a997f17676a700c6eeebca70eaedcc",
+    "own_features_32nc_s2": "ea9f976677e3480673e0eee85d0a1390de385ed4ffeb7eb53620ca609b1e3600",
+    "foreign_tier_b_13p45h_32nc_s0": "f4294f31e6f4e84cf5dbbdf0ab0ca836fed931e08bc3b0cd886556749753231f",
+    "foreign_tier_b_13p45h_32nc_s1": "49eeab2afdc35b129e17dd599dcb5c006141cc87c6719618257054bde3d4d155",
+    "foreign_tier_b_13p45h_32nc_s2": "cf92769e338fc982897a64588f947097551b43307decc4c9bc645e1846044598",
+    "foreign_tier_b_13p45h_37m_e2e_aug_32nc_s0": "1d780811d020cde4a9c28f31e38cba69706ef0bd08ab31666fde9f214f8119dc",
+    "foreign_tier_b_13p45h_113m_e2e_aug_32nc_s0": "4cfb619be79f0f8626dedc3f07b7c095b1048d4144ee67d3fb3a155cf862748f",
+    "nitrogen_unflagged_92train_y4n_holdout_26m_128x3_s0": "cf55f612382bfa7b9a1b67038b5223a1629782782995f0b008311ba380b34f94",
+    "nitrogen_full_210train_y4n_holdout_26m_128x3_s0": "297c6a512914946f9d836467b31afa5b84b74e856ad3fb7b2f7326284161fd09"
+  },
+  "full_corpus_val_a_thresholds": {
+    "nitrogen_unflagged_92train_y4n_holdout_26m_128x3_s0": {
+      "report_path": "/ephemeral/results/untouched_prep/thresholds/nitrogen_unflagged_92train_y4n_holdout_26m_128x3_s0_final_val_a.json",
+      "report_sha256": "2e39565db70f80c8a142848de74f193c933b8bc08c92ee4254688c92b7c91bbb",
+      "preds_sha256": "e280df4fc4bc901a1c1ceeaf690fae025126b9181f2705a1664d07c1de3cec32",
+      "weights": "final",
+      "sessions": [
+        "rec_20260724_171305_5min"
+      ],
+      "json_pointer_convention": {
+        "input_active_only": "/input_active_only/metrics/transition_f1_oracle/<key>/threshold",
+        "all_frames": "/all_frames/metrics/transition_f1_oracle/<key>/threshold"
+      },
+      "threshold_vectors": {
+        "input_active_only": {
+          "left": {
+            "threshold": 0.7498675608634949,
+            "f1": null
+          },
+          "right": {
+            "threshold": 0.31678490519523617,
+            "f1": null
+          },
+          "up": {
+            "threshold": 0.6902316308021545,
+            "f1": null
+          },
+          "down": {
+            "threshold": 0.42306822121143345,
+            "f1": null
+          },
+          "jump": {
+            "threshold": 0.5609144115447998,
+            "f1": null
+          },
+          "dash": {
+            "threshold": 0.5039872264862061,
+            "f1": null
+          },
+          "grab": {
+            "threshold": 0.31351900696754453,
+            "f1": null
+          }
+        },
+        "all_frames": {
+          "left": {
+            "threshold": 0.7498675608634949,
+            "f1": null
+          },
+          "right": {
+            "threshold": 0.31678490519523617,
+            "f1": null
+          },
+          "up": {
+            "threshold": 0.6902316308021545,
+            "f1": null
+          },
+          "down": {
+            "threshold": 0.42306822121143345,
+            "f1": null
+          },
+          "jump": {
+            "threshold": 0.5609144115447998,
+            "f1": null
+          },
+          "dash": {
+            "threshold": 0.5039872264862061,
+            "f1": null
+          },
+          "grab": {
+            "threshold": 0.31351900696754453,
+            "f1": null
+          }
+        }
+      }
+    },
+    "nitrogen_full_210train_y4n_holdout_26m_128x3_s0": {
+      "report_path": "/ephemeral/results/untouched_prep/thresholds/nitrogen_full_210train_y4n_holdout_26m_128x3_s0_final_val_a.json",
+      "report_sha256": "1cbc4c779a9a45a84f996b5e0657ba2fe9f34dc9450e6a7214072b38ad799a5e",
+      "preds_sha256": "693a29ae93df450c3c355a20a9714e4cda44780d44112e0bc5995e12a7a442ec",
+      "weights": "final",
+      "sessions": [
+        "rec_20260724_171305_5min"
+      ],
+      "json_pointer_convention": {
+        "input_active_only": "/input_active_only/metrics/transition_f1_oracle/<key>/threshold",
+        "all_frames": "/all_frames/metrics/transition_f1_oracle/<key>/threshold"
+      },
+      "threshold_vectors": {
+        "input_active_only": {
+          "left": {
+            "threshold": 0.7613336205482483,
+            "f1": null
+          },
+          "right": {
+            "threshold": 0.29335967361927034,
+            "f1": null
+          },
+          "up": {
+            "threshold": 0.47816166043281555,
+            "f1": null
+          },
+          "down": {
+            "threshold": 0.2767375409603119,
+            "f1": null
+          },
+          "jump": {
+            "threshold": 0.561724853515625,
+            "f1": null
+          },
+          "dash": {
+            "threshold": 0.10299404665827751,
+            "f1": null
+          },
+          "grab": {
+            "threshold": 0.21615947395563126,
+            "f1": null
+          }
+        },
+        "all_frames": {
+          "left": {
+            "threshold": 0.7613336205482483,
+            "f1": null
+          },
+          "right": {
+            "threshold": 0.29335967361927034,
+            "f1": null
+          },
+          "up": {
+            "threshold": 0.47816166043281555,
+            "f1": null
+          },
+          "down": {
+            "threshold": 0.2767375409603119,
+            "f1": null
+          },
+          "jump": {
+            "threshold": 0.561724853515625,
+            "f1": null
+          },
+          "dash": {
+            "threshold": 0.10299404665827751,
+            "f1": null
+          },
+          "grab": {
+            "threshold": 0.21615947395563126,
+            "f1": null
+          }
+        }
+      }
+    }
+  },
+  "reproduction": {
+    "own_features_32nc_s0": {
+      "verdict": "exact",
+      "code_tree": "/ephemeral/madeleine-pinned @ a9a414452c07fb101d26faee9fa13864dde922b4 (training-era segment-global feature-delta semantics)",
+      "committed_sidecar": "results/idm/own_features_32nc_s0_val_a.json",
+      "comparison": "full JSON deep-equal excluding run/evaluated_at/weights fields",
+      "preds_bitwise_equal": "no committed preds sidecar in repo; JSON exact match is the bind"
+    },
+    "own_features_32nc_s1": {
+      "verdict": "exact",
+      "code_tree": "/ephemeral/madeleine-pinned @ a9a414452c07fb101d26faee9fa13864dde922b4 (training-era segment-global feature-delta semantics)",
+      "committed_sidecar": "results/idm/own_features_32nc_s1_val_a.json",
+      "comparison": "full JSON deep-equal excluding run/evaluated_at/weights fields",
+      "preds_bitwise_equal": "no committed preds sidecar in repo; JSON exact match is the bind"
+    },
+    "own_features_32nc_s2": {
+      "verdict": "exact",
+      "code_tree": "/ephemeral/madeleine-pinned @ a9a414452c07fb101d26faee9fa13864dde922b4 (training-era segment-global feature-delta semantics)",
+      "committed_sidecar": "results/idm/own_features_32nc_s2_val_a.json",
+      "comparison": "full JSON deep-equal excluding run/evaluated_at/weights fields",
+      "preds_bitwise_equal": "no committed preds sidecar in repo; JSON exact match is the bind"
+    },
+    "foreign_tier_b_13p45h_32nc_s0": {
+      "verdict": "exact",
+      "code_tree": "/ephemeral/madeleine-pinned @ a9a414452c07fb101d26faee9fa13864dde922b4 (training-era segment-global feature-delta semantics)",
+      "committed_sidecar": "results/idm/foreign_tier_b_13p45h_32nc_s0_val_a.json",
+      "comparison": "full JSON deep-equal excluding run/evaluated_at/weights fields",
+      "preds_bitwise_equal": true
+    },
+    "foreign_tier_b_13p45h_32nc_s1": {
+      "verdict": "exact",
+      "code_tree": "/ephemeral/madeleine-pinned @ a9a414452c07fb101d26faee9fa13864dde922b4 (training-era segment-global feature-delta semantics)",
+      "committed_sidecar": "results/idm/foreign_tier_b_13p45h_32nc_s1_val_a.json",
+      "comparison": "full JSON deep-equal excluding run/evaluated_at/weights fields",
+      "preds_bitwise_equal": true
+    },
+    "foreign_tier_b_13p45h_32nc_s2": {
+      "verdict": "exact",
+      "code_tree": "/ephemeral/madeleine-pinned @ a9a414452c07fb101d26faee9fa13864dde922b4 (training-era segment-global feature-delta semantics)",
+      "committed_sidecar": "results/idm/foreign_tier_b_13p45h_32nc_s2_val_a.json",
+      "comparison": "full JSON deep-equal excluding run/evaluated_at/weights fields",
+      "preds_bitwise_equal": true
+    },
+    "foreign_tier_b_13p45h_37m_e2e_aug_32nc_s0": {
+      "verdict": "near",
+      "code_tree": "/ephemeral/madeleine @ d13ef3e-dirty (current dirty tree)",
+      "committed_sidecar": "results/idm/foreign_tier_b_13p45h_37m_e2e_aug_32nc_s0_val_a.json",
+      "preds_bitwise_equal": true,
+      "differing_leaves": {
+        "real": 144,
+        "all_within_transition_f1_oracle_collars": true,
+        "nan_vs_nan_calibration_bins": 32
+      },
+      "explanation": "y_prob/y_true/input_active/session arrays are bitwise identical to the committed preds sidecar, so the checkpoint is the training-time artifact. The JSON diffs are confined to transition_f1_oracle_collars at collar>=1: the dirty tree later gained an uncommitted badeline/metrics.py change that restricts collar event matching to segment boundaries, so cross-boundary matches present in the committed sidecar are no longer counted. Headline metrics (per_key_ap, per_key_f1, oracle thresholds, collar-0 transition F1) are unchanged. NaN-vs-NaN calibration-bin leaves are comparison artifacts, not value changes.",
+      "n_matched_deltas": [
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/1/jump/event/n_matched",
+          "committed": 17,
+          "repro": 16
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/1/jump/onset/n_matched",
+          "committed": 17,
+          "repro": 16
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/dash/event/n_matched",
+          "committed": 16,
+          "repro": 14
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/dash/onset/n_matched",
+          "committed": 16,
+          "repro": 14
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/jump/event/n_matched",
+          "committed": 19,
+          "repro": 17
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/jump/onset/n_matched",
+          "committed": 19,
+          "repro": 17
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/left/event/n_matched",
+          "committed": 12,
+          "repro": 11
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/left/onset/n_matched",
+          "committed": 11,
+          "repro": 10
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/right/event/n_matched",
+          "committed": 59,
+          "repro": 58
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/right/onset/n_matched",
+          "committed": 59,
+          "repro": 58
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/dash/event/n_matched",
+          "committed": 18,
+          "repro": 15
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/dash/onset/n_matched",
+          "committed": 18,
+          "repro": 15
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/jump/event/n_matched",
+          "committed": 24,
+          "repro": 20
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/jump/onset/n_matched",
+          "committed": 24,
+          "repro": 20
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/left/event/n_matched",
+          "committed": 15,
+          "repro": 12
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/left/onset/n_matched",
+          "committed": 14,
+          "repro": 11
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/right/event/n_matched",
+          "committed": 61,
+          "repro": 60
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/right/onset/n_matched",
+          "committed": 61,
+          "repro": 60
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/up/event/n_matched",
+          "committed": 25,
+          "repro": 24
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/up/onset/n_matched",
+          "committed": 25,
+          "repro": 24
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/1/jump/event/n_matched",
+          "committed": 16,
+          "repro": 15
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/1/jump/onset/n_matched",
+          "committed": 16,
+          "repro": 15
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/2/dash/event/n_matched",
+          "committed": 16,
+          "repro": 14
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/2/dash/onset/n_matched",
+          "committed": 16,
+          "repro": 14
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/2/jump/event/n_matched",
+          "committed": 18,
+          "repro": 16
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/2/jump/onset/n_matched",
+          "committed": 18,
+          "repro": 16
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/2/left/event/n_matched",
+          "committed": 10,
+          "repro": 9
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/2/left/onset/n_matched",
+          "committed": 10,
+          "repro": 9
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/dash/event/n_matched",
+          "committed": 18,
+          "repro": 15
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/dash/onset/n_matched",
+          "committed": 18,
+          "repro": 15
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/jump/event/n_matched",
+          "committed": 23,
+          "repro": 19
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/jump/onset/n_matched",
+          "committed": 23,
+          "repro": 19
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/left/event/n_matched",
+          "committed": 13,
+          "repro": 10
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/left/onset/n_matched",
+          "committed": 13,
+          "repro": 10
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/up/event/n_matched",
+          "committed": 24,
+          "repro": 23
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/up/onset/n_matched",
+          "committed": 24,
+          "repro": 23
+        }
+      ]
+    },
+    "foreign_tier_b_13p45h_113m_e2e_aug_32nc_s0": {
+      "verdict": "near",
+      "code_tree": "/ephemeral/madeleine @ d13ef3e-dirty (current dirty tree)",
+      "committed_sidecar": "results/idm/foreign_tier_b_13p45h_113m_e2e_aug_32nc_s0_val_a.json",
+      "preds_bitwise_equal": true,
+      "differing_leaves": {
+        "real": 144,
+        "all_within_transition_f1_oracle_collars": true,
+        "nan_vs_nan_calibration_bins": 50
+      },
+      "explanation": "y_prob/y_true/input_active/session arrays are bitwise identical to the committed preds sidecar, so the checkpoint is the training-time artifact. The JSON diffs are confined to transition_f1_oracle_collars at collar>=1: the dirty tree later gained an uncommitted badeline/metrics.py change that restricts collar event matching to segment boundaries, so cross-boundary matches present in the committed sidecar are no longer counted. Headline metrics (per_key_ap, per_key_f1, oracle thresholds, collar-0 transition F1) are unchanged. NaN-vs-NaN calibration-bin leaves are comparison artifacts, not value changes.",
+      "n_matched_deltas": [
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/1/jump/event/n_matched",
+          "committed": 17,
+          "repro": 16
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/1/jump/onset/n_matched",
+          "committed": 17,
+          "repro": 16
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/dash/event/n_matched",
+          "committed": 15,
+          "repro": 14
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/dash/onset/n_matched",
+          "committed": 15,
+          "repro": 14
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/jump/event/n_matched",
+          "committed": 19,
+          "repro": 17
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/jump/onset/n_matched",
+          "committed": 19,
+          "repro": 17
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/left/event/n_matched",
+          "committed": 12,
+          "repro": 11
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/left/onset/n_matched",
+          "committed": 11,
+          "repro": 10
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/right/event/n_matched",
+          "committed": 60,
+          "repro": 59
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/2/right/onset/n_matched",
+          "committed": 59,
+          "repro": 58
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/dash/event/n_matched",
+          "committed": 17,
+          "repro": 15
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/dash/onset/n_matched",
+          "committed": 17,
+          "repro": 15
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/jump/event/n_matched",
+          "committed": 24,
+          "repro": 20
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/jump/onset/n_matched",
+          "committed": 24,
+          "repro": 20
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/left/event/n_matched",
+          "committed": 15,
+          "repro": 12
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/left/onset/n_matched",
+          "committed": 14,
+          "repro": 11
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/right/event/n_matched",
+          "committed": 63,
+          "repro": 62
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/right/onset/n_matched",
+          "committed": 62,
+          "repro": 61
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/up/event/n_matched",
+          "committed": 25,
+          "repro": 24
+        },
+        {
+          "pointer": "/all_frames/metrics/transition_f1_oracle_collars/4/up/onset/n_matched",
+          "committed": 25,
+          "repro": 24
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/1/jump/event/n_matched",
+          "committed": 16,
+          "repro": 15
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/1/jump/onset/n_matched",
+          "committed": 16,
+          "repro": 15
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/2/dash/event/n_matched",
+          "committed": 15,
+          "repro": 14
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/2/dash/onset/n_matched",
+          "committed": 15,
+          "repro": 14
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/2/jump/event/n_matched",
+          "committed": 18,
+          "repro": 16
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/2/jump/onset/n_matched",
+          "committed": 18,
+          "repro": 16
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/2/left/event/n_matched",
+          "committed": 10,
+          "repro": 9
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/2/left/onset/n_matched",
+          "committed": 10,
+          "repro": 9
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/dash/event/n_matched",
+          "committed": 17,
+          "repro": 15
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/dash/onset/n_matched",
+          "committed": 17,
+          "repro": 15
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/jump/event/n_matched",
+          "committed": 23,
+          "repro": 19
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/jump/onset/n_matched",
+          "committed": 23,
+          "repro": 19
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/left/event/n_matched",
+          "committed": 13,
+          "repro": 10
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/left/onset/n_matched",
+          "committed": 13,
+          "repro": 10
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/up/event/n_matched",
+          "committed": 24,
+          "repro": 23
+        },
+        {
+          "pointer": "/input_active_only/metrics/transition_f1_oracle_collars/4/up/onset/n_matched",
+          "committed": 24,
+          "repro": 23
+        }
+      ]
+    }
+  },
+  "reproduction_report_sha256": {
+    "repro_a9a4144/foreign_tier_b_13p45h_32nc_s0_val_a.json": "9b9fca38c539986f5247bae411c1a3efdbe668b89aaa2ee29d093ab0929425e9",
+    "repro_a9a4144/foreign_tier_b_13p45h_32nc_s1_val_a.json": "a0605c3761fbc5d58e96ce024f66ecf98a96fd09c919a478506d205016d95e3a",
+    "repro_a9a4144/foreign_tier_b_13p45h_32nc_s2_val_a.json": "1f00166496161fe3b7e42a43d4708f07576e86d59620e561553a3844fcc5f5a0",
+    "repro_a9a4144/own_features_32nc_s0_val_a.json": "a0fd12089031b07b3ccf50547f229c2b148bd51780358dfb818bc285b6c0d72a",
+    "repro_a9a4144/own_features_32nc_s1_val_a.json": "2983c2682dc9cdba8a6abd013e04ce251390dee2b92f2053cc0f849aaae900b8",
+    "repro_a9a4144/own_features_32nc_s2_val_a.json": "c153f782b723825f2e0f0d538381b62fff282d493f28682d2ba6ba3ba0740497",
+    "repro_dirty/foreign_tier_b_13p45h_113m_e2e_aug_32nc_s0_val_a.json": "1a8b2c13db8598048a75365e3db91cfea316933274d39b4efeb3817a802cbd3f",
+    "repro_dirty/foreign_tier_b_13p45h_37m_e2e_aug_32nc_s0_val_a.json": "fbc874bee85e5177a098db0bebd8c0059df334ae0aba9a8865e1390159ca30b9"
+  },
+  "gpu_footprint": {
+    "device_used": "GPU 1 (CUDA_VISIBLE_DEVICES=1)",
+    "batch": "eval default 64 windows",
+    "monitor_csv": "/ephemeral/results/untouched_prep/gpu_monitor.csv"
+  }
+}

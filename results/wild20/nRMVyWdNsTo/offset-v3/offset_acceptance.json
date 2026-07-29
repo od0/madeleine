@@ -1,0 +1,45 @@
+{
+  "format_version": "madeleine.wild-offset-acceptance.v3",
+  "video_id": "nRMVyWdNsTo",
+  "created_at": "2026-07-28T15:39:04.056798+00:00",
+  "decision": {
+    "approved": true,
+    "contact_sheet_reviewed": true,
+    "reviewer_identity": "Bryan",
+    "reviewer_kind": "human_with_ai_assistance",
+    "uncertain_tier_acknowledged": true,
+    "notes": "Owner reviewed the 12-row dash-hitstop contact sheet 2026-07-28: freeze-then-rebound pattern verified at the claimed offset."
+  },
+  "calibration": {
+    "path": "offset_calibration.json",
+    "sha256": "aaf7157058ad8b9f0e2e04847c4db4f26c7ab7b5dd82eb66680d9e5d11f63bce",
+    "format_version": "madeleine.dash-hitstop-offset.v3",
+    "contact_sheet": {
+      "path": "dash_offset_contact.png",
+      "sha256": "82920fdb9088f179efd0b1a0930a09b5e25efaf682b9a453effd31cea08b0489"
+    }
+  },
+  "input_layout": {
+    "path": "layout.reviewed-unmeasured.json",
+    "sha256": "7989f09caed39975e9a671d19a6dac5a6e73f19dea66eb83b0043caee470169e"
+  },
+  "layout_review_acceptance": {
+    "path": "layout_acceptance.json",
+    "sha256": "648f91cd520c899381d10087697b1f9cd4403e3844e978203e93a2dac8892537",
+    "format_version": "madeleine.wild-layout-acceptance.v1",
+    "review_manifest_sha256": "78b61f084581bc6a2d5f7960a198aaeb97ce38822bcb48877066036f7d0e8374",
+    "reviewed_layout_sha256": "7989f09caed39975e9a671d19a6dac5a6e73f19dea66eb83b0043caee470169e",
+    "reviewer_kind": "human_with_ai_assistance",
+    "human_reviewed": true
+  },
+  "output_layout": {
+    "path": "layout.final.json",
+    "sha256": "c744dfd5e25aa6a80578e1aee40b3ca86dfc1080f54123ca8be4f306c3001230"
+  },
+  "accepted_offset_frames": 0,
+  "accepted_offset_confidence": 1.0,
+  "accepted_offset_source": "dash_hitstop_v1+reviewed_acceptance:aaf7157058ad8b9f0e2e04847c4db4f26c7ab7b5dd82eb66680d9e5d11f63bce",
+  "accepted_tier": "uncertain_adjacent",
+  "accepted_offset_uncertainty_frames": 1,
+  "source_video_sha256": "754ccbf9a43059c5322df1576edbc157e576f9ad20ba5c4be1a84e1397bfdaf4"
+}

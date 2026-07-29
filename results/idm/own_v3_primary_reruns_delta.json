@@ -1,0 +1,967 @@
+{
+  "contract_sha256": "9b3b357950c754378010a829483f882ec68784d0905962a999ab2ee03437c619",
+  "families": {
+    "scratch": {
+      "seeds": [
+        {
+          "checkpoint": {
+            "best_val_mean_bce": 0.5388008810680145,
+            "best_val_step": 250,
+            "bytes": 5813115,
+            "final_tensor_sha256": "8beebdbde1f01ff3f500e521430fba81b85c7f47e4b5cff687b0128b22623168",
+            "selected_final_identical": false,
+            "selected_tensor_sha256": "b3e00bb7cebeb8bca5c62f8e90548b2060fdf6b39a99fbe3cf9efaff6ce1a223",
+            "sha256": "5b2132f228664d2e0de4da2e15961b7d735ff7146dafb7338d8d9123cab8d6a3"
+          },
+          "checkpoint_sha256": "5b2132f228664d2e0de4da2e15961b7d735ff7146dafb7338d8d9123cab8d6a3",
+          "metrics": {
+            "all_frames": {
+              "delta": {
+                "macro_ap": -0.004249609368725621,
+                "macro_event_f1_at_0.5_collar0": 0.0007932187497205201,
+                "macro_event_f1_oracle_collar0": -0.0009322485131397079,
+                "macro_event_f1_oracle_collar2": -0.00019305330959720757,
+                "macro_state_f1_at_0.5": 0.00511931701312885,
+                "per_key_ap": {
+                  "dash": -0.014053974435105754,
+                  "down": 0.0016922881297778795,
+                  "grab": 0.0014996642566346141,
+                  "jump": 0.007222759472485074,
+                  "left": 0.00429865724837121,
+                  "right": 0.003703051505603072,
+                  "up": -0.034109711758845446
+                }
+              },
+              "mask_era": {
+                "macro_ap": 0.16274085524287246,
+                "macro_event_f1_at_0.5_collar0": 0.0046765212572043805,
+                "macro_event_f1_oracle_collar0": 0.07472000022735573,
+                "macro_event_f1_oracle_collar2": 0.08856797357434386,
+                "macro_state_f1_at_0.5": 0.045417285092674856,
+                "per_key_ap": {
+                  "dash": 0.09722189680333052,
+                  "down": 0.012117921568396408,
+                  "grab": 0.3129227815039811,
+                  "jump": 0.10540865410550691,
+                  "left": 0.08327367871479167,
+                  "right": 0.27321474982411265,
+                  "up": 0.2550263041799879
+                }
+              },
+              "own_v3": {
+                "macro_ap": 0.15849124587414684,
+                "macro_event_f1_at_0.5_collar0": 0.005469740006924901,
+                "macro_event_f1_oracle_collar0": 0.07378775171421602,
+                "macro_event_f1_oracle_collar2": 0.08837492026474665,
+                "macro_state_f1_at_0.5": 0.050536602105803706,
+                "per_key_ap": {
+                  "dash": 0.08316792236822476,
+                  "down": 0.013810209698174288,
+                  "grab": 0.31442244576061573,
+                  "jump": 0.11263141357799199,
+                  "left": 0.08757233596316288,
+                  "right": 0.2769178013297157,
+                  "up": 0.22091659242114245
+                }
+              }
+            },
+            "input_active_only": {
+              "delta": {
+                "macro_ap": -0.0045826488457055,
+                "macro_event_f1_at_0.5_collar0": 0.0012556716648125096,
+                "macro_event_f1_oracle_collar0": -0.0012810356003612605,
+                "macro_event_f1_oracle_collar2": -0.005559759268157577,
+                "macro_state_f1_at_0.5": 0.00484882538310908,
+                "per_key_ap": {
+                  "dash": -0.018252817530264948,
+                  "down": 0.0031173489037785353,
+                  "grab": 0.0019938688161402762,
+                  "jump": 0.009881396998861466,
+                  "left": 0.005381377742546864,
+                  "right": 0.0018846954039368757,
+                  "up": -0.03608441225493764
+                }
+              },
+              "mask_era": {
+                "macro_ap": 0.17300402162175857,
+                "macro_event_f1_at_0.5_collar0": 0.004590702317851422,
+                "macro_event_f1_oracle_collar0": 0.08007219701916424,
+                "macro_event_f1_oracle_collar2": 0.09899368160311568,
+                "macro_state_f1_at_0.5": 0.048695843852159096,
+                "per_key_ap": {
+                  "dash": 0.09937939362727306,
+                  "down": 0.015433670507742482,
+                  "grab": 0.3380328191484081,
+                  "jump": 0.11238787982118097,
+                  "left": 0.0881100852922284,
+                  "right": 0.2954301302833957,
+                  "up": 0.2622541726720814
+                }
+              },
+              "own_v3": {
+                "macro_ap": 0.16842137277605307,
+                "macro_event_f1_at_0.5_collar0": 0.005846373982663931,
+                "macro_event_f1_oracle_collar0": 0.07879116141880298,
+                "macro_event_f1_oracle_collar2": 0.0934339223349581,
+                "macro_state_f1_at_0.5": 0.053544669235268176,
+                "per_key_ap": {
+                  "dash": 0.08112657609700812,
+                  "down": 0.018551019411521017,
+                  "grab": 0.3400266879645484,
+                  "jump": 0.12226927682004243,
+                  "left": 0.09349146303477526,
+                  "right": 0.2973148256873326,
+                  "up": 0.22616976041714376
+                }
+              }
+            }
+          },
+          "new_run_id": "own_features_v3_32nc_s0",
+          "old_run_id": "own_features_32nc_s0",
+          "seed": 0,
+          "sidecar": {
+            "active_rows": 25028,
+            "rows": 29086,
+            "sha256": "19251c028b261ef8e2e7527cef74c6a7e05b5b0ebe42dc4ea897a0380db5a619",
+            "streams": 177
+          }
+        },
+        {
+          "checkpoint": {
+            "best_val_mean_bce": 0.49974050288926575,
+            "best_val_step": 250,
+            "bytes": 5813115,
+            "final_tensor_sha256": "bf53d7afeef1628d371a40a93e47fd57b2eff1adce38eefebb5b6d7a1a848c79",
+            "selected_final_identical": false,
+            "selected_tensor_sha256": "bb757aadff6e6fab353fa668b402a2b9a6499ef29c68f33df43b66c9d7216fae",
+            "sha256": "05f80e665eb87c84adbc22628ef95db88f9263661b07ef7ca4374d3713bfaf72"
+          },
+          "checkpoint_sha256": "05f80e665eb87c84adbc22628ef95db88f9263661b07ef7ca4374d3713bfaf72",
+          "metrics": {
+            "all_frames": {
+              "delta": {
+                "macro_ap": -0.0018265409937865962,
+                "macro_event_f1_at_0.5_collar0": 0.0018767049576194211,
+                "macro_event_f1_oracle_collar0": -0.0005576317768423572,
+                "macro_event_f1_oracle_collar2": -0.004445900089010149,
+                "macro_state_f1_at_0.5": 0.011730643728470005,
+                "per_key_ap": {
+                  "dash": 0.0016393662464305875,
+                  "down": 0.0011291837047470686,
+                  "grab": -0.015402668774143924,
+                  "jump": 0.0020144485958980274,
+                  "left": 0.002075679761497043,
+                  "right": 0.003592677989761095,
+                  "up": -0.007834474480696213
+                }
+              },
+              "mask_era": {
+                "macro_ap": 0.16491190838133485,
+                "macro_event_f1_at_0.5_collar0": 0.010223594504643494,
+                "macro_event_f1_oracle_collar0": 0.07376403828237563,
+                "macro_event_f1_oracle_collar2": 0.08857695970020694,
+                "macro_state_f1_at_0.5": 0.11234630680414273,
+                "per_key_ap": {
+                  "dash": 0.09987780338967917,
+                  "down": 0.01318471225427642,
+                  "grab": 0.3622941871152719,
+                  "jump": 0.11833150672653478,
+                  "left": 0.09096027315458746,
+                  "right": 0.2678052588997417,
+                  "up": 0.2019296171292525
+                }
+              },
+              "own_v3": {
+                "macro_ap": 0.16308536738754825,
+                "macro_event_f1_at_0.5_collar0": 0.012100299462262916,
+                "macro_event_f1_oracle_collar0": 0.07320640650553327,
+                "macro_event_f1_oracle_collar2": 0.0841310596111968,
+                "macro_state_f1_at_0.5": 0.12407695053261274,
+                "per_key_ap": {
+                  "dash": 0.10151716963610975,
+                  "down": 0.01431389595902349,
+                  "grab": 0.34689151834112797,
+                  "jump": 0.12034595532243281,
+                  "left": 0.0930359529160845,
+                  "right": 0.2713979368895028,
+                  "up": 0.1940951426485563
+                }
+              }
+            },
+            "input_active_only": {
+              "delta": {
+                "macro_ap": -0.0020470190951752676,
+                "macro_event_f1_at_0.5_collar0": 0.0016357104180867148,
+                "macro_event_f1_oracle_collar0": -0.000847237285487662,
+                "macro_event_f1_oracle_collar2": -0.0071783231923712165,
+                "macro_state_f1_at_0.5": 0.013181072338312103,
+                "per_key_ap": {
+                  "dash": 0.001995338766744889,
+                  "down": 0.0020125013171663625,
+                  "grab": -0.018233455059958603,
+                  "jump": 0.0025612321733141374,
+                  "left": -3.769384091345529e-05,
+                  "right": 0.0038000348439996556,
+                  "up": -0.006427091866579665
+                }
+              },
+              "mask_era": {
+                "macro_ap": 0.17608540278538035,
+                "macro_event_f1_at_0.5_collar0": 0.01159704066722651,
+                "macro_event_f1_oracle_collar0": 0.07894012616603918,
+                "macro_event_f1_oracle_collar2": 0.09634965479311426,
+                "macro_state_f1_at_0.5": 0.11474209930064415,
+                "per_key_ap": {
+                  "dash": 0.1012229551322299,
+                  "down": 0.016907577608151775,
+                  "grab": 0.39003394642721523,
+                  "jump": 0.12821465815775349,
+                  "left": 0.10083509048488057,
+                  "right": 0.29522211369764406,
+                  "up": 0.20016147798978723
+                }
+              },
+              "own_v3": {
+                "macro_ap": 0.17403838369020508,
+                "macro_event_f1_at_0.5_collar0": 0.013232751085313224,
+                "macro_event_f1_oracle_collar0": 0.07809288888055152,
+                "macro_event_f1_oracle_collar2": 0.08917133160074305,
+                "macro_state_f1_at_0.5": 0.12792317163895625,
+                "per_key_ap": {
+                  "dash": 0.10321829389897479,
+                  "down": 0.018920078925318138,
+                  "grab": 0.3718004913672566,
+                  "jump": 0.13077589033106762,
+                  "left": 0.10079739664396711,
+                  "right": 0.2990221485416437,
+                  "up": 0.19373438612320756
+                }
+              }
+            }
+          },
+          "new_run_id": "own_features_v3_32nc_s1",
+          "old_run_id": "own_features_32nc_s1",
+          "seed": 1,
+          "sidecar": {
+            "active_rows": 25028,
+            "rows": 29086,
+            "sha256": "89299ad15233775f4144130dd8a3bb0f3c771680a97faacce1fc0b866e61ad31",
+            "streams": 177
+          }
+        },
+        {
+          "checkpoint": {
+            "best_val_mean_bce": 0.540590674009753,
+            "best_val_step": 250,
+            "bytes": 5813115,
+            "final_tensor_sha256": "39ce4d789f36d55ec91655a2d37a54a529854fc2f3e3bb9dbd152f7d1a55b7c0",
+            "selected_final_identical": false,
+            "selected_tensor_sha256": "f533eb2b3242cd2feb8c476a4c6a30734f59c7979c210ba9dd1ff82a20059656",
+            "sha256": "525ce4423d15cd7eff23d0c3088318d6f546e363afc289a2cf1f0460ffb98ce5"
+          },
+          "checkpoint_sha256": "525ce4423d15cd7eff23d0c3088318d6f546e363afc289a2cf1f0460ffb98ce5",
+          "metrics": {
+            "all_frames": {
+              "delta": {
+                "macro_ap": -0.0017022427057226674,
+                "macro_event_f1_at_0.5_collar0": 0.004598757898897505,
+                "macro_event_f1_oracle_collar0": -3.5423284801924804e-05,
+                "macro_event_f1_oracle_collar2": -0.0036364031958829868,
+                "macro_state_f1_at_0.5": 0.025845057700686347,
+                "per_key_ap": {
+                  "dash": -0.007299935501346569,
+                  "down": 0.0014881837988350646,
+                  "grab": -0.02228850809723054,
+                  "jump": 0.001453962236713624,
+                  "left": 0.007195908041513627,
+                  "right": 0.0066479871424547365,
+                  "up": 0.0008867034390013795
+                }
+              },
+              "mask_era": {
+                "macro_ap": 0.1583149550511984,
+                "macro_event_f1_at_0.5_collar0": 0.0039487121851273285,
+                "macro_event_f1_oracle_collar0": 0.07288638280436541,
+                "macro_event_f1_oracle_collar2": 0.0862075954111335,
+                "macro_state_f1_at_0.5": 0.04632261858476605,
+                "per_key_ap": {
+                  "dash": 0.10118011909930312,
+                  "down": 0.01829298722449923,
+                  "grab": 0.33481127978484093,
+                  "jump": 0.102380237443005,
+                  "left": 0.09336134737485649,
+                  "right": 0.26585142874824846,
+                  "up": 0.1923272856836356
+                }
+              },
+              "own_v3": {
+                "macro_ap": 0.15661271234547575,
+                "macro_event_f1_at_0.5_collar0": 0.008547470084024834,
+                "macro_event_f1_oracle_collar0": 0.07285095951956348,
+                "macro_event_f1_oracle_collar2": 0.08257119221525051,
+                "macro_state_f1_at_0.5": 0.0721676762854524,
+                "per_key_ap": {
+                  "dash": 0.09388018359795655,
+                  "down": 0.019781171023334293,
+                  "grab": 0.3125227716876104,
+                  "jump": 0.10383419967971863,
+                  "left": 0.10055725541637012,
+                  "right": 0.2724994158907032,
+                  "up": 0.193213989122637
+                }
+              }
+            },
+            "input_active_only": {
+              "delta": {
+                "macro_ap": -0.0037536079456070848,
+                "macro_event_f1_at_0.5_collar0": 0.0058898521302628674,
+                "macro_event_f1_oracle_collar0": -0.0003426932916420905,
+                "macro_event_f1_oracle_collar2": -0.004517689759404767,
+                "macro_state_f1_at_0.5": 0.025855784872632473,
+                "per_key_ap": {
+                  "dash": -0.01564669952072316,
+                  "down": 0.0007639803774236557,
+                  "grab": -0.02794331943801509,
+                  "jump": 0.0012020255427352272,
+                  "left": 0.00858343187575522,
+                  "right": 0.008307767046913606,
+                  "up": -0.0015424415033390149
+                }
+              },
+              "mask_era": {
+                "macro_ap": 0.17142665067029297,
+                "macro_event_f1_at_0.5_collar0": 0.003397016291235772,
+                "macro_event_f1_oracle_collar0": 0.07861285842803349,
+                "macro_event_f1_oracle_collar2": 0.09254434752513208,
+                "macro_state_f1_at_0.5": 0.05052959128349656,
+                "per_key_ap": {
+                  "dash": 0.11524363087479299,
+                  "down": 0.02570192134578199,
+                  "grab": 0.36433766368496534,
+                  "jump": 0.11142345735209203,
+                  "left": 0.10102664963308516,
+                  "right": 0.2826237536619397,
+                  "up": 0.19962947813939358
+                }
+              },
+              "own_v3": {
+                "macro_ap": 0.1676730427246859,
+                "macro_event_f1_at_0.5_collar0": 0.00928686842149864,
+                "macro_event_f1_oracle_collar0": 0.0782701651363914,
+                "macro_event_f1_oracle_collar2": 0.08802665776572731,
+                "macro_state_f1_at_0.5": 0.07638537615612903,
+                "per_key_ap": {
+                  "dash": 0.09959693135406983,
+                  "down": 0.026465901723205645,
+                  "grab": 0.33639434424695025,
+                  "jump": 0.11262548289482725,
+                  "left": 0.10961008150884038,
+                  "right": 0.2909315207088533,
+                  "up": 0.19808703663605456
+                }
+              }
+            }
+          },
+          "new_run_id": "own_features_v3_32nc_s2",
+          "old_run_id": "own_features_32nc_s2",
+          "seed": 2,
+          "sidecar": {
+            "active_rows": 25028,
+            "rows": 29086,
+            "sha256": "2965b2da8fcd3eb91eb5b8f6451b0a23638ee064837ad4cdf2910d084c606e7e",
+            "streams": 177
+          }
+        }
+      ],
+      "three_seed_means": {
+        "all_frames": {
+          "mask_era_mean": {
+            "macro_ap": 0.16198923955846858,
+            "macro_event_f1_at_0.5_collar0": 0.006282942648991735,
+            "macro_event_f1_oracle_collar0": 0.07379014043803225,
+            "macro_event_f1_oracle_collar2": 0.08778417622856144,
+            "macro_state_f1_at_0.5": 0.06802873682719456,
+            "per_key_ap": {
+              "dash": 0.09942660643077093,
+              "down": 0.014531873682390686,
+              "grab": 0.33667608280136463,
+              "jump": 0.10870679942501556,
+              "left": 0.08919843308141188,
+              "right": 0.2689571458240343,
+              "up": 0.216427735664292
+            }
+          },
+          "own_v3_mean": {
+            "macro_ap": 0.15939644186905694,
+            "macro_event_f1_at_0.5_collar0": 0.00870583651773755,
+            "macro_event_f1_oracle_collar0": 0.07328170591310425,
+            "macro_event_f1_oracle_collar2": 0.08502572403039799,
+            "macro_state_f1_at_0.5": 0.08226040964128961,
+            "per_key_ap": {
+              "dash": 0.09285509186743035,
+              "down": 0.015968425560177357,
+              "grab": 0.324612245263118,
+              "jump": 0.11227052286004781,
+              "left": 0.09372184809853917,
+              "right": 0.27360505136997393,
+              "up": 0.20274190806411188
+            }
+          },
+          "paired_mean_delta": {
+            "macro_ap": -0.0025927976894116467,
+            "macro_event_f1_at_0.5_collar0": 0.0024228938687458155,
+            "macro_event_f1_oracle_collar0": -0.0005084345249280059,
+            "macro_event_f1_oracle_collar2": -0.0027584521981634524,
+            "macro_state_f1_at_0.5": 0.014231672814095056,
+            "per_key_ap": {
+              "dash": -0.006571514563340583,
+              "down": 0.001436551877786671,
+              "grab": -0.012063837538246636,
+              "jump": 0.003563723435032251,
+              "left": 0.0045234150171272886,
+              "right": 0.0046479055459396346,
+              "up": -0.013685827600180112
+            }
+          }
+        },
+        "input_active_only": {
+          "mask_era_mean": {
+            "macro_ap": 0.17350535835914396,
+            "macro_event_f1_at_0.5_collar0": 0.006528253092104567,
+            "macro_event_f1_oracle_collar0": 0.07920839387107897,
+            "macro_event_f1_oracle_collar2": 0.09596256130712066,
+            "macro_state_f1_at_0.5": 0.0713225114787666,
+            "per_key_ap": {
+              "dash": 0.10528199321143199,
+              "down": 0.01934772315389208,
+              "grab": 0.3641348097535295,
+              "jump": 0.11734199844367549,
+              "left": 0.09665727513673138,
+              "right": 0.2910919992143265,
+              "up": 0.22068170960042074
+            }
+          },
+          "own_v3_mean": {
+            "macro_ap": 0.17004426639698134,
+            "macro_event_f1_at_0.5_collar0": 0.009455331163158597,
+            "macro_event_f1_oracle_collar0": 0.07838473847858196,
+            "macro_event_f1_oracle_collar2": 0.0902106372338095,
+            "macro_state_f1_at_0.5": 0.08595107234345116,
+            "per_key_ap": {
+              "dash": 0.09464726711668425,
+              "down": 0.021312333353348267,
+              "grab": 0.34940717452625175,
+              "jump": 0.1218902166819791,
+              "left": 0.10129964706252759,
+              "right": 0.29575616497927654,
+              "up": 0.20599706105880197
+            }
+          },
+          "paired_mean_delta": {
+            "macro_ap": -0.003461091962162627,
+            "macro_event_f1_at_0.5_collar0": 0.0029270780710540295,
+            "macro_event_f1_oracle_collar0": -0.0008236553924970136,
+            "macro_event_f1_oracle_collar2": -0.005751924073311168,
+            "macro_state_f1_at_0.5": 0.014628560864684559,
+            "per_key_ap": {
+              "dash": -0.010634726094747735,
+              "down": 0.0019646101994561863,
+              "grab": -0.014727635227277769,
+              "jump": 0.004548218238303606,
+              "left": 0.00464237192579621,
+              "right": 0.004664165764950046,
+              "up": -0.014684648541618772
+            }
+          }
+        }
+      }
+    },
+    "tier_b_init": {
+      "seeds": [
+        {
+          "checkpoint": {
+            "best_val_mean_bce": 0.5032086765834768,
+            "best_val_step": 200,
+            "bytes": 5813179,
+            "final_tensor_sha256": "6e8da59efac3e7c296c4175c951ec38a38063586353cadbe3f726f45d6a885c6",
+            "selected_final_identical": false,
+            "selected_tensor_sha256": "3e3b34972b6943cc72ea46854f259cfe63d701fc08705916fcf5d2ab8881b59d",
+            "sha256": "4c7308616fc9a5c64489ec872060c27ec726abe74a2a013d25f0d421b602e181"
+          },
+          "checkpoint_sha256": "4c7308616fc9a5c64489ec872060c27ec726abe74a2a013d25f0d421b602e181",
+          "metrics": {
+            "all_frames": {
+              "delta": {
+                "macro_ap": 0.006937660232445436,
+                "macro_event_f1_at_0.5_collar0": 0.005290344297516212,
+                "macro_event_f1_oracle_collar0": 0.00128440153815082,
+                "macro_event_f1_oracle_collar2": -0.0003107630421046448,
+                "macro_state_f1_at_0.5": 0.043408224766191224,
+                "per_key_ap": {
+                  "dash": 0.004090511718571804,
+                  "down": 0.0012511939963176493,
+                  "grab": 0.060645988980214394,
+                  "jump": -0.003412078113167877,
+                  "left": 0.0007225787017535179,
+                  "right": -0.009339941174929589,
+                  "up": -0.005394632481641959
+                }
+              },
+              "mask_era": {
+                "macro_ap": 0.1878878324691968,
+                "macro_event_f1_at_0.5_collar0": 0.005524125359437674,
+                "macro_event_f1_oracle_collar0": 0.07779715609075456,
+                "macro_event_f1_oracle_collar2": 0.08868390664276571,
+                "macro_state_f1_at_0.5": 0.04699843128796596,
+                "per_key_ap": {
+                  "dash": 0.1589515421006065,
+                  "down": 0.01544331632647856,
+                  "grab": 0.3867207122153822,
+                  "jump": 0.11620581378369174,
+                  "left": 0.1334283458217148,
+                  "right": 0.27542865836475655,
+                  "up": 0.22903643867174728
+                }
+              },
+              "own_v3": {
+                "macro_ap": 0.19482549270164223,
+                "macro_event_f1_at_0.5_collar0": 0.010814469656953886,
+                "macro_event_f1_oracle_collar0": 0.07908155762890538,
+                "macro_event_f1_oracle_collar2": 0.08837314360066106,
+                "macro_state_f1_at_0.5": 0.09040665605415718,
+                "per_key_ap": {
+                  "dash": 0.1630420538191783,
+                  "down": 0.01669451032279621,
+                  "grab": 0.44736670119559657,
+                  "jump": 0.11279373567052386,
+                  "left": 0.13415092452346833,
+                  "right": 0.26608871718982696,
+                  "up": 0.22364180619010532
+                }
+              }
+            },
+            "input_active_only": {
+              "delta": {
+                "macro_ap": 0.009387367966953747,
+                "macro_event_f1_at_0.5_collar0": 0.005577277341078384,
+                "macro_event_f1_oracle_collar0": 0.0007588154757310617,
+                "macro_event_f1_oracle_collar2": -0.001070330358303867,
+                "macro_state_f1_at_0.5": 0.04656622456038782,
+                "per_key_ap": {
+                  "dash": 0.0009999255637906934,
+                  "down": 0.0015869423636844099,
+                  "grab": 0.08288716546204983,
+                  "jump": -0.00306899640763042,
+                  "left": -0.0007859365025916498,
+                  "right": -0.008547238176267902,
+                  "up": -0.007360286534358856
+                }
+              },
+              "mask_era": {
+                "macro_ap": 0.20800476636431636,
+                "macro_event_f1_at_0.5_collar0": 0.006143627989204671,
+                "macro_event_f1_oracle_collar0": 0.08869496215793074,
+                "macro_event_f1_oracle_collar2": 0.10092061041659796,
+                "macro_state_f1_at_0.5": 0.045756237037946235,
+                "per_key_ap": {
+                  "dash": 0.16843850923346787,
+                  "down": 0.019569890280401597,
+                  "grab": 0.4518629227424112,
+                  "jump": 0.13059317938951182,
+                  "left": 0.1394647627658265,
+                  "right": 0.3047752128956732,
+                  "up": 0.2413288872429224
+                }
+              },
+              "own_v3": {
+                "macro_ap": 0.2173921343312701,
+                "macro_event_f1_at_0.5_collar0": 0.011720905330283055,
+                "macro_event_f1_oracle_collar0": 0.0894537776336618,
+                "macro_event_f1_oracle_collar2": 0.09985028005829409,
+                "macro_state_f1_at_0.5": 0.09232246159833406,
+                "per_key_ap": {
+                  "dash": 0.16943843479725856,
+                  "down": 0.021156832644086007,
+                  "grab": 0.534750088204461,
+                  "jump": 0.1275241829818814,
+                  "left": 0.13867882626323486,
+                  "right": 0.2962279747194053,
+                  "up": 0.23396860070856354
+                }
+              }
+            }
+          },
+          "new_run_id": "own_features_v3_tier_b_init_32nc_s0",
+          "old_run_id": "foreign_tier_b_13p45h_32nc_finetune_s0",
+          "seed": 0,
+          "sidecar": {
+            "active_rows": 25028,
+            "rows": 29086,
+            "sha256": "57c7e6fdc481fb00be9124e7c66da43d9abe9f9317e6369fc99287ee7e7c5d89",
+            "streams": 177
+          }
+        },
+        {
+          "checkpoint": {
+            "best_val_mean_bce": 0.5591370168754733,
+            "best_val_step": 450,
+            "bytes": 5813179,
+            "final_tensor_sha256": "ae5041cfff417de781be3839f95f02ee828568ab583c1467fde7780a2eb780ad",
+            "selected_final_identical": false,
+            "selected_tensor_sha256": "2f080024861bbb1a5ae095fc6b983e728d1964119e4f53d085dcd2dc64ff50b1",
+            "sha256": "35cd8efe9d420d82bbd5619bdb8e617ef7b9c009961c8e25bbd3594ffd583605"
+          },
+          "checkpoint_sha256": "35cd8efe9d420d82bbd5619bdb8e617ef7b9c009961c8e25bbd3594ffd583605",
+          "metrics": {
+            "all_frames": {
+              "delta": {
+                "macro_ap": -0.0021836151262870918,
+                "macro_event_f1_at_0.5_collar0": -0.0013857052969557231,
+                "macro_event_f1_oracle_collar0": -9.403530253977721e-05,
+                "macro_event_f1_oracle_collar2": -0.002259376446375763,
+                "macro_state_f1_at_0.5": 0.01250896047021395,
+                "per_key_ap": {
+                  "dash": -0.0012487284101636992,
+                  "down": -0.0006757841480860022,
+                  "grab": -0.020280734981124704,
+                  "jump": 0.0023878481828807085,
+                  "left": 0.005461348587361414,
+                  "right": 0.00367330029090962,
+                  "up": -0.004602555405786718
+                }
+              },
+              "mask_era": {
+                "macro_ap": 0.16521546176173052,
+                "macro_event_f1_at_0.5_collar0": 0.011261825703588144,
+                "macro_event_f1_oracle_collar0": 0.07591091707512894,
+                "macro_event_f1_oracle_collar2": 0.08825484327672693,
+                "macro_state_f1_at_0.5": 0.07957599562768988,
+                "per_key_ap": {
+                  "dash": 0.08756144200559497,
+                  "down": 0.011491792223477132,
+                  "grab": 0.4118146557792899,
+                  "jump": 0.1004669655939579,
+                  "left": 0.09176540330685559,
+                  "right": 0.28581278584494685,
+                  "up": 0.16759518757799116
+                }
+              },
+              "own_v3": {
+                "macro_ap": 0.16303184663544343,
+                "macro_event_f1_at_0.5_collar0": 0.00987612040663242,
+                "macro_event_f1_oracle_collar0": 0.07581688177258916,
+                "macro_event_f1_oracle_collar2": 0.08599546683035117,
+                "macro_state_f1_at_0.5": 0.09208495609790383,
+                "per_key_ap": {
+                  "dash": 0.08631271359543127,
+                  "down": 0.01081600807539113,
+                  "grab": 0.3915339207981652,
+                  "jump": 0.10285481377683861,
+                  "left": 0.097226751894217,
+                  "right": 0.28948608613585647,
+                  "up": 0.16299263217220444
+                }
+              }
+            },
+            "input_active_only": {
+              "delta": {
+                "macro_ap": -0.0026638458318717084,
+                "macro_event_f1_at_0.5_collar0": -0.0005787951871660327,
+                "macro_event_f1_oracle_collar0": -0.0002552085624484557,
+                "macro_event_f1_oracle_collar2": -0.003383514447001218,
+                "macro_state_f1_at_0.5": 0.013545015632858357,
+                "per_key_ap": {
+                  "dash": -0.0015424698331858444,
+                  "down": -0.0008005591408491892,
+                  "grab": -0.023377728387117214,
+                  "jump": 0.00319518849896247,
+                  "left": 0.004098934476234675,
+                  "right": 0.004156902994360057,
+                  "up": -0.004377189431507139
+                }
+              },
+              "mask_era": {
+                "macro_ap": 0.17418849353907653,
+                "macro_event_f1_at_0.5_collar0": 0.012303450091217237,
+                "macro_event_f1_oracle_collar0": 0.08405240285066136,
+                "macro_event_f1_oracle_collar2": 0.09859830413873187,
+                "macro_state_f1_at_0.5": 0.08270178815773252,
+                "per_key_ap": {
+                  "dash": 0.08080065613700765,
+                  "down": 0.013802063667430264,
+                  "grab": 0.4475779405701382,
+                  "jump": 0.10873401754443224,
+                  "left": 0.09884371970100171,
+                  "right": 0.3037524684996529,
+                  "up": 0.16580858865387285
+                }
+              },
+              "own_v3": {
+                "macro_ap": 0.17152464770720482,
+                "macro_event_f1_at_0.5_collar0": 0.011724654904051205,
+                "macro_event_f1_oracle_collar0": 0.0837971942882129,
+                "macro_event_f1_oracle_collar2": 0.09521478969173065,
+                "macro_state_f1_at_0.5": 0.09624680379059088,
+                "per_key_ap": {
+                  "dash": 0.07925818630382181,
+                  "down": 0.013001504526581074,
+                  "grab": 0.424200212183021,
+                  "jump": 0.11192920604339471,
+                  "left": 0.10294265417723639,
+                  "right": 0.30790937149401293,
+                  "up": 0.1614313992223657
+                }
+              }
+            }
+          },
+          "new_run_id": "own_features_v3_tier_b_init_32nc_s1",
+          "old_run_id": "foreign_tier_b_13p45h_32nc_finetune_s1",
+          "seed": 1,
+          "sidecar": {
+            "active_rows": 25028,
+            "rows": 29086,
+            "sha256": "53c741d8b92f5ed13a3f964ee76412c98737b34205bf078ad3debfde1d459245",
+            "streams": 177
+          }
+        },
+        {
+          "checkpoint": {
+            "best_val_mean_bce": 0.5264849413538767,
+            "best_val_step": 400,
+            "bytes": 5813179,
+            "final_tensor_sha256": "b15c2772621f785c6568eeb362730b328bb48bd6656d7a12b6aba5d0c4e3f6d1",
+            "selected_final_identical": false,
+            "selected_tensor_sha256": "f29815d963804d80d6f9ba5a9103ae90d80143417a6e18839255abfdf08f3118",
+            "sha256": "8fcf4e5cd2b813855aa67822dc865d5b5b3924eae587f25b0529027a36ebf13b"
+          },
+          "checkpoint_sha256": "8fcf4e5cd2b813855aa67822dc865d5b5b3924eae587f25b0529027a36ebf13b",
+          "metrics": {
+            "all_frames": {
+              "delta": {
+                "macro_ap": 0.008120782642291546,
+                "macro_event_f1_at_0.5_collar0": -0.00166908057166619,
+                "macro_event_f1_oracle_collar0": -0.0005384348555155793,
+                "macro_event_f1_oracle_collar2": -0.003815349699853046,
+                "macro_state_f1_at_0.5": 0.01737542207961173,
+                "per_key_ap": {
+                  "dash": 0.027137814234842655,
+                  "down": 0.0013762689553387907,
+                  "grab": 0.02559355792199519,
+                  "jump": 0.0006213519722244598,
+                  "left": -0.012232213838745093,
+                  "right": -0.008025953345462189,
+                  "up": 0.022374652595846922
+                }
+              },
+              "mask_era": {
+                "macro_ap": 0.17970702548148523,
+                "macro_event_f1_at_0.5_collar0": 0.006935655877763006,
+                "macro_event_f1_oracle_collar0": 0.07972766478767516,
+                "macro_event_f1_oracle_collar2": 0.09322179481286744,
+                "macro_state_f1_at_0.5": 0.06107512017721426,
+                "per_key_ap": {
+                  "dash": 0.1263344295029497,
+                  "down": 0.010204063288648903,
+                  "grab": 0.35453327586341754,
+                  "jump": 0.09714151883353789,
+                  "left": 0.13625570209930477,
+                  "right": 0.26745912522990073,
+                  "up": 0.2660210635526372
+                }
+              },
+              "own_v3": {
+                "macro_ap": 0.18782780812377678,
+                "macro_event_f1_at_0.5_collar0": 0.005266575306096816,
+                "macro_event_f1_oracle_collar0": 0.07918922993215959,
+                "macro_event_f1_oracle_collar2": 0.08940644511301439,
+                "macro_state_f1_at_0.5": 0.07845054225682599,
+                "per_key_ap": {
+                  "dash": 0.15347224373779236,
+                  "down": 0.011580332243987693,
+                  "grab": 0.38012683378541273,
+                  "jump": 0.09776287080576235,
+                  "left": 0.12402348826055967,
+                  "right": 0.25943317188443854,
+                  "up": 0.28839571614848414
+                }
+              }
+            },
+            "input_active_only": {
+              "delta": {
+                "macro_ap": 0.011340242330516004,
+                "macro_event_f1_at_0.5_collar0": -0.0022566743050550135,
+                "macro_event_f1_oracle_collar0": 0.0017959391317942108,
+                "macro_event_f1_oracle_collar2": -0.0007564880190243234,
+                "macro_state_f1_at_0.5": 0.0179072126885451,
+                "per_key_ap": {
+                  "dash": 0.02865893272689382,
+                  "down": 0.0017827838524428832,
+                  "grab": 0.04240078364836852,
+                  "jump": 0.0039037195685397708,
+                  "left": -0.009272521406445133,
+                  "right": -0.003924315990795568,
+                  "up": 0.0158323139146076
+                }
+              },
+              "mask_era": {
+                "macro_ap": 0.19913035911330187,
+                "macro_event_f1_at_0.5_collar0": 0.008638220190361614,
+                "macro_event_f1_oracle_collar0": 0.08696086347911361,
+                "macro_event_f1_oracle_collar2": 0.10145002175485038,
+                "macro_state_f1_at_0.5": 0.061901558450674465,
+                "per_key_ap": {
+                  "dash": 0.13377977609245195,
+                  "down": 0.013452034220881346,
+                  "grab": 0.42807850008952186,
+                  "jump": 0.10800631576057274,
+                  "left": 0.14904154116598467,
+                  "right": 0.28538935816200606,
+                  "up": 0.27616498830169456
+                }
+              },
+              "own_v3": {
+                "macro_ap": 0.21047060144381788,
+                "macro_event_f1_at_0.5_collar0": 0.0063815458853066,
+                "macro_event_f1_oracle_collar0": 0.08875680261090782,
+                "macro_event_f1_oracle_collar2": 0.10069353373582605,
+                "macro_state_f1_at_0.5": 0.07980877113921957,
+                "per_key_ap": {
+                  "dash": 0.16243870881934577,
+                  "down": 0.01523481807332423,
+                  "grab": 0.4704792837378904,
+                  "jump": 0.1119100353291125,
+                  "left": 0.13976901975953954,
+                  "right": 0.2814650421712105,
+                  "up": 0.29199730221630216
+                }
+              }
+            }
+          },
+          "new_run_id": "own_features_v3_tier_b_init_32nc_s2",
+          "old_run_id": "foreign_tier_b_13p45h_32nc_finetune_s2",
+          "seed": 2,
+          "sidecar": {
+            "active_rows": 25028,
+            "rows": 29086,
+            "sha256": "0df13d55307dadd9c515046349e150e50750f1ebc21d06cee348603657815912",
+            "streams": 177
+          }
+        }
+      ],
+      "three_seed_means": {
+        "all_frames": {
+          "mask_era_mean": {
+            "macro_ap": 0.17760343990413752,
+            "macro_event_f1_at_0.5_collar0": 0.007907202313596274,
+            "macro_event_f1_oracle_collar0": 0.07781191265118621,
+            "macro_event_f1_oracle_collar2": 0.09005351491078668,
+            "macro_state_f1_at_0.5": 0.0625498490309567,
+            "per_key_ap": {
+              "dash": 0.1242824712030504,
+              "down": 0.01237972394620153,
+              "grab": 0.38435621461936326,
+              "jump": 0.10460476607039586,
+              "left": 0.12048315040929174,
+              "right": 0.2762335231465347,
+              "up": 0.22088422993412524
+            }
+          },
+          "own_v3_mean": {
+            "macro_ap": 0.18189504915362079,
+            "macro_event_f1_at_0.5_collar0": 0.008652388456561041,
+            "macro_event_f1_oracle_collar0": 0.07802922311121806,
+            "macro_event_f1_oracle_collar2": 0.08792501851467555,
+            "macro_state_f1_at_0.5": 0.08698071813629567,
+            "per_key_ap": {
+              "dash": 0.134275670384134,
+              "down": 0.013030283547391677,
+              "grab": 0.40634248525972483,
+              "jump": 0.10447047341770828,
+              "left": 0.11846705489274834,
+              "right": 0.27166932507004066,
+              "up": 0.22501005150359799
+            }
+          },
+          "paired_mean_delta": {
+            "macro_ap": 0.004291609249483269,
+            "macro_event_f1_at_0.5_collar0": 0.0007451861429647669,
+            "macro_event_f1_oracle_collar0": 0.0002173104600318443,
+            "macro_event_f1_oracle_collar2": -0.0021284963961111375,
+            "macro_state_f1_at_0.5": 0.024430869105338968,
+            "per_key_ap": {
+              "dash": 0.009993199181083587,
+              "down": 0.0006505596011901465,
+              "grab": 0.02198627064036157,
+              "jump": -0.00013429265268757873,
+              "left": -0.002016095516543401,
+              "right": -0.004564198076494053,
+              "up": 0.0041258215694727485
+            }
+          }
+        },
+        "input_active_only": {
+          "mask_era_mean": {
+            "macro_ap": 0.1937745396722316,
+            "macro_event_f1_at_0.5_collar0": 0.009028432756927841,
+            "macro_event_f1_oracle_collar0": 0.0865694094959019,
+            "macro_event_f1_oracle_collar2": 0.10032297877006006,
+            "macro_state_f1_at_0.5": 0.06345319454878441,
+            "per_key_ap": {
+              "dash": 0.1276729804876425,
+              "down": 0.015607996056237736,
+              "grab": 0.4425064544673571,
+              "jump": 0.11577783756483893,
+              "left": 0.12911667454427098,
+              "right": 0.2979723465191107,
+              "up": 0.2277674880661633
+            }
+          },
+          "own_v3_mean": {
+            "macro_ap": 0.1997957944940976,
+            "macro_event_f1_at_0.5_collar0": 0.009942368706546953,
+            "macro_event_f1_oracle_collar0": 0.08733592484426085,
+            "macro_event_f1_oracle_collar2": 0.09858620116195027,
+            "macro_state_f1_at_0.5": 0.0894593455093815,
+            "per_key_ap": {
+              "dash": 0.13704510997347538,
+              "down": 0.016464385081330437,
+              "grab": 0.4764765280417908,
+              "jump": 0.11712114145146287,
+              "left": 0.1271301667333369,
+              "right": 0.2952007961282096,
+              "up": 0.22913243404907713
+            }
+          },
+          "paired_mean_delta": {
+            "macro_ap": 0.006021254821865996,
+            "macro_event_f1_at_0.5_collar0": 0.0009139359496191119,
+            "macro_event_f1_oracle_collar0": 0.0007665153483589482,
+            "macro_event_f1_oracle_collar2": -0.0017367776081097935,
+            "macro_state_f1_at_0.5": 0.026006150960597094,
+            "per_key_ap": {
+              "dash": 0.00937212948583288,
+              "down": 0.0008563890250927013,
+              "grab": 0.03397007357443371,
+              "jump": 0.001343303886623931,
+              "left": -0.0019865078109340684,
+              "right": -0.0027715503909011008,
+              "up": 0.00136494598291384
+            }
+          }
+        }
+      }
+    }
+  },
+  "schema_version": "madeleine.own-v3-primary-rerun-delta.v1",
+  "support": {
+    "all_frames": 29086,
+    "input_active_only": 25028
+  },
+  "surface": "own-v3 val-A",
+  "threshold_provenance": {
+    "fixed_event_collar0": "fixed probability threshold 0.5",
+    "oracle_event_collar0_and_collar2": "per-key thresholds fit separately within each report population on this same val-A surface; diagnostic only",
+    "state_f1": "fixed probability threshold 0.5"
+  },
+  "weights": "selected checkpoints"
+}

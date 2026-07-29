@@ -1,0 +1,996 @@
+{
+  "format_version": "madeleine.wild20-boundary-spot-check.v1",
+  "video_id": "ss3nhAUaScE",
+  "status": "awaiting_human_decision",
+  "human_reviewed": false,
+  "source_sha256": "b6b5302c5d79eafb8d96f289bdfd175a5b80c438e4d12f5725cd51823b715544",
+  "video_url": "https://youtu.be/ss3nhAUaScE",
+  "timeline_note": "range seconds are relative to the first decoded video PTS, which is 0.0 for this source, so YouTube ?t= seconds equal range seconds",
+  "sample_policy": {
+    "special": {
+      "0": "earliest range",
+      "105": "latest range (also the longest)",
+      "82": "shortest range",
+      "49": "second-longest range"
+    },
+    "random_seed": 20260728,
+    "random_sample_size": 8,
+    "random_indices": [
+      1,
+      15,
+      60,
+      62,
+      63,
+      94,
+      96,
+      99
+    ],
+    "excluded_gap_rule": "two largest excluded gaps",
+    "bridge_rule": "three riskiest bridges by (absent_timer_frames, duration) from the complete recomputed bridge population"
+  },
+  "edge_frame_binding": "every displayed edge frame's timer-ROI bright/dark mask means were recomputed from the extracted frame and must equal the verified full-resolution trace at that frame index",
+  "checks": [
+    {
+      "kind": "range",
+      "range_index": 0,
+      "reason": "earliest range",
+      "range_s": [
+        13.866667,
+        39.616667
+      ],
+      "duration_s": 25.75,
+      "start_hms": "0:00:13.867",
+      "end_hms": "0:00:39.617",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=13",
+      "end_url": "https://youtu.be/ss3nhAUaScE?t=39",
+      "page": "spot_checks/range-000.jpg",
+      "frames": [
+        {
+          "frame_index": 831,
+          "time_s": 13.85,
+          "role": "start-1 (EXCLUDED)",
+          "roi_bright_mask_mean": 43.20796460176991,
+          "roi_dark_mask_mean": 190.65265486725664,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 832,
+          "time_s": 13.866667,
+          "role": "start (first included)",
+          "roi_bright_mask_mean": 43.20796460176991,
+          "roi_dark_mask_mean": 190.7853982300885,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 833,
+          "time_s": 13.883333,
+          "role": "start+1 (included)",
+          "roi_bright_mask_mean": 40.42035398230089,
+          "roi_dark_mask_mean": 194.83407079646017,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 2375,
+          "time_s": 39.583333,
+          "role": "end-2 (included)",
+          "roi_bright_mask_mean": 37.06858407079646,
+          "roi_dark_mask_mean": 148.77212389380531,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 2376,
+          "time_s": 39.6,
+          "role": "end-1 (last included)",
+          "roi_bright_mask_mean": 28.805309734513273,
+          "roi_dark_mask_mean": 159.98893805309734,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 2377,
+          "time_s": 39.616667,
+          "role": "end (first EXCLUDED)",
+          "roi_bright_mask_mean": 7.599557522123894,
+          "roi_dark_mask_mean": 177.87610619469027,
+          "trace_verified": true
+        }
+      ]
+    },
+    {
+      "kind": "range",
+      "range_index": 1,
+      "reason": "random sample",
+      "range_s": [
+        54.716667,
+        95.183333
+      ],
+      "duration_s": 40.466666000000004,
+      "start_hms": "0:00:54.717",
+      "end_hms": "0:01:35.183",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=54",
+      "end_url": "https://youtu.be/ss3nhAUaScE?t=95",
+      "page": "spot_checks/range-001.jpg",
+      "frames": [
+        {
+          "frame_index": 3282,
+          "time_s": 54.7,
+          "role": "start-1 (EXCLUDED)",
+          "roi_bright_mask_mean": 59.66814159292036,
+          "roi_dark_mask_mean": 129.32522123893804,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 3283,
+          "time_s": 54.716667,
+          "role": "start (first included)",
+          "roi_bright_mask_mean": 57.610619469026545,
+          "roi_dark_mask_mean": 132.8429203539823,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 3284,
+          "time_s": 54.733333,
+          "role": "start+1 (included)",
+          "roi_bright_mask_mean": 58.10840707964602,
+          "roi_dark_mask_mean": 133.34070796460176,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 5709,
+          "time_s": 95.15,
+          "role": "end-2 (included)",
+          "roi_bright_mask_mean": 36.57079646017699,
+          "roi_dark_mask_mean": 172.00221238938053,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 5710,
+          "time_s": 95.166667,
+          "role": "end-1 (last included)",
+          "roi_bright_mask_mean": 21.238938053097346,
+          "roi_dark_mask_mean": 196.06194690265488,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 5711,
+          "time_s": 95.183333,
+          "role": "end (first EXCLUDED)",
+          "roi_bright_mask_mean": 6.006637168141593,
+          "roi_dark_mask_mean": 223.67256637168143,
+          "trace_verified": true
+        }
+      ]
+    },
+    {
+      "kind": "range",
+      "range_index": 15,
+      "reason": "random sample",
+      "range_s": [
+        516.833333,
+        545.366667
+      ],
+      "duration_s": 28.533333999999968,
+      "start_hms": "0:08:36.833",
+      "end_hms": "0:09:05.367",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=516",
+      "end_url": "https://youtu.be/ss3nhAUaScE?t=545",
+      "page": "spot_checks/range-015.jpg",
+      "frames": [
+        {
+          "frame_index": 31009,
+          "time_s": 516.816667,
+          "role": "start-1 (EXCLUDED)",
+          "roi_bright_mask_mean": 24.789823008849556,
+          "roi_dark_mask_mean": 215.77433628318585,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 31010,
+          "time_s": 516.833333,
+          "role": "start (first included)",
+          "roi_bright_mask_mean": 41.7146017699115,
+          "roi_dark_mask_mean": 118.53982300884955,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 31011,
+          "time_s": 516.85,
+          "role": "start+1 (included)",
+          "roi_bright_mask_mean": 41.05088495575221,
+          "roi_dark_mask_mean": 119.10398230088495,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 32720,
+          "time_s": 545.333333,
+          "role": "end-2 (included)",
+          "roi_bright_mask_mean": 40.453539823008846,
+          "roi_dark_mask_mean": 192.87610619469027,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 32721,
+          "time_s": 545.35,
+          "role": "end-1 (last included)",
+          "roi_bright_mask_mean": 39.623893805309734,
+          "roi_dark_mask_mean": 193.5066371681416,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 32722,
+          "time_s": 545.366667,
+          "role": "end (first EXCLUDED)",
+          "roi_bright_mask_mean": 41.415929203539825,
+          "roi_dark_mask_mean": 189.78982300884957,
+          "trace_verified": true
+        }
+      ]
+    },
+    {
+      "kind": "range",
+      "range_index": 49,
+      "reason": "second-longest range",
+      "range_s": [
+        2342.0,
+        2586.483333
+      ],
+      "duration_s": 244.48333300000013,
+      "start_hms": "0:39:02.000",
+      "end_hms": "0:43:06.483",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=2342",
+      "end_url": "https://youtu.be/ss3nhAUaScE?t=2586",
+      "page": "spot_checks/range-049.jpg",
+      "frames": [
+        {
+          "frame_index": 140519,
+          "time_s": 2341.983333,
+          "role": "start-1 (EXCLUDED)",
+          "roi_bright_mask_mean": 60.86283185840708,
+          "roi_dark_mask_mean": 104.96681415929204,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 140520,
+          "time_s": 2342.0,
+          "role": "start (first included)",
+          "roi_bright_mask_mean": 42.046460176991154,
+          "roi_dark_mask_mean": 114.69026548672566,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 140521,
+          "time_s": 2342.016667,
+          "role": "start+1 (included)",
+          "roi_bright_mask_mean": 41.25,
+          "roi_dark_mask_mean": 116.44911504424779,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 155187,
+          "time_s": 2586.45,
+          "role": "end-2 (included)",
+          "roi_bright_mask_mean": 108.38495575221239,
+          "roi_dark_mask_mean": 116.78097345132744,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 155188,
+          "time_s": 2586.466667,
+          "role": "end-1 (last included)",
+          "roi_bright_mask_mean": 108.55088495575221,
+          "roi_dark_mask_mean": 116.25,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 155189,
+          "time_s": 2586.483333,
+          "role": "end (first EXCLUDED)",
+          "roi_bright_mask_mean": 108.1858407079646,
+          "roi_dark_mask_mean": 116.94690265486726,
+          "trace_verified": true
+        }
+      ]
+    },
+    {
+      "kind": "range",
+      "range_index": 60,
+      "reason": "random sample",
+      "range_s": [
+        3486.95,
+        3555.866667
+      ],
+      "duration_s": 68.91666699999996,
+      "start_hms": "0:58:06.950",
+      "end_hms": "0:59:15.867",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=3486",
+      "end_url": "https://youtu.be/ss3nhAUaScE?t=3555",
+      "page": "spot_checks/range-060.jpg",
+      "frames": [
+        {
+          "frame_index": 209216,
+          "time_s": 3486.933333,
+          "role": "start-1 (EXCLUDED)",
+          "roi_bright_mask_mean": 34.08185840707964,
+          "roi_dark_mask_mean": 189.49115044247787,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 209217,
+          "time_s": 3486.95,
+          "role": "start (first included)",
+          "roi_bright_mask_mean": 33.45132743362832,
+          "roi_dark_mask_mean": 190.08849557522123,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 209218,
+          "time_s": 3486.966667,
+          "role": "start+1 (included)",
+          "roi_bright_mask_mean": 33.11946902654867,
+          "roi_dark_mask_mean": 189.49115044247787,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 213350,
+          "time_s": 3555.833333,
+          "role": "end-2 (included)",
+          "roi_bright_mask_mean": 35.442477876106196,
+          "roi_dark_mask_mean": 198.75,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 213351,
+          "time_s": 3555.85,
+          "role": "end-1 (last included)",
+          "roi_bright_mask_mean": 20.641592920353983,
+          "roi_dark_mask_mean": 220.71902654867256,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 213352,
+          "time_s": 3555.866667,
+          "role": "end (first EXCLUDED)",
+          "roi_bright_mask_mean": 7.367256637168142,
+          "roi_dark_mask_mean": 240.53097345132744,
+          "trace_verified": true
+        }
+      ]
+    },
+    {
+      "kind": "range",
+      "range_index": 62,
+      "reason": "random sample",
+      "range_s": [
+        3707.883333,
+        3820.45
+      ],
+      "duration_s": 112.5666669999996,
+      "start_hms": "1:01:47.883",
+      "end_hms": "1:03:40.450",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=3707",
+      "end_url": "https://youtu.be/ss3nhAUaScE?t=3820",
+      "page": "spot_checks/range-062.jpg",
+      "frames": [
+        {
+          "frame_index": 222472,
+          "time_s": 3707.866667,
+          "role": "start-1 (EXCLUDED)",
+          "roi_bright_mask_mean": 24.88938053097345,
+          "roi_dark_mask_mean": 216.0730088495575,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 222473,
+          "time_s": 3707.883333,
+          "role": "start (first included)",
+          "roi_bright_mask_mean": 38.89380530973451,
+          "roi_dark_mask_mean": 121.16150442477876,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 222474,
+          "time_s": 3707.9,
+          "role": "start+1 (included)",
+          "roi_bright_mask_mean": 38.96017699115044,
+          "roi_dark_mask_mean": 121.59292035398231,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 229225,
+          "time_s": 3820.416667,
+          "role": "end-2 (included)",
+          "roi_bright_mask_mean": 31.36061946902655,
+          "roi_dark_mask_mean": 144.0929203539823,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 229226,
+          "time_s": 3820.433333,
+          "role": "end-1 (last included)",
+          "roi_bright_mask_mean": 20.807522123893804,
+          "roi_dark_mask_mean": 168.4513274336283,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 229227,
+          "time_s": 3820.45,
+          "role": "end (first EXCLUDED)",
+          "roi_bright_mask_mean": 8.694690265486726,
+          "roi_dark_mask_mean": 198.41814159292036,
+          "trace_verified": true
+        }
+      ]
+    },
+    {
+      "kind": "range",
+      "range_index": 63,
+      "reason": "random sample",
+      "range_s": [
+        3821.35,
+        3850.166667
+      ],
+      "duration_s": 28.816667000000052,
+      "start_hms": "1:03:41.350",
+      "end_hms": "1:04:10.167",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=3821",
+      "end_url": "https://youtu.be/ss3nhAUaScE?t=3850",
+      "page": "spot_checks/range-063.jpg",
+      "frames": [
+        {
+          "frame_index": 229280,
+          "time_s": 3821.333333,
+          "role": "start-1 (EXCLUDED)",
+          "roi_bright_mask_mean": 16.957964601769913,
+          "roi_dark_mask_mean": 224.93362831858408,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 229281,
+          "time_s": 3821.35,
+          "role": "start (first included)",
+          "roi_bright_mask_mean": 29.900442477876105,
+          "roi_dark_mask_mean": 203.66150442477877,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 229282,
+          "time_s": 3821.366667,
+          "role": "start+1 (included)",
+          "roi_bright_mask_mean": 35.807522123893804,
+          "roi_dark_mask_mean": 193.93805309734512,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 231008,
+          "time_s": 3850.133333,
+          "role": "end-2 (included)",
+          "roi_bright_mask_mean": 32.22345132743363,
+          "roi_dark_mask_mean": 197.05752212389382,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 231009,
+          "time_s": 3850.15,
+          "role": "end-1 (last included)",
+          "roi_bright_mask_mean": 18.285398230088497,
+          "roi_dark_mask_mean": 217.26769911504425,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 231010,
+          "time_s": 3850.166667,
+          "role": "end (first EXCLUDED)",
+          "roi_bright_mask_mean": 8.595132743362832,
+          "roi_dark_mask_mean": 230.37610619469027,
+          "trace_verified": true
+        }
+      ]
+    },
+    {
+      "kind": "range",
+      "range_index": 82,
+      "reason": "shortest range",
+      "range_s": [
+        4884.916667,
+        4887.05
+      ],
+      "duration_s": 2.133332999999766,
+      "start_hms": "1:21:24.917",
+      "end_hms": "1:21:27.050",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=4884",
+      "end_url": "https://youtu.be/ss3nhAUaScE?t=4887",
+      "page": "spot_checks/range-082.jpg",
+      "frames": [
+        {
+          "frame_index": 293094,
+          "time_s": 4884.9,
+          "role": "start-1 (EXCLUDED)",
+          "roi_bright_mask_mean": 10.055309734513274,
+          "roi_dark_mask_mean": 205.7853982300885,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 293095,
+          "time_s": 4884.916667,
+          "role": "start (first included)",
+          "roi_bright_mask_mean": 20.873893805309734,
+          "roi_dark_mask_mean": 180.99557522123894,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 293096,
+          "time_s": 4884.933333,
+          "role": "start+1 (included)",
+          "roi_bright_mask_mean": 31.095132743362832,
+          "roi_dark_mask_mean": 156.80309734513276,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 293221,
+          "time_s": 4887.016667,
+          "role": "end-2 (included)",
+          "roi_bright_mask_mean": 30.92920353982301,
+          "roi_dark_mask_mean": 168.25221238938053,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 293222,
+          "time_s": 4887.033333,
+          "role": "end-1 (last included)",
+          "roi_bright_mask_mean": 16.891592920353983,
+          "roi_dark_mask_mean": 195.56415929203538,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 293223,
+          "time_s": 4887.05,
+          "role": "end (first EXCLUDED)",
+          "roi_bright_mask_mean": 8.329646017699115,
+          "roi_dark_mask_mean": 220.18805309734512,
+          "trace_verified": true
+        }
+      ]
+    },
+    {
+      "kind": "range",
+      "range_index": 94,
+      "reason": "random sample",
+      "range_s": [
+        5683.1,
+        5700.283333
+      ],
+      "duration_s": 17.183332999999948,
+      "start_hms": "1:34:43.100",
+      "end_hms": "1:35:00.283",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=5683",
+      "end_url": "https://youtu.be/ss3nhAUaScE?t=5700",
+      "page": "spot_checks/range-094.jpg",
+      "frames": [
+        {
+          "frame_index": 340985,
+          "time_s": 5683.083333,
+          "role": "start-1 (EXCLUDED)",
+          "roi_bright_mask_mean": 21.63716814159292,
+          "roi_dark_mask_mean": 181.06194690265488,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 340986,
+          "time_s": 5683.1,
+          "role": "start (first included)",
+          "roi_bright_mask_mean": 29.4358407079646,
+          "roi_dark_mask_mean": 162.94247787610618,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 340987,
+          "time_s": 5683.116667,
+          "role": "start+1 (included)",
+          "roi_bright_mask_mean": 36.703539823008846,
+          "roi_dark_mask_mean": 145.32079646017698,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 342015,
+          "time_s": 5700.25,
+          "role": "end-2 (included)",
+          "roi_bright_mask_mean": 48.38495575221239,
+          "roi_dark_mask_mean": 175.45353982300884,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 342016,
+          "time_s": 5700.266667,
+          "role": "end-1 (last included)",
+          "roi_bright_mask_mean": 16.327433628318584,
+          "roi_dark_mask_mean": 229.38053097345133,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 342017,
+          "time_s": 5700.283333,
+          "role": "end (first EXCLUDED)",
+          "roi_bright_mask_mean": 16.327433628318584,
+          "roi_dark_mask_mean": 229.38053097345133,
+          "trace_verified": true
+        }
+      ]
+    },
+    {
+      "kind": "range",
+      "range_index": 96,
+      "reason": "random sample",
+      "range_s": [
+        5718.65,
+        5729.183333
+      ],
+      "duration_s": 10.533333000000312,
+      "start_hms": "1:35:18.650",
+      "end_hms": "1:35:29.183",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=5718",
+      "end_url": "https://youtu.be/ss3nhAUaScE?t=5729",
+      "page": "spot_checks/range-096.jpg",
+      "frames": [
+        {
+          "frame_index": 343118,
+          "time_s": 5718.633333,
+          "role": "start-1 (EXCLUDED)",
+          "roi_bright_mask_mean": 14.800884955752212,
+          "roi_dark_mask_mean": 180.6637168141593,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 343119,
+          "time_s": 5718.65,
+          "role": "start (first included)",
+          "roi_bright_mask_mean": 23.661504424778762,
+          "roi_dark_mask_mean": 153.68362831858408,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 343120,
+          "time_s": 5718.666667,
+          "role": "start+1 (included)",
+          "roi_bright_mask_mean": 30.43141592920354,
+          "roi_dark_mask_mean": 128.03097345132744,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 343749,
+          "time_s": 5729.15,
+          "role": "end-2 (included)",
+          "roi_bright_mask_mean": 36.30530973451327,
+          "roi_dark_mask_mean": 195.86283185840708,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 343750,
+          "time_s": 5729.166667,
+          "role": "end-1 (last included)",
+          "roi_bright_mask_mean": 36.10619469026549,
+          "roi_dark_mask_mean": 196.858407079646,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 343751,
+          "time_s": 5729.183333,
+          "role": "end (first EXCLUDED)",
+          "roi_bright_mask_mean": 37.93141592920354,
+          "roi_dark_mask_mean": 193.34070796460176,
+          "trace_verified": true
+        }
+      ]
+    },
+    {
+      "kind": "range",
+      "range_index": 99,
+      "reason": "random sample",
+      "range_s": [
+        5840.233333,
+        5848.433333
+      ],
+      "duration_s": 8.199999999999818,
+      "start_hms": "1:37:20.233",
+      "end_hms": "1:37:28.433",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=5840",
+      "end_url": "https://youtu.be/ss3nhAUaScE?t=5848",
+      "page": "spot_checks/range-099.jpg",
+      "frames": [
+        {
+          "frame_index": 350413,
+          "time_s": 5840.216667,
+          "role": "start-1 (EXCLUDED)",
+          "roi_bright_mask_mean": 37.99778761061947,
+          "roi_dark_mask_mean": 192.51106194690266,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 350414,
+          "time_s": 5840.233333,
+          "role": "start (first included)",
+          "roi_bright_mask_mean": 36.40486725663717,
+          "roi_dark_mask_mean": 194.60176991150442,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 350415,
+          "time_s": 5840.25,
+          "role": "start+1 (included)",
+          "roi_bright_mask_mean": 36.703539823008846,
+          "roi_dark_mask_mean": 195.06637168141592,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 350904,
+          "time_s": 5848.4,
+          "role": "end-2 (included)",
+          "roi_bright_mask_mean": 34.08185840707964,
+          "roi_dark_mask_mean": 198.35176991150442,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 350905,
+          "time_s": 5848.416667,
+          "role": "end-1 (last included)",
+          "roi_bright_mask_mean": 34.14823008849557,
+          "roi_dark_mask_mean": 199.0486725663717,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 350906,
+          "time_s": 5848.433333,
+          "role": "end (first EXCLUDED)",
+          "roi_bright_mask_mean": 32.6216814159292,
+          "roi_dark_mask_mean": 200.9070796460177,
+          "trace_verified": true
+        }
+      ]
+    },
+    {
+      "kind": "range",
+      "range_index": 105,
+      "reason": "latest range (also the longest)",
+      "range_s": [
+        6426.883333,
+        6867.083333
+      ],
+      "duration_s": 440.1999999999998,
+      "start_hms": "1:47:06.883",
+      "end_hms": "1:54:27.083",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=6426",
+      "end_url": "https://youtu.be/ss3nhAUaScE?t=6867",
+      "page": "spot_checks/range-105.jpg",
+      "frames": [
+        {
+          "frame_index": 385612,
+          "time_s": 6426.866667,
+          "role": "start-1 (EXCLUDED)",
+          "roi_bright_mask_mean": 13.20796460176991,
+          "roi_dark_mask_mean": 208.47345132743362,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 385613,
+          "time_s": 6426.883333,
+          "role": "start (first included)",
+          "roi_bright_mask_mean": 20.84070796460177,
+          "roi_dark_mask_mean": 182.7212389380531,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 385614,
+          "time_s": 6426.9,
+          "role": "start+1 (included)",
+          "roi_bright_mask_mean": 27.278761061946902,
+          "roi_dark_mask_mean": 171.0730088495575,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 412023,
+          "time_s": 6867.05,
+          "role": "end-2 (included)",
+          "roi_bright_mask_mean": 40.08849557522124,
+          "roi_dark_mask_mean": 115.55309734513274,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 412024,
+          "time_s": 6867.066667,
+          "role": "end-1 (last included)",
+          "roi_bright_mask_mean": 39.6570796460177,
+          "roi_dark_mask_mean": 115.61946902654867,
+          "trace_verified": true
+        },
+        {
+          "frame_index": 412025,
+          "time_s": 6867.083333,
+          "role": "end (first EXCLUDED)",
+          "roi_bright_mask_mean": 39.325221238938056,
+          "roi_dark_mask_mean": 115.48672566371681,
+          "trace_verified": true
+        }
+      ]
+    },
+    {
+      "kind": "excluded_gap",
+      "after_range_index": 85,
+      "range_s": [
+        5285.716667,
+        5465.316667
+      ],
+      "duration_s": 179.60000000000036,
+      "start_hms": "1:28:05.717",
+      "end_hms": "1:31:05.317",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=5285",
+      "end_url": "https://youtu.be/ss3nhAUaScE?t=5465",
+      "page": "spot_checks/gap-after-range-085.jpg",
+      "frames": [
+        {
+          "frame_index": 317173,
+          "time_s": 5286.216667,
+          "role": "gap start +0.5 s (EXCLUDED)",
+          "roi_bright_mask_mean": 34.18141592920354,
+          "roi_dark_mask_mean": 200.47566371681415
+        },
+        {
+          "frame_index": 322531,
+          "time_s": 5375.516667,
+          "role": "gap middle (EXCLUDED)",
+          "roi_bright_mask_mean": 11.415929203539823,
+          "roi_dark_mask_mean": 0.0
+        },
+        {
+          "frame_index": 327889,
+          "time_s": 5464.816667,
+          "role": "gap end -0.5 s (EXCLUDED)",
+          "roi_bright_mask_mean": 0.0,
+          "roi_dark_mask_mean": 255.0
+        }
+      ]
+    },
+    {
+      "kind": "excluded_gap",
+      "after_range_index": 76,
+      "range_s": [
+        4557.65,
+        4610.283333
+      ],
+      "duration_s": 52.633333000000675,
+      "start_hms": "1:15:57.650",
+      "end_hms": "1:16:50.283",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=4557",
+      "end_url": "https://youtu.be/ss3nhAUaScE?t=4610",
+      "page": "spot_checks/gap-after-range-076.jpg",
+      "frames": [
+        {
+          "frame_index": 273489,
+          "time_s": 4558.15,
+          "role": "gap start +0.5 s (EXCLUDED)",
+          "roi_bright_mask_mean": 38.42920353982301,
+          "roi_dark_mask_mean": 194.6349557522124
+        },
+        {
+          "frame_index": 275037,
+          "time_s": 4583.95,
+          "role": "gap middle (EXCLUDED)",
+          "roi_bright_mask_mean": 0.0,
+          "roi_dark_mask_mean": 1.592920353982301
+        },
+        {
+          "frame_index": 276587,
+          "time_s": 4609.783333,
+          "role": "gap end -0.5 s (EXCLUDED)",
+          "roi_bright_mask_mean": 0.0,
+          "roi_dark_mask_mean": 255.0
+        }
+      ]
+    },
+    {
+      "kind": "included_bridge",
+      "containing_range_index": 38,
+      "range_s": [
+        1835.5,
+        1836.0
+      ],
+      "duration_s": 0.5,
+      "absent_timer_frames": 29,
+      "start_hms": "0:30:35.500",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=1835",
+      "page": "spot_checks/bridge-001835500ms.jpg",
+      "frames": [
+        {
+          "frame_index": 110124,
+          "time_s": 1835.4,
+          "role": "before bridge (active)",
+          "roi_bright_mask_mean": 40.28761061946903,
+          "roi_dark_mask_mean": 184.18141592920355
+        },
+        {
+          "frame_index": 110145,
+          "time_s": 1835.75,
+          "role": "inside bridge (INCLUDED, timer not advancing)",
+          "roi_bright_mask_mean": 0.0,
+          "roi_dark_mask_mean": 255.0
+        },
+        {
+          "frame_index": 110166,
+          "time_s": 1836.1,
+          "role": "after bridge (active)",
+          "roi_bright_mask_mean": 38.42920353982301,
+          "roi_dark_mask_mean": 194.96681415929203
+        }
+      ]
+    },
+    {
+      "kind": "included_bridge",
+      "containing_range_index": 49,
+      "range_s": [
+        2374.783333,
+        2375.283333
+      ],
+      "duration_s": 0.5,
+      "absent_timer_frames": 29,
+      "start_hms": "0:39:34.783",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=2374",
+      "page": "spot_checks/bridge-002374783ms.jpg",
+      "frames": [
+        {
+          "frame_index": 142481,
+          "time_s": 2374.683333,
+          "role": "before bridge (active)",
+          "roi_bright_mask_mean": 64.18141592920354,
+          "roi_dark_mask_mean": 118.3075221238938
+        },
+        {
+          "frame_index": 142502,
+          "time_s": 2375.033333,
+          "role": "inside bridge (INCLUDED, timer not advancing)",
+          "roi_bright_mask_mean": 0.0,
+          "roi_dark_mask_mean": 255.0
+        },
+        {
+          "frame_index": 142522,
+          "time_s": 2375.366667,
+          "role": "after bridge (active)",
+          "roi_bright_mask_mean": 66.67035398230088,
+          "roi_dark_mask_mean": 112.36725663716814
+        }
+      ]
+    },
+    {
+      "kind": "included_bridge",
+      "containing_range_index": 56,
+      "range_s": [
+        3144.566667,
+        3145.066667
+      ],
+      "duration_s": 0.5,
+      "absent_timer_frames": 29,
+      "start_hms": "0:52:24.567",
+      "start_url": "https://youtu.be/ss3nhAUaScE?t=3144",
+      "page": "spot_checks/bridge-003144566ms.jpg",
+      "frames": [
+        {
+          "frame_index": 188668,
+          "time_s": 3144.466667,
+          "role": "before bridge (active)",
+          "roi_bright_mask_mean": 110.40929203539822,
+          "roi_dark_mask_mean": 114.42477876106194
+        },
+        {
+          "frame_index": 188689,
+          "time_s": 3144.816667,
+          "role": "inside bridge (INCLUDED, timer not advancing)",
+          "roi_bright_mask_mean": 0.0,
+          "roi_dark_mask_mean": 255.0
+        },
+        {
+          "frame_index": 188710,
+          "time_s": 3145.166667,
+          "role": "after bridge (active)",
+          "roi_bright_mask_mean": 38.993362831858406,
+          "roi_dark_mask_mean": 118.83849557522124
+        }
+      ]
+    }
+  ]
+}

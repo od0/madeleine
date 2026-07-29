@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "surface": "Mapped NitroGen development video y4nQHqYSObI",
+  "policy": "The first eight whole contiguous streams are calibration-only; the final eight whole streams are a temporally later development evaluation. The split was declared before fitting. B1 is transfer evaluation only, and the future untouched engine-truth test is neither fit nor scored here.",
+  "calibration_session_ids": [
+    "y4nQHqYSObI__r000__stream000",
+    "y4nQHqYSObI__r001__stream000",
+    "y4nQHqYSObI__r002__stream000",
+    "y4nQHqYSObI__r003__stream000",
+    "y4nQHqYSObI__r004__stream000",
+    "y4nQHqYSObI__r005__stream000",
+    "y4nQHqYSObI__r006__stream000",
+    "y4nQHqYSObI__r007__stream000"
+  ],
+  "evaluation_session_ids": [
+    "y4nQHqYSObI__r008__stream000",
+    "y4nQHqYSObI__r009__stream000",
+    "y4nQHqYSObI__r010__stream000",
+    "y4nQHqYSObI__r011__stream000",
+    "y4nQHqYSObI__r012__stream000",
+    "y4nQHqYSObI__r013__stream000",
+    "y4nQHqYSObI__r014__stream000",
+    "y4nQHqYSObI__r015__stream000"
+  ]
+}

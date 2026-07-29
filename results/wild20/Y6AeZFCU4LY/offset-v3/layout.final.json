@@ -1,0 +1,156 @@
+{
+  "schema_version": "madeleine.wild-layout.v1",
+  "video_id": "Y6AeZFCU4LY",
+  "overlay_style": "translucent_bottom_practice_hud",
+  "gameplay_rect": [
+    0.2125,
+    0.0,
+    0.7875,
+    0.7888888889
+  ],
+  "gameplay_rect_source": "codex_visual_draft: stable source boundary x=272..1279, y=0..567 across 24 full-run strata; left LiveSplit panel and bottom streamer panel excluded",
+  "gameplay_rect_confidence": 0.98,
+  "mask_rects": [
+    [
+      0.2296875,
+      0.7888888889,
+      0.290625,
+      0.2
+    ]
+  ],
+  "cells": [
+    {
+      "cell_id": "bottom_grab",
+      "action": "grab",
+      "sample_rect": [
+        0.2328125,
+        0.8986111111,
+        0.009375,
+        0.0166666667
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "bottom_dash",
+      "action": "dash",
+      "sample_rect": [
+        0.28359375,
+        0.8986111111,
+        0.009375,
+        0.0166666667
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "bottom_jump_primary",
+      "action": "jump",
+      "sample_rect": [
+        0.3609375,
+        0.8986111111,
+        0.009375,
+        0.0166666667
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "bottom_jump_secondary",
+      "action": "jump",
+      "sample_rect": [
+        0.3609375,
+        0.9458333333,
+        0.009375,
+        0.0166666667
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "up",
+      "action": "up",
+      "sample_rect": [
+        0.459375,
+        0.8611111111,
+        0.009375,
+        0.0166666667
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "left",
+      "action": "left",
+      "sample_rect": [
+        0.38125,
+        0.8986111111,
+        0.009375,
+        0.0166666667
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "down",
+      "action": "down",
+      "sample_rect": [
+        0.428125,
+        0.8986111111,
+        0.009375,
+        0.0166666667
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "right",
+      "action": "right",
+      "sample_rect": [
+        0.475,
+        0.8986111111,
+        0.009375,
+        0.0166666667
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    }
+  ],
+  "inference_source": "codex_visual_draft: full 489397-frame luma extrema scan plus visual press/release review; only plainly labeled canonical bottom cells and directional cells retained; practice/composite bindings omitted fail-closed",
+  "inference_confidence": 0.86,
+  "human_reviewed": true,
+  "evidence_frames_s": [
+    128.266667,
+    1123.466667,
+    395.666667,
+    7867.616667,
+    152.433333,
+    7706.366667,
+    670.4,
+    2113.416667,
+    8107.85,
+    2211.416667,
+    723.5,
+    1031.266667,
+    935.066667,
+    5116.35,
+    417.0,
+    2665.483333
+  ],
+  "temporal_offset_frames": 3,
+  "temporal_offset_source": "dash_hitstop_v1+reviewed_acceptance:bf9fa422219ea760f74a641d155534ac2afe1a6256aec5eb5a443149f03d4418",
+  "temporal_offset_confidence": 1.0,
+  "layout_review_acceptance": {
+    "format_version": "madeleine.wild-layout-acceptance.v1",
+    "artifact": "layout_acceptance.json",
+    "review_manifest_sha256": "655c460ffee915af896dbe61098a2f7536df2faa3c0d93a2b5d1773c7e7c9d87",
+    "source_video_sha256": "7b31d0219e122ecea159ed03d28eb8fc18bfd1ed2adc8f2a836f49dddc7703fb"
+  },
+  "temporal_offset_acceptance": {
+    "format_version": "madeleine.wild-offset-acceptance.v3",
+    "artifact": "offset_acceptance.json",
+    "calibration_sha256": "bf9fa422219ea760f74a641d155534ac2afe1a6256aec5eb5a443149f03d4418",
+    "tier": "pass",
+    "offset_uncertainty_frames": 1
+  }
+}

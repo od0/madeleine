@@ -1,0 +1,107 @@
+{
+  "schema_version": "madeleine.dynamics-offset-probe.v1",
+  "study_id": "own_v3_frame_pair_event_identifiability_v1",
+  "status": "preregistered_before_real-data execution",
+  "question": "At what offset relative to an engine-truth onset or release does a masked frame pair first contain cross-session visual evidence of that exact transition?",
+  "data": {
+    "root": "/ephemeral/data/own-v3",
+    "tier": "engine_truth_corrected_own_v3",
+    "frame_rate_hz": 60,
+    "train_sessions": [
+      "rec_20260724_190233",
+      "rec_20260725_015612",
+      "rec_20260725_021338"
+    ],
+    "validation_sessions": ["rec_20260724_171305_5min"],
+    "build_manifest_sha256": "3126d985149368e127c24ec63a8dce8f9343197d21b8395a4c409053d0436c80",
+    "train_shard_sha256": {
+      "rec_20260724_190233": "be92cdf4d3bbd5473a91fda8b20d9a42247ee6ff42c99cc25075378ac5e668d2",
+      "rec_20260725_015612": "0933b8e189ae1d513c1ceb44c5190edca8f66c9ce7a753b5151ec8f3df2fe9de",
+      "rec_20260725_021338": "585632bc33d81cf5df4703693469534c7aa7e2bc9f255a277b2a49955ea1ca1b"
+    },
+    "validation_shard_sha256": {
+      "rec_20260724_171305_5min": "6abde83a24da4202e7c148722f2ac0ceaa0f204e13905795c5662c1d267b3d62"
+    },
+    "forbidden_generation": "/ephemeral/data/own_features",
+    "continuity": "common support requires every engine index from t-5 through t+17 to be consecutive, every row in that interval to have input_active=1, and t-1 to remain inside the same session/run; +17 is scored only as the adjacent confirmation for candidate +16"
+  },
+  "offsets_native_frames": [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+  "pair_definition": "for target transition at t and offset o, use ordered pair (frame[t+o-1], frame[t+o])",
+  "targets": {
+    "onset": "keys[t-1] == 0 and keys[t] == 1",
+    "release": "keys[t-1] == 1 and keys[t] == 0",
+    "key_order": ["left", "right", "up", "down", "jump", "dash", "grab"]
+  },
+  "probe_surfaces": {
+    "backbone": {
+      "architecture": "torchvision resnet18",
+      "weights": "ResNet18_Weights.IMAGENET1K_V1",
+      "weights_url": "https://download.pytorch.org/models/resnet18-f37072fd.pth",
+      "weights_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+      "mode": "frozen eval"
+    },
+    "pooled_imagenet": "frozen ImageNet ResNet-18 average-pool features [previous,current,signed delta,absolute delta] (2048-D) with a deterministic linear sigmoid probe",
+    "spatial_motion_control": "frozen ImageNet ResNet-18 layer3 features adaptive-average-pooled to 4x4, using [current,signed difference,absolute difference] (12288-D) with the same linear-probe family",
+    "same_frame_controls": "pooled current or spatial current alone at the same offset; pair lift over this control is required for differential evidence"
+  },
+  "fit": {
+    "split_unit": "whole session",
+    "validation_never_used_for_fit": true,
+    "random_seeds": [0, 1, 2],
+    "standardization": "training rows only",
+    "loss": "14-output class-balanced BCE; positive weight min(negative/positive,50) from training sessions only",
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 2048,
+    "epochs": 40,
+    "checkpoint_selection": "final epoch only; no validation early stopping or hyperparameter search",
+    "robustness": "three leave-one-training-session-out folds are scored before the final val-A confirmation",
+    "thresholds": "none fitted; average precision and AP skill decide this diagnostic"
+  },
+  "metrics": {
+    "primary": "per-key onset/release average precision on post-state-conditioned validation support: onset among keys[t]=1 and release among keys[t]=0",
+    "secondary": [
+      "average precision on all eligible validation targets at natural prevalence",
+      "normalized AP lift (AP-prevalence)/(1-prevalence)",
+      "persistent-post-state, no-intervening-action, and solo/co-occurring transition subsets",
+      "support and prevalence"
+    ],
+    "minimum_supported_positives": "30 on val-A and at least 20 in two of three training sessions",
+    "uncertainty": "paired 10-second continuity-bounded fixed-ranking AP-contribution block bootstrap with 5000 deterministic replicates (seed 2026072701), arithmetic-mean aggregation of the three per-seed metric values, and simultaneous max-absolute-deviation bands over offsets",
+    "null": "5000 deterministic continuity-run-bounded circular shifts (seed 2026072702); independently sample one legal offset per retained run uniformly with replacement, circular distance >=300 rows; exclude runs shorter than 600 rows and report retained rows/positives/null-inestimability; shift truth, post-state, and t-5..t+17 key context together while predictions remain fixed",
+    "multiplicity": "BH-FDR q=0.05 over 2 pair representations x 5 candidate horizons x 14 tasks"
+  },
+  "scoring": {
+    "bootstrap_replicates": 5000,
+    "bootstrap_seed": 2026072701,
+    "bootstrap_statistic": "arithmetic mean of the three per-seed post-state-conditioned normalized AP-skill values; probabilities are not ensembled",
+    "circular_null_replicates": 5000,
+    "circular_null_seed": 2026072702,
+    "minimum_circular_distance_rows": 300,
+    "short_run_policy": "continuity runs shorter than 600 rows are excluded from the shift-null surface; gaps and run boundaries are never crossed",
+    "circular_sampling": "one legal circular offset is sampled independently per retained run, uniformly with replacement across replicates",
+    "shifted_bundle": "truth, post-state, and t-5..t+17 key context shift together; predictions remain fixed",
+    "null_statistic": "on retained long-run rows, the post-state-conditioned mean predicted-score contrast (event minus same-post-state non-event), after arithmetic averaging of the three seed probabilities, at candidate h minus the maximum corresponding contrast over -4..-1",
+    "null_tail": "one-sided upper: count null statistic >= observed statistic",
+    "null_p_value": "(exceedances + 1) / (5000 + 1)",
+    "fdr_q": 0.05,
+    "fdr_family_size": 140,
+    "fdr_family": "2 pair representations x 5 candidate horizons x 14 onset/release tasks; null-inestimable hypotheses remain in the denominator and fail",
+    "adjacent_confirmation": "candidate start h must separately pass effect, simultaneous-CI, and LOSO gates at h+1; +17 is confirmation-only for candidate +16; FDR applies at h without expanding the frozen 140-hypothesis family"
+  },
+  "interpretation": {
+    "detectable_output": "smallest candidate h in {1,2,4,8,16} for which h and h+1 both have post-state-conditioned causal AP-skill lift at least 0.03, pair-over-same-frame lift at least 0.01, simultaneous lower confidence bounds above zero, positive val-A lift, and positive lift in at least two leave-one-session-out folds; the frozen FDR test applies at h and +17 exists only to confirm candidate +16",
+    "precausal_baseline": "best normalized AP skill over offsets -4..-1 for the same task and representation",
+    "global_horizon_gate": "macro conditioned causal lift >=0.03 with lower CI >0; macro pair lift >=0.01 with lower CI >0; natural-support lower CI >-0.01; at least 7 of 14 estimable tasks spanning four keys and both polarities; positive in two LOSO folds; above shifted null; and half of supported tasks retain at least half their lift without intervening actions",
+    "negative_offsets": "evidence at negative offsets is anticipation, scene correlation, or leakage—not a post-action visual effect",
+    "broad_positive_peak": "evidence spread across later offsets supports effect recognition but weak exact-frame identifiability",
+    "scope_limit": "a failed pooled probe can indict current pooled features but cannot prove pixels lack the information; the spatial-motion control is required before that stronger conclusion"
+  },
+  "embargo": {
+    "sealed_untouched_session": "rec_20260727_220000_test",
+    "rule": "must not be opened, read, inferred, fitted, calibrated, or scored",
+    "B1": "excluded",
+    "val_B": "excluded"
+  }
+}

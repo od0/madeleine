@@ -1,0 +1,162 @@
+{
+  "cells": [
+    {
+      "action": "grab",
+      "cell_id": "top_grab",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.7421875,
+        0.8541666667,
+        0.009375,
+        0.0166666667
+      ]
+    },
+    {
+      "action": "up",
+      "cell_id": "top_w_up",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.784375,
+        0.8541666667,
+        0.009375,
+        0.0166666667
+      ]
+    },
+    {
+      "action": "dash",
+      "cell_id": "top_demo_dash",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.87109375,
+        0.8541666667,
+        0.009375,
+        0.0166666667
+      ]
+    },
+    {
+      "action": "jump",
+      "cell_id": "top_jump_primary",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.91484375,
+        0.8541666667,
+        0.009375,
+        0.0166666667
+      ]
+    },
+    {
+      "action": "left",
+      "cell_id": "bottom_a_left",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.7421875,
+        0.9291666667,
+        0.009375,
+        0.0166666667
+      ]
+    },
+    {
+      "action": "down",
+      "cell_id": "bottom_s_down",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.784375,
+        0.9291666667,
+        0.009375,
+        0.0166666667
+      ]
+    },
+    {
+      "action": "right",
+      "cell_id": "bottom_d_right",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.8265625,
+        0.9291666667,
+        0.009375,
+        0.0166666667
+      ]
+    },
+    {
+      "action": "dash",
+      "cell_id": "bottom_dash",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.87109375,
+        0.9291666667,
+        0.009375,
+        0.0166666667
+      ]
+    },
+    {
+      "action": "jump",
+      "cell_id": "bottom_jump_secondary",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.91484375,
+        0.9291666667,
+        0.009375,
+        0.0166666667
+      ]
+    }
+  ],
+  "evidence_frames_s": [
+    5600.95,
+    5602.833333,
+    5603.666667,
+    5604.516667,
+    5605.583333,
+    5606.483333,
+    5607.366667,
+    5609.9,
+    5610.75,
+    5610.8
+  ],
+  "gameplay_rect": [
+    0.1671875,
+    0.0,
+    0.8328125,
+    0.8333333333
+  ],
+  "gameplay_rect_confidence": 0.98,
+  "gameplay_rect_source": "codex_visual_draft: stable full-frame boundary at source x=214..1279, y=0..599 across early/mid/late PTS evidence",
+  "human_reviewed": true,
+  "inference_confidence": 0.88,
+  "inference_source": "Hash-bound exact-PTS source evidence in this review packet; candidate Demo-to-dash mapping requires explicit human confirmation",
+  "mask_rects": [
+    [
+      0.7328125,
+      0.8375,
+      0.2625,
+      0.1555555556
+    ]
+  ],
+  "overlay_style": "opaque_2x6_semantic_grid",
+  "schema_version": "madeleine.wild-layout.v1",
+  "temporal_offset_confidence": 1.0,
+  "temporal_offset_frames": 0,
+  "temporal_offset_source": "dash_hitstop_v1+reviewed_acceptance:aaf7157058ad8b9f0e2e04847c4db4f26c7ab7b5dd82eb66680d9e5d11f63bce",
+  "video_id": "nRMVyWdNsTo",
+  "layout_review_acceptance": {
+    "format_version": "madeleine.wild-layout-acceptance.v1",
+    "artifact": "layout_acceptance.json",
+    "review_manifest_sha256": "78b61f084581bc6a2d5f7960a198aaeb97ce38822bcb48877066036f7d0e8374",
+    "source_video_sha256": "754ccbf9a43059c5322df1576edbc157e576f9ad20ba5c4be1a84e1397bfdaf4"
+  },
+  "temporal_offset_acceptance": {
+    "format_version": "madeleine.wild-offset-acceptance.v3",
+    "artifact": "offset_acceptance.json",
+    "calibration_sha256": "aaf7157058ad8b9f0e2e04847c4db4f26c7ab7b5dd82eb66680d9e5d11f63bce",
+    "tier": "uncertain_adjacent",
+    "offset_uncertainty_frames": 1
+  }
+}

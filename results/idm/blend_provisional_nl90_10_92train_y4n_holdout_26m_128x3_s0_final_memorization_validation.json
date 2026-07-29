@@ -1,0 +1,22 @@
+{
+  "schema_version": "madeleine.provisional-blend-memorization-validation-receipt.v1",
+  "validated_at": "2026-07-28T13:43:56Z",
+  "validation_location": "producing_node_before_sync",
+  "validator_git_commit": "cd2ac8ac9a87dadb25de6292136673d513580cbf",
+  "validator_module_sha256": "d722cb7e74bedd9746f4e3878a1e26934317743ad568f336977bf77b9e63a657",
+  "validator_scope": {
+    "checks": "content-bound report and marker, frozen Git/config/run identities, embedded membership/support/sampling arithmetic, metric structure/count feasibility, local-gap arithmetic, and forbidden-ID declarations",
+    "does_not_check": "model/data inputs, prediction arrays, independent AP/BCE replay, or operating-system access history"
+  },
+  "validation": {
+    "arm": "NL_90_10",
+    "checkpoint_sha256": "e5e194172a31e3c6a14a2ba9d1c5233c1b37a112504b3275c2e2e1d1a55e7bf9",
+    "diagnostic_git_commit": "d86cba9a67b45c95c4728681c5788682c5077728",
+    "diagnostic_module_sha256": "121273090c3b82be612c29476ade83c8c1a689734a05e5febfd239adba8859ab",
+    "forbidden_surfaces_accessed": false,
+    "report_sha256": "60364800dc66e389d3373634b941360d28c5fddcede21306a3301c7cae9079e6",
+    "run_id": "blend_provisional_nl90_10_92train_y4n_holdout_26m_128x3_s0",
+    "status": "valid",
+    "study_id": "provisional_blend_gru_y4n_b1_s0"
+  }
+}

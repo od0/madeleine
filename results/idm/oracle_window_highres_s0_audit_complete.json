@@ -1,0 +1,12 @@
+{
+  "audit": {
+    "path": "/ephemeral/results/idm/oracle_window_highres_s0_audit.json",
+    "sha256": "9e7e348c3c7d2343ad4fc26f0ea1983effafe3ed3c682fbfc103f6882585bdc4"
+  },
+  "content_sha256": "b4f00ad57b150b4a29a5eb5e27c34983248c4db40eae23c8cc7353f2949b2613",
+  "decision": "reject_study_h_primary_gate",
+  "schema_version": "madeleine.oracle-window-highres-audit-complete.v1",
+  "source_commit": "546933bb010dc48d21592546096eec885a84bad4",
+  "status": "complete",
+  "study_id": "own_v3_oracle_window_highres_regional_w16_s0"
+}

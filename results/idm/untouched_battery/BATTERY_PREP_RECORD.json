@@ -1,0 +1,174 @@
+{
+  "created_at": "2026-07-28T22:59:50.603410+00:00",
+  "checkpoints": {
+    "own_features_32nc_s0": {
+      "sha256": "98a0420f638f7896a492d6994f09fd5814d654d979ac1a0c91b3396f3dbece9d",
+      "expected": "98a0420f638f7896a492d6994f09fd5814d654d979ac1a0c91b3396f3dbece9d",
+      "match": true
+    },
+    "own_features_32nc_s1": {
+      "sha256": "3d805c35348587dc9e25e30f9d754fcee4a997f17676a700c6eeebca70eaedcc",
+      "expected": "3d805c35348587dc9e25e30f9d754fcee4a997f17676a700c6eeebca70eaedcc",
+      "match": true
+    },
+    "own_features_32nc_s2": {
+      "sha256": "ea9f976677e3480673e0eee85d0a1390de385ed4ffeb7eb53620ca609b1e3600",
+      "expected": "ea9f976677e3480673e0eee85d0a1390de385ed4ffeb7eb53620ca609b1e3600",
+      "match": true
+    },
+    "foreign_tier_b_13p45h_32nc_s0": {
+      "sha256": "f4294f31e6f4e84cf5dbbdf0ab0ca836fed931e08bc3b0cd886556749753231f",
+      "expected": "f4294f31e6f4e84cf5dbbdf0ab0ca836fed931e08bc3b0cd886556749753231f",
+      "match": true
+    },
+    "foreign_tier_b_13p45h_32nc_s1": {
+      "sha256": "49eeab2afdc35b129e17dd599dcb5c006141cc87c6719618257054bde3d4d155",
+      "expected": "49eeab2afdc35b129e17dd599dcb5c006141cc87c6719618257054bde3d4d155",
+      "match": true
+    },
+    "foreign_tier_b_13p45h_32nc_s2": {
+      "sha256": "cf92769e338fc982897a64588f947097551b43307decc4c9bc645e1846044598",
+      "expected": "cf92769e338fc982897a64588f947097551b43307decc4c9bc645e1846044598",
+      "match": true
+    },
+    "foreign_tier_b_13p45h_37m_e2e_aug_32nc_s0": {
+      "sha256": "1d780811d020cde4a9c28f31e38cba69706ef0bd08ab31666fde9f214f8119dc",
+      "expected": "1d780811d020cde4a9c28f31e38cba69706ef0bd08ab31666fde9f214f8119dc",
+      "match": true
+    },
+    "foreign_tier_b_13p45h_113m_e2e_aug_32nc_s0": {
+      "sha256": "4cfb619be79f0f8626dedc3f07b7c095b1048d4144ee67d3fb3a155cf862748f",
+      "expected": "4cfb619be79f0f8626dedc3f07b7c095b1048d4144ee67d3fb3a155cf862748f",
+      "match": true
+    },
+    "nitrogen_unflagged_92train_y4n_holdout_26m_128x3_s0": {
+      "sha256": "cf55f612382bfa7b9a1b67038b5223a1629782782995f0b008311ba380b34f94",
+      "expected": "cf55f612382bfa7b9a1b67038b5223a1629782782995f0b008311ba380b34f94",
+      "match": true
+    },
+    "nitrogen_full_210train_y4n_holdout_26m_128x3_s0": {
+      "sha256": "297c6a512914946f9d836467b31afa5b84b74e856ad3fb7b2f7326284161fd09",
+      "expected": "297c6a512914946f9d836467b31afa5b84b74e856ad3fb7b2f7326284161fd09",
+      "match": true
+    },
+    "own_features_v3_32nc_s0": {
+      "sha256": "5b2132f228664d2e0de4da2e15961b7d735ff7146dafb7338d8d9123cab8d6a3",
+      "expected": "5b2132f228664d2e0de4da2e15961b7d735ff7146dafb7338d8d9123cab8d6a3",
+      "match": true
+    },
+    "own_features_v3_32nc_s1": {
+      "sha256": "05f80e665eb87c84adbc22628ef95db88f9263661b07ef7ca4374d3713bfaf72",
+      "expected": "05f80e665eb87c84adbc22628ef95db88f9263661b07ef7ca4374d3713bfaf72",
+      "match": true
+    },
+    "own_features_v3_32nc_s2": {
+      "sha256": "525ce4423d15cd7eff23d0c3088318d6f546e363afc289a2cf1f0460ffb98ce5",
+      "expected": "525ce4423d15cd7eff23d0c3088318d6f546e363afc289a2cf1f0460ffb98ce5",
+      "match": true
+    },
+    "own_features_v3_tier_b_init_32nc_s0": {
+      "sha256": "4c7308616fc9a5c64489ec872060c27ec726abe74a2a013d25f0d421b602e181",
+      "expected": "4c7308616fc9a5c64489ec872060c27ec726abe74a2a013d25f0d421b602e181",
+      "match": true
+    },
+    "own_features_v3_tier_b_init_32nc_s1": {
+      "sha256": "35cd8efe9d420d82bbd5619bdb8e617ef7b9c009961c8e25bbd3594ffd583605",
+      "expected": "35cd8efe9d420d82bbd5619bdb8e617ef7b9c009961c8e25bbd3594ffd583605",
+      "match": true
+    },
+    "own_features_v3_tier_b_init_32nc_s2": {
+      "sha256": "8fcf4e5cd2b813855aa67822dc865d5b5b3924eae587f25b0529027a36ebf13b",
+      "expected": "8fcf4e5cd2b813855aa67822dc865d5b5b3924eae587f25b0529027a36ebf13b",
+      "match": true
+    }
+  },
+  "thresholds": {
+    "own_features_32nc_s0_val_a.json": {
+      "sha256": "1cb0dcf17538c9748e53e2409106cef964c255954328d9e0a2a4f329d3257f30",
+      "expected": "1cb0dcf17538c9748e53e2409106cef964c255954328d9e0a2a4f329d3257f30",
+      "match": true
+    },
+    "own_features_32nc_s1_val_a.json": {
+      "sha256": "82766b8896953f516444b1bdee92c2b8aba9b9131e38eb6636846d0f6c63bc0a",
+      "expected": "82766b8896953f516444b1bdee92c2b8aba9b9131e38eb6636846d0f6c63bc0a",
+      "match": true
+    },
+    "own_features_32nc_s2_val_a.json": {
+      "sha256": "667185aa4bcac16358e1a156b7122cbc3ec1e9b6da52a397d362b6b68845ba59",
+      "expected": "667185aa4bcac16358e1a156b7122cbc3ec1e9b6da52a397d362b6b68845ba59",
+      "match": true
+    },
+    "foreign_tier_b_13p45h_32nc_s0_val_a.json": {
+      "sha256": "1b9c51a6a37d13c989d772d2841c8a0a0c245ffd52ae2f2812492843083c63a4",
+      "expected": "1b9c51a6a37d13c989d772d2841c8a0a0c245ffd52ae2f2812492843083c63a4",
+      "match": true
+    },
+    "foreign_tier_b_13p45h_32nc_s1_val_a.json": {
+      "sha256": "3ff1435b1f0fd1b0b1fc29e02df09ae9177d17f46200e75e2b0f448da1da610d",
+      "expected": "3ff1435b1f0fd1b0b1fc29e02df09ae9177d17f46200e75e2b0f448da1da610d",
+      "match": true
+    },
+    "foreign_tier_b_13p45h_32nc_s2_val_a.json": {
+      "sha256": "ae7ed6a38b011f4af84587993992e85f053ba60f1ba6bd558644fb8271a456af",
+      "expected": "ae7ed6a38b011f4af84587993992e85f053ba60f1ba6bd558644fb8271a456af",
+      "match": true
+    },
+    "foreign_tier_b_13p45h_37m_e2e_aug_32nc_s0_val_a.json": {
+      "sha256": "bf0523fb0cee55c917574b5f039e2846a0ccdb02db6cdcef16e8e07ab0d3177d",
+      "expected": "bf0523fb0cee55c917574b5f039e2846a0ccdb02db6cdcef16e8e07ab0d3177d",
+      "match": true
+    },
+    "foreign_tier_b_13p45h_113m_e2e_aug_32nc_s0_val_a.json": {
+      "sha256": "7be2e2b0b6a9c8b7922dee38e27627f27ab358f6fe31e554f08a3fee0a6dac4b",
+      "expected": "7be2e2b0b6a9c8b7922dee38e27627f27ab358f6fe31e554f08a3fee0a6dac4b",
+      "match": true
+    },
+    "untouched_prep/nitrogen_unflagged_92train_y4n_holdout_26m_128x3_s0_final_val_a.json": {
+      "sha256": "2e39565db70f80c8a142848de74f193c933b8bc08c92ee4254688c92b7c91bbb",
+      "expected": "2e39565db70f80c8a142848de74f193c933b8bc08c92ee4254688c92b7c91bbb",
+      "match": true
+    },
+    "untouched_prep/nitrogen_full_210train_y4n_holdout_26m_128x3_s0_final_val_a.json": {
+      "sha256": "1cbc4c779a9a45a84f996b5e0657ba2fe9f34dc9450e6a7214072b38ad799a5e",
+      "expected": "1cbc4c779a9a45a84f996b5e0657ba2fe9f34dc9450e6a7214072b38ad799a5e",
+      "match": true
+    },
+    "own_features_v3_32nc_s0_val_a.json": {
+      "sha256": "ac17ee6ad0057b7740eeb1146f78ab503376a0fb2e0f9ff69d4bdadae0c7f213",
+      "expected": "ac17ee6ad0057b7740eeb1146f78ab503376a0fb2e0f9ff69d4bdadae0c7f213",
+      "match": true
+    },
+    "own_features_v3_32nc_s1_val_a.json": {
+      "sha256": "490db7b8b26e8e0088b9276ce78a50d33a3f2394ff4749eee892e86e29519d78",
+      "expected": "490db7b8b26e8e0088b9276ce78a50d33a3f2394ff4749eee892e86e29519d78",
+      "match": true
+    },
+    "own_features_v3_32nc_s2_val_a.json": {
+      "sha256": "03520ca91b0a74f0b9811f06885b7f0e81c74fa3bb6e5349d4eadfc3fe470581",
+      "expected": "03520ca91b0a74f0b9811f06885b7f0e81c74fa3bb6e5349d4eadfc3fe470581",
+      "match": true
+    },
+    "own_features_v3_tier_b_init_32nc_s0_val_a.json": {
+      "sha256": "bedef5e217b1d68327f5aa7abc6d30044180092186c3b93eafd5cca3d4680346",
+      "expected": "bedef5e217b1d68327f5aa7abc6d30044180092186c3b93eafd5cca3d4680346",
+      "match": true
+    },
+    "own_features_v3_tier_b_init_32nc_s1_val_a.json": {
+      "sha256": "75efcd666409a992b583026c26824ad607e61bc830c9f15a9e2e34b7ed57a7ca",
+      "expected": "75efcd666409a992b583026c26824ad607e61bc830c9f15a9e2e34b7ed57a7ca",
+      "match": true
+    },
+    "own_features_v3_tier_b_init_32nc_s2_val_a.json": {
+      "sha256": "bd2aee69f3efa542d64b5ac5e3bad2fb7382b778c1cc3313d932a20707e31587",
+      "expected": "bd2aee69f3efa542d64b5ac5e3bad2fb7382b778c1cc3313d932a20707e31587",
+      "match": true
+    }
+  },
+  "trees": {
+    "metrics_blob_sha256": "ce3947b199a5e98dcc0af6de2e3eefe8c6967ecb07c5b636319950a67d301434",
+    "pinned_head": "a9a414452c07fb101d26faee9fa13864dde922b4",
+    "dirty_head": "d13ef3edfdd5ab2e38dd43919d00b854b64abf15",
+    "dirty_status_porcelain_sha256": "3e4d1a333a391eb04a87e092822577e78838024caebb93b4004460eed0dbc56e"
+  },
+  "failures": []
+}

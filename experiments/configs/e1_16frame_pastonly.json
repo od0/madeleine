@@ -1,0 +1,1 @@
+{"window":16,"window_mode":"past_only","input_config":"pixels","batch_size":64,"eval_interval":100,"seed":0,"max_steps":3000,"_note":"E1 control: 16 frames but past-only (real-time-controller analogue)"}

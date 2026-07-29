@@ -1,0 +1,1345 @@
+{
+  "own_features_32nc_s0": {
+    "weights": "selected",
+    "maximal": {
+      "n_frames": 48944,
+      "n_active": 43186,
+      "n_streams": 132,
+      "macro_ap_input_active": 0.1694612438297498,
+      "per_key_ap_input_active": {
+        "left": 0.22269802761640878,
+        "right": 0.25248663388026277,
+        "up": 0.1861176919082275,
+        "down": 0.06981395980710339,
+        "jump": 0.11384286394551865,
+        "dash": 0.16272397158451835,
+        "grab": 0.1785455580662091
+      },
+      "prevalence_input_active": {
+        "left": 0.1810772009447506,
+        "right": 0.22574445422127543,
+        "up": 0.18286018617144445,
+        "down": 0.050872968091511137,
+        "jump": 0.09857361181864494,
+        "dash": 0.14210623813272819,
+        "grab": 0.20015745843560412
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.26915823204338524,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.3131140153222172,
+        "right": 0.3648816223744205,
+        "up": 0.32179562906083875,
+        "down": 0.11254358225897997,
+        "jump": 0.17946880269814502,
+        "dash": 0.2587004837233625,
+        "grab": 0.3336034888657327
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.025874445910731847,
+      "event_f1_fixed_dev_collar2_macro": 0.043890422221541985,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.024691358024691357,
+        "right": 0.031205673758865248,
+        "up": 0.022172949002217297,
+        "down": 0.0028469750889679717,
+        "jump": 0.012135922330097087,
+        "dash": 0.013994169096209912,
+        "grab": 0.07407407407407407
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.06018518518518518,
+        "right": 0.0425531914893617,
+        "up": 0.05432372505543237,
+        "down": 0.011387900355871887,
+        "jump": 0.014563106796116505,
+        "dash": 0.05014577259475218,
+        "grab": 0.07407407407407407
+      },
+      "key_state_micro_accuracy": 0.7350265628411323,
+      "joint_exact_match_accuracy": 0.17355161394896496,
+      "always_released_micro": 0.8455154117405773,
+      "always_released_joint": 0.4009864307877553,
+      "persistence_micro": 0.9890672241665619,
+      "persistence_joint": 0.930996156161719,
+      "macro_ap_all_frames": 0.1577065474915537
+    },
+    "intersection": {
+      "n_frames": 16805,
+      "n_active": 16094,
+      "n_streams": 53,
+      "macro_ap_input_active": 0.17152120467532475,
+      "per_key_ap_input_active": {
+        "left": 0.21993554695068393,
+        "right": 0.21471998871310763,
+        "up": 0.1670147739303265,
+        "down": 0.08410013966926479,
+        "jump": 0.11903352126658337,
+        "dash": 0.14967896622317556,
+        "grab": 0.2461654959741314
+      },
+      "prevalence_input_active": {
+        "left": 0.16391201690070833,
+        "right": 0.19671927426370076,
+        "up": 0.18155834472474214,
+        "down": 0.03479557599105257,
+        "jump": 0.08997141791972163,
+        "dash": 0.13017273518081274,
+        "grab": 0.22778675282714056
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.2555867506304629,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.30527377350655516,
+        "right": 0.32513604018417747,
+        "up": 0.3021318304337172,
+        "down": 0.08350926577527562,
+        "jump": 0.16508949948694562,
+        "dash": 0.23691421344762173,
+        "grab": 0.37105263157894736
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.06304242808947678,
+      "event_f1_fixed_dev_collar2_macro": 0.0810243088406263,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.03233256351039261,
+        "right": 0.11307420494699646,
+        "up": 0.04219409282700422,
+        "down": 0.006932409012131715,
+        "jump": 0.02666666666666667,
+        "dash": 0.02654867256637168,
+        "grab": 0.1935483870967742
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.05542725173210162,
+        "right": 0.127208480565371,
+        "up": 0.08157524613220815,
+        "down": 0.02079722703639515,
+        "jump": 0.02666666666666667,
+        "dash": 0.061946902654867256,
+        "grab": 0.1935483870967742
+      },
+      "key_state_micro_accuracy": 0.7490724138543201,
+      "joint_exact_match_accuracy": 0.18491363240959363,
+      "always_released_micro": 0.8535834117417316,
+      "always_released_joint": 0.41854107120666084,
+      "persistence_micro": 0.9888334605620551,
+      "persistence_joint": 0.9317136821175593,
+      "macro_ap_all_frames": 0.1683824331919846
+    }
+  },
+  "own_features_32nc_s1": {
+    "weights": "selected",
+    "maximal": {
+      "n_frames": 48944,
+      "n_active": 43186,
+      "n_streams": 132,
+      "macro_ap_input_active": 0.16590334748192723,
+      "per_key_ap_input_active": {
+        "left": 0.2031864023079289,
+        "right": 0.2641168972556476,
+        "up": 0.20934547520167152,
+        "down": 0.06930367424601783,
+        "jump": 0.10675950994476775,
+        "dash": 0.15104969698458753,
+        "grab": 0.1575617764328695
+      },
+      "prevalence_input_active": {
+        "left": 0.1810772009447506,
+        "right": 0.22574445422127543,
+        "up": 0.18286018617144445,
+        "down": 0.050872968091511137,
+        "jump": 0.09857361181864494,
+        "dash": 0.14210623813272819,
+        "grab": 0.20015745843560412
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.2682301213815171,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.3036848792884371,
+        "right": 0.3669536461599863,
+        "up": 0.31231704571042557,
+        "down": 0.11368975989914618,
+        "jump": 0.17912210761669725,
+        "dash": 0.26812396236856667,
+        "grab": 0.33371944862736014
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.028581828842700337,
+      "event_f1_fixed_dev_collar2_macro": 0.04211824840516405,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.0412621359223301,
+        "right": 0.03560830860534125,
+        "up": 0.02040816326530612,
+        "down": 0.005017561465127948,
+        "jump": 0.009557945041816009,
+        "dash": 0.01702127659574468,
+        "grab": 0.07119741100323625
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.04854368932038835,
+        "right": 0.04451038575667656,
+        "up": 0.05180533751962323,
+        "down": 0.017059708981435023,
+        "jump": 0.016726403823178016,
+        "dash": 0.044984802431610946,
+        "grab": 0.07119741100323625
+      },
+      "key_state_micro_accuracy": 0.742390060270855,
+      "joint_exact_match_accuracy": 0.202611957578845,
+      "always_released_micro": 0.8455154117405773,
+      "always_released_joint": 0.4009864307877553,
+      "persistence_micro": 0.9890672241665619,
+      "persistence_joint": 0.930996156161719,
+      "macro_ap_all_frames": 0.1551229250735762
+    },
+    "intersection": {
+      "n_frames": 16805,
+      "n_active": 16094,
+      "n_streams": 53,
+      "macro_ap_input_active": 0.1628320269796686,
+      "per_key_ap_input_active": {
+        "left": 0.20627527574609633,
+        "right": 0.255147214634459,
+        "up": 0.1900074482069679,
+        "down": 0.04239045799730559,
+        "jump": 0.10682114121706894,
+        "dash": 0.13537184040507969,
+        "grab": 0.20381081065070253
+      },
+      "prevalence_input_active": {
+        "left": 0.16391201690070833,
+        "right": 0.19671927426370076,
+        "up": 0.18155834472474214,
+        "down": 0.03479557599105257,
+        "jump": 0.08997141791972163,
+        "dash": 0.13017273518081274,
+        "grab": 0.22778675282714056
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.25255004997344577,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.28249744114636643,
+        "right": 0.3283458021612635,
+        "up": 0.3005274514504915,
+        "down": 0.07761194029850746,
+        "jump": 0.1651836641569701,
+        "dash": 0.24263141902157398,
+        "grab": 0.37105263157894736
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.06708917497544406,
+      "event_f1_fixed_dev_collar2_macro": 0.07965104029492556,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.04516129032258064,
+        "right": 0.11721611721611722,
+        "up": 0.04601769911504425,
+        "down": 0.008968609865470852,
+        "jump": 0.025974025974025976,
+        "dash": 0.03273809523809524,
+        "grab": 0.1935483870967742
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.05161290322580645,
+        "right": 0.12454212454212454,
+        "up": 0.08141592920353982,
+        "down": 0.02391629297458894,
+        "jump": 0.025974025974025976,
+        "dash": 0.05654761904761905,
+        "grab": 0.1935483870967742
+      },
+      "key_state_micro_accuracy": 0.7560137762076373,
+      "joint_exact_match_accuracy": 0.2233751708711321,
+      "always_released_micro": 0.8535834117417316,
+      "always_released_joint": 0.41854107120666084,
+      "persistence_micro": 0.9888334605620551,
+      "persistence_joint": 0.9317136821175593,
+      "macro_ap_all_frames": 0.16047615343493704
+    }
+  },
+  "own_features_32nc_s2": {
+    "weights": "selected",
+    "maximal": {
+      "n_frames": 48944,
+      "n_active": 43186,
+      "n_streams": 132,
+      "macro_ap_input_active": 0.16563510696221617,
+      "per_key_ap_input_active": {
+        "left": 0.21862185805947945,
+        "right": 0.24622852810213072,
+        "up": 0.18411683589803324,
+        "down": 0.11611044092292445,
+        "jump": 0.08970985626796221,
+        "dash": 0.14810864090854453,
+        "grab": 0.15654958857643858
+      },
+      "prevalence_input_active": {
+        "left": 0.1810772009447506,
+        "right": 0.22574445422127543,
+        "up": 0.18286018617144445,
+        "down": 0.050872968091511137,
+        "jump": 0.09857361181864494,
+        "dash": 0.14210623813272819,
+        "grab": 0.20015745843560412
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.2680221345648216,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.3225168492544693,
+        "right": 0.36665657635840776,
+        "up": 0.32908885767574664,
+        "down": 0.07233551365909965,
+        "jump": 0.17945745420820775,
+        "dash": 0.2720256024096386,
+        "grab": 0.3340740883881814
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.02833867672270122,
+      "event_f1_fixed_dev_collar2_macro": 0.04910366102413447,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.033503277494537506,
+        "right": 0.03571428571428571,
+        "up": 0.01952807160292921,
+        "down": 0.0047169811320754715,
+        "jump": 0.012224938875305624,
+        "dash": 0.022170361726954493,
+        "grab": 0.07051282051282051
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.06554989075018208,
+        "right": 0.044642857142857144,
+        "up": 0.04882017900732303,
+        "down": 0.0330188679245283,
+        "jump": 0.014669926650366748,
+        "dash": 0.06651108518086347,
+        "grab": 0.07051282051282051
+      },
+      "key_state_micro_accuracy": 0.7095354976149678,
+      "joint_exact_match_accuracy": 0.17206965220210255,
+      "always_released_micro": 0.8455154117405773,
+      "always_released_joint": 0.4009864307877553,
+      "persistence_micro": 0.9890672241665619,
+      "persistence_joint": 0.930996156161719,
+      "macro_ap_all_frames": 0.15501852796377086
+    },
+    "intersection": {
+      "n_frames": 16805,
+      "n_active": 16094,
+      "n_streams": 53,
+      "macro_ap_input_active": 0.15242743525426933,
+      "per_key_ap_input_active": {
+        "left": 0.21187759703343623,
+        "right": 0.21342710401693232,
+        "up": 0.16630336084366676,
+        "down": 0.073394902176652,
+        "jump": 0.08780493971686176,
+        "dash": 0.13243972132419723,
+        "grab": 0.18174442166813887
+      },
+      "prevalence_input_active": {
+        "left": 0.16391201690070833,
+        "right": 0.19671927426370076,
+        "up": 0.18155834472474214,
+        "down": 0.03479557599105257,
+        "jump": 0.08997141791972163,
+        "dash": 0.13017273518081274,
+        "grab": 0.22778675282714056
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.2546196819587368,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.3176604735394728,
+        "right": 0.32633111480865223,
+        "up": 0.3178072375492655,
+        "down": 0.03680981595092025,
+        "jump": 0.16508949948694562,
+        "dash": 0.24758700079695387,
+        "grab": 0.37105263157894736
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.06461824976840758,
+      "event_f1_fixed_dev_collar2_macro": 0.08415893641800991,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.038135593220338986,
+        "right": 0.11594202898550725,
+        "up": 0.045081967213114756,
+        "down": 0.0,
+        "jump": 0.02666666666666667,
+        "dash": 0.032953105196451206,
+        "grab": 0.1935483870967742
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.06779661016949153,
+        "right": 0.12318840579710146,
+        "up": 0.0942622950819672,
+        "down": 0.0,
+        "jump": 0.02666666666666667,
+        "dash": 0.08365019011406843,
+        "grab": 0.1935483870967742
+      },
+      "key_state_micro_accuracy": 0.7188748246906567,
+      "joint_exact_match_accuracy": 0.1583198707592892,
+      "always_released_micro": 0.8535834117417316,
+      "always_released_joint": 0.41854107120666084,
+      "persistence_micro": 0.9888334605620551,
+      "persistence_joint": 0.9317136821175593,
+      "macro_ap_all_frames": 0.14949670845475518
+    }
+  },
+  "foreign_tier_b_13p45h_32nc_s0": {
+    "weights": "selected",
+    "maximal": {
+      "n_frames": 48944,
+      "n_active": 43186,
+      "n_streams": 132,
+      "macro_ap_input_active": 0.22468039205804918,
+      "per_key_ap_input_active": {
+        "left": 0.20210145553148937,
+        "right": 0.3161290202953334,
+        "up": 0.21950264045831655,
+        "down": 0.09292773330915338,
+        "jump": 0.15516760697026405,
+        "dash": 0.18626891834238488,
+        "grab": 0.4006653694994027
+      },
+      "prevalence_input_active": {
+        "left": 0.1810772009447506,
+        "right": 0.22574445422127543,
+        "up": 0.18286018617144445,
+        "down": 0.050872968091511137,
+        "jump": 0.09857361181864494,
+        "dash": 0.14210623813272819,
+        "grab": 0.20015745843560412
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.2667464334623985,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.3066305924793162,
+        "right": 0.368338528383867,
+        "up": 0.3085403787848959,
+        "down": 0.12180451127819548,
+        "jump": 0.17956721643396464,
+        "dash": 0.2488494211625408,
+        "grab": 0.33349438571400963
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.03384203214739918,
+      "event_f1_fixed_dev_collar2_macro": 0.04007877820499044,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.04986149584487535,
+        "right": 0.0391566265060241,
+        "up": 0.03355704697986577,
+        "down": 0.007792207792207792,
+        "jump": 0.012195121951219513,
+        "dash": 0.018469656992084433,
+        "grab": 0.07586206896551724
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.05263157894736842,
+        "right": 0.04819277108433735,
+        "up": 0.03691275167785235,
+        "down": 0.02857142857142857,
+        "jump": 0.014634146341463415,
+        "dash": 0.023746701846965697,
+        "grab": 0.07586206896551724
+      },
+      "key_state_micro_accuracy": 0.5984049063519262,
+      "joint_exact_match_accuracy": 0.034270365396193214,
+      "always_released_micro": 0.8455154117405773,
+      "always_released_joint": 0.4009864307877553,
+      "persistence_micro": 0.9890672241665619,
+      "persistence_joint": 0.930996156161719,
+      "macro_ap_all_frames": 0.2054049418716465
+    },
+    "intersection": {
+      "n_frames": 16805,
+      "n_active": 16094,
+      "n_streams": 53,
+      "macro_ap_input_active": 0.21775086241678934,
+      "per_key_ap_input_active": {
+        "left": 0.16995624318096508,
+        "right": 0.26581188618933926,
+        "up": 0.18327182171183318,
+        "down": 0.14248550754624278,
+        "jump": 0.12301760245894588,
+        "dash": 0.18818163364075857,
+        "grab": 0.45153134218944035
+      },
+      "prevalence_input_active": {
+        "left": 0.16391201690070833,
+        "right": 0.19671927426370076,
+        "up": 0.18155834472474214,
+        "down": 0.03479557599105257,
+        "jump": 0.08997141791972163,
+        "dash": 0.13017273518081274,
+        "grab": 0.22778675282714056
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.25988996881509174,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.2816570574418108,
+        "right": 0.32876427829698857,
+        "up": 0.30778954021172383,
+        "down": 0.13451776649746192,
+        "jump": 0.16508949948694562,
+        "dash": 0.23035900819176425,
+        "grab": 0.37105263157894736
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.07757810719268299,
+      "event_f1_fixed_dev_collar2_macro": 0.0807935922710084,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.04929577464788732,
+        "right": 0.11678832116788321,
+        "up": 0.09053497942386832,
+        "down": 0.0076045627376425855,
+        "jump": 0.02666666666666667,
+        "dash": 0.05860805860805861,
+        "grab": 0.1935483870967742
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.04929577464788732,
+        "right": 0.12408759124087591,
+        "up": 0.09053497942386832,
+        "down": 0.022813688212927757,
+        "jump": 0.02666666666666667,
+        "dash": 0.05860805860805861,
+        "grab": 0.1935483870967742
+      },
+      "key_state_micro_accuracy": 0.6067922384562127,
+      "joint_exact_match_accuracy": 0.044861439045607056,
+      "always_released_micro": 0.8535834117417316,
+      "always_released_joint": 0.41854107120666084,
+      "persistence_micro": 0.9888334605620551,
+      "persistence_joint": 0.9317136821175593,
+      "macro_ap_all_frames": 0.2075339334490565
+    }
+  },
+  "foreign_tier_b_13p45h_32nc_s1": {
+    "weights": "selected",
+    "maximal": {
+      "n_frames": 48944,
+      "n_active": 43186,
+      "n_streams": 132,
+      "macro_ap_input_active": 0.19427249853916503,
+      "per_key_ap_input_active": {
+        "left": 0.17738120511043157,
+        "right": 0.24571567529347665,
+        "up": 0.21441202473903737,
+        "down": 0.0745052391044723,
+        "jump": 0.11608996054888505,
+        "dash": 0.1697719067535453,
+        "grab": 0.3620314782243069
+      },
+      "prevalence_input_active": {
+        "left": 0.1810772009447506,
+        "right": 0.22574445422127543,
+        "up": 0.18286018617144445,
+        "down": 0.050872968091511137,
+        "jump": 0.09857361181864494,
+        "dash": 0.14210623813272819,
+        "grab": 0.20015745843560412
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.24941108185092295,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.30886505914647394,
+        "right": 0.368338528383867,
+        "up": 0.3074971759250084,
+        "down": 0.0,
+        "jump": 0.1794650197086908,
+        "dash": 0.2488494211625408,
+        "grab": 0.33286236862987983
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.031197831558144668,
+      "event_f1_fixed_dev_collar2_macro": 0.035380147947615126,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.05,
+        "right": 0.0391566265060241,
+        "up": 0.032467532467532464,
+        "down": 0.0,
+        "jump": 0.012224938875305624,
+        "dash": 0.018469656992084433,
+        "grab": 0.06606606606606606
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.05277777777777778,
+        "right": 0.04819277108433735,
+        "up": 0.04220779220779221,
+        "down": 0.0,
+        "jump": 0.014669926650366748,
+        "dash": 0.023746701846965697,
+        "grab": 0.06606606606606606
+      },
+      "key_state_micro_accuracy": 0.596009950314586,
+      "joint_exact_match_accuracy": 0.016394201824665403,
+      "always_released_micro": 0.8455154117405773,
+      "always_released_joint": 0.4009864307877553,
+      "persistence_micro": 0.9890672241665619,
+      "persistence_joint": 0.930996156161719,
+      "macro_ap_all_frames": 0.1795905823651119
+    },
+    "intersection": {
+      "n_frames": 16805,
+      "n_active": 16094,
+      "n_streams": 53,
+      "macro_ap_input_active": 0.19109883494522897,
+      "per_key_ap_input_active": {
+        "left": 0.18740503707093412,
+        "right": 0.21997523744065212,
+        "up": 0.19383024133136728,
+        "down": 0.06226473123947075,
+        "jump": 0.11669604087257723,
+        "dash": 0.15950069888928675,
+        "grab": 0.3980198577723146
+      },
+      "prevalence_input_active": {
+        "left": 0.16391201690070833,
+        "right": 0.19671927426370076,
+        "up": 0.18155834472474214,
+        "down": 0.03479557599105257,
+        "jump": 0.08997141791972163,
+        "dash": 0.13017273518081274,
+        "grab": 0.22778675282714056
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.24036970749691502,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.28183760683760684,
+        "right": 0.32876427829698857,
+        "up": 0.30505253154532497,
+        "down": 0.0,
+        "jump": 0.16508949948694562,
+        "dash": 0.23035900819176425,
+        "grab": 0.371485028119775
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.07379642695983711,
+      "event_f1_fixed_dev_collar2_macro": 0.07595525125597892,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.04946996466431095,
+        "right": 0.11678832116788321,
+        "up": 0.0859375,
+        "down": 0.0,
+        "jump": 0.02666666666666667,
+        "dash": 0.05860805860805861,
+        "grab": 0.1791044776119403
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.04946996466431095,
+        "right": 0.12408759124087591,
+        "up": 0.09375,
+        "down": 0.0,
+        "jump": 0.02666666666666667,
+        "dash": 0.05860805860805861,
+        "grab": 0.1791044776119403
+      },
+      "key_state_micro_accuracy": 0.5952173835857196,
+      "joint_exact_match_accuracy": 0.009506648440412576,
+      "always_released_micro": 0.8535834117417316,
+      "always_released_joint": 0.41854107120666084,
+      "persistence_micro": 0.9888334605620551,
+      "persistence_joint": 0.9317136821175593,
+      "macro_ap_all_frames": 0.18453735300092186
+    }
+  },
+  "foreign_tier_b_13p45h_32nc_s2": {
+    "weights": "selected",
+    "maximal": {
+      "n_frames": 48944,
+      "n_active": 43186,
+      "n_streams": 132,
+      "macro_ap_input_active": 0.22149537022107646,
+      "per_key_ap_input_active": {
+        "left": 0.2065776947590042,
+        "right": 0.2994158083137112,
+        "up": 0.24050631248898238,
+        "down": 0.07949075091518476,
+        "jump": 0.10892223680843872,
+        "dash": 0.2036417603386985,
+        "grab": 0.4119130279235156
+      },
+      "prevalence_input_active": {
+        "left": 0.1810772009447506,
+        "right": 0.22574445422127543,
+        "up": 0.18286018617144445,
+        "down": 0.050872968091511137,
+        "jump": 0.09857361181864494,
+        "dash": 0.14210623813272819,
+        "grab": 0.20015745843560412
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.24948031062926773,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.30675641201750425,
+        "right": 0.368338528383867,
+        "up": 0.30893150468048053,
+        "down": 0.0,
+        "jump": 0.1796343986152742,
+        "dash": 0.24942591802312586,
+        "grab": 0.3332754126846221
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.032187333023568854,
+      "event_f1_fixed_dev_collar2_macro": 0.03769822739090745,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.049315068493150684,
+        "right": 0.0391566265060241,
+        "up": 0.0322061191626409,
+        "down": 0.0,
+        "jump": 0.012048192771084338,
+        "dash": 0.0175,
+        "grab": 0.07508532423208192
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.052054794520547946,
+        "right": 0.04819277108433735,
+        "up": 0.04186795491143317,
+        "down": 0.0,
+        "jump": 0.021686746987951807,
+        "dash": 0.025,
+        "grab": 0.07508532423208192
+      },
+      "key_state_micro_accuracy": 0.6569589351046304,
+      "joint_exact_match_accuracy": 0.04774695503172324,
+      "always_released_micro": 0.8455154117405773,
+      "always_released_joint": 0.4009864307877553,
+      "persistence_micro": 0.9890672241665619,
+      "persistence_joint": 0.930996156161719,
+      "macro_ap_all_frames": 0.20301669729788263
+    },
+    "intersection": {
+      "n_frames": 16805,
+      "n_active": 16094,
+      "n_streams": 53,
+      "macro_ap_input_active": 0.21976506507134755,
+      "per_key_ap_input_active": {
+        "left": 0.18852323114154226,
+        "right": 0.24815586070582726,
+        "up": 0.21635393244408166,
+        "down": 0.13061673965890783,
+        "jump": 0.09152902647900266,
+        "dash": 0.1986763641572879,
+        "grab": 0.46450030091278327
+      },
+      "prevalence_input_active": {
+        "left": 0.16391201690070833,
+        "right": 0.19671927426370076,
+        "up": 0.18155834472474214,
+        "down": 0.03479557599105257,
+        "jump": 0.08997141791972163,
+        "dash": 0.13017273518081274,
+        "grab": 0.22778675282714056
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.24067997800550114,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.2816570574418108,
+        "right": 0.32876427829698857,
+        "up": 0.3084230525649145,
+        "down": 0.0,
+        "jump": 0.16506849315068492,
+        "dash": 0.23086671441952725,
+        "grab": 0.36998025016458197
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.07558865332906592,
+      "event_f1_fixed_dev_collar2_macro": 0.07858917855289063,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.04929577464788732,
+        "right": 0.11678832116788321,
+        "up": 0.08906882591093117,
+        "down": 0.0,
+        "jump": 0.026143790849673203,
+        "dash": 0.05734767025089606,
+        "grab": 0.19047619047619047
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.04929577464788732,
+        "right": 0.12408759124087591,
+        "up": 0.08906882591093117,
+        "down": 0.0,
+        "jump": 0.032679738562091505,
+        "dash": 0.06451612903225806,
+        "grab": 0.19047619047619047
+      },
+      "key_state_micro_accuracy": 0.6571481829963252,
+      "joint_exact_match_accuracy": 0.049273021001615507,
+      "always_released_micro": 0.8535834117417316,
+      "always_released_joint": 0.41854107120666084,
+      "persistence_micro": 0.9888334605620551,
+      "persistence_joint": 0.9317136821175593,
+      "macro_ap_all_frames": 0.20533431269083272
+    }
+  },
+  "foreign_tier_b_13p45h_37m_e2e_aug_32nc_s0": {
+    "weights": "selected",
+    "maximal": {
+      "n_frames": 48944,
+      "n_active": 43186,
+      "n_streams": 132,
+      "macro_ap_input_active": 0.23769767627200397,
+      "per_key_ap_input_active": {
+        "left": 0.19932885965422575,
+        "right": 0.33265829659979773,
+        "up": 0.34744798701731006,
+        "down": 0.102305418508333,
+        "jump": 0.20547253271838595,
+        "dash": 0.25516773919678437,
+        "grab": 0.22150290020919103
+      },
+      "prevalence_input_active": {
+        "left": 0.1810772009447506,
+        "right": 0.22574445422127543,
+        "up": 0.18286018617144445,
+        "down": 0.050872968091511137,
+        "jump": 0.09857361181864494,
+        "dash": 0.14210623813272819,
+        "grab": 0.20015745843560412
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.26617444337442225,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.3069034615535735,
+        "right": 0.36830770393319984,
+        "up": 0.3096984195458645,
+        "down": 0.11415269469900109,
+        "jump": 0.17951421101459053,
+        "dash": 0.24914745047093212,
+        "grab": 0.33549716240379385
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.030172272849218324,
+      "event_f1_fixed_dev_collar2_macro": 0.03615030141219866,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.038781163434903045,
+        "right": 0.03903903903903904,
+        "up": 0.034129692832764506,
+        "down": 0.004486316733961417,
+        "jump": 0.012165450121654502,
+        "dash": 0.018276762402088774,
+        "grab": 0.06432748538011696
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.04709141274238227,
+        "right": 0.04804804804804805,
+        "up": 0.03754266211604096,
+        "down": 0.01794526693584567,
+        "jump": 0.014598540145985401,
+        "dash": 0.02349869451697128,
+        "grab": 0.06432748538011696
+      },
+      "key_state_micro_accuracy": 0.6465256597706929,
+      "joint_exact_match_accuracy": 0.1456953642384106,
+      "always_released_micro": 0.8455154117405773,
+      "always_released_joint": 0.4009864307877553,
+      "persistence_micro": 0.9890672241665619,
+      "persistence_joint": 0.930996156161719,
+      "macro_ap_all_frames": 0.22141747119012592
+    },
+    "intersection": {
+      "n_frames": 16805,
+      "n_active": 16094,
+      "n_streams": 53,
+      "macro_ap_input_active": 0.22352447732046052,
+      "per_key_ap_input_active": {
+        "left": 0.17261250046347942,
+        "right": 0.2811480766909874,
+        "up": 0.3091545509677565,
+        "down": 0.12013080835013107,
+        "jump": 0.2067388303148678,
+        "dash": 0.2411959331920048,
+        "grab": 0.23369064126399655
+      },
+      "prevalence_input_active": {
+        "left": 0.16391201690070833,
+        "right": 0.19671927426370076,
+        "up": 0.18155834472474214,
+        "down": 0.03479557599105257,
+        "jump": 0.08997141791972163,
+        "dash": 0.13017273518081274,
+        "grab": 0.22778675282714056
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.2518234163033864,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.2816570574418108,
+        "right": 0.32876427829698857,
+        "up": 0.30732015145140934,
+        "down": 0.07727645611156686,
+        "jump": 0.16514598540145986,
+        "dash": 0.23058719938363326,
+        "grab": 0.37201278603683596
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.07588313968619588,
+      "event_f1_fixed_dev_collar2_macro": 0.0801808654289923,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.04929577464788732,
+        "right": 0.11678832116788321,
+        "up": 0.09053497942386832,
+        "down": 0.005063291139240506,
+        "jump": 0.026490066225165563,
+        "dash": 0.058394160583941604,
+        "grab": 0.18461538461538463
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.04929577464788732,
+        "right": 0.12408759124087591,
+        "up": 0.09053497942386832,
+        "down": 0.027848101265822784,
+        "jump": 0.026490066225165563,
+        "dash": 0.058394160583941604,
+        "grab": 0.18461538461538463
+      },
+      "key_state_micro_accuracy": 0.6452715297626445,
+      "joint_exact_match_accuracy": 0.15508885298869143,
+      "always_released_micro": 0.8535834117417316,
+      "always_released_joint": 0.41854107120666084,
+      "persistence_micro": 0.9888334605620551,
+      "persistence_joint": 0.9317136821175593,
+      "macro_ap_all_frames": 0.21768930388950805
+    }
+  },
+  "foreign_tier_b_13p45h_113m_e2e_aug_32nc_s0": {
+    "weights": "selected",
+    "maximal": {
+      "n_frames": 48944,
+      "n_active": 43186,
+      "n_streams": 132,
+      "macro_ap_input_active": 0.22608099172399612,
+      "per_key_ap_input_active": {
+        "left": 0.19453151041906036,
+        "right": 0.2717388323904533,
+        "up": 0.2986706831006677,
+        "down": 0.08207293016509573,
+        "jump": 0.19092148725787914,
+        "dash": 0.22847107012788664,
+        "grab": 0.31616042860692994
+      },
+      "prevalence_input_active": {
+        "left": 0.1810772009447506,
+        "right": 0.22574445422127543,
+        "up": 0.18286018617144445,
+        "down": 0.050872968091511137,
+        "jump": 0.09857361181864494,
+        "dash": 0.14210623813272819,
+        "grab": 0.20015745843560412
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.2635909026992763,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.30653039606096866,
+        "right": 0.368338528383867,
+        "up": 0.3094132628073269,
+        "down": 0.09783576772354827,
+        "jump": 0.17945745420820775,
+        "dash": 0.2492283950617284,
+        "grab": 0.33433251464928737
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.033460899960473606,
+      "event_f1_fixed_dev_collar2_macro": 0.03789042733852228,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.04155124653739612,
+        "right": 0.0391566265060241,
+        "up": 0.034129692832764506,
+        "down": 0.015625,
+        "jump": 0.012224938875305624,
+        "dash": 0.018205461638491547,
+        "grab": 0.07333333333333333
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.04986149584487535,
+        "right": 0.04819277108433735,
+        "up": 0.03754266211604096,
+        "down": 0.015625,
+        "jump": 0.014669926650366748,
+        "dash": 0.02600780234070221,
+        "grab": 0.07333333333333333
+      },
+      "key_state_micro_accuracy": 0.6059040297450894,
+      "joint_exact_match_accuracy": 0.050872968091511137,
+      "always_released_micro": 0.8455154117405773,
+      "always_released_joint": 0.4009864307877553,
+      "persistence_micro": 0.9890672241665619,
+      "persistence_joint": 0.930996156161719,
+      "macro_ap_all_frames": 0.2120870550740534
+    },
+    "intersection": {
+      "n_frames": 16805,
+      "n_active": 16094,
+      "n_streams": 53,
+      "macro_ap_input_active": 0.21173498243811134,
+      "per_key_ap_input_active": {
+        "left": 0.20070319814762716,
+        "right": 0.21008334606697704,
+        "up": 0.26298019871216166,
+        "down": 0.07674944879420963,
+        "jump": 0.15917879747046487,
+        "dash": 0.1982839802104278,
+        "grab": 0.3741659076649111
+      },
+      "prevalence_input_active": {
+        "left": 0.16391201690070833,
+        "right": 0.19671927426370076,
+        "up": 0.18155834472474214,
+        "down": 0.03479557599105257,
+        "jump": 0.08997141791972163,
+        "dash": 0.13017273518081274,
+        "grab": 0.22778675282714056
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.25031158199663023,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.2816570574418108,
+        "right": 0.32876427829698857,
+        "up": 0.30732015145140934,
+        "down": 0.06738463389687745,
+        "jump": 0.16508949948694562,
+        "dash": 0.2305745102355272,
+        "grab": 0.3713909431668524
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.08123277036614987,
+      "event_f1_fixed_dev_collar2_macro": 0.08227552323372025,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.04929577464788732,
+        "right": 0.11678832116788321,
+        "up": 0.09053497942386832,
+        "down": 0.03361344537815126,
+        "jump": 0.02666666666666667,
+        "dash": 0.05818181818181818,
+        "grab": 0.1935483870967742
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.04929577464788732,
+        "right": 0.12408759124087591,
+        "up": 0.09053497942386832,
+        "down": 0.03361344537815126,
+        "jump": 0.02666666666666667,
+        "dash": 0.05818181818181818,
+        "grab": 0.1935483870967742
+      },
+      "key_state_micro_accuracy": 0.6127749471852865,
+      "joint_exact_match_accuracy": 0.04517211383124146,
+      "always_released_micro": 0.8535834117417316,
+      "always_released_joint": 0.41854107120666084,
+      "persistence_micro": 0.9888334605620551,
+      "persistence_joint": 0.9317136821175593,
+      "macro_ap_all_frames": 0.2067268290948048
+    }
+  },
+  "nitrogen_unflagged_92train_y4n_holdout_26m_128x3_s0": {
+    "weights": "final",
+    "maximal": {
+      "n_frames": 16805,
+      "n_active": 16094,
+      "n_streams": 53,
+      "macro_ap_input_active": 0.19860954191751343,
+      "per_key_ap_input_active": {
+        "left": 0.24191517354577674,
+        "right": 0.30498907687148197,
+        "up": 0.2536969926121264,
+        "down": 0.05700225558700847,
+        "jump": 0.1259321852096581,
+        "dash": 0.17684250712023206,
+        "grab": 0.22988860247631018
+      },
+      "prevalence_input_active": {
+        "left": 0.16391201690070833,
+        "right": 0.19671927426370076,
+        "up": 0.18155834472474214,
+        "down": 0.03479557599105257,
+        "jump": 0.08997141791972163,
+        "dash": 0.13017273518081274,
+        "grab": 0.22778675282714056
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.2116774703972467,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.238403451995685,
+        "right": 0.39371280329620023,
+        "up": 0.03444034440344403,
+        "down": 0.07635526629097547,
+        "jump": 0.23524355300859598,
+        "dash": 0.23637307492645787,
+        "grab": 0.26721379885936847
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.02012828423619867,
+      "event_f1_fixed_dev_collar2_macro": 0.042419055894799336,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.006696428571428571,
+        "right": 0.0527086383601757,
+        "up": 0.0,
+        "down": 0.007067137809187279,
+        "jump": 0.02373887240356083,
+        "dash": 0.01735357917570499,
+        "grab": 0.03333333333333333
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.04017857142857143,
+        "right": 0.07027818448023426,
+        "up": 0.007220216606498195,
+        "down": 0.01060070671378092,
+        "jump": 0.08456973293768547,
+        "dash": 0.04772234273318872,
+        "grab": 0.03636363636363636
+      },
+      "key_state_micro_accuracy": 0.5922615349109694,
+      "joint_exact_match_accuracy": 0.11451472598483907,
+      "always_released_micro": 0.8535834117417316,
+      "always_released_joint": 0.41854107120666084,
+      "persistence_micro": 0.9888334605620551,
+      "persistence_joint": 0.9317136821175593,
+      "macro_ap_all_frames": 0.19574485456198457
+    },
+    "intersection": {
+      "n_frames": 16805,
+      "n_active": 16094,
+      "n_streams": 53,
+      "macro_ap_input_active": 0.19860954191751343,
+      "per_key_ap_input_active": {
+        "left": 0.24191517354577674,
+        "right": 0.30498907687148197,
+        "up": 0.2536969926121264,
+        "down": 0.05700225558700847,
+        "jump": 0.1259321852096581,
+        "dash": 0.17684250712023206,
+        "grab": 0.22988860247631018
+      },
+      "prevalence_input_active": {
+        "left": 0.16391201690070833,
+        "right": 0.19671927426370076,
+        "up": 0.18155834472474214,
+        "down": 0.03479557599105257,
+        "jump": 0.08997141791972163,
+        "dash": 0.13017273518081274,
+        "grab": 0.22778675282714056
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.2116774703972467,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.238403451995685,
+        "right": 0.39371280329620023,
+        "up": 0.03444034440344403,
+        "down": 0.07635526629097547,
+        "jump": 0.23524355300859598,
+        "dash": 0.23637307492645787,
+        "grab": 0.26721379885936847
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.02012828423619867,
+      "event_f1_fixed_dev_collar2_macro": 0.042419055894799336,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.006696428571428571,
+        "right": 0.0527086383601757,
+        "up": 0.0,
+        "down": 0.007067137809187279,
+        "jump": 0.02373887240356083,
+        "dash": 0.01735357917570499,
+        "grab": 0.03333333333333333
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.04017857142857143,
+        "right": 0.07027818448023426,
+        "up": 0.007220216606498195,
+        "down": 0.01060070671378092,
+        "jump": 0.08456973293768547,
+        "dash": 0.04772234273318872,
+        "grab": 0.03636363636363636
+      },
+      "key_state_micro_accuracy": 0.5922615349109694,
+      "joint_exact_match_accuracy": 0.11451472598483907,
+      "always_released_micro": 0.8535834117417316,
+      "always_released_joint": 0.41854107120666084,
+      "persistence_micro": 0.9888334605620551,
+      "persistence_joint": 0.9317136821175593,
+      "macro_ap_all_frames": 0.19574485456198457
+    }
+  },
+  "nitrogen_full_210train_y4n_holdout_26m_128x3_s0": {
+    "weights": "final",
+    "maximal": {
+      "n_frames": 16805,
+      "n_active": 16094,
+      "n_streams": 53,
+      "macro_ap_input_active": 0.17766981465659953,
+      "per_key_ap_input_active": {
+        "left": 0.1808506619817896,
+        "right": 0.2736384924279981,
+        "up": 0.22398256409004175,
+        "down": 0.03749598626593163,
+        "jump": 0.13181039889220333,
+        "dash": 0.17982972467279298,
+        "grab": 0.2160808742654393
+      },
+      "prevalence_input_active": {
+        "left": 0.16391201690070833,
+        "right": 0.19671927426370076,
+        "up": 0.18155834472474214,
+        "down": 0.03479557599105257,
+        "jump": 0.08997141791972163,
+        "dash": 0.13017273518081274,
+        "grab": 0.22778675282714056
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.24348098017168057,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.08872260823089258,
+        "right": 0.3923343092893266,
+        "up": 0.3162974336477298,
+        "down": 0.07327141382868937,
+        "jump": 0.22899628252788104,
+        "dash": 0.2771757885292291,
+        "grab": 0.3275690251480157
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.025305262490758457,
+      "event_f1_fixed_dev_collar2_macro": 0.04388689029900418,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.00398406374501992,
+        "right": 0.043478260869565216,
+        "up": 0.019011406844106463,
+        "down": 0.012121212121212121,
+        "jump": 0.027247956403269755,
+        "dash": 0.027257240204429302,
+        "grab": 0.044036697247706424
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.02390438247011952,
+        "right": 0.06178489702517163,
+        "up": 0.05449936628643853,
+        "down": 0.01616161616161616,
+        "jump": 0.07956403269754768,
+        "dash": 0.027257240204429302,
+        "grab": 0.044036697247706424
+      },
+      "key_state_micro_accuracy": 0.5689342967210496,
+      "joint_exact_match_accuracy": 0.1375667950789114,
+      "always_released_micro": 0.8535834117417316,
+      "always_released_joint": 0.41854107120666084,
+      "persistence_micro": 0.9888334605620551,
+      "persistence_joint": 0.9317136821175593,
+      "macro_ap_all_frames": 0.1746105136001906
+    },
+    "intersection": {
+      "n_frames": 16805,
+      "n_active": 16094,
+      "n_streams": 53,
+      "macro_ap_input_active": 0.17766981465659953,
+      "per_key_ap_input_active": {
+        "left": 0.1808506619817896,
+        "right": 0.2736384924279981,
+        "up": 0.22398256409004175,
+        "down": 0.03749598626593163,
+        "jump": 0.13181039889220333,
+        "dash": 0.17982972467279298,
+        "grab": 0.2160808742654393
+      },
+      "prevalence_input_active": {
+        "left": 0.16391201690070833,
+        "right": 0.19671927426370076,
+        "up": 0.18155834472474214,
+        "down": 0.03479557599105257,
+        "jump": 0.08997141791972163,
+        "dash": 0.13017273518081274,
+        "grab": 0.22778675282714056
+      },
+      "state_f1_fixed_dev_macro_input_active": 0.24348098017168057,
+      "per_key_state_f1_fixed_dev_input_active": {
+        "left": 0.08872260823089258,
+        "right": 0.3923343092893266,
+        "up": 0.3162974336477298,
+        "down": 0.07327141382868937,
+        "jump": 0.22899628252788104,
+        "dash": 0.2771757885292291,
+        "grab": 0.3275690251480157
+      },
+      "event_f1_fixed_dev_collar0_macro": 0.025305262490758457,
+      "event_f1_fixed_dev_collar2_macro": 0.04388689029900418,
+      "per_key_event_f1_fixed_dev_collar0": {
+        "left": 0.00398406374501992,
+        "right": 0.043478260869565216,
+        "up": 0.019011406844106463,
+        "down": 0.012121212121212121,
+        "jump": 0.027247956403269755,
+        "dash": 0.027257240204429302,
+        "grab": 0.044036697247706424
+      },
+      "per_key_event_f1_fixed_dev_collar2": {
+        "left": 0.02390438247011952,
+        "right": 0.06178489702517163,
+        "up": 0.05449936628643853,
+        "down": 0.01616161616161616,
+        "jump": 0.07956403269754768,
+        "dash": 0.027257240204429302,
+        "grab": 0.044036697247706424
+      },
+      "key_state_micro_accuracy": 0.5689342967210496,
+      "joint_exact_match_accuracy": 0.1375667950789114,
+      "always_released_micro": 0.8535834117417316,
+      "always_released_joint": 0.41854107120666084,
+      "persistence_micro": 0.9888334605620551,
+      "persistence_joint": 0.9317136821175593,
+      "macro_ap_all_frames": 0.1746105136001906
+    }
+  },
+  "trivial_baselines_shard": {
+    "shard": "rec_20260727_220000_test.npz",
+    "active_frames": 46162,
+    "chance_ap_per_key": {
+      "left": 0.17878341493002903,
+      "right": 0.22176248862700923,
+      "up": 0.1780902040639487,
+      "down": 0.050777695940383866,
+      "jump": 0.09520817988821975,
+      "dash": 0.14050517741865604,
+      "grab": 0.1953554871972618
+    },
+    "chance_ap_macro": 0.15149752115221546,
+    "persistence_ap_per_key": {
+      "left": 0.9285658410457696,
+      "right": 0.9496791702200288,
+      "up": 0.9456351071951937,
+      "down": 0.9079299720825883,
+      "jump": 0.8485020939552297,
+      "dash": 0.9031095376744642,
+      "grab": 0.9810108028676446
+    },
+    "persistence_ap_macro": 0.9234903607201312,
+    "chance_event_f1": 0.0,
+    "persistence_event_f1_per_key": {
+      "0": {
+        "left": 0.0,
+        "right": 0.0,
+        "up": 0.0,
+        "down": 0.0,
+        "jump": 0.0,
+        "dash": 0.0,
+        "grab": 0.0
+      },
+      "1": {
+        "left": 1.0,
+        "right": 0.9973094170403587,
+        "up": 0.9989594172736732,
+        "down": 1.0,
+        "jump": 0.9986091794158554,
+        "dash": 0.9962546816479401,
+        "grab": 1.0
+      },
+      "2": {
+        "left": 1.0,
+        "right": 0.9973094170403587,
+        "up": 0.9989594172736732,
+        "down": 1.0,
+        "jump": 0.9986091794158554,
+        "dash": 0.9962546816479401,
+        "grab": 1.0
+      }
+    },
+    "persistence_event_f1_macro": {
+      "0": 0.0,
+      "1": 0.9987332421968326,
+      "2": 0.9987332421968326
+    },
+    "shuffled_event_f1_per_key": {
+      "0": {
+        "left": 0.007570977917981073,
+        "right": 0.006810035842293907,
+        "up": 0.005625,
+        "down": 0.0013761467889908258,
+        "jump": 0.008762169680111266,
+        "dash": 0.006726457399103139,
+        "grab": 0.0012121212121212121
+      },
+      "1": {
+        "left": 0.01924290220820189,
+        "right": 0.01810035842293907,
+        "up": 0.013958333333333333,
+        "down": 0.005504587155963303,
+        "jump": 0.021974965229485395,
+        "dash": 0.020179372197309416,
+        "grab": 0.005454545454545454
+      },
+      "2": {
+        "left": 0.03785488958990536,
+        "right": 0.029749103942652334,
+        "up": 0.027916666666666666,
+        "down": 0.011009174311926606,
+        "jump": 0.03838664812239222,
+        "dash": 0.028849028400597908,
+        "grab": 0.008484848484848486
+      }
+    },
+    "shuffled_event_f1_macro": {
+      "0": 0.005440415548657346,
+      "1": 0.014916437714539696,
+      "2": 0.02603576564556994
+    }
+  }
+}

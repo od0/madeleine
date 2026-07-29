@@ -1,0 +1,156 @@
+{
+  "schema_version": "madeleine.wild-layout.v1",
+  "video_id": "kdQbIoMxzZw",
+  "overlay_style": "semantic_action_grid_bottom_bar_translucency_unresolved",
+  "gameplay_rect": [
+    0.19140625,
+    0.0,
+    0.80859375,
+    0.8083333333333333
+  ],
+  "gameplay_rect_source": "sparse_seek_visual_audit:results/wild20/kdQbIoMxzZw/contact_sheet.png",
+  "gameplay_rect_confidence": 0.97,
+  "mask_rects": [
+    [
+      0.60546875,
+      0.8083333333333333,
+      0.32421875,
+      0.19166666666666668
+    ]
+  ],
+  "cells": [
+    {
+      "cell_id": "main_left",
+      "action": "left",
+      "sample_rect": [
+        0.77109375,
+        0.9097222222222222,
+        0.009375,
+        0.0138888888888889
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "main_right",
+      "action": "right",
+      "sample_rect": [
+        0.878125,
+        0.9097222222222222,
+        0.009375,
+        0.0138888888888889
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "main_up",
+      "action": "up",
+      "sample_rect": [
+        0.82421875,
+        0.8152777777777778,
+        0.009375,
+        0.0138888888888889
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "main_down",
+      "action": "down",
+      "sample_rect": [
+        0.82421875,
+        0.9097222222222222,
+        0.009375,
+        0.0138888888888889
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "main_jump",
+      "action": "jump",
+      "sample_rect": [
+        0.77109375,
+        0.8152777777777778,
+        0.009375,
+        0.0138888888888889
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "alternate_jump_upper",
+      "action": "jump",
+      "sample_rect": [
+        0.75625,
+        0.8152777777777778,
+        0.0078125,
+        0.0111111111111111
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "main_dash",
+      "action": "dash",
+      "sample_rect": [
+        0.66328125,
+        0.9097222222222222,
+        0.009375,
+        0.0138888888888889
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "main_grab",
+      "action": "grab",
+      "sample_rect": [
+        0.66328125,
+        0.8152777777777778,
+        0.009375,
+        0.0138888888888889
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    }
+  ],
+  "inference_source": "sparse_seek_visual_audit:semantic labels and eight distinct pressed/released state pairs",
+  "inference_confidence": 0.9,
+  "human_reviewed": true,
+  "evidence_frames_s": [
+    17.8,
+    17.816667,
+    120.0,
+    600.0,
+    900.0,
+    3000.0,
+    6800.0,
+    7400.0,
+    7600.0,
+    7930.0,
+    7944.566667,
+    7944.583333,
+    7944.6,
+    7944.616667,
+    7946.0,
+    8000.0
+  ],
+  "temporal_offset_frames": 0,
+  "temporal_offset_source": "dash_hitstop_v1+reviewed_acceptance:84c32ea79b6d99161ac12ca3b99de60796ddde0d3ea3d20ac121c4af99c8fcd8",
+  "temporal_offset_confidence": 1.0,
+  "layout_review_acceptance": {
+    "format_version": "madeleine.wild-layout-acceptance.v1",
+    "artifact": "layout_acceptance.json",
+    "review_manifest_sha256": "d1d02998e8f0ad3c11503a3e2a51477b422898040a879482ea4a8d8df2bc88b0",
+    "source_video_sha256": "eddef296f94cde515674f677d2a4dd2dc8eddcd11763df9f1a2b85491d6810cf"
+  },
+  "temporal_offset_acceptance": {
+    "format_version": "madeleine.wild-offset-acceptance.v3",
+    "artifact": "offset_acceptance.json",
+    "calibration_sha256": "84c32ea79b6d99161ac12ca3b99de60796ddde0d3ea3d20ac121c4af99c8fcd8",
+    "tier": "pass",
+    "offset_uncertainty_frames": 1
+  }
+}

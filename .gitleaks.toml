@@ -1,0 +1,10 @@
+# Secret-scan configuration for the public export's strict verification.
+# Default detection rules stay fully enabled; the only allowlist entries are
+# research identifiers that false-positive against generic-key heuristics.
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Metric identifiers misread as generic API keys"
+regexes = ['''per_key_transition_f1''']

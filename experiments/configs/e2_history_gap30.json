@@ -1,0 +1,1 @@
+{"window":16,"window_mode":"centered","input_config":"history","history_len":8,"history_gap":30,"batch_size":64,"eval_interval":100,"seed":0,"max_steps":4000,"_note":"E2 policy prior: history ends 0.5s before the target, so it cannot copy the previous action"}

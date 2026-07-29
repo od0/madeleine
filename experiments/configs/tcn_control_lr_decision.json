@@ -1,0 +1,249 @@
+{
+  "schema_version": 1,
+  "study_id": "tcn_control_lr_y4n_later8_s0",
+  "status": "preregistered_before_new_run_launch",
+  "preregistered_at_utc": "2026-07-27T16:22:34Z",
+  "authorization": {
+    "authorized_by": "Bryan",
+    "authorized_scope": [
+      "natural-BCE no-event-head no-latch aligned-TCN control",
+      "weighted aligned-TCN learning-rate sensitivity at 1e-4",
+      "weighted aligned-TCN learning-rate sensitivity at 1e-3"
+    ],
+    "pixel_temporal_stem_authorized": false
+  },
+  "repository_receipt": {
+    "head_observed_before_preregistration": "95a20e09e58b3c7313dcf3b35c7001a04c30c6eb",
+    "note": "The preregistration and all launch materials must be committed before any of the three new trainers starts. The execution receipt must record that commit, even if the remote worktree later contains unrelated changes."
+  },
+  "frozen_population": {
+    "surface": "mapped NitroGen development video y4nQHqYSObI",
+    "role": "development decision surface; noisy mapped labels, not engine truth",
+    "session_ids": [
+      "y4nQHqYSObI__r008__stream000",
+      "y4nQHqYSObI__r009__stream000",
+      "y4nQHqYSObI__r010__stream000",
+      "y4nQHqYSObI__r011__stream000",
+      "y4nQHqYSObI__r012__stream000",
+      "y4nQHqYSObI__r013__stream000",
+      "y4nQHqYSObI__r014__stream000",
+      "y4nQHqYSObI__r015__stream000"
+    ],
+    "expected_active_frames": 269352,
+    "expected_frames_by_session": {
+      "y4nQHqYSObI__r008__stream000": 35619,
+      "y4nQHqYSObI__r009__stream000": 35619,
+      "y4nQHqYSObI__r010__stream000": 35619,
+      "y4nQHqYSObI__r011__stream000": 35619,
+      "y4nQHqYSObI__r012__stream000": 35619,
+      "y4nQHqYSObI__r013__stream000": 35619,
+      "y4nQHqYSObI__r014__stream000": 35619,
+      "y4nQHqYSObI__r015__stream000": 20019
+    },
+    "keys": [
+      "left",
+      "right",
+      "up",
+      "down",
+      "jump",
+      "dash",
+      "grab"
+    ],
+    "support_policy": "Use all and only the listed whole streams, in listed order, with the same active-target mask for every run. Any support mismatch invalidates the comparison until corrected.",
+    "checkpoint_policy": "final weights at the fixed one-pass endpoint only",
+    "probability_policy": "raw state sigmoid probabilities; no fitted calibration",
+    "threshold_policy": "probability >= 0.5 for fixed state and state-transition metrics",
+    "event_policy": "derive onset and release transitions separately within each stream; one-to-one match within stream; combine onset and release counts per key before macro averaging; never match across a stream boundary",
+    "oracle_metrics_allowed_in_decision": false
+  },
+  "consulted_runs": {
+    "matched_gru": {
+      "run_id": "nitrogen_unflagged_92train_y4n_holdout_26m_128x3_s0",
+      "status": "existing",
+      "role": "contextual recipe-matched GRU reference; not a candidate selected by this study"
+    },
+    "weighted_tcn_lr3e4": {
+      "run_id": "nitrogen_unflagged_92train_y4n_holdout_26m_vptlite_tcn_s0",
+      "status": "existing",
+      "learning_rate": 0.0003,
+      "role": "Track 2 recipe-matched architecture headline and LR-sensitivity reference"
+    },
+    "event_head_tcn_direct": {
+      "run_id": "nitrogen_unflagged_92train_y4n_holdout_26m_vptlite_event_latch_s0",
+      "output": "direct_state",
+      "status": "existing",
+      "learning_rate": 0.0003,
+      "role": "Track 3 direct state output; comparison with the natural control estimates the effect of event-head gradients after config equivalence is verified"
+    },
+    "natural_tcn_control": {
+      "run_id": "nitrogen_unflagged_92train_y4n_holdout_26m_vptlite_tcn_natural_s0",
+      "status": "authorized_not_yet_launched_at_freeze",
+      "learning_rate": 0.0003,
+      "config": "experiments/configs/vptlite_tcn_natural_26m_128x3frame_full_holdout.json",
+      "launcher": "experiments/run_vptlite_tcn_natural_holdout.sh",
+      "role": "natural-prevalence BCE, no event heads, no latch; loss-only control"
+    },
+    "weighted_tcn_lr1e4": {
+      "run_id": "nitrogen_unflagged_92train_y4n_holdout_26m_vptlite_tcn_lr1e4_s0",
+      "status": "authorized_not_yet_launched_at_freeze",
+      "learning_rate": 0.0001,
+      "config": "experiments/configs/vptlite_tcn_26m_128x3frame_full_holdout_lr1e4.json",
+      "launcher": "experiments/run_vptlite_tcn_lr_sensitivity.sh",
+      "role": "optimizer sensitivity only"
+    },
+    "weighted_tcn_lr1e3": {
+      "run_id": "nitrogen_unflagged_92train_y4n_holdout_26m_vptlite_tcn_lr1e3_s0",
+      "status": "authorized_not_yet_launched_at_freeze",
+      "learning_rate": 0.001,
+      "config": "experiments/configs/vptlite_tcn_26m_128x3frame_full_holdout_lr1e3.json",
+      "launcher": "experiments/run_vptlite_tcn_lr_sensitivity.sh",
+      "role": "optimizer sensitivity only"
+    }
+  },
+  "context_outputs_disclosed_but_excluded_from_decisions": [
+    {
+      "run_id": "nitrogen_unflagged_92train_y4n_holdout_26m_vptlite_event_latch_s0",
+      "output": "legal_latch",
+      "reason": "It answers the already-reported within-checkpoint decoder question, not either new control question."
+    },
+    {
+      "output": "affine-calibrated variants",
+      "reason": "Calibration preserves AP and changes the operating point; the primary comparison is deliberately raw and fixed at 0.5."
+    }
+  ],
+  "multiplicity": {
+    "number_of_new_runs": 3,
+    "number_of_lr_candidates_compared_with_lr3e4": 2,
+    "policy": "Report every candidate and every preregistered metric. Do not relabel the best of the two LR variants as a matched headline, and do not hide the losing LR probe. No p-values or confidence claims are adjusted or inferred from this single-seed screen."
+  },
+  "required_result_record": {
+    "path": "results/idm/tcn_control_lr_y4n_decision.json",
+    "metric_json_pointers": {
+      "macro_ap": "/runs/{run_id}/metrics/macro_ap",
+      "per_key_ap": "/runs/{run_id}/metrics/per_key_ap/{key}",
+      "macro_state_f1_fixed_0_5": "/runs/{run_id}/metrics/macro_state_f1_fixed_0_5",
+      "key_state_micro_accuracy_fixed_0_5": "/runs/{run_id}/metrics/key_state_micro_accuracy_fixed_0_5",
+      "joint_exact_match_accuracy_fixed_0_5": "/runs/{run_id}/metrics/joint_exact_match_accuracy_fixed_0_5",
+      "predicted_positive_rate_fixed_0_5": "/runs/{run_id}/metrics/predicted_positive_rate_fixed_0_5",
+      "segment_bounded_exact_event_f1_fixed_0_5": "/runs/{run_id}/metrics/segment_bounded_combined_event_f1_fixed_0_5/exact",
+      "segment_bounded_plus_minus_2_event_f1_fixed_0_5": "/runs/{run_id}/metrics/segment_bounded_combined_event_f1_fixed_0_5/plus_minus_2",
+      "prevalence_macro": "/runs/{run_id}/baselines/prevalence_macro",
+      "prevalence_per_key": "/runs/{run_id}/baselines/prevalence_per_key/{key}",
+      "always_released_micro_accuracy": "/runs/{run_id}/baselines/always_released/key_state_micro_accuracy",
+      "always_released_joint_accuracy": "/runs/{run_id}/baselines/always_released/joint_exact_match_accuracy",
+      "persistence_micro_accuracy": "/runs/{run_id}/baselines/one_frame_persistence/key_state_micro_accuracy",
+      "persistence_joint_accuracy": "/runs/{run_id}/baselines/one_frame_persistence/joint_exact_match_accuracy",
+      "persistence_exact_event_f1": "/runs/{run_id}/baselines/one_frame_persistence/segment_bounded_combined_event_f1/exact",
+      "persistence_plus_minus_2_event_f1": "/runs/{run_id}/baselines/one_frame_persistence/segment_bounded_combined_event_f1/plus_minus_2",
+      "per_stream_macro_ap": "/runs/{run_id}/per_stream/{session_id}/macro_ap"
+    },
+    "required_receipts_per_run": [
+      "run_id",
+      "inferential_role",
+      "config_sha256",
+      "launcher_sha256",
+      "checkpoint_sha256",
+      "prediction_sidecar_sha256",
+      "implementation_git_commit",
+      "training_start_utc",
+      "training_end_utc",
+      "final_step",
+      "expected_final_step",
+      "support_session_ids",
+      "active_frames",
+      "finite_aligned_arrays",
+      "valid"
+    ],
+    "required_decision_fields": [
+      "all_consulted_runs",
+      "multiplicity_disclosure",
+      "objective_contrast",
+      "event_head_gradient_contrast",
+      "lr_sensitivity",
+      "event_regression_guards",
+      "single_seed_limit",
+      "y4n_decision_frozen_before_b1",
+      "decision_record_sha256",
+      "decision_git_commit"
+    ]
+  },
+  "validity_gates": {
+    "common": [
+      "seed is 0",
+      "training cohort, streams, target support, feature inputs, architecture, batch, optimizer family, weight decay, LR schedule, and one-pass final step match the intended contrast",
+      "final checkpoint exists at the expected fixed endpoint",
+      "final prediction arrays are finite and aligned to exactly 269352 rows on the eight frozen streams",
+      "no intermediate or selected checkpoint substitutes for final weights",
+      "no y4n threshold or calibration parameter is fitted for a primary metric",
+      "no B1 output for a new run exists before the immutable y4n decision receipt"
+    ],
+    "natural_control_specific": "The natural control must differ from weighted_tcn_lr3e4 only in class_balance=false and transition_weight=1.0 plus descriptive metadata; it must have no event head and no latch.",
+    "lr_specific": "Each LR variant must differ from weighted_tcn_lr3e4 only in learning_rate plus descriptive metadata.",
+    "failure_policy": "A failed or invalid run is reported as failed with the gate and cause. It is not silently rerun under a changed recipe; any rerun retains both receipts and is a deviation."
+  },
+  "attribution_contrasts": {
+    "state_objective": {
+      "left": "natural_tcn_control",
+      "right": "weighted_tcn_lr3e4",
+      "delta_direction": "natural_tcn_control minus weighted_tcn_lr3e4",
+      "interpretation": "Isolates natural-prevalence state BCE versus class-balanced, transition-weighted state loss after the config-difference gate passes."
+    },
+    "event_head_shared_trunk_gradients": {
+      "left": "event_head_tcn_direct",
+      "right": "natural_tcn_control",
+      "delta_direction": "event_head_tcn_direct minus natural_tcn_control",
+      "interpretation": "Isolates adding the onset/release heads and their shared-trunk gradients; the direct state output is used, never the latch, after the config-difference gate passes."
+    },
+    "lr_sensitivity": {
+      "reference": "weighted_tcn_lr3e4",
+      "candidates": [
+        "weighted_tcn_lr1e4",
+        "weighted_tcn_lr1e3"
+      ],
+      "interpretation": "Tests whether the aligned TCN result is sensitive to its optimizer recipe. It does not replace the 3e-4 recipe-matched architecture headline."
+    }
+  },
+  "decision_rules": {
+    "material_macro_ap_effect": {
+      "minimum_absolute_macro_ap_delta": 0.005,
+      "minimum_same_direction_stream_deltas_out_of_8": 5,
+      "stream_metric": "per-stream macro AP on the frozen stream",
+      "rule": "Both conditions must hold in the claimed direction. Otherwise call the contrast inconclusive at the preregistered effect size."
+    },
+    "lr_recipe_sensitivity": {
+      "reference": "weighted_tcn_lr3e4",
+      "rule": "Recipe sensitivity is present if either LR candidate gains at least 0.005 aggregate macro AP over 3e-4 and has a strictly positive per-stream macro-AP delta on at least five of eight streams.",
+      "if_neither_passes": "No material LR sensitivity was detected at the tested rates and effect threshold.",
+      "if_one_or_both_pass": "Report every candidate and label the result optimizer-recipe-sensitive. A candidate is not promoted from this single-seed sensitivity screen."
+    },
+    "event_regression_guards": {
+      "reference": "the right-hand/reference run for each contrast",
+      "exact_event_f1_minimum_delta": -0.002,
+      "plus_minus_2_event_f1_minimum_delta": -0.005,
+      "rule": "Report both deltas for every contrast. If either falls below its floor, label any AP improvement as accompanied by a fixed event-timing regression. The guard does not turn a non-AP result into a win."
+    },
+    "objective_and_event_head_effects": {
+      "rule": "Use the same 0.005 aggregate macro-AP and five-of-eight stream rule to call either causal contrast materially positive or negative. Always report fixed state and event metrics beside the ranking result; event-guard failure qualifies the conclusion."
+    },
+    "gru_crossing": {
+      "rule": "If an LR variant exceeds the existing GRU on any metric, describe it only as a recipe-sensitive TCN result. It is not a matched architecture win because the GRU did not receive the same LR sweep. A matched claim requires a new preregistered per-architecture recipe comparison."
+    },
+    "single_seed": {
+      "rule": "No model or architecture is promoted from these seed-0 runs. A promotion claim requires a separately frozen confirmation across additional seeds or an untouched evaluation."
+    }
+  },
+  "headline_policy": {
+    "recipe_matched_architecture_headline": "weighted_tcn_lr3e4",
+    "sensitivity_variants_are_headlines": false,
+    "final_weights_only": true,
+    "primary_surface": "y4n later-eight",
+    "oracle_rows": "excluded from the decision"
+  },
+  "b1_embargo": {
+    "existing_prior_b1_results_acknowledged": true,
+    "existing_results_note": "B1 results for the older GRU, Track 2, and Track 3 had already been consulted and cannot be made untouched retroactively. They are not inputs to this three-run decision.",
+    "before_y4n_decision": "Do not run, read, generate, or admit B1 inference or metrics for any of the three new runs.",
+    "release_condition": "The complete y4n decision JSON is written, SHA-256 hashed, committed, and records every valid/failed run and preregistered decision field.",
+    "after_release": "Score B1 final weights for every valid new run, not only a favorable y4n variant. B1 remains development-only, cannot change the frozen y4n decision, and cannot promote a single-seed model."
+  }
+}

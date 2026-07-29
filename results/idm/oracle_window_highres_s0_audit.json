@@ -1,0 +1,63 @@
+{
+  "cache_content_sha256": "a1c0d38fcac8af5fbfe79ff59b09282914d3d6e4d7d385403659fe4b96b364dc",
+  "cache_receipt_sha256": "55f9a96cec4c42ba6a5e4713b9cc35cce09b90974fb8a7127520963a75679e98",
+  "checks": {
+    "content_bound_completion_marker": true,
+    "exact_attention_sidecar_replay": true,
+    "exact_checkpoint_tensor_hashes": true,
+    "exact_fixed_policy_report_regeneration": true,
+    "exact_probability_sidecar_replay": true
+  },
+  "completion_marker_sha256": "04e411d43ae4544c81d8913361d2301036d8599648f4d3cd4d4eec0f5c40052c",
+  "config_sha256": "7144e68f65acb75a7ae5712330d162f20e16f0fa9bd9440c7f58f67e7962e75f",
+  "decision": {
+    "regional_attribution_passed": false,
+    "status": "reject_study_h_primary_gate",
+    "study_d_requires_separate_contract_and_authorization": true,
+    "study_h_primary_passed": false
+  },
+  "implementation": {
+    "git_head": "546933bb010dc48d21592546096eec885a84bad4",
+    "relevant_file_sha256": {
+      "data/schema.py": "3712ec20318a76a7939cd6561eafd75c67990a55556fabea18524fb79c52e0a2",
+      "experiments/oracle_window_highres_regional.py": "34bf6dbfe763c78b10d688abfe5c667908d8df23ebbe735c7eb90c797f602096",
+      "experiments/oracle_window_localization.py": "7b34c60f36ba752056d42ec015bd1aaf97c1729b7846b19b1a0d884d6834d272",
+      "experiments/prepare_oracle_window_fullres.py": "ca18afac600bf99d86189c98b05951bd1b2f5a0e316fbb80aa322cd007d5eb77",
+      "experiments/pretrain_dynamics.py": "b3718767c0f87cb0267364662cf8ed0d662d0d968f7d0aa57a3062932f4219a5",
+      "experiments/run_oracle_window_highres_regional.sh": "525b8be170e6ed4d5657d39db3fcc15398fa844ac4aa342e30d6cbe453a44f69",
+      "experiments/score_oracle_window_highres_regional.py": "1a77db3aec6628b167da8f19acfb6bd8c8b1b9ed7156d8bbc62b15e78d80117f",
+      "experiments/score_oracle_window_localization.py": "1a34d16fef1ea61714e8c03fc2c66d4a40e8046cbd53e44cf3d93e8486e1a468",
+      "tests/test_oracle_window_highres_regional.py": "b5c16cd11ab62c0cfe2135ad94edc58730eea9f122c3b25886d8af9e9530680f",
+      "tests/test_prepare_oracle_window_fullres.py": "6fe8c8c0c7f372bb5a18abc2faf4fcd24407da52de2145e78c962f815ce36eae",
+      "tests/test_score_oracle_window_highres_regional.py": "c49c87f2ae3ef78a5977e9927bf4c9855877bbd1b7e6df2670a8e5976d69364f"
+    }
+  },
+  "replay": {
+    "h128_g": {
+      "checkpoint_sha256": "62c0fe4f0d49dfc88469733356a3d5b2e20692945dd8b31be743a5bf094d6eef",
+      "exact_attention_replay": true,
+      "exact_probability_replay": true,
+      "model_state_sha256": "b5dd4163844ddfb7c3a66e2f5a8f3796f98ca896795263038bba4404d9de3983",
+      "prediction_sidecar_sha256": "750739cfba32fd08972a1cb6c3b48c9e3bd3cfafdab118acc93c29ca3fd65e2a"
+    },
+    "h128_q": {
+      "checkpoint_sha256": "753c5ddc6edf7b733ad95e2eeea886435947e21011e0eac4dcfe8c8f21303f10",
+      "exact_attention_replay": true,
+      "exact_probability_replay": true,
+      "model_state_sha256": "69aa7336b9e82c8a4b49307f5e0e1bc8bf6cd3d6b2a846d48ff625a71a22dd0a",
+      "prediction_sidecar_sha256": "1893ac0fd21df1e024cb493a628af6b3ff6c1f2a0f7d2d57131d1eb760f5ac0c"
+    },
+    "h32_q": {
+      "checkpoint_sha256": "1c9685e2eafa5f5fbc79b4df2a007088a3ad20d7927fa2462ed4756766f1f9e4",
+      "exact_attention_replay": true,
+      "exact_probability_replay": true,
+      "model_state_sha256": "8cb618f22e42fc88ee246ef95ac66722f90879690e11c4b1fa4e25e4608c2b4c",
+      "prediction_sidecar_sha256": "ef4a1423eda01d720e946df785fa71435d48a806213d655d933b8797680f54bd"
+    }
+  },
+  "report_sha256": "2aef0bcc2f05cd5fb6bb0f0f3c08b8184b42745862bcaafe9739f50c73baf3df",
+  "schema_version": "madeleine.oracle-window-highres-audit.v1",
+  "source_commit": "546933bb010dc48d21592546096eec885a84bad4",
+  "status": "complete",
+  "study_id": "own_v3_oracle_window_highres_regional_w16_s0"
+}

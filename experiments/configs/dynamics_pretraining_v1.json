@@ -1,0 +1,198 @@
+{
+  "schema_version": "madeleine.dynamics-pretraining-preregistration.v1",
+  "study_id": "photon_inspired_celeste_dynamics_v1",
+  "status": "preregistered_before_probe_or_pretraining_results",
+  "description": "Matched encoder study separating Celeste image-domain adaptation, ordered future-latent prediction, and learned pre-pooling frame-pair features.",
+  "scientific_scope": {
+    "name": "Photon-inspired JEPA-style dynamics pretraining",
+    "not_a_photon_reproduction": true,
+    "reason": "Photon-1 publicly specifies next-token prediction over discrete FSQ frame latents and only a high-level paired differential encoder; the continuous EMA target, native-rate horizons, and pair-stem topology here are MADELEINE adaptations.",
+    "fixed_output_dimension": 512,
+    "downstream_heads_unchanged": true
+  },
+  "embargo": {
+    "sealed_untouched_session": "rec_20260727_220000_test",
+    "rule": "forbidden for discovery, pretraining, supervised fitting, inference, thresholding, calibration, selection, or diagnostics",
+    "other_exclusions": [
+      "own-v3 val-A is probe validation only and is excluded from all self-supervised pretraining",
+      "B1 is excluded until after the y4n decision is committed",
+      "val-B remains excluded",
+      "the whole y4nQHqYSObI video is excluded from self-supervised pretraining even without labels"
+    ]
+  },
+  "phase_0_probe": {
+    "config": "experiments/configs/dynamics_offset_probe_v1.json",
+    "must_complete_before_ssl_launch": true,
+    "candidate_future_horizons_native_frames": [1, 2, 4, 8, 16],
+    "pruning_rule": "Apply the global horizon gate in dynamics_offset_probe_v1.json. Select the shortest passing candidate; add a longer passing candidate only if it detects at least two additional estimable tasks or improves macro conditioned AP-skill lift by at least 0.02 with paired lower confidence bound above zero. No unregistered horizon may be introduced. If none passes, stop before Arms C and D."
+  },
+  "pretraining_population": {
+    "nitrogen": {
+      "role": "masked unlabeled training video",
+      "videos": 210,
+      "holdout_video": "y4nQHqYSObI",
+      "nominal_training_hours": 148.3222,
+      "whole_video_exclusion": true
+    },
+    "wild_provisional": {
+      "role": "masked unlabeled training video",
+      "tier": "provisional_not_admitted",
+      "videos": 7,
+      "sessions": 2058,
+      "frames": 4835638,
+      "labeled_hours_ignored_by_this_study": 22.387213054995033,
+      "admitted_hours": 0.0,
+      "selection_caveat": "membership was selected using decoded-key activity, although no decoded action value is consumed by pretraining"
+    },
+    "local": {
+      "role": "masked unlabeled training video",
+      "tier": "engine_truth_corrected_own_v3",
+      "train_sessions": [
+        "rec_20260724_190233",
+        "rec_20260725_015612",
+        "rec_20260725_021338"
+      ],
+      "train_frames": 143451,
+      "validation_session_excluded": "rec_20260724_171305_5min",
+      "forbidden_generation": "/ephemeral/data/own_features"
+    },
+    "labels_consumed": false,
+    "source_sampling": "proportional to the validated eligible pair count in each source, with no source oversampling; exact source probabilities are frozen in the pretraining-index receipt before optimizer step one",
+    "static_change_sampling": {
+      "motion_source": "masked training pixels only",
+      "target_mix": {"static": 0.5, "change_heavy": 0.5},
+      "threshold": "training-population median endpoint luma absolute difference, frozen in the data-index receipt",
+      "report_strata_separately": true
+    }
+  },
+  "matched_arms": {
+    "A": {
+      "name": "imagenet_resnet18",
+      "pretraining": "none",
+      "role": "existing frozen-feature baseline",
+      "reference_run": "nitrogen_full_210train_y4n_holdout_26m_128x3_s0",
+      "retrain_policy": "reuse only after exact feature/config/checkpoint hashes validate; do not rerun merely to rename the arm"
+    },
+    "B": {
+      "name": "celeste_same_frame_self_distillation",
+      "online_input": "one masked frame under view one",
+      "target_input": "the same frame under view two",
+      "matched_sampling": "uses the exact same (session,t,h,masked-pixel-motion-stratum) population, positive horizon tokens, tail truncation, and per-horizon quotas as C; h affects sampling and predictor conditioning but not B's same-frame target",
+      "purpose": "ordinary image-domain adaptation control"
+    },
+    "C": {
+      "name": "celeste_future_latent",
+      "online_input": "masked frame t",
+      "target_input": "masked frame t+h",
+      "horizon_conditioning": "shared predictor plus learned horizon embedding",
+      "purpose": "future dynamics beyond same-frame adaptation"
+    },
+    "D": {
+      "name": "celeste_future_latent_ordered_pair",
+      "online_input": "ordered masked pair (t-1,t)",
+      "target_input": "ordered masked pair (t+h-1,t+h)",
+      "pair_stem": "nine-channel [previous,current,signed current-minus-previous] ResNet-18 input convolution; ImageNet current-frame slice copied and all added slices zero-initialized",
+      "first_contiguous_frame": "previous equals current, producing an explicit zero difference",
+      "purpose": "learn state and signed motion before spatial pooling"
+    }
+  },
+  "shared_ssl_recipe": {
+    "initialization": {
+      "architecture": "torchvision resnet18",
+      "weights": "ResNet18_Weights.IMAGENET1K_V1",
+      "weights_url": "https://download.pytorch.org/models/resnet18-f37072fd.pth",
+      "weights_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+      "policy": "the online encoder loads these exact bytes and the target encoder is then an exact copy"
+    },
+    "target_encoder": "stop-gradient exponential-moving-average copy of online encoder",
+    "ema_momentum": {"start": 0.998, "end": 1.0, "schedule": "linear over frozen optimizer-step budget"},
+    "predictor": "two-layer MLP with output dimension 512",
+    "loss": "mean per-example L1 between l2-normalized prediction and stop-gradient target latent",
+    "collapse_controls": [
+      "online predictor",
+      "slow EMA target",
+      "per-dimension standard deviation",
+      "effective covariance rank",
+      "mean pairwise cosine and nearest-neighbor diversity"
+    ],
+    "augmentation": "two independently sampled views; every spatial/color transform is constant over all frames within one ordered tuple; no horizontal/vertical flip",
+    "compute_matching": "B, C, and D use identical optimizer steps, optimizer, source sampler, batch pair count, online/target encoder-view count, augmentation family, EMA schedule, and checkpoint cadence",
+    "horizon_batching": "B, C, and D draw the same preregistered positive horizon tokens with equal per-step quotas across surviving horizons; B uses each h only as a matched nuisance token and to reproduce C's anchor/motion-stratum population",
+    "checkpoint_selection": "final weights only; no downstream or evaluation metric selects an SSL checkpoint",
+    "required_baselines": ["identity-current-latent", "mean-target", "shuffled-future"],
+    "throughput_gate": "100 real optimizer steps; do not launch full pretraining if projected runtime exceeds the separately approved compute budget"
+  },
+  "implementation_readiness": {
+    "current_trainer": "smoke_only_not_scalable",
+    "full_ssl_launch_authorized": false,
+    "phase_0_diagnostic_may_run_after_machine_approval": true,
+    "production_blockers": [
+      "exact label-free exclusion-bound source inventory",
+      "streaming RGB cache and compact shared tuple index",
+      "counter-based matched B/C/D sample schedule",
+      "mixed-precision prefetched trainer with atomic resume state",
+      "numeric collapse gates on a fixed stratified diagnostic panel",
+      "validated final-EMA feature exporter with gap-safe D inference",
+      "resolved numeric run budget and separately approved storage/GPU shape"
+    ]
+  },
+  "feature_export": {
+    "dimension": 512,
+    "dtype": "float16",
+    "encoder_state": "final EMA target encoder for B, C, and D; the online encoder is never an alternative export candidate",
+    "latent_value": "raw unnormalized 512-D global-average-pooled encoder output; L2 normalization is used only inside the SSL loss",
+    "run_boundaries": "never borrow a previous frame across a session, shard discontinuity, or engine-frame gap",
+    "required_manifest_fields": [
+      "arm",
+      "encoder_checkpoint_sha256",
+      "encoder_architecture",
+      "objective",
+      "surviving_horizons",
+      "normalization",
+      "EMA provenance",
+      "source shard SHA-256",
+      "feature array SHA-256"
+    ],
+    "forbidden_format_label": "resnet18_imagenet_avgpool_float16_v1 for B, C, or D"
+  },
+  "downstream_contract": {
+    "architecture": "unchanged 25.7M centered GRU over frozen 512-D features with post-pool feature deltas",
+    "reference_config": "results/idm/nitrogen_full_210train_y4n_holdout_26m_128x3_s0/config.json",
+    "training_videos": 210,
+    "training_hours": 148.3222,
+    "holdout_video": "y4nQHqYSObI",
+    "window": 128,
+    "frame_stride": 3,
+    "window_mode": "centered",
+    "embedding_dim": 1024,
+    "temporal_dim": 2048,
+    "optimizer": "adamw",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.01,
+    "transition_weight": 8.0,
+    "maximum_steps": 20458,
+    "seed_zero_first": true,
+    "weights_reported": "final",
+    "threshold_policy": "fixed 0.5 for headline state and derived transition decisions; oracle thresholds diagnostic only",
+    "head_policy": "do not add, remove, or retune state/onset/release heads in this encoder study"
+  },
+  "evaluation": {
+    "primary_surface": "mapped y4n later-eight streams on identical support",
+    "primary_metrics": [
+      "segment-bounded combined onset/release collar-0 F1 at fixed 0.5",
+      "segment-bounded combined onset/release plus-or-minus-2-frame F1 at fixed 0.5"
+    ],
+    "secondary_metrics": [
+      "macro and per-key average precision with prevalence",
+      "state F1 at fixed 0.5",
+      "micro and seven-key joint key-state accuracy",
+      "predicted-positive rates",
+      "BCE, Brier score, equal-mass ECE",
+      "always-released, persistence, and shuffled-event baselines"
+    ],
+    "seed_zero_promotion_rule": "Relative to the immediately matched control (C versus B; D versus C), plus-or-minus-2 event F1 must improve by at least 0.010 absolute, collar-0 F1 may not fall by more than 0.002, and macro AP may not fall by more than 0.005.",
+    "replication": "Only a promoted arm receives seeds 1 and 2. A claimed improvement requires the primary delta to have the same sign in at least two of three seeds and a positive three-seed mean.",
+    "multiplicity": "record every arm and seed consulted; do not turn a sensitivity result into a matched headline",
+    "post_decision": "B1 may be scored fixed-only only after the y4n decision and all candidate checkpoint hashes are committed"
+  }
+}

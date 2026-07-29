@@ -1,0 +1,45 @@
+{
+  "format_version": "madeleine.wild-offset-acceptance.v3",
+  "video_id": "Y6AeZFCU4LY",
+  "created_at": "2026-07-28T15:39:03.914923+00:00",
+  "decision": {
+    "approved": true,
+    "contact_sheet_reviewed": true,
+    "reviewer_identity": "Bryan",
+    "reviewer_kind": "human_with_ai_assistance",
+    "uncertain_tier_acknowledged": false,
+    "notes": "Owner reviewed the 12-row dash-hitstop contact sheet 2026-07-28: freeze-then-rebound pattern verified at the claimed offset."
+  },
+  "calibration": {
+    "path": "offset_calibration.json",
+    "sha256": "bf9fa422219ea760f74a641d155534ac2afe1a6256aec5eb5a443149f03d4418",
+    "format_version": "madeleine.dash-hitstop-offset.v3",
+    "contact_sheet": {
+      "path": "dash_offset_contact.png",
+      "sha256": "6a4dfd614499c4a3799be136e0080b06eaa026c13074f1a871181009e23578ad"
+    }
+  },
+  "input_layout": {
+    "path": "layout.reviewed-unmeasured.json",
+    "sha256": "a4dd0f45efecab0b1bbcc3b307be8c23749c374ce9811f7e353544d58841ba90"
+  },
+  "layout_review_acceptance": {
+    "path": "layout_acceptance.json",
+    "sha256": "32abcbb8e17150e497b7739f88ed9c9a99740f4312d3cf36a5b60bc094a2d5d7",
+    "format_version": "madeleine.wild-layout-acceptance.v1",
+    "review_manifest_sha256": "655c460ffee915af896dbe61098a2f7536df2faa3c0d93a2b5d1773c7e7c9d87",
+    "reviewed_layout_sha256": "a4dd0f45efecab0b1bbcc3b307be8c23749c374ce9811f7e353544d58841ba90",
+    "reviewer_kind": "human_with_ai_assistance",
+    "human_reviewed": true
+  },
+  "output_layout": {
+    "path": "layout.final.json",
+    "sha256": "3217680c1f4fffd7e438e5694a463b2e3acafadc77449841795a8db51b1e8ecd"
+  },
+  "accepted_offset_frames": 3,
+  "accepted_offset_confidence": 1.0,
+  "accepted_offset_source": "dash_hitstop_v1+reviewed_acceptance:bf9fa422219ea760f74a641d155534ac2afe1a6256aec5eb5a443149f03d4418",
+  "accepted_tier": "pass",
+  "accepted_offset_uncertainty_frames": 1,
+  "source_video_sha256": "7b31d0219e122ecea159ed03d28eb8fc18bfd1ed2adc8f2a836f49dddc7703fb"
+}

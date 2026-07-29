@@ -1,0 +1,40 @@
+[project]
+name = "madeleine"
+version = "0.1.0"
+description = "Celeste inverse dynamics: capture (theo), engine truth (granny), modeling (badeline), and verification (goldenberry)."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "torch>=2.4",
+    "torchvision>=0.19",
+    "numpy>=1.26",
+    "opencv-python>=4.10",
+    "pyarrow>=17.0",
+    "huggingface-hub>=0.24",
+    "yt-dlp>=2025.1.1",
+    "matplotlib>=3.9",
+    "scikit-learn>=1.5",
+    "pynput>=1.7",
+    "mss>=10.2.0; sys_platform == 'darwin'",
+    "pyobjc-framework-quartz>=12.2.1; sys_platform == 'darwin'",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+# One lockfile, two backends: macOS resolves the default (MPS) torch wheels,
+# Linux (the GPU pod) resolves CUDA wheels from the PyTorch index.
+[[tool.uv.index]]
+name = "pytorch-cu129"
+url = "https://download.pytorch.org/whl/cu129"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu129", marker = "sys_platform == 'linux'" }]
+torchvision = [{ index = "pytorch-cu129", marker = "sys_platform == 'linux'" }]

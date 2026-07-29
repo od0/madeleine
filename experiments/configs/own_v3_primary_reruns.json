@@ -1,0 +1,161 @@
+{
+  "schema_version": "madeleine.own-v3-primary-reruns.v1",
+  "study_id": "own_v3_primary_three_seed_rerun",
+  "purpose": "Repeat the original three-seed local-feature scratch and Tier-B-initialized comparisons with only the corrected own-v3 data generation changed.",
+  "data_contract": {
+    "feature_root": "/ephemeral/data/own-v3-features",
+    "validation_marker": "/ephemeral/data/.own-v3-features-done.json",
+    "validation_marker_sha256": "3a3920166f620b571b31b30e1d755cbac79c51d524cfda1b1abfe85fc3812223",
+    "validation_schema": "madeleine.own-v3-features-validation.v1",
+    "content_sha256": "4a9debf69e8f14ae356d5671a57cde59450cb80b1c236af40841b3a79d71c821",
+    "feature_generation": {
+      "commit": "f8a51d7e146904500a141f5a7876f40e435f1e16",
+      "relevant_files": {
+        "data/precompute_features.py": "be89d537c8d95c88d7888137321b7d92733795af1dde23e4e47bd3cb6d742935",
+        "data/schema.py": "3712ec20318a76a7939cd6561eafd75c67990a55556fabea18524fb79c52e0a2",
+        "experiments/run_own_v3_features.sh": "8b98a24f16f78d80df879e663e3ec3f3fda1912e40dfb1519f1d7a13efe3d13a",
+        "experiments/validate_own_v3_features.py": "32a4096d981a77989e8b2af0dfe4bb60a82cb36334001602a219540fc8f39667"
+      }
+    },
+    "frame_count": 178525,
+    "train_sessions": [
+      "rec_20260724_190233",
+      "rec_20260725_015612",
+      "rec_20260725_021338"
+    ],
+    "validation_sessions": [
+      "rec_20260724_171305_5min"
+    ],
+    "train_sessions_sha256": "aa0ead8291970707d283515843c1d2776c8d31afc710654accac8e91d3e28a09",
+    "validation_sessions_sha256": "fe324018ea818ab573973853fc9df90f0c5d001dee0f1391b8aaae6776141b54",
+    "feature_files": {
+      "build_manifest.json": {
+        "bytes": 1691,
+        "sha256": "bd5e42cfe619a43236cff38a5fdd0f1ebc26a729fc6c086e4c6b314e1b212551"
+      },
+      "feature_build_manifest.json": {
+        "bytes": 1063,
+        "sha256": "3e941c3ca8c94edf53335eb7db40213cfd4d735fac7b330fe54342a52441b0b3"
+      },
+      "rec_20260724_171305_5min.npz": {
+        "bytes": 36478338,
+        "sha256": "53a9f5bf78bdfd5d0c1f35b12b03a338b65b6893bfa6d29dd5f48c2a066284ca",
+        "frames": 35074
+      },
+      "rec_20260724_190233.npz": {
+        "bytes": 55505118,
+        "sha256": "0e0a44355adaa83a432880cc13ae710962223c9353123d4c1b2295207d9b54d6",
+        "frames": 53369
+      },
+      "rec_20260725_015612.npz": {
+        "bytes": 37754398,
+        "sha256": "fb42721729836dd46f78c317c2b9305c03cef466e070f6b4f8cbcd6934e63a0b",
+        "frames": 36301
+      },
+      "rec_20260725_021338.npz": {
+        "bytes": 55933598,
+        "sha256": "98a0de7863308e66d0a70b9f87e091cddb1e651764fc848b8d6127e4657bb29d",
+        "frames": 53781
+      },
+      "train_sessions.txt": {
+        "bytes": 60,
+        "sha256": "aa0ead8291970707d283515843c1d2776c8d31afc710654accac8e91d3e28a09"
+      },
+      "val_sessions.txt": {
+        "bytes": 25,
+        "sha256": "fe324018ea818ab573973853fc9df90f0c5d001dee0f1391b8aaae6776141b54"
+      }
+    },
+    "permitted_runtime_files": {
+      "shard_hashes.json": {
+        "bytes": 678,
+        "sha256": "181838f44593b672cd56b31a6041aac8af6416ad17fe6c2e2e5f2ee79c3dd89a",
+        "policy": "historical trainer memo containing only the four contracted feature NPZ hashes and sizes"
+      }
+    },
+    "rejected_legacy_feature_root": "/ephemeral/data/own_features"
+  },
+  "training_contract": {
+    "historical_commit": "a9a414452c07fb101d26faee9fa13864dde922b4",
+    "trainer_sha256": "f4a11a96444366e880acfc14ef6eeaeb4f9f3b6061397715227cfd2da66802c7",
+    "model_sha256": "85b9236419f9648d629e753b3b53602d3f733b365238a7b12702e359bf230e7a",
+    "schema_sha256": "3712ec20318a76a7939cd6561eafd75c67990a55556fabea18524fb79c52e0a2",
+    "checkpoint_selection": "minimum validation mean BCE; ties retain the earlier checkpoint",
+    "weights_evaluated": "selected",
+    "key_order": [
+      "left",
+      "right",
+      "up",
+      "down",
+      "jump",
+      "dash",
+      "grab"
+    ],
+    "families": {
+      "scratch": {
+        "config": "experiments/configs/takeover_features_32frame_noncausal.json",
+        "config_sha256": "6f4fb2ecb779d2f296c7cf667f66ad7e8a94f5acc785d00b66e351940aee239a",
+        "max_steps": 2000,
+        "eval_interval": 250,
+        "original_run_prefix": "own_features_32nc_s",
+        "run_prefix": "own_features_v3_32nc_s"
+      },
+      "tier_b_init": {
+        "config": "experiments/configs/takeover_features_finetune_32frame_noncausal.json",
+        "config_sha256": "781e5b36dd880025182fc530f8cebc66738ad5464d94ddc91ef206e70d7ab02a",
+        "max_steps": 600,
+        "eval_interval": 50,
+        "original_run_prefix": "foreign_tier_b_13p45h_32nc_finetune_s",
+        "run_prefix": "own_features_v3_tier_b_init_32nc_s"
+      }
+    },
+    "tier_b_initializations": {
+      "0": {
+        "relative_path": "foreign_tier_b_13p45h_32nc_s0/model.pt",
+        "sha256": "f4294f31e6f4e84cf5dbbdf0ab0ca836fed931e08bc3b0cd886556749753231f"
+      },
+      "1": {
+        "relative_path": "foreign_tier_b_13p45h_32nc_s1/model.pt",
+        "sha256": "49eeab2afdc35b129e17dd599dcb5c006141cc87c6719618257054bde3d4d155"
+      },
+      "2": {
+        "relative_path": "foreign_tier_b_13p45h_32nc_s2/model.pt",
+        "sha256": "cf92769e338fc982897a64588f947097551b43307decc4c9bc645e1846044598"
+      }
+    }
+  },
+  "evaluation_contract": {
+    "surface": "own-v3 val-A only",
+    "sessions_file": "val_sessions.txt",
+    "weights": "selected",
+    "transition_threshold_populations": [
+      "natural_0.5",
+      "per_key_oracle_on_val_a"
+    ],
+    "fixed_threshold_source": null,
+    "evaluator_relevant_files": {
+      "badeline/eval.py": "b01a133239e30e97cfd930e90572c3f746f507b503af4b221572e0a9432a9b08",
+      "badeline/metrics.py": "ce3947b199a5e98dcc0af6de2e3eefe8c6967ecb07c5b636319950a67d301434",
+      "badeline/model.py": "ce535fd129363510eeaa378cd7413e75d5053d7e0784de0aacb8422bd90f0209",
+      "badeline/temporal.py": "c47eed4ef43d6e93b5d7f1c5730768630586b0d4826a9d57301770328d212f2d",
+      "badeline/train.py": "eb103786a1e54dac11af39b80e28a144afa4c1d59df6d4be8cc37bda7c224aed",
+      "data/schema.py": "3712ec20318a76a7939cd6561eafd75c67990a55556fabea18524fb79c52e0a2"
+    },
+    "policy": "The launcher exposes only the exact val-A list above; every other evaluation surface is outside this study."
+  },
+  "runtime_contract": {
+    "results_root": "/ephemeral/results/takeover",
+    "initialization_root": "/ephemeral/results/takeover",
+    "node_registry": "own_v3_checkpoint_sha256.txt",
+    "seeds": [0, 1, 2],
+    "overwrite_allowed": false
+  },
+  "runs": [
+    {"family": "scratch", "seed": 0, "run_id": "own_features_v3_32nc_s0"},
+    {"family": "scratch", "seed": 1, "run_id": "own_features_v3_32nc_s1"},
+    {"family": "scratch", "seed": 2, "run_id": "own_features_v3_32nc_s2"},
+    {"family": "tier_b_init", "seed": 0, "run_id": "own_features_v3_tier_b_init_32nc_s0"},
+    {"family": "tier_b_init", "seed": 1, "run_id": "own_features_v3_tier_b_init_32nc_s1"},
+    {"family": "tier_b_init", "seed": 2, "run_id": "own_features_v3_tier_b_init_32nc_s2"}
+  ]
+}

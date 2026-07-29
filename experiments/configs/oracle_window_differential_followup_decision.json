@@ -1,0 +1,226 @@
+{
+  "schema_version": "madeleine.oracle-window-differential-decision.v1",
+  "status": "preregistered_before_validation_inference",
+  "preregistered_at_utc": "2026-07-28T05:12:41Z",
+  "amended_at_utc": "2026-07-28T05:22:05Z",
+  "amendment": "Before any follow-up validation inference, an independent audit found that the original current/current/zero control omitted one boundary frame available to the ordered arm. The incomplete run was interrupted before output creation. The control is now a symmetric mean/mean/zero view of both adjacent frames, giving exact two-frame support parity. The imported frozen construction/scoring dependencies and scorer-side implementation/baseline validation are also explicitly hashed.",
+  "study_id": "own_v3_oracle_window_differential_w16_s0",
+  "scientific_question": "After the frozen pooled-feature oracle localizer failed its seed-zero gate, can one small learned native-rate masked-pixel ordered-pair adapter recover exact transition timing, and is any rescue specifically attributable to ordered temporal differences rather than restored spatial appearance?",
+  "scope": {
+    "type": "single bounded representation diagnostic",
+    "no_architecture_search": true,
+    "seed_zero_only": true,
+    "confirmation_seeds_forbidden": true,
+    "phase_2_remains_rejected_regardless_of_outcome": true,
+    "interpretation_limit": "A null means no rescue by this fixed small adapter after deterministic 4x spatial area reduction; it is not proof that full-resolution pixels contain no timing information."
+  },
+  "prior_decision": {
+    "decision": "reject_phase_2_at_seed_zero_gate",
+    "score_report_sha256": "5fba7e17e317aa8d0659c80b75be3530b04f23045c03a33f49a0dde87eec821a",
+    "completion_marker_sha256": "072d0ec1ac3591efd4e84ddf7ea0e730ee110f1115c0e5e9f11cb6022cc714f6",
+    "audit_receipt_sha256": "3c16952fc0c9fb50b878185cdd66557ebc73b52a12ae645aac580829959f7eb3",
+    "audit_content_sha256": "02c710a38149bf0a0c088e95766d66385b423bcdcf5ea5a7ff38316a4adb1be2"
+  },
+  "dataset": {
+    "base_dataset_manifest": "runs/oracle_window_localization_s0/dataset_manifest.json",
+    "base_dataset_manifest_sha256": "212f7ed619deb7171c0c827c634c5d99babbf091696f18bfa1de2cb6c5ff23c7",
+    "pixel_cache_root": "data/oracle_window_pixel_crops_v1",
+    "pixel_cache_receipt": "data/oracle_window_pixel_crops_v1_complete.json",
+    "pixel_cache_receipt_sha256": "14a1be972567b5bf9768dcd68c6fa7756787772a94e5978e84e3832f01e5f3a0",
+    "pixel_cache_content_sha256": "df19eb7ef107862b0ca3e8755263c733cd2cd44b49dab15592a6629f23f659e5",
+    "source_build_manifest_sha256": "3126d985149368e127c24ec63a8dce8f9343197d21b8395a4c409053d0436c80",
+    "source_frame_size": 128,
+    "cached_frame_size": 32,
+    "downsampling": "per-channel integer 4x4 area mean with (sum+8)//16",
+    "uncompressed_pixel_payload_bytes": 560726016,
+    "candidate_width": 16,
+    "context_halo": 8,
+    "crop_frames": 32,
+    "train_sessions": [
+      "rec_20260724_190233",
+      "rec_20260725_015612",
+      "rec_20260725_021338"
+    ],
+    "validation_sessions": [
+      "rec_20260724_171305_5min"
+    ],
+    "forbidden_sessions": [
+      "rec_20260725_025853",
+      "rec_20260725_160450_b1",
+      "rec_20260727_220000_test"
+    ],
+    "expected_support": {
+      "training_examples": 4554,
+      "validation_examples": 1150,
+      "validation_blocks": 122,
+      "estimable_heads": 12
+    },
+    "model_inputs": [
+      "masked_downsampled_rgb_crop",
+      "requested_head"
+    ],
+    "forbidden_model_inputs": [
+      "session_id",
+      "filename",
+      "run_index",
+      "array_index",
+      "engine_frame_idx",
+      "crop_start",
+      "target_offset",
+      "padding_pattern",
+      "action_history",
+      "controller_state"
+    ]
+  },
+  "representation": {
+    "ordered_pair": "For each adjacent pair j, concatenate previous RGB scaled to [-1,1], current RGB scaled to [-1,1], and current-minus-previous RGB in [-1,1].",
+    "symmetric_pair_control": "For each adjacent pair j, average previous and current RGB, concatenate that symmetric mean twice plus an all-zero difference. It uses the exact same two source frames while removing order and signed motion.",
+    "pair_count": 31,
+    "pair_channels": 9,
+    "temporal_assignment": "A valid width-16 shared temporal kernel maps 31 pair embeddings to 16 offsets. Output o consumes source frames o..o+16; the requested transition pair is always at relative pair index 7.",
+    "positional_inputs": false,
+    "temporal_padding": false,
+    "augmentation": false
+  },
+  "model": {
+    "embedding_dim": 64,
+    "pair_encoder": "Conv9->16 k3/s2 + GN4 + SiLU; depthwise16 k3/s2 + pointwise16->24 + GN4 + SiLU; depthwise24 k3/s2 + pointwise24->32 + GN8 + SiLU; flatten 4x4x32 -> Linear64 + SiLU",
+    "temporal_encoder": "shared valid Conv1d 64->64 kernel16, SiLU, LayerNorm",
+    "event_heads": "shared Linear64->14 in frozen onset-then-release order; gather requested head",
+    "candidate_logits": 16,
+    "objective": "exact-offset cross-entropy"
+  },
+  "arms": {
+    "ordered_pair": "primary learned native-rate differential adapter",
+    "symmetric_pair": "byte-matched architecture and initialization with exact support parity and temporal order/signed difference ablated",
+    "matching": [
+      "initial state",
+      "oracle examples",
+      "task weights",
+      "epoch permutations",
+      "optimizer",
+      "training endpoint",
+      "loss",
+      "evaluation support"
+    ]
+  },
+  "training": {
+    "seed": 0,
+    "epochs": 20,
+    "batch_size": 128,
+    "eval_batch_size": 256,
+    "optimizer": "adamw",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "scheduler": "none",
+    "loss": "exact-offset cross-entropy without smoothing",
+    "sampling": "each event exactly once per epoch in one deterministic shared permutation",
+    "task_balance": "inverse task-count loss weights normalized to mean one; no oversampling",
+    "checkpoint_policy": "final fixed epoch only",
+    "validation_selection": false,
+    "device": "mps",
+    "deterministic_algorithms": "enabled; warn-only for unsupported MPS kernels"
+  },
+  "frozen_feature_baseline": {
+    "prediction_sidecar": "runs/oracle_window_localization_s0/predictions.npz",
+    "prediction_sidecar_sha256": "921f64287fec9a8326a361b52872fe264bacb15ffe3409415f5a3f939b513b5d",
+    "audit_receipt": "results/idm/oracle_window_localization_s0_audit.json",
+    "audit_receipt_sha256": "3c16952fc0c9fb50b878185cdd66557ebc73b52a12ae645aac580829959f7eb3",
+    "audit_content_sha256": "02c710a38149bf0a0c088e95766d66385b423bcdcf5ea5a7ff38316a4adb1be2",
+    "arm": "conditional_prob",
+    "role": "frozen pooled-feature conditional baseline on identical rows; never retrained or reselected"
+  },
+  "evaluation": {
+    "bootstrap_replicates": 5000,
+    "bootstrap_seed": 2026072802,
+    "bootstrap_unit": "existing 600-engine-frame session/run continuity-bounded block",
+    "require_all_bootstrap_draws_valid": true,
+    "metrics": [
+      "exact",
+      "within_1",
+      "within_2",
+      "nll",
+      "entropy",
+      "normalized_entropy",
+      "entropy_quartiles_vs_exact",
+      "mean_signed_error",
+      "mean_absolute_error",
+      "early_rate",
+      "late_rate",
+      "confusion_true_rows_predicted_columns"
+    ],
+    "reporting": [
+      "pooled",
+      "equal-head macro",
+      "every key and event type",
+      "analytic uniform chance overall and per head"
+    ]
+  },
+  "decision_gate": {
+    "estimability": {
+      "minimum_validation_events_per_head": 30,
+      "minimum_training_events_per_head_per_session": 20,
+      "minimum_training_sessions": 2,
+      "minimum_estimable_heads": 7,
+      "minimum_distinct_keys": 4,
+      "require_both_event_types": true,
+      "minimum_validation_blocks": 20
+    },
+    "seed_zero": {
+      "minimum_conditional_macro_exact": 0.125,
+      "minimum_conditional_exact_ci_low": 0.0625,
+      "minimum_macro_exact_delta": 0.03,
+      "minimum_macro_exact_delta_ci_low": 0.0,
+      "minimum_positive_estimable_heads": 7,
+      "minimum_positive_distinct_keys": 4,
+      "require_positive_both_event_types": true,
+      "minimum_macro_within_2_delta": -0.01,
+      "require_lower_macro_nll": true
+    },
+    "differential_attribution": {
+      "minimum_conditional_macro_exact": 0.0,
+      "minimum_conditional_exact_ci_low": -1.0,
+      "minimum_macro_exact_delta": 0.03,
+      "minimum_macro_exact_delta_ci_low": 0.0,
+      "minimum_positive_estimable_heads": 7,
+      "minimum_positive_distinct_keys": 4,
+      "require_positive_both_event_types": true,
+      "minimum_macro_within_2_delta": -0.01,
+      "require_lower_macro_nll": true
+    },
+    "hierarchy": [
+      "First apply seed_zero to ordered_pair minus frozen_feature_conditional.",
+      "Apply the same rescue rule descriptively to symmetric_pair minus frozen_feature_conditional.",
+      "Only if ordered_pair passes the primary rescue rule, attribute rescue to temporal differences when ordered_pair minus symmetric_pair passes differential_attribution.",
+      "No outcome authorizes confirmation seeds or Phase 2; the original cascade decision remains rejected."
+    ]
+  },
+  "runtime_gate": {
+    "smoke_epochs": 1,
+    "maximum_projected_production_minutes": 30,
+    "maximum_new_cache_and_run_bytes": 600000000,
+    "on_failure": "runtime_inconclusive; do not resize, tune, or provision without explicit authorization"
+  },
+  "outputs": {
+    "run": "runs/oracle_window_differential_s0",
+    "report": "results/idm/oracle_window_differential_s0_decision.json",
+    "completion_marker": "results/idm/oracle_window_differential_s0_complete.json",
+    "publication": "temporary report reload, report promote, content-bound marker last; refuse overwrite"
+  },
+  "implementation": {
+    "authority": "exact relevant working bytes; no commit requested",
+    "git_head_at_freeze": "ff2fcfdbde3323499d9cf131bc2a73f5808a7b64",
+    "sha256": {
+      "data/schema.py": "3712ec20318a76a7939cd6561eafd75c67990a55556fabea18524fb79c52e0a2",
+      "experiments/oracle_window_localization.py": "7b34c60f36ba752056d42ec015bd1aaf97c1729b7846b19b1a0d884d6834d272",
+      "experiments/score_oracle_window_localization.py": "1a34d16fef1ea61714e8c03fc2c66d4a40e8046cbd53e44cf3d93e8486e1a468",
+      "experiments/prepare_oracle_window_pixel_crops.py": "661801a4f5e68965bb71761563b2e0f83e51f98536816f369b670bcee13fa4de",
+      "experiments/oracle_window_differential_followup.py": "fa29377ae039223bbd05fa044f4699c141e9b0de5e322144534830842fc258e8",
+      "experiments/score_oracle_window_differential_followup.py": "731f0bcf6e071b79778b885e858cb0949a94abc924b316a409b8929b3afea77f",
+      "experiments/run_oracle_window_differential_followup.sh": "b51d0f8b366e015d169a6398b51011a4e5c7ea6659eaf4ca195a519e18623b69",
+      "tests/test_prepare_oracle_window_pixel_crops.py": "3c5c170adf6d01c8fdd83d56302cea42e197768f1aae0283679fdf7d0225adee",
+      "tests/test_oracle_window_differential_followup.py": "45bddbdb108c4045a5060357d0644c7151ae02138bb293939eee6ac9609958b4",
+      "tests/test_score_oracle_window_differential_followup.py": "b9d30c42640de329c7edacd3c16dd6ae93703d6866f571572059b39a49aa5f7e"
+    }
+  }
+}

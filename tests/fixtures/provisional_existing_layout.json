@@ -1,0 +1,67 @@
+{
+  "cells": [
+    {
+      "action": "left",
+      "cell_id": "synthetic_left",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [0.05, 0.8, 0.05, 0.1]
+    },
+    {
+      "action": "right",
+      "cell_id": "synthetic_right",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [0.15, 0.8, 0.05, 0.1]
+    },
+    {
+      "action": "up",
+      "cell_id": "synthetic_up",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [0.25, 0.8, 0.05, 0.1]
+    },
+    {
+      "action": "down",
+      "cell_id": "synthetic_down",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [0.35, 0.8, 0.05, 0.1]
+    },
+    {
+      "action": "jump",
+      "cell_id": "synthetic_jump",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [0.45, 0.8, 0.05, 0.1]
+    },
+    {
+      "action": "dash",
+      "cell_id": "synthetic_dash",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [0.55, 0.8, 0.05, 0.1]
+    },
+    {
+      "action": "grab",
+      "cell_id": "synthetic_grab",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [0.65, 0.8, 0.05, 0.1]
+    }
+  ],
+  "evidence_frames_s": [0.0],
+  "gameplay_rect": [0.0, 0.0, 1.0, 0.75],
+  "gameplay_rect_confidence": 0.99,
+  "gameplay_rect_source": "synthetic fixture",
+  "human_reviewed": false,
+  "inference_confidence": 0.99,
+  "inference_source": "synthetic fixture",
+  "mask_rects": [[0.0, 0.75, 1.0, 0.25]],
+  "overlay_style": "synthetic_action_grid",
+  "schema_version": "madeleine.wild-layout.v1",
+  "temporal_offset_confidence": 0.0,
+  "temporal_offset_frames": 0,
+  "temporal_offset_source": "unmeasured",
+  "video_id": "synthetic-existing-layout"
+}

@@ -1,0 +1,76 @@
+{
+  "own": {
+    "left": {
+      "press_rate_per_min": 2.4,
+      "median_press_ms": 267.0,
+      "taps_le_50ms_pct": 4.3
+    },
+    "right": {
+      "press_rate_per_min": 5.4,
+      "median_press_ms": 267.0,
+      "taps_le_50ms_pct": 7.0
+    },
+    "up": {
+      "press_rate_per_min": 3.3,
+      "median_press_ms": 217.0,
+      "taps_le_50ms_pct": 5.2
+    },
+    "down": {
+      "press_rate_per_min": 1.6,
+      "median_press_ms": 100.0,
+      "taps_le_50ms_pct": 4.1
+    },
+    "jump": {
+      "press_rate_per_min": 4.6,
+      "median_press_ms": 308.0,
+      "taps_le_50ms_pct": 1.4
+    },
+    "dash": {
+      "press_rate_per_min": 2.2,
+      "median_press_ms": 317.0,
+      "taps_le_50ms_pct": 3.0
+    },
+    "grab": {
+      "press_rate_per_min": 2.4,
+      "median_press_ms": 667.0,
+      "taps_le_50ms_pct": 2.2
+    }
+  },
+  "foreign_60hz_sample": {
+    "left": {
+      "press_rate_per_min": 37.3,
+      "median_press_ms": 167.0,
+      "taps_le_50ms_pct": 39.9
+    },
+    "right": {
+      "press_rate_per_min": 19.2,
+      "median_press_ms": 367.0,
+      "taps_le_50ms_pct": 1.8
+    },
+    "up": {
+      "press_rate_per_min": 8.4,
+      "median_press_ms": 283.0,
+      "taps_le_50ms_pct": 3.7
+    },
+    "down": {
+      "press_rate_per_min": 16.0,
+      "median_press_ms": 367.0,
+      "taps_le_50ms_pct": 7.8
+    },
+    "jump": {
+      "press_rate_per_min": 21.8,
+      "median_press_ms": 183.0,
+      "taps_le_50ms_pct": 0.8
+    },
+    "dash": {
+      "press_rate_per_min": 17.5,
+      "median_press_ms": 150.0,
+      "taps_le_50ms_pct": 1.7
+    },
+    "grab": {
+      "press_rate_per_min": 10.8,
+      "median_press_ms": 1383.0,
+      "taps_le_50ms_pct": 0.2
+    }
+  }
+}

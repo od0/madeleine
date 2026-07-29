@@ -1,0 +1,131 @@
+{
+  "admission": {
+    "auto_admitted": false,
+    "next_step": "Review raw source frames and every proposed half-open range; create WildBoundaries separately only after human approval.",
+    "wild_boundaries_created": false
+  },
+  "fetch_report": {
+    "file": "fetch.json",
+    "sha256": "57b7c369b39cbd8f132a6f09b5aab95b77f2416c4158a9265c5fe500012fd4d8"
+  },
+  "format_version": "madeleine.wild-timer-trace-manifest.v1",
+  "policy": {
+    "bright_pixel_threshold": 200.0,
+    "dark_pixel_threshold": 32.0,
+    "max_bridge_s": 0.5,
+    "max_diagnostic_runs": 256,
+    "max_effective_fps": 61.0,
+    "max_frames": 2000000,
+    "max_gap_multiple": 2.5,
+    "max_gap_s": 0.1,
+    "max_roi_pixels_per_frame": 65536,
+    "max_trace_points": 512,
+    "max_vfr_ratio_p99_p01": 1.05,
+    "min_allowed_s": 2.0,
+    "min_bimodal_fraction": 0.05,
+    "min_bimodal_samples": 3,
+    "min_bright_mask_mean": 10.0,
+    "min_candidate_coverage_fraction": 0.25,
+    "min_candidate_nominal_fraction": 0.5,
+    "min_change_score": 0.001,
+    "min_dark_mask_mean": 100.0,
+    "min_effective_fps": 50.0,
+    "min_median_candidate_range_s": 5.0,
+    "min_p90_candidate_range_s": 15.0,
+    "pts_interval_quantization_tolerance_s": 0.0011,
+    "segment_shape_min_envelope_s": 300.0,
+    "threshold_fraction": 0.35
+  },
+  "proposal": {
+    "auto_admitted": false,
+    "automatic_gates_passed": false,
+    "file": "timer_activity_proposal.json",
+    "requires_human_review": true,
+    "sha256": "d242bdc81a5101d9737e78395433501ba86e19f8bf220647f9d281616dd2ff6e",
+    "status": "abstained"
+  },
+  "pts_evidence": {
+    "frames": 420180,
+    "manifest_file": "frame_pts.json",
+    "manifest_sha256": "c092a7a9b929a83a0af155572ac545ab181bc66fa4f1eb7dd9e6f5a3577d2a9f",
+    "vector_file": "frame_pts.npy",
+    "vector_hash_verified": true,
+    "vector_sha256": "28b31524e24bac3484703ffc569306656ec232abfa36d46fca250359a8006ec1"
+  },
+  "review": {
+    "evidence_refs": {
+      "timer_roi": "results/wild20/ss3nhAUaScE/timer_detail.png",
+      "wall_clock_bounds": "results/wild20/ss3nhAUaScE/evidence_manifest.json"
+    },
+    "human_review_required_for_proposal": true,
+    "human_reviewed": false,
+    "nominal_loadless_duration_s": 5889.004,
+    "reviewer_identity": "OpenAI Codex visual diagnostic",
+    "reviewer_kind": "ai_agent",
+    "timer_roi_normalized_xywh": [
+      0.0140625,
+      0.041666666666666664,
+      0.1765625,
+      0.04722222222222222
+    ],
+    "wall_clock_bounds_s": [
+      12.233333,
+      6867.083333
+    ]
+  },
+  "selection": {
+    "decoded_frames": 411291,
+    "encoded_resolution_wh": [
+      1280,
+      720
+    ],
+    "frames": 411291,
+    "pts_summary": {
+      "effective_fps": 59.9999999941647,
+      "first_s": 12.233333,
+      "frames": 411291,
+      "large_gap_intervals": 0,
+      "largest_gap_s": 0.016667000000779808,
+      "last_s": 6867.066667,
+      "mean_cadence_dt_s": 0.01666666666828758,
+      "median_dt_s": 0.016666999999870313,
+      "median_interval_fps": 59.99880002446638,
+      "nonmonotonic_intervals": 0,
+      "p01_dt_s": 0.016665999999531778,
+      "p99_dt_s": 0.016667000000779808,
+      "quantization_adjusted_vfr_ratio_p99_p01": 1.0,
+      "span_effective_fps": 59.9999999941647,
+      "span_fps": 59.9999999941647,
+      "vfr_ratio_p99_p01": 1.0000600024749826
+    },
+    "source_frame_range": [
+      734,
+      412025
+    ],
+    "timer_roi_pixels": 7684,
+    "timer_roi_pixels_xyxy": [
+      18,
+      30,
+      244,
+      64
+    ]
+  },
+  "source_video": {
+    "actual_sha256": "b6b5302c5d79eafb8d96f289bdfd175a5b80c438e4d12f5725cd51823b715544",
+    "file": "ss3nhAUaScE.mp4",
+    "hash_verified": true,
+    "sha256": "b6b5302c5d79eafb8d96f289bdfd175a5b80c438e4d12f5725cd51823b715544"
+  },
+  "trace": {
+    "arrays": {
+      "bright_mask_mean": "float64",
+      "change_score": "float64",
+      "dark_mask_mean": "float64",
+      "pts_s": "float64",
+      "source_frame_idx": "int64"
+    },
+    "file": "timer_trace.npz",
+    "sha256": "07feffd92723b788c72ff09fcc7f3f80f9f3ecc48de977a4948aee5e16190079"
+  },
+  "video_id": "ss3nhAUaScE"
+}

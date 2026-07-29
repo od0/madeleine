@@ -1,0 +1,85 @@
+{
+  "schema_version": "madeleine.oracle-window-highres-smoke-preflight.v1",
+  "status": "complete",
+  "recorded_at_utc": "2026-07-28T15:07:17Z",
+  "study_id": "own_v3_oracle_window_highres_regional_w16_s0",
+  "source_commit": "b1f0dc7552d26d3282b4c8548a385d7b1ac28d51",
+  "config_sha256": "61e51936bdb52320e45d3f43b943b6e2e718434420eb1e6d6993820c178fed0e",
+  "cache_receipt_sha256": "55f9a96cec4c42ba6a5e4713b9cc35cce09b90974fb8a7127520963a75679e98",
+  "successful_attempt": {
+    "execution_mode": "smoke",
+    "device": "cpu",
+    "path": "runs/oracle_window_highres_smoke_v3_cpu",
+    "epochs": 1,
+    "training_examples_per_arm": 3,
+    "validation_examples_per_arm": 14,
+    "all_requested_heads_covered_in_validation": true,
+    "total_wall_seconds": 98.17,
+    "process_maximum_resident_set_bytes": 1160429568,
+    "artifact_bytes": 38744064,
+    "arms": {
+      "h32_q": {
+        "wall_seconds": 5.082673999997496,
+        "peak_resident_set_bytes": 514211840,
+        "checkpoint_sha256": "19881be7fe8462fae2382788978b462d839208379176b0df51be3d60d0233de9",
+        "prediction_sidecar_sha256": "5c0338340951c0f7df7ea201977cf20284fa162cee0290859eb8280c88fd9877",
+        "run_receipt_sha256": "f1b839b2fd3012bc165c0c0311fdd8731267c4835d5b9ba2bef0cdb49b9fcb80",
+        "training_log_sha256": "f738fa886b1a2b9c614b6b07acb77c87a546c23f49723eb66bfc4bfc527b1449"
+      },
+      "h128_g": {
+        "wall_seconds": 15.670301499994821,
+        "peak_resident_set_bytes": 1160429568,
+        "checkpoint_sha256": "5fe14601dc666d743fd64d41a8529afad1408b8e3f8a82cc00c7a184211575f0",
+        "prediction_sidecar_sha256": "4ff9f339a97b00389ac5881c2823e3c4afcaf20587e0f3405efebc5728f118c8",
+        "run_receipt_sha256": "0b57ab108afcceb439b39009847e80873cd9b8eaea0e0bf16e4a56b6b87a67d1",
+        "training_log_sha256": "4eabb28042cbd360c7c88c0fd00bda9c265bb6624e3cbf1676545df5aeb5741e"
+      },
+      "h128_q": {
+        "wall_seconds": 18.315894166000362,
+        "peak_resident_set_bytes": 1152630784,
+        "checkpoint_sha256": "9cb06c641d3e57207d781a885e3b4ac4f5e142d9cf14c477ac82c69883ecc2e5",
+        "prediction_sidecar_sha256": "03348cdabe4b63334eed513826a0410798153d899eb03fcba368187716255785",
+        "run_receipt_sha256": "3c951899939a88d17413782787d0f28684013983aa21fcf97914e110e4c5bf84",
+        "training_log_sha256": "041bf2ab8bbf9aa5ed40751dea8cb0158114e2b8049ead08bf031faba113f117"
+      }
+    },
+    "report_sha256": "e99441aad06c98540ad32e654548c0af198f85cf8da000a10ef8619976ea60c1",
+    "completion_marker_sha256": "50b94a7b0104342c64353454166b39d8b8d692e327d8fcadafb4ab4746b112fa",
+    "decision": "smoke_only_no_scientific_decision"
+  },
+  "failed_attempts": [
+    {
+      "path": "runs/oracle_window_highres_smoke_v1",
+      "device": "mps",
+      "published_artifacts": false,
+      "failure": "prediction finiteness guard stopped H32-Q before publication"
+    },
+    {
+      "path": "runs/oracle_window_highres_smoke_v2",
+      "device": "mps",
+      "published_artifacts": false,
+      "failure": "prediction finiteness guard stopped H32-Q before publication"
+    }
+  ],
+  "interpretation": "The complete real-data path passed on CPU. The two MPS failures are a local-backend discrepancy and are not scientific evidence. Production remains frozen to deterministic BF16 CUDA and requires its own 100-update profiling smoke before launch.",
+  "tests": {
+    "focused": {
+      "passed": 35,
+      "scope": "Study-H cache, model, scorer, independent audit, and completed oracle dependencies"
+    },
+    "repository_wide": {
+      "passed": 865,
+      "wall_seconds": 275.26
+    },
+    "failures": 0
+  },
+  "checks": {
+    "real_cache_load": true,
+    "forward_backward": true,
+    "final_short_effective_batch": true,
+    "checkpoint_and_sidecar_serialization": true,
+    "fixed_scorer_smoke_publication": true,
+    "smoke_cannot_trigger_scientific_gate": true,
+    "failed_attempt_paths_preserved": true
+  }
+}

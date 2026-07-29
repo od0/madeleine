@@ -1,0 +1,206 @@
+{
+  "schema_version": "madeleine.provisional-blend-gru-decision.v1",
+  "study_id": "provisional_blend_gru_y4n_b1_s0",
+  "authorized_at": "2026-07-27",
+  "purpose": "Measure the marginal effects of corrected local engine-truth data and provisional wild-overlay data under a fixed-compute, source-balanced GRU recipe.",
+  "interpretation": {
+    "tier_label": "provisional diagnostic; zero wild hours have cleared the human admission gates",
+    "not_a_full_factorial": true,
+    "not_an_additive_hours_experiment": true,
+    "contrasts": [
+      {
+        "name": "local_marginal",
+        "comparison": "NL_90_10 minus existing pure_N_100",
+        "meaning": "replace 10 percent of scheduled NitroGen segment draws with corrected local draws"
+      },
+      {
+        "name": "wild_marginal_at_10_percent_local",
+        "comparison": "NLW_70_20_10 minus NL_90_10",
+        "meaning": "replace 20 percent of scheduled NitroGen segment draws with provisional wild draws while holding local at 10 percent"
+      }
+    ]
+  },
+  "reference": {
+    "run_id": "nitrogen_unflagged_92train_y4n_holdout_26m_128x3_s0",
+    "training_mix_percent": {
+      "nitrogen": 100,
+      "local": 0,
+      "wild_provisional": 0
+    },
+    "checkpoint_sha256": "cf55f612382bfa7b9a1b67038b5223a1629782782995f0b008311ba380b34f94",
+    "selected_final_tensors_identical": true,
+    "role": "implicit zero-percent-local, zero-percent-wild recipe-matched baseline"
+  },
+  "arms": [
+    {
+      "name": "NL_90_10",
+      "run_id": "blend_provisional_nl90_10_92train_y4n_holdout_26m_128x3_s0",
+      "training_mix_percent": {
+        "nitrogen": 90,
+        "local": 10
+      },
+      "five_step_cycle": [
+        {"nitrogen": 14, "local": 2},
+        {"nitrogen": 14, "local": 2},
+        {"nitrogen": 14, "local": 2},
+        {"nitrogen": 15, "local": 1},
+        {"nitrogen": 15, "local": 1}
+      ],
+      "expected_draws": {
+        "nitrogen": 205416,
+        "local": 22824
+      }
+    },
+    {
+      "name": "NLW_70_20_10",
+      "run_id": "blend_provisional_nlw70_20_10_92train_y4n_holdout_26m_128x3_s0",
+      "training_mix_percent": {
+        "nitrogen": 70,
+        "wild_provisional": 20,
+        "local": 10
+      },
+      "five_step_cycle": [
+        {"nitrogen": 11, "wild_provisional": 3, "local": 2},
+        {"nitrogen": 11, "wild_provisional": 3, "local": 2},
+        {"nitrogen": 11, "wild_provisional": 3, "local": 2},
+        {"nitrogen": 12, "wild_provisional": 3, "local": 1},
+        {"nitrogen": 11, "wild_provisional": 4, "local": 1}
+      ],
+      "expected_draws": {
+        "nitrogen": 159768,
+        "wild_provisional": 45648,
+        "local": 22824
+      }
+    }
+  ],
+  "model_contract": {
+    "initialization": "from scratch; seed 0; no checkpoint initialization",
+    "architecture": "BadelineIDM default centered GRU with frozen ImageNet ResNet-18 average-pool features",
+    "trainable_parameters": 25719815,
+    "template": "experiments/configs/takeover_features_26m_128x3frame_full_holdout.json",
+    "template_sha256": "9c92ee27ac37115389980490f656af1af5bf0f3389952e652b323f6b279bfb95",
+    "window": 128,
+    "frame_stride": 3,
+    "frame_span": 382,
+    "window_mode": "centered",
+    "segment_windows": 96,
+    "segment_items_per_step": 16,
+    "maximum_steps": 14265,
+    "evaluation_steps": [0, 14265],
+    "learning_rate": 0.0003,
+    "optimizer": "adamw",
+    "weight_decay": 0.01,
+    "linear_learning_rate_decay": true,
+    "transition_weight": 8.0,
+    "weights_reported": "final",
+    "checkpoint_selection": "none",
+    "positive_weight_policy": "freeze the pure-103h reference vector unchanged",
+    "positive_weight_key_order": ["left", "right", "up", "down", "jump", "dash", "grab"],
+    "positive_weight": [
+      6.5241737274432445,
+      2.165329049329906,
+      5.234555340345659,
+      10.0,
+      6.478684563686479,
+      10.0,
+      1.7741724096558231
+    ],
+    "source_sampler": "deterministic exact five-step quota cycle with independently shuffled and cycling per-source segment pools"
+  },
+  "sources": {
+    "nitrogen": {
+      "tier": "mapped_unflagged",
+      "sessions": 1062,
+      "session_list_sha256": "e668ccbd0aa02fb1bda79c2da621df6ae4cb0d183280580076e20b9f00996943",
+      "feature_validation_sha256": "fa5948124011dfae7f0d1ca29bb0e17dc4f2e89dd86c16aa189d7b5e7d6b5b91",
+      "holdout_video": "y4nQHqYSObI"
+    },
+    "local": {
+      "tier": "engine_truth_corrected_own_v3",
+      "source_hours": 0.664125,
+      "source_frames": 143451,
+      "active_rows": 119859,
+      "complete_segment_items": 159,
+      "used_target_windows": 15264,
+      "used_target_hours_at_60hz": 0.07066666666666667,
+      "expected_draws_per_arm": 22824,
+      "effective_pool_passes_per_arm": 143.54716981132074,
+      "build_manifest_sha256": "3126d985149368e127c24ec63a8dce8f9343197d21b8395a4c409053d0436c80",
+      "train_sessions_sha256": "aa0ead8291970707d283515843c1d2776c8d31afc710654accac8e91d3e28a09",
+      "val_sessions_sha256": "fe324018ea818ab573973853fc9df90f0c5d001dee0f1391b8aaae6776141b54",
+      "train_shard_sha256": {
+        "rec_20260724_190233": "be92cdf4d3bbd5473a91fda8b20d9a42247ee6ff42c99cc25075378ac5e668d2",
+        "rec_20260725_015612": "0933b8e189ae1d513c1ceb44c5190edca8f66c9ce7a753b5151ec8f3df2fe9de",
+        "rec_20260725_021338": "585632bc33d81cf5df4703693469534c7aa7e2bc9f255a277b2a49955ea1ca1b"
+      },
+      "val_a_shard_sha256": {
+        "rec_20260724_171305_5min": "6abde83a24da4202e7c148722f2ac0ceaa0f204e13905795c5662c1d267b3d62"
+      },
+      "feature_validation_schema": "madeleine.own-v3-features-validation.v1",
+      "feature_receipt_policy": "the post-build marker must bind every feature file byte-for-byte to these exact corrected RGB source hashes before assembly",
+      "forbidden_generation": "/ephemeral/data/own_features"
+    },
+    "wild_provisional": {
+      "tier": "provisional_not_train_ready",
+      "admitted_hours": 0.0,
+      "videos": 7,
+      "sessions": 2058,
+      "frames": 4835638,
+      "labeled_hours": 22.387213054995033,
+      "complete_segment_items": 41567,
+      "expected_draws": 45648,
+      "effective_pool_passes": 1.0981778761998702,
+      "source_manifest_sha256": "67a95de6a4a49f504acdcfe8f316324fe55c2d7fb8e0ff55e82782f0fdecb01b",
+      "session_list_sha256": "c670af69f1805ba7260055473f79b30935e68f378c24ed8b286b85e1bbe6b3f4",
+      "feature_validation_marker_sha256": "f694589cecc3cb8a2fd102d922508bf21dab73d02ed62797cb7ed9bb566460b7"
+    }
+  },
+  "evaluation_contract": {
+    "order": ["mapped_y4n_later_eight", "commit_and_freeze_y4n_comparison", "engine_truth_b1_development"],
+    "threshold_policy": "raw sigmoid probabilities; state and event decisions fixed at 0.5",
+    "oracle_thresholds_allowed": false,
+    "calibration_allowed": false,
+    "mapped_y4n_later_eight": {
+      "role": "primary development decision surface",
+      "sessions": 8,
+      "all_sixteen_session_list_sha256": "5cc9428034fc07ef4a3d47781044e4c8ce5f89a3659530c70ee0400761ee4690",
+      "active_rows": 269352,
+      "truth_sha256": "f61a0de4076f4683f01494837f01c3e314873ab0d78ee131b43e8e9f6e576a01"
+    },
+    "engine_truth_b1_development": {
+      "role": "post-decision repeatedly consulted transfer evidence only",
+      "active_rows": 9202,
+      "streams": 73,
+      "truth_sha256": "e51e1e9dc945fd41ab61fb3b8fe2b91cc7644ef15e5780eae41748dece26436c",
+      "input_active_sha256": "bd9109c03fa0e572d2c1aa2ac7ddbe8919948fcbe9247cf4f7df9b090f2df6ab"
+    },
+    "required_metrics": [
+      "macro and per-key average precision with prevalence",
+      "state F1 at 0.5",
+      "key-state micro and joint exact-match accuracy at 0.5",
+      "segment-bounded collar-0 and plus-or-minus-2 transition-event F1 at 0.5",
+      "predicted-positive rate",
+      "always-released, persistence, and shuffled-event baselines"
+    ],
+    "required_memorization_receipts": [
+      "scheduled and actual source draws",
+      "unique segment items and repeat distribution per source",
+      "local effective pool passes",
+      "per-source final train BCE",
+      "corrected local-train versus val-A BCE/AP/F1 gap",
+      "source membership and shard hashes"
+    ]
+  },
+  "fresh_capture_candidate_rule": {
+    "surface": "mapped_y4n_later_eight only; B1 cannot select",
+    "eligible": "an arm must improve macro AP by at least 0.005 absolute over pure_N_100, improve at least four of seven per-key AP values, and lose no more than 0.005 absolute plus-or-minus-2 event F1",
+    "tie_break": "higher macro AP, then higher plus-or-minus-2 event F1",
+    "follow_up": "freeze the winning recipe before Bryan records a different fresh 15-minute engine-truth session"
+  },
+  "embargo": {
+    "sealed_untouched_session": "rec_20260727_220000_test",
+    "rule": "forbidden to both blend arms for training, validation, inference, thresholding, calibration, selection, or diagnostics",
+    "val_b": "excluded until the known engine-counter-reset alignment is repaired",
+    "admitted_only_follow_up": "if the offset campaign admits wild hours, a separately preregistered admitted-only blend replaces this provisional diagnostic as headline evidence"
+  }
+}

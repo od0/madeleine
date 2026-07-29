@@ -1,0 +1,252 @@
+{
+  "boolean_agreement_at_512_diagnostic_samples": {
+    "bridged_active": 512,
+    "motion_eligible": 512,
+    "raw_active": 511,
+    "timer_present": 512
+  },
+  "boundaries_v3_ai_sha256": "d1d24e1365efdc76da6d6c776a82200e9bd21ac8f23ce2dfe817a6de83bb9c8f",
+  "bridge_population": {
+    "bridges_with_presence_dropout": 78,
+    "duration_histogram_s": {
+      "counts": [
+        20915,
+        23317,
+        7174,
+        1317,
+        81
+      ],
+      "edges": [
+        0.0,
+        0.05,
+        0.1,
+        0.2,
+        0.35,
+        0.5
+      ]
+    },
+    "note": "The proposal's bridged_short_gaps list is truncated to 256 of 52804 rows; this complete population was recomputed from the verified full-resolution trace.",
+    "risky_bridges": 99,
+    "risky_definition": "absent_timer_frames > 0 or duration_s >= 0.35",
+    "total_bridges": 52804
+  },
+  "checks": [
+    {
+      "check": "boundaries_source_binding",
+      "detail": "boundaries.v3-ai.json binds the expected source hash and remains unreviewed",
+      "passed": true
+    },
+    {
+      "check": "authoritative_range_count",
+      "detail": "boundaries.v3-ai.json has 106 ranges; proposal records 106 candidates (untruncated)",
+      "passed": true
+    },
+    {
+      "check": "recorded_ranges_equal_proposal_rows",
+      "detail": "boundaries.v3-ai.json equals the proposal's untruncated candidate rows",
+      "passed": true
+    },
+    {
+      "check": "source_video_sha256",
+      "detail": "ss3nhAUaScE.mp4 sha256 b6b5302c5d79eafb8d96f289bdfd175a5b80c438e4d12f5725cd51823b715544",
+      "passed": true
+    },
+    {
+      "check": "pts_vector_sha256",
+      "detail": "frame_pts.npy sha256 28b31524e24bac3484703ffc569306656ec232abfa36d46fca250359a8006ec1",
+      "passed": true
+    },
+    {
+      "check": "pts_vector_shape",
+      "detail": "420180 persisted PTS values",
+      "passed": true
+    },
+    {
+      "check": "selected_interval",
+      "detail": "dense source frames [734, 412025) (411291 frames)",
+      "passed": true
+    },
+    {
+      "check": "roi_pixel_geometry",
+      "detail": "ROI pixels xyxy [18, 30, 244, 64]",
+      "passed": true
+    },
+    {
+      "check": "diagnostic_trace_pts_exact",
+      "detail": "512/512 sampled PTS values match exactly",
+      "passed": true
+    },
+    {
+      "check": "diagnostic_trace_change_score_within_tolerance",
+      "detail": "max |dev| 0.002415 (mean 8.413e-05, tolerance 0.005) across 512 samples; decoder builds differ between hosts so exact equality is not expected",
+      "passed": true
+    },
+    {
+      "check": "diagnostic_trace_bright_mask_mean_within_tolerance",
+      "detail": "max |dev| 2.489 (mean 0.1878, tolerance 8.0) across 512 samples; decoder builds differ between hosts so exact equality is not expected",
+      "passed": true
+    },
+    {
+      "check": "diagnostic_trace_dark_mask_mean_within_tolerance",
+      "detail": "max |dev| 5.741 (mean 0.1902, tolerance 8.0) across 512 samples; decoder builds differ between hosts so exact equality is not expected",
+      "passed": true
+    },
+    {
+      "check": "activity_threshold_bimodal",
+      "detail": "recomputed threshold 0.0251039 (recorded 0.0251777); bimodality check passed",
+      "passed": true
+    },
+    {
+      "check": "population_motion_eligible_frames",
+      "detail": "recomputed 361560 vs recorded 361562 (0.001% relative deviation, limit 2%)",
+      "passed": true
+    },
+    {
+      "check": "population_raw_active_frames",
+      "detail": "recomputed 144694 vs recorded 144840 (0.101% relative deviation, limit 2%)",
+      "passed": true
+    },
+    {
+      "check": "population_bridged_active_frames",
+      "detail": "recomputed 362344 vs recorded 362376 (0.009% relative deviation, limit 2%)",
+      "passed": true
+    },
+    {
+      "check": "population_bridge_total",
+      "detail": "recomputed 52804 vs recorded 52898 (0.178% relative deviation, limit 2%)",
+      "passed": true
+    },
+    {
+      "check": "population_long_inactive_total",
+      "detail": "recomputed 132 vs recorded 131 (0.763% relative deviation, limit 2%)",
+      "passed": true
+    },
+    {
+      "check": "population_dropped_islands_total",
+      "detail": "recomputed 25 vs recorded 25 (0.000% relative deviation, limit 2%)",
+      "passed": true
+    },
+    {
+      "check": "independent_segmentation_alignment",
+      "detail": "independent re-decode produced 107 ranges; 104/106 recorded ranges reproduced float-exactly, 1 with edge shifts (max 0.0167 s), 1 near-threshold split/merge/island flips (limit 6), total coverage difference 0.533 s of 6035.4 s (limit 3.0 s)",
+      "passed": true
+    },
+    {
+      "check": "diagnostic_trace_timer_present_agreement",
+      "detail": "512/512 sampled boolean states agree (minimum 500; near-threshold samples may flip under cross-build decoder deviations)",
+      "passed": true
+    },
+    {
+      "check": "diagnostic_trace_motion_eligible_agreement",
+      "detail": "512/512 sampled boolean states agree (minimum 500; near-threshold samples may flip under cross-build decoder deviations)",
+      "passed": true
+    },
+    {
+      "check": "diagnostic_trace_raw_active_agreement",
+      "detail": "511/512 sampled boolean states agree (minimum 500; near-threshold samples may flip under cross-build decoder deviations)",
+      "passed": true
+    },
+    {
+      "check": "diagnostic_trace_bridged_active_agreement",
+      "detail": "512/512 sampled boolean states agree (minimum 500; near-threshold samples may flip under cross-build decoder deviations)",
+      "passed": true
+    }
+  ],
+  "decode": {
+    "cache_hit": false,
+    "chunks": 8,
+    "cross_chunk_boundary_checks": 7,
+    "decode_backend": "opencv-parallel-chunks"
+  },
+  "format_version": "madeleine.wild20-trace-regeneration-verification.v3",
+  "human_reviewed": false,
+  "independent_segmentation": {
+    "authoritative_range_count": 106,
+    "coverage_difference_s": 0.5333340000003091,
+    "edge_shifted_matches": 1,
+    "edge_tolerance_s": 0.1,
+    "flip_neighbourhood_s": 0.15,
+    "max_edge_deviation_s": 0.016666999999984,
+    "near_threshold_flips": [
+      {
+        "internal_gap_s": 0.5166670000003251,
+        "kind": "split_at_near_limit_gap",
+        "recomputed_s": [
+          [
+            2736.983333,
+            2795.45
+          ],
+          [
+            2795.966667,
+            2851.933333
+          ]
+        ],
+        "recorded_index": 54,
+        "recorded_s": [
+          2736.983333,
+          2851.933333
+        ]
+      }
+    ],
+    "range_count": 107,
+    "ranges_reproduced_exactly": 104
+  },
+  "population_comparison_recomputed_vs_recorded": {
+    "bridge_total": [
+      52804,
+      52898
+    ],
+    "bridged_active_frames": [
+      362344,
+      362376
+    ],
+    "dropped_islands_total": [
+      25,
+      25
+    ],
+    "long_inactive_total": [
+      132,
+      131
+    ],
+    "motion_eligible_frames": [
+      361560,
+      361562
+    ],
+    "raw_active_frames": [
+      144694,
+      144840
+    ]
+  },
+  "proposal_sha256": "d242bdc81a5101d9737e78395433501ba86e19f8bf220647f9d281616dd2ff6e",
+  "pts_sha256": "28b31524e24bac3484703ffc569306656ec232abfa36d46fca250359a8006ec1",
+  "recomputed_threshold": 0.02510394521057607,
+  "recomputed_trace_npz_sha256": "3847eb9234228ddec160b8114abe2f317963b9d90cf4291f5185722764f00574",
+  "recorded_threshold": 0.02517766418401152,
+  "recorded_trace_npz_sha256": "07feffd92723b788c72ff09fcc7f3f80f9f3ecc48de977a4948aee5e16190079",
+  "reproduction_note": "The recorded worker trace bytes were never preserved; this trace is an independent local re-decode with the same OpenCV pixel pipeline (parallel seeked chunks, duplicate-decoded boundary frames checked exactly). Decoder builds are not bit-portable, so agreement with the recorded proposal is verified within recorded tolerances and by reproduction of the authoritative range set up to explicitly classified near-threshold flips.",
+  "scalar_deviations_at_512_diagnostic_samples": {
+    "bright_mask_mean": {
+      "exact_matches": 45,
+      "max": 2.4889380530973497,
+      "mean": 0.18777222759955745,
+      "tolerance": 8.0
+    },
+    "change_score": {
+      "exact_matches": 43,
+      "max": 0.002415000111795962,
+      "mean": 8.412994470696766e-05,
+      "tolerance": 0.005
+    },
+    "dark_mask_mean": {
+      "exact_matches": 102,
+      "max": 5.741150442477874,
+      "mean": 0.19017042311946925,
+      "tolerance": 8.0
+    }
+  },
+  "source_sha256": "b6b5302c5d79eafb8d96f289bdfd175a5b80c438e4d12f5725cd51823b715544",
+  "status": "independently_regenerated_and_verified_within_tolerance",
+  "trace_manifest_sha256": "5f78893ef6dbf8694cc3033a89205f845e29ce7986aab1451618fa42caa1684c",
+  "trace_npz_byte_identical_to_recorded": false,
+  "video_id": "ss3nhAUaScE"
+}

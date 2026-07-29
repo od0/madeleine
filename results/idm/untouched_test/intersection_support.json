@@ -1,0 +1,272 @@
+{
+  "definition": "per contiguous engine-frame run: [max over models of first predicted row, min over models of one-past-last predicted row); runs missing any model are excluded",
+  "streams": [
+    {
+      "run_index": 2,
+      "start_row": 227,
+      "end_row": 239
+    },
+    {
+      "run_index": 4,
+      "start_row": 775,
+      "end_row": 956
+    },
+    {
+      "run_index": 7,
+      "start_row": 1353,
+      "end_row": 1591
+    },
+    {
+      "run_index": 10,
+      "start_row": 2570,
+      "end_row": 2788
+    },
+    {
+      "run_index": 11,
+      "start_row": 3169,
+      "end_row": 3387
+    },
+    {
+      "run_index": 12,
+      "start_row": 3768,
+      "end_row": 3986
+    },
+    {
+      "run_index": 13,
+      "start_row": 4367,
+      "end_row": 4568
+    },
+    {
+      "run_index": 16,
+      "start_row": 5022,
+      "end_row": 5170
+    },
+    {
+      "run_index": 17,
+      "start_row": 5551,
+      "end_row": 5783
+    },
+    {
+      "run_index": 19,
+      "start_row": 6359,
+      "end_row": 6381
+    },
+    {
+      "run_index": 20,
+      "start_row": 6762,
+      "end_row": 6819
+    },
+    {
+      "run_index": 23,
+      "start_row": 7482,
+      "end_row": 7578
+    },
+    {
+      "run_index": 24,
+      "start_row": 7959,
+      "end_row": 8952
+    },
+    {
+      "run_index": 25,
+      "start_row": 9333,
+      "end_row": 9357
+    },
+    {
+      "run_index": 27,
+      "start_row": 9977,
+      "end_row": 9997
+    },
+    {
+      "run_index": 28,
+      "start_row": 10378,
+      "end_row": 10675
+    },
+    {
+      "run_index": 29,
+      "start_row": 11056,
+      "end_row": 11554
+    },
+    {
+      "run_index": 32,
+      "start_row": 12505,
+      "end_row": 12728
+    },
+    {
+      "run_index": 33,
+      "start_row": 13109,
+      "end_row": 13159
+    },
+    {
+      "run_index": 34,
+      "start_row": 13540,
+      "end_row": 13687
+    },
+    {
+      "run_index": 36,
+      "start_row": 14092,
+      "end_row": 14763
+    },
+    {
+      "run_index": 37,
+      "start_row": 15144,
+      "end_row": 15318
+    },
+    {
+      "run_index": 38,
+      "start_row": 15699,
+      "end_row": 15923
+    },
+    {
+      "run_index": 41,
+      "start_row": 16797,
+      "end_row": 19443
+    },
+    {
+      "run_index": 45,
+      "start_row": 20527,
+      "end_row": 20581
+    },
+    {
+      "run_index": 46,
+      "start_row": 20962,
+      "end_row": 21701
+    },
+    {
+      "run_index": 48,
+      "start_row": 22285,
+      "end_row": 22303
+    },
+    {
+      "run_index": 51,
+      "start_row": 23236,
+      "end_row": 23426
+    },
+    {
+      "run_index": 53,
+      "start_row": 23991,
+      "end_row": 25020
+    },
+    {
+      "run_index": 57,
+      "start_row": 26142,
+      "end_row": 26581
+    },
+    {
+      "run_index": 61,
+      "start_row": 27300,
+      "end_row": 27799
+    },
+    {
+      "run_index": 64,
+      "start_row": 28624,
+      "end_row": 29142
+    },
+    {
+      "run_index": 68,
+      "start_row": 29974,
+      "end_row": 30337
+    },
+    {
+      "run_index": 69,
+      "start_row": 30718,
+      "end_row": 30936
+    },
+    {
+      "run_index": 71,
+      "start_row": 31662,
+      "end_row": 31916
+    },
+    {
+      "run_index": 83,
+      "start_row": 34305,
+      "end_row": 34524
+    },
+    {
+      "run_index": 86,
+      "start_row": 35503,
+      "end_row": 35722
+    },
+    {
+      "run_index": 87,
+      "start_row": 36103,
+      "end_row": 36317
+    },
+    {
+      "run_index": 95,
+      "start_row": 37895,
+      "end_row": 38113
+    },
+    {
+      "run_index": 98,
+      "start_row": 39091,
+      "end_row": 39310
+    },
+    {
+      "run_index": 99,
+      "start_row": 39691,
+      "end_row": 39762
+    },
+    {
+      "run_index": 101,
+      "start_row": 40288,
+      "end_row": 41108
+    },
+    {
+      "run_index": 102,
+      "start_row": 41489,
+      "end_row": 42309
+    },
+    {
+      "run_index": 104,
+      "start_row": 42774,
+      "end_row": 42908
+    },
+    {
+      "run_index": 109,
+      "start_row": 43987,
+      "end_row": 44104
+    },
+    {
+      "run_index": 112,
+      "start_row": 45083,
+      "end_row": 45301
+    },
+    {
+      "run_index": 114,
+      "start_row": 45849,
+      "end_row": 45898
+    },
+    {
+      "run_index": 126,
+      "start_row": 48125,
+      "end_row": 48287
+    },
+    {
+      "run_index": 127,
+      "start_row": 48668,
+      "end_row": 48887
+    },
+    {
+      "run_index": 128,
+      "start_row": 49268,
+      "end_row": 49762
+    },
+    {
+      "run_index": 136,
+      "start_row": 51660,
+      "end_row": 51879
+    },
+    {
+      "run_index": 137,
+      "start_row": 52260,
+      "end_row": 52479
+    },
+    {
+      "run_index": 138,
+      "start_row": 52860,
+      "end_row": 52905
+    }
+  ],
+  "n_frames": 16805,
+  "n_active": 16094
+}

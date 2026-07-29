@@ -1,0 +1,93 @@
+# Private strategy notes — never ship, never enter delegated context.
+NOTES.md
+
+# Local credentials and agent state. Public examples use placeholders only.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+id_rsa*
+id_ed25519*
+rclone.conf
+credentials.json
+secrets.json
+/.claude/
+/.codex/
+
+# Recorded sessions and heavy media (manifests/truth/alignment for committed
+# fixtures live under tests/fixtures/, not here).
+/sessions/*
+!/sessions/README.md
+!/sessions/rec_20260724_031839_take2/
+!/sessions/rec_20260724_031839_take3/
+*.mkv
+*.mp4
+*.mov
+# The one committed video: the public distribution encode of the README
+# prediction-overlay exhibit (hash-pinned in the release allowlist).
+!/results/figures/fig_pred_overlay.mp4
+
+# Re-fetched NitroGen videos and other data blobs.
+data/refetch/
+data/cache/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+
+# Everest mod build outputs
+granny/InputTruth/bin/
+granny/InputTruth/obj/
+
+# Codex worktrees
+.worktrees/
+
+# OS noise
+.DS_Store
+
+data/shards_*/
+data/oracle_window_pixel_crops_v1/
+data/oracle_window_fullres_v1/
+runs/
+runs_pod/
+runs/
+data/mapped_60fps/
+
+# Local/persistent delivery copies; checkpoints are shared separately from Git.
+checkpoints/
+
+# Wild-harvest downloader metadata can embed expiring media URLs and request
+# headers. Commit the sanitized candidate/fetch/hash manifests instead.
+results/wild20/**/*.info.json
+results/wild20/**/source_info.json
+
+# Exact timestamp vectors and scalar traces are durable in R2 and hash-bound by
+# tracked JSON manifests. Keep review images/reports in git, not redundant
+# multi-megabyte binary arrays.
+results/wild20/**/frame_pts.npy
+results/wild20/**/*.trace.npz
+results/wild20/**/timer_trace.npz
+
+# Discovery sweeps and dense score arrays are working state, not review
+# evidence. Accepted packets retain only exact selected frames, compact plots,
+# hashes, and the scripts/manifests required to reproduce those selections.
+results/wild20/**/jump-search/
+results/wild20/**/sparse/
+results/wild20/**/activity_scan/
+results/wild20/**/timer_scan/
+results/wild20/**/*_scan*/
+
+# Diagnostic label tables are immutable derived data published to R2. Keep the
+# compact decode report and its hashes in Git, not duplicate Parquet payloads.
+results/wild20/**/labels_*.parquet
+
+# Bulk discovery output and machine-operation logs are not public artifacts.
+# The current private history contains earlier snapshots; a public release is
+# exported from an allowlist rather than exposing those blobs.
+results/wild/
+results/env/
+results/provenance/lane_logs/

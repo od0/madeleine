@@ -1,0 +1,201 @@
+{
+  "schema_version": "madeleine.oracle-window-decision.v1",
+  "study_id": "own_v3_oracle_window_localization_w16_h8_s0",
+  "status": "preregistered_before_validation_inference",
+  "preregistered_at_utc": "2026-07-28T04:40:39Z",
+  "scientific_question": "Does conditioning on one requested key onset or release being present in a 16-frame window materially improve exact engine-truth offset localization over an otherwise matched independent dense-BCE event head?",
+  "authorization": {
+    "scope": "Phase-1 oracle-window design, implementation, execution, and decision; Phase 2 only after the frozen gate",
+    "provision_remote_compute": false,
+    "commit_or_push": false
+  },
+  "repository_receipt": {
+    "git_head_at_freeze": "2c0c1204ac7b72371e87d47d1cc223eeb41b189a",
+    "policy": "Exact relevant working-byte hashes below are authoritative because the user prohibited a new commit. Unrelated concurrent working-tree changes and later unrelated HEAD motion cannot alter the study bytes silently."
+  },
+  "dataset": {
+    "feature_root": "data/shards_oracle_window_features_v1",
+    "feature_receipt": "data/shards_oracle_window_features_v1_complete.json",
+    "feature_receipt_sha256": "c8074b1f90828fa70f6f8d96d9c8eadb5d0985436607c08bac031e444b4844d7",
+    "feature_content_sha256": "f2c9060bb86dd3fce1a964d2c9504966c39149b2befb951aca379336f76d257d",
+    "feature_format": "resnet18_imagenet_avgpool_float16_v1",
+    "feature_generation_device": "mps",
+    "feature_rows": 178525,
+    "source_build_manifest_sha256": "3126d985149368e127c24ec63a8dce8f9343197d21b8395a4c409053d0436c80",
+    "train_split_sha256": "aa0ead8291970707d283515843c1d2776c8d31afc710654accac8e91d3e28a09",
+    "validation_split_sha256": "fe324018ea818ab573973853fc9df90f0c5d001dee0f1391b8aaae6776141b54",
+    "train_sessions": [
+      "rec_20260724_190233",
+      "rec_20260725_015612",
+      "rec_20260725_021338"
+    ],
+    "validation_sessions": [
+      "rec_20260724_171305_5min"
+    ],
+    "forbidden_sessions": [
+      "rec_20260725_025853",
+      "rec_20260725_160450_b1",
+      "rec_20260727_220000_test"
+    ],
+    "candidate_width": 16,
+    "context_halo": 8,
+    "crop_frames": 32,
+    "offset_assignment_seed": 20260728,
+    "construction_policy": "For every valid active contiguous transition t, require the union t-23..t+23 to remain inside one continuity run and be entirely input-active; require exactly one event of the requested key/polarity throughout t-15..t+15; only then assign one deterministic pseudorandom offset balanced within split/session/head to max-minus-min <= 1. The crop is [t-offset-8, t-offset+23].",
+    "model_inputs": [
+      "features",
+      "requested_head"
+    ],
+    "forbidden_model_inputs": [
+      "session_id",
+      "filename",
+      "array_index",
+      "engine_frame_idx",
+      "crop_start",
+      "target_offset",
+      "padding_pattern",
+      "action_history",
+      "controller_state"
+    ],
+    "expected_support": {
+      "training_examples": 4554,
+      "validation_examples": 1150,
+      "validation_blocks": 122,
+      "known_zero_eligible_training_session": "rec_20260725_015612",
+      "reason": "known engine-counter fragmentation leaves no all-offset-safe 32-frame crop"
+    }
+  },
+  "model": {
+    "feature_dim": 512,
+    "projection_dim": 128,
+    "temporal_dim": 128,
+    "temporal_encoder": "badeline.temporal.AlignedTemporalTCN",
+    "tcn_dilations": [
+      1,
+      2,
+      3
+    ],
+    "receptive_radius": 8,
+    "head_order": "seven onset heads in data.schema.KEY_ORDER, then seven release heads",
+    "feature_deltas": false,
+    "feature_delta_reason": "The matched aligned-TCN control uses its native-rate width-five stem; explicit projected deltas would change the declared support.",
+    "candidate_slice": [
+      8,
+      24
+    ]
+  },
+  "arms": {
+    "matched_dense_bce": {
+      "objective": "independent BCE over the 16 requested-head logits",
+      "positive_weight": 15.0,
+      "target": "one positive requested event and fifteen negative offsets"
+    },
+    "conditional_softmax": {
+      "objective": "16-way exact-offset cross-entropy conditional on the requested event being present"
+    },
+    "uniform_chance": {
+      "exact": 0.0625,
+      "within_1": 0.1796875,
+      "within_2": 0.2890625,
+      "nll": 2.772588722239781,
+      "entropy": 2.772588722239781
+    }
+  },
+  "training": {
+    "seed": 0,
+    "confirmation_seeds": [
+      1,
+      2
+    ],
+    "epochs": 40,
+    "batch_size": 256,
+    "eval_batch_size": 512,
+    "optimizer": "adamw",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "scheduler": "none",
+    "sampling": "each event exactly once per epoch in a deterministic shared permutation",
+    "task_balance": "inverse task-count loss weights normalized to mean one; no oversampling",
+    "checkpoint_policy": "final fixed epoch only",
+    "validation_selection": false,
+    "matched_initialization_required": true,
+    "matched_batch_order_required": true
+  },
+  "current_dense_reference": {
+    "artifact_id": "nitrogen-unflagged-event-latch-s0",
+    "checkpoint_sha256": "8e67f249b24f2695dafe51226477fd768f1ae80e423ec4425b4cd71e1af4dcd8",
+    "checkpoint_bytes": 208327827,
+    "weights": "final; byte-identical to selected at step 14265",
+    "past_support_frames": 189,
+    "future_support_frames": 192,
+    "target_chunk": 512,
+    "expected_common_validation_examples": 46,
+    "role": "unmatched historical current-model reference, reported on exact common support and excluded from the gate"
+  },
+  "evaluation": {
+    "bootstrap_replicates": 5000,
+    "bootstrap_seed": 2026072801,
+    "bootstrap_block_frames": 600,
+    "bootstrap_policy": "paired resampling of whole session/run/block identities; no block crosses a continuity boundary",
+    "primary_statistic": "equal-estimable-head macro exact accuracy, conditional_softmax minus matched_dense_bce",
+    "reported_metrics": [
+      "pooled and per-head exact accuracy",
+      "pooled and per-head within-1 accuracy",
+      "pooled and per-head within-2 accuracy",
+      "negative log likelihood",
+      "entropy and normalized entropy",
+      "entropy quartiles versus exact correctness",
+      "true-offset by predicted-offset confusion",
+      "mean signed predicted-minus-true error",
+      "early and late error rates"
+    ],
+    "multiplicity": "one primary comparison; per-head intervals are descriptive"
+  },
+  "decision_gate": {
+    "estimability": {
+      "minimum_validation_events_per_head": 30,
+      "minimum_training_events_per_head_per_session": 20,
+      "minimum_training_sessions": 2,
+      "minimum_estimable_heads": 7,
+      "minimum_distinct_keys": 4,
+      "require_both_event_types": true,
+      "minimum_validation_blocks": 20
+    },
+    "seed_zero": {
+      "minimum_conditional_macro_exact": 0.125,
+      "minimum_conditional_exact_ci_low": 0.0625,
+      "minimum_macro_exact_delta": 0.03,
+      "minimum_macro_exact_delta_ci_low": 0.0,
+      "minimum_positive_estimable_heads": 7,
+      "minimum_positive_distinct_keys": 4,
+      "require_positive_both_event_types": true,
+      "minimum_macro_within_2_delta": -0.01,
+      "require_lower_macro_nll": true,
+      "rule": "Every condition must pass before confirmation seeds are run."
+    },
+    "phase_two": {
+      "requires_confirmation_seeds": [
+        1,
+        2
+      ],
+      "rule": "Apply the unchanged seed-zero gate to the arithmetic mean of the three seed metrics, require positive exact delta in at least two of three seeds, and require the paired block-bootstrap lower bound to remain above zero."
+    }
+  },
+  "failure_policy": {
+    "pooled_feature_no_signal": "If conditional exact localization is not clearly above chance, do not infer intrinsic visual ambiguity. Run one separately frozen learned native-rate pixel/frame-pair differential adapter before that conclusion.",
+    "seed_zero_gate_failure": "Do not run confirmation seeds and do not implement Phase 2. Report the failed clauses and all negative results.",
+    "partial_artifact": "Preserve the failed output under its unique path; never reuse it as completion."
+  },
+  "implementation": {
+    "git_head_at_freeze": "2c0c1204ac7b72371e87d47d1cc223eeb41b189a",
+    "sha256": {
+      "badeline/temporal.py": "c47eed4ef43d6e93b5d7f1c5730768630586b0d4826a9d57301770328d212f2d",
+      "data/schema.py": "3712ec20318a76a7939cd6561eafd75c67990a55556fabea18524fb79c52e0a2",
+      "experiments/oracle_window_localization.py": "7b34c60f36ba752056d42ec015bd1aaf97c1729b7846b19b1a0d884d6834d272",
+      "experiments/run_oracle_window_localization.sh": "51f1ad257ce5a35f9a8f9a12d5c8f3d124367e7f918e1cb3aeab484af62368a3",
+      "experiments/score_oracle_window_localization.py": "1a34d16fef1ea61714e8c03fc2c66d4a40e8046cbd53e44cf3d93e8486e1a468",
+      "tests/test_oracle_window_localization.py": "e7ffc2fda0bd2060ff305dd043bd38f470c8ae9b6595eec54be5bdf2c05332de",
+      "tests/test_score_oracle_window_localization.py": "39c9365553a610c32f3cfbe999abed53200188c22218f183745e7e98feded5c3"
+    }
+  }
+}

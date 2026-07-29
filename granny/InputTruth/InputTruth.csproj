@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <UseAppHost>false</UseAppHost>
+    <AssemblyName>InputTruth</AssemblyName>
+    <RootNamespace>Celeste.Mod.InputTruth</RootNamespace>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Deterministic>true</Deterministic>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <OutputPath>bin</OutputPath>
+    <CelesteGamePath Condition="'$(CELESTE_GAME_PATH)' != ''">$(CELESTE_GAME_PATH)</CelesteGamePath>
+    <CelesteGamePath Condition="'$(CelesteGamePath)' == ''">/Applications/Celeste.app/Contents/Resources</CelesteGamePath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Celeste">
+      <HintPath>$(CelesteGamePath)/Celeste.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="MMHOOK_Celeste">
+      <HintPath>$(CelesteGamePath)/MMHOOK_Celeste.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="FNA">
+      <HintPath>$(CelesteGamePath)/FNA.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="VerifyCelesteGamePath" BeforeTargets="ResolveReferences">
+    <Error
+      Condition="!Exists('$(CelesteGamePath)/Celeste.dll') Or !Exists('$(CelesteGamePath)/MMHOOK_Celeste.dll') Or !Exists('$(CelesteGamePath)/FNA.dll')"
+      Text="Celeste/Everest assemblies were not found at '$(CelesteGamePath)'. Set CELESTE_GAME_PATH to the Everest-installed Celeste resources directory." />
+  </Target>
+</Project>

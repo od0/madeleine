@@ -1,0 +1,142 @@
+{
+  "cells": [
+    {
+      "action": "left",
+      "cell_id": "a",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.79296875,
+        0.9152777777777777,
+        0.01171875,
+        0.022222222222222223
+      ]
+    },
+    {
+      "action": "right",
+      "cell_id": "d",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.82421875,
+        0.9152777777777777,
+        0.01171875,
+        0.022222222222222223
+      ]
+    },
+    {
+      "action": "up",
+      "cell_id": "w",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.80390625,
+        0.8861111111111111,
+        0.01171875,
+        0.022222222222222223
+      ]
+    },
+    {
+      "action": "down",
+      "cell_id": "s",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.80859375,
+        0.9152777777777777,
+        0.01171875,
+        0.022222222222222223
+      ]
+    },
+    {
+      "action": "jump",
+      "cell_id": "space",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.8296875,
+        0.9736111111111111,
+        0.08359375,
+        0.02361111111111111
+      ]
+    },
+    {
+      "action": "dash",
+      "cell_id": "u",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.8828125,
+        0.8861111111111111,
+        0.01171875,
+        0.022222222222222223
+      ]
+    },
+    {
+      "action": "grab",
+      "cell_id": "i",
+      "decoder": "luma",
+      "pressed_polarity": "high",
+      "sample_rect": [
+        0.8984375,
+        0.8861111111111111,
+        0.01171875,
+        0.022222222222222223
+      ]
+    }
+  ],
+  "evidence_frames_s": [
+    2490.384,
+    2491.267,
+    2935.467,
+    2935.9,
+    3016.934,
+    3017.367,
+    4039.35,
+    4039.584,
+    7577.267,
+    7577.7,
+    10397.2,
+    10397.634,
+    13051.95,
+    13052.1
+  ],
+  "gameplay_rect": [
+    0.0,
+    0.0,
+    0.8265625,
+    0.825
+  ],
+  "gameplay_rect_confidence": 0.99,
+  "gameplay_rect_source": "AI exact-PTS full-frame audit: stable source viewport x=0..1057,y=0..593; right sidebar and bottom streamer/input bar excluded",
+  "human_reviewed": true,
+  "inference_confidence": 0.96,
+  "inference_source": "Hash-bound review_packet cell-state/response pairs selected from exact PTS source evidence; AI draft pending named human review",
+  "mask_rects": [
+    [
+      0.76015625,
+      0.8236111111111111,
+      0.23984375,
+      0.1763888888888889
+    ]
+  ],
+  "overlay_style": "physical_keyboard_bottom_right_high_fill",
+  "schema_version": "madeleine.wild-layout.v1",
+  "temporal_offset_confidence": 0.9995,
+  "temporal_offset_frames": 0,
+  "temporal_offset_source": "dash_hitstop_v1+reviewed_acceptance:4f48fd457c57ae71c201d3188d5f0d38c13834bce5ad1ec8078171a71c90dc6a",
+  "video_id": "v498642684",
+  "layout_review_acceptance": {
+    "format_version": "madeleine.wild-layout-acceptance.v1",
+    "artifact": "layout_acceptance.json",
+    "review_manifest_sha256": "37f26427da19b5a06bc31afd7075cab9db4b563326d1523e5445952c7defd5ea",
+    "source_video_sha256": "cc940bbc58732b08fac2fc498788d69b92db07b96c0bce92393e68ca12090b17"
+  },
+  "temporal_offset_acceptance": {
+    "format_version": "madeleine.wild-offset-acceptance.v3",
+    "artifact": "offset_acceptance.json",
+    "calibration_sha256": "4f48fd457c57ae71c201d3188d5f0d38c13834bce5ad1ec8078171a71c90dc6a",
+    "tier": "uncertain_adjacent",
+    "offset_uncertainty_frames": 1
+  }
+}

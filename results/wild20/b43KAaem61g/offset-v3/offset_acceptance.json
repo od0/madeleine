@@ -1,0 +1,45 @@
+{
+  "format_version": "madeleine.wild-offset-acceptance.v3",
+  "video_id": "b43KAaem61g",
+  "created_at": "2026-07-28T15:39:04.512831+00:00",
+  "decision": {
+    "approved": true,
+    "contact_sheet_reviewed": true,
+    "reviewer_identity": "Bryan",
+    "reviewer_kind": "human_with_ai_assistance",
+    "uncertain_tier_acknowledged": true,
+    "notes": "Owner reviewed the 12-row dash-hitstop contact sheet 2026-07-28: freeze-then-rebound pattern verified at the claimed offset."
+  },
+  "calibration": {
+    "path": "offset_calibration.json",
+    "sha256": "1ac3d2eb4dfbb8f9bbfffd94aee3f3ac367ead07ff1e0c03a6495f96a650822f",
+    "format_version": "madeleine.dash-hitstop-offset.v3",
+    "contact_sheet": {
+      "path": "dash_offset_contact.png",
+      "sha256": "07af0fbb8ccc8d24ea7e912cb5b87fdff685850ef17617d984092cfe2cc0aec6"
+    }
+  },
+  "input_layout": {
+    "path": "layout.reviewed-unmeasured.json",
+    "sha256": "16567b09e9a43da097c2521064520806ba4a7aa30574f9585f16f7a6693d41dc"
+  },
+  "layout_review_acceptance": {
+    "path": "layout_acceptance.json",
+    "sha256": "e38ede16b03cd56f09d1708fb035c45f68de0f703915767c0663b7c15dbaacea",
+    "format_version": "madeleine.wild-layout-acceptance.v1",
+    "review_manifest_sha256": "b24d03963de1e44df347bafa427e8c69fc26865b3cb6f61c8f44727198ec836f",
+    "reviewed_layout_sha256": "16567b09e9a43da097c2521064520806ba4a7aa30574f9585f16f7a6693d41dc",
+    "reviewer_kind": "human_with_ai_assistance",
+    "human_reviewed": true
+  },
+  "output_layout": {
+    "path": "layout.final.json",
+    "sha256": "cd54b0ac39f29f7577fab6c52f631c27062f2f9b68f5aed028a34f3e991efb0c"
+  },
+  "accepted_offset_frames": 0,
+  "accepted_offset_confidence": 0.9995,
+  "accepted_offset_source": "dash_hitstop_v1+reviewed_acceptance:1ac3d2eb4dfbb8f9bbfffd94aee3f3ac367ead07ff1e0c03a6495f96a650822f",
+  "accepted_tier": "uncertain_adjacent",
+  "accepted_offset_uncertainty_frames": 1,
+  "source_video_sha256": "33d16b7bd1c05547e8b9a9851865a7d6d66b7c1c7d79d815ee46c1747df304a9"
+}

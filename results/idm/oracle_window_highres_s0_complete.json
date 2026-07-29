@@ -1,0 +1,44 @@
+{
+  "base_dataset_manifest": {
+    "path": "/ephemeral/madeleine-own-v3-oracle-window-highres-regional-w16-s0/runs/oracle_window_localization_s0/dataset_manifest.json",
+    "sha256": "212f7ed619deb7171c0c827c634c5d99babbf091696f18bfa1de2cb6c5ff23c7"
+  },
+  "cache_receipt": {
+    "path": "/ephemeral/data/oracle_window_fullres_v1_complete.json",
+    "sha256": "55f9a96cec4c42ba6a5e4713b9cc35cce09b90974fb8a7127520963a75679e98"
+  },
+  "config": {
+    "path": "/ephemeral/madeleine-own-v3-oracle-window-highres-regional-w16-s0/experiments/configs/oracle_window_highres_regional_v1.json",
+    "sha256": "7144e68f65acb75a7ae5712330d162f20e16f0fa9bd9440c7f58f67e7962e75f"
+  },
+  "content_sha256": "9f9400db29cd518af601ce0c4f947b07213672c59607ac3b3bf3ecf0e34f8650",
+  "decision": "reject_study_h_primary_gate",
+  "execution_mode": "production",
+  "report": {
+    "path": "/ephemeral/results/idm/oracle_window_highres_s0_decision.json",
+    "sha256": "2aef0bcc2f05cd5fb6bb0f0f3c08b8184b42745862bcaafe9739f50c73baf3df"
+  },
+  "runs": {
+    "h128_g": {
+      "checkpoint_sha256": "62c0fe4f0d49dfc88469733356a3d5b2e20692945dd8b31be743a5bf094d6eef",
+      "path": "/ephemeral/results/idm/oracle_window_highres_s0/h128_g",
+      "prediction_sidecar_sha256": "750739cfba32fd08972a1cb6c3b48c9e3bd3cfafdab118acc93c29ca3fd65e2a",
+      "run_receipt_sha256": "fdda91c1c39b255b4125c1a78f5407db97cc296c6c379cbf0d7c110de81c2615"
+    },
+    "h128_q": {
+      "checkpoint_sha256": "753c5ddc6edf7b733ad95e2eeea886435947e21011e0eac4dcfe8c8f21303f10",
+      "path": "/ephemeral/results/idm/oracle_window_highres_s0/h128_q",
+      "prediction_sidecar_sha256": "1893ac0fd21df1e024cb493a628af6b3ff6c1f2a0f7d2d57131d1eb760f5ac0c",
+      "run_receipt_sha256": "03b2338f5550411e083aff382cbe5b07098fb1f0bd64c028018f861980994e60"
+    },
+    "h32_q": {
+      "checkpoint_sha256": "1c9685e2eafa5f5fbc79b4df2a007088a3ad20d7927fa2462ed4756766f1f9e4",
+      "path": "/ephemeral/results/idm/oracle_window_highres_s0/h32_q",
+      "prediction_sidecar_sha256": "ef4a1423eda01d720e946df785fa71435d48a806213d655d933b8797680f54bd",
+      "run_receipt_sha256": "01ebf892024227c9d4e2608ffb831d5df107d43c23c122455eec3ca60b3eb081"
+    }
+  },
+  "schema_version": "madeleine.oracle-window-highres-complete.v1",
+  "status": "complete",
+  "study_id": "own_v3_oracle_window_highres_regional_w16_s0"
+}

@@ -1,0 +1,233 @@
+{
+  "authoritative_range_count": 106,
+  "decision_requested": "adopt the 106 proposed half-open gameplay ranges as human-reviewed WildBoundaries, or list corrections",
+  "files": [
+    {
+      "path": "REVIEW.md",
+      "sha256": "f8838d6df4163c17dadf35965459a18f560b3d7f407ea67a1126523c4c060d89",
+      "size_bytes": 9602
+    },
+    {
+      "path": "boundary_review_full.png",
+      "sha256": "6fdd08a37c1b8fe6716df3024222c3b32cd5eacf535723a73a5f95a416794c35",
+      "size_bytes": 112704
+    },
+    {
+      "path": "build_packet.py",
+      "sha256": "4243b39078a9d8b5c27ab02d33a93d0cbbf8842519e24ac3d3d03f8028eed57b",
+      "size_bytes": 43812
+    },
+    {
+      "path": "inputs/bridge_risk_population.jsonl",
+      "sha256": "60ae8a9e8e484d6f73ac91801457da04c923f38717982ab19c21e69bf733ad55",
+      "size_bytes": 10918
+    },
+    {
+      "path": "inputs/timer_trace.npz",
+      "sha256": "3847eb9234228ddec160b8114abe2f317963b9d90cf4291f5185722764f00574",
+      "size_bytes": 4420774
+    },
+    {
+      "path": "inputs/trace_verification.json",
+      "sha256": "777fcb439c35ee11089ca4c9f61ada8a1ebe60ff81a6636d1a701fc0290415a4",
+      "size_bytes": 8734
+    },
+    {
+      "path": "regenerate_timer_trace.py",
+      "sha256": "ff8d05e8cd56ea4d9187df5739ad788b13e4f5b668e3e4b4844e09a543e91af0",
+      "size_bytes": 32625
+    },
+    {
+      "path": "source_artifacts/boundaries.v3-ai.json",
+      "sha256": "d1d24e1365efdc76da6d6c776a82200e9bd21ac8f23ce2dfe817a6de83bb9c8f",
+      "size_bytes": 5725
+    },
+    {
+      "path": "source_artifacts/evidence_manifest.json",
+      "sha256": "5a1d3a56d187de12ebb51cabb2b4c51737a2cbd6e16608a65eb11a4911a0b1f9",
+      "size_bytes": 13580
+    },
+    {
+      "path": "source_artifacts/fetch.json",
+      "sha256": "57b7c369b39cbd8f132a6f09b5aab95b77f2416c4158a9265c5fe500012fd4d8",
+      "size_bytes": 1972
+    },
+    {
+      "path": "source_artifacts/timer_activity_proposal.json",
+      "sha256": "d242bdc81a5101d9737e78395433501ba86e19f8bf220647f9d281616dd2ff6e",
+      "size_bytes": 256142
+    },
+    {
+      "path": "source_artifacts/timer_trace_manifest.json",
+      "sha256": "5f78893ef6dbf8694cc3033a89205f845e29ce7986aab1451618fa42caa1684c",
+      "size_bytes": 4077
+    },
+    {
+      "path": "source_artifacts/wall_clock/t000012233_start_zero.jpg",
+      "sha256": "c2fa1760f4403524fa0d0f0c238806283409e113fe2597755309d9842129634f",
+      "size_bytes": 31230
+    },
+    {
+      "path": "source_artifacts/wall_clock/t000012250_start_advancing.jpg",
+      "sha256": "3122bb9b4947def0e9a8f07425785ffdaaab3cf5985632171c177b1102c68b2b",
+      "size_bytes": 31145
+    },
+    {
+      "path": "source_artifacts/wall_clock/t006867067_last_advancing.jpg",
+      "sha256": "6fe6aa6aa4dff4e9002b35b87c2d412f99b1995afa61b01a831716c4566c25ce",
+      "size_bytes": 101701
+    },
+    {
+      "path": "source_artifacts/wall_clock/t006867083_first_final.jpg",
+      "sha256": "aff959e5943f00b1ba6fbe177718b23d6f6c5f6c240875fad73267c5322dfa25",
+      "size_bytes": 102271
+    },
+    {
+      "path": "spot_check.json",
+      "sha256": "9fc26a1269098de62aa17882f0d42ade121579e0d91906919509eb8febd1cafa",
+      "size_bytes": 30969
+    },
+    {
+      "path": "spot_checks/bridge-001835500ms.jpg",
+      "sha256": "e20c174ba3868e05b45359590c1356fe985b0236386364fc1a07641ec9bf4c89",
+      "size_bytes": 231081
+    },
+    {
+      "path": "spot_checks/bridge-002374783ms.jpg",
+      "sha256": "c357df8228009cfb062f8488135f8ea6f0e132e19cf6cc5b0b67d9b9f523f0d1",
+      "size_bytes": 307469
+    },
+    {
+      "path": "spot_checks/bridge-003144566ms.jpg",
+      "sha256": "87c77a7403eb045881b44ffa2e8ef5bc1ed944ee75bbe31642fb6eaa8c09aed4",
+      "size_bytes": 236747
+    },
+    {
+      "path": "spot_checks/gap-after-range-076.jpg",
+      "sha256": "258641a6986c3483f99c8e4c7c730669b41cb69c72ba0c767cb851e7eeb4a96c",
+      "size_bytes": 195935
+    },
+    {
+      "path": "spot_checks/gap-after-range-085.jpg",
+      "sha256": "6cf177bda18f054aeb67a992a295a9f7ed49963ea68ba3847be7c55181227c92",
+      "size_bytes": 194368
+    },
+    {
+      "path": "spot_checks/range-000.jpg",
+      "sha256": "8afcad185d51072e1ed099dfc6c07e314800a38e6897d4b445485e97b1ae9e97",
+      "size_bytes": 408231
+    },
+    {
+      "path": "spot_checks/range-001.jpg",
+      "sha256": "6cd8e56ebae6b2ceeda5707f1fc480de68765bc330a383b6a22b5a728c30eca2",
+      "size_bytes": 564649
+    },
+    {
+      "path": "spot_checks/range-015.jpg",
+      "sha256": "5f28133e0a8a7ff3753b35c2c5aaa102c8d2e6597956e210aaa1a8ba23715114",
+      "size_bytes": 494711
+    },
+    {
+      "path": "spot_checks/range-049.jpg",
+      "sha256": "d4a837a571779e0529cd20fe996cf316426ef1618a4ab9acd856ad4527d7fe96",
+      "size_bytes": 460197
+    },
+    {
+      "path": "spot_checks/range-060.jpg",
+      "sha256": "1e4ddb00000cde5fe877a925aacd6391a032a94a91a3d75aa3f4d28d2a80dd54",
+      "size_bytes": 488207
+    },
+    {
+      "path": "spot_checks/range-062.jpg",
+      "sha256": "f9394e56b740900b20745443c4a7050ce90cfe924a2ae4ab269bbef890954172",
+      "size_bytes": 470787
+    },
+    {
+      "path": "spot_checks/range-063.jpg",
+      "sha256": "592c7d08a97958ff5b9e50f982215460dffc1f79e9346d653aa23791e65f8ef1",
+      "size_bytes": 497645
+    },
+    {
+      "path": "spot_checks/range-082.jpg",
+      "sha256": "90e00f08d8975a41710d1831cc934414df5728221f68ac804931b903558bf0df",
+      "size_bytes": 414641
+    },
+    {
+      "path": "spot_checks/range-094.jpg",
+      "sha256": "0f8c7fd0f6a7bbfaa4a590a581071818644a6fcea8e5674dea6426fad9ce1a08",
+      "size_bytes": 654190
+    },
+    {
+      "path": "spot_checks/range-096.jpg",
+      "sha256": "0d3d38ed45c3cfc6b3c59d8a0a28c3fc195f987bc4ba4560430a52377cf0a29b",
+      "size_bytes": 461216
+    },
+    {
+      "path": "spot_checks/range-099.jpg",
+      "sha256": "ca0af403fa719235edcffdf83f274d578c026409576fe669a1d589577cd05e2b",
+      "size_bytes": 419572
+    },
+    {
+      "path": "spot_checks/range-105.jpg",
+      "sha256": "7f74f7a61d71341f96eaa9f518926a579fa325138c20591b97d503d6c01c627a",
+      "size_bytes": 540304
+    }
+  ],
+  "format_version": "madeleine.wild20-boundary-review-request.v1",
+  "human_reviewed": false,
+  "pts_sha256": "28b31524e24bac3484703ffc569306656ec232abfa36d46fca250359a8006ec1",
+  "reviewed_artifacts": {
+    "boundaries.v3-ai.json": {
+      "original_repo_path": "results/wild20/ss3nhAUaScE/boundaries.v3-ai.json",
+      "packet_path": "source_artifacts/boundaries.v3-ai.json",
+      "sha256": "d1d24e1365efdc76da6d6c776a82200e9bd21ac8f23ce2dfe817a6de83bb9c8f"
+    },
+    "evidence_manifest.json": {
+      "original_repo_path": "results/wild20/ss3nhAUaScE/evidence_manifest.json",
+      "packet_path": "source_artifacts/evidence_manifest.json",
+      "sha256": "5a1d3a56d187de12ebb51cabb2b4c51737a2cbd6e16608a65eb11a4911a0b1f9"
+    },
+    "fetch.json": {
+      "original_repo_path": "results/wild20/ss3nhAUaScE/fetch.json",
+      "packet_path": "source_artifacts/fetch.json",
+      "sha256": "57b7c369b39cbd8f132a6f09b5aab95b77f2416c4158a9265c5fe500012fd4d8"
+    },
+    "timer_activity_proposal.json": {
+      "original_repo_path": "results/wild20/ss3nhAUaScE/timer-official-v3-ai/timer_activity_proposal.json",
+      "packet_path": "source_artifacts/timer_activity_proposal.json",
+      "sha256": "d242bdc81a5101d9737e78395433501ba86e19f8bf220647f9d281616dd2ff6e"
+    },
+    "timer_trace_manifest.json": {
+      "original_repo_path": "results/wild20/ss3nhAUaScE/timer-official-v3-ai/timer_trace_manifest.json",
+      "packet_path": "source_artifacts/timer_trace_manifest.json",
+      "sha256": "5f78893ef6dbf8694cc3033a89205f845e29ce7986aab1451618fa42caa1684c"
+    },
+    "wall_clock/t000012233_start_zero.jpg": {
+      "packet_path": "source_artifacts/wall_clock/t000012233_start_zero.jpg",
+      "recorded_in_evidence_manifest": true,
+      "sha256": "c2fa1760f4403524fa0d0f0c238806283409e113fe2597755309d9842129634f"
+    },
+    "wall_clock/t000012250_start_advancing.jpg": {
+      "packet_path": "source_artifacts/wall_clock/t000012250_start_advancing.jpg",
+      "recorded_in_evidence_manifest": true,
+      "sha256": "3122bb9b4947def0e9a8f07425785ffdaaab3cf5985632171c177b1102c68b2b"
+    },
+    "wall_clock/t006867067_last_advancing.jpg": {
+      "packet_path": "source_artifacts/wall_clock/t006867067_last_advancing.jpg",
+      "recorded_in_evidence_manifest": true,
+      "sha256": "6fe6aa6aa4dff4e9002b35b87c2d412f99b1995afa61b01a831716c4566c25ce"
+    },
+    "wall_clock/t006867083_first_final.jpg": {
+      "packet_path": "source_artifacts/wall_clock/t006867083_first_final.jpg",
+      "recorded_in_evidence_manifest": true,
+      "sha256": "aff959e5943f00b1ba6fbe177718b23d6f6c5f6c240875fad73267c5322dfa25"
+    }
+  },
+  "source_video": {
+    "sha256": "b6b5302c5d79eafb8d96f289bdfd175a5b80c438e4d12f5725cd51823b715544",
+    "url": "https://youtu.be/ss3nhAUaScE",
+    "verified_at_build": true
+  },
+  "status": "awaiting_human_decision",
+  "video_id": "ss3nhAUaScE"
+}

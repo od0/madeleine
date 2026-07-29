@@ -1,0 +1,20 @@
+{
+  "window": 32,
+  "window_mode": "centered",
+  "input_config": "pixels",
+  "pretrained_encoder": true,
+  "feature_deltas": true,
+  "embedding_dim": 256,
+  "temporal_dim": 256,
+  "segment_windows": 96,
+  "batch_size": 384,
+  "eval_batch_size": 768,
+  "learning_rate": 0.0003,
+  "class_balance": true,
+  "class_balance_max": 10.0,
+  "active_targets_only": true,
+  "eval_interval": 100,
+  "max_steps": 1500,
+  "seed": 0,
+  "_note": "Takeover recipe: frozen ImageNet encoder, feature deltas, 16 future frames"
+}

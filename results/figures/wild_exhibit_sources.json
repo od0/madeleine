@@ -1,0 +1,50 @@
+[
+ {
+  "figure": "fig_wild_panels",
+  "video_id": "ss3nhAUaScE",
+  "platform": "youtube",
+  "note": "style-survey probe frame; all 8 detector proposals drawn from style_survey.jsonl; translucent CelesteTAS-style input HUD at top right; no camera feed in frame"
+ },
+ {
+  "figure": "fig_wild_styles",
+  "video_id": "fJcUr6CXD1I",
+  "platform": "youtube",
+  "note": "exemplar: timer/LiveSplit-only class (44/55); top-left run-timer crop"
+ },
+ {
+  "figure": "fig_wild_styles",
+  "video_id": "b43KAaem61g",
+  "platform": "youtube",
+  "note": "exemplar: translucent action HUD (6/55); probe frame stored at results/wild/frame_b43KAaem61g.png"
+ },
+ {
+  "figure": "fig_wild_styles",
+  "video_id": "v1509603803",
+  "platform": "twitch",
+  "note": "exemplar: opaque key grid (1/55); bottom key-grid crop"
+ },
+ {
+  "figure": "fig_wild_styles",
+  "video_id": "elDsFg-S8YA",
+  "platform": "youtube",
+  "note": "exemplar: on-screen keyboard + handcam (1/55); cropped to keyboard region, hands only, no face; spelled eIDsFg-S8YA in style_labels.json"
+ },
+ {
+  "figure": "fig_wild_styles",
+  "video_id": "v378693976",
+  "platform": "twitch",
+  "note": "exemplar: gamepad display (1/55); cropped to controller glyph, webcam above the crop excluded"
+ },
+ {
+  "figure": "fig_offset_review_row",
+  "video_id": "kdQbIoMxzZw",
+  "platform": "youtube",
+  "note": "one row of the ranked dash-hitstop offset-review contact sheet: six masked gameplay crops around one dash onset, 2x nearest-neighbor upscale; the full sheet is hash-bound byte-for-byte in the video's offset acceptance record"
+ },
+ {
+  "figure": "fig_layout_review_geometry",
+  "video_id": "v1068970940",
+  "platform": "twitch",
+  "note": "annotated layout-review frame from the review packet: proposed gameplay viewport, timer motion ROI, and per-key HUD cell rectangles drawn over the original stream layout; byte-identical copy of the packet's geometry.png"
+ }
+]

@@ -1,0 +1,183 @@
+{
+  "session": "rec_20260724_171305_5min",
+  "leg1_clean": {
+    "frames_evaluated": 35074,
+    "abstention_rate": 0.4107315960540571,
+    "abstained_frames_that_were_idle": 1.0,
+    "per_key_prf": {
+      "left": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3351,
+        "fp": 0,
+        "fn": 0
+      },
+      "right": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 9891,
+        "fp": 0,
+        "fn": 0
+      },
+      "up": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 6224,
+        "fp": 0,
+        "fn": 0
+      },
+      "down": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 457,
+        "fp": 0,
+        "fn": 0
+      },
+      "jump": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3778,
+        "fp": 0,
+        "fn": 0
+      },
+      "dash": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 2904,
+        "fp": 0,
+        "fn": 0
+      },
+      "grab": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 11697,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    "onset_timing": {
+      "left": {
+        "n_true_onsets": 150,
+        "n_matched": 150,
+        "median_offset": 0.0,
+        "mean_abs_offset": 0.0
+      },
+      "right": {
+        "n_true_onsets": 254,
+        "n_matched": 254,
+        "median_offset": 0.0,
+        "mean_abs_offset": 0.0
+      },
+      "up": {
+        "n_true_onsets": 189,
+        "n_matched": 189,
+        "median_offset": 0.0,
+        "mean_abs_offset": 0.0
+      },
+      "down": {
+        "n_true_onsets": 44,
+        "n_matched": 44,
+        "median_offset": 0.0,
+        "mean_abs_offset": 0.0
+      },
+      "jump": {
+        "n_true_onsets": 167,
+        "n_matched": 167,
+        "median_offset": 0.0,
+        "mean_abs_offset": 0.0
+      },
+      "dash": {
+        "n_true_onsets": 181,
+        "n_matched": 181,
+        "median_offset": 0.0,
+        "mean_abs_offset": 0.0
+      },
+      "grab": {
+        "n_true_onsets": 130,
+        "n_matched": 130,
+        "median_offset": 0.0,
+        "mean_abs_offset": 0.0
+      }
+    },
+    "macro_f1": 1.0,
+    "exact_match_rate_active_frames": 1.0
+  },
+  "leg2_jitter": {
+    "shift_1": 0.9551,
+    "shift_2": 0.9109,
+    "shift_4": 0.8269
+  },
+  "leg3_transcode": [
+    {
+      "profile": "30fps_1M_fullres",
+      "transcoded_frames": 9002,
+      "strip_decode_rate": 1.0,
+      "aligned_frames": 9002,
+      "macro_f1": 1.0,
+      "per_key_recall": {
+        "left": 1.0,
+        "right": 1.0,
+        "up": 1.0,
+        "down": 1.0,
+        "jump": 1.0,
+        "dash": 1.0,
+        "grab": 1.0
+      }
+    },
+    {
+      "profile": "30fps_500k_fullres",
+      "transcoded_frames": 9002,
+      "strip_decode_rate": 0.9943,
+      "aligned_frames": 8951,
+      "macro_f1": 1.0,
+      "per_key_recall": {
+        "left": 1.0,
+        "right": 1.0,
+        "up": 1.0,
+        "down": 1.0,
+        "jump": 1.0,
+        "dash": 1.0,
+        "grab": 1.0
+      }
+    },
+    {
+      "profile": "30fps_1M_720p",
+      "transcoded_frames": 9002,
+      "strip_decode_rate": 1.0,
+      "aligned_frames": 9002,
+      "macro_f1": 1.0,
+      "per_key_recall": {
+        "left": 1.0,
+        "right": 1.0,
+        "up": 1.0,
+        "down": 1.0,
+        "jump": 1.0,
+        "dash": 1.0,
+        "grab": 1.0
+      }
+    },
+    {
+      "profile": "30fps_1M_480p",
+      "transcoded_frames": 9002,
+      "strip_decode_rate": 1.0,
+      "aligned_frames": 9002,
+      "macro_f1": 1.0,
+      "per_key_recall": {
+        "left": 1.0,
+        "right": 1.0,
+        "up": 1.0,
+        "down": 1.0,
+        "jump": 1.0,
+        "dash": 1.0,
+        "grab": 1.0
+      }
+    }
+  ]
+}

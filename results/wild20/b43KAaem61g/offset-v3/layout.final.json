@@ -1,0 +1,141 @@
+{
+  "schema_version": "madeleine.wild-layout.v1",
+  "video_id": "b43KAaem61g",
+  "overlay_style": "opaque_semantic_grid_top_right_with_livesplit_right",
+  "gameplay_rect": [
+    0.0,
+    0.0,
+    0.803125,
+    1.0
+  ],
+  "gameplay_rect_source": "codex_visual_draft: source pixels x=0..1027, y=0..719 across exact lossless source frames; right LiveSplit panel x=1028..1279 excluded",
+  "gameplay_rect_confidence": 0.98,
+  "mask_rects": [
+    [
+      0.58671875,
+      0.0055555556,
+      0.2359375,
+      0.1416666667
+    ]
+  ],
+  "cells": [
+    {
+      "cell_id": "top_jump",
+      "action": "jump",
+      "sample_rect": [
+        0.590625,
+        0.0125,
+        0.009375,
+        0.0166666667
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "top_grab",
+      "action": "grab",
+      "sample_rect": [
+        0.6296875,
+        0.0125,
+        0.009375,
+        0.0166666667
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "top_up",
+      "action": "up",
+      "sample_rect": [
+        0.746875,
+        0.0125,
+        0.009375,
+        0.0166666667
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "bottom_dash",
+      "action": "dash",
+      "sample_rect": [
+        0.590625,
+        0.0819444444,
+        0.009375,
+        0.0166666667
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "bottom_left",
+      "action": "left",
+      "sample_rect": [
+        0.7078125,
+        0.0819444444,
+        0.009375,
+        0.0166666667
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "bottom_down",
+      "action": "down",
+      "sample_rect": [
+        0.746875,
+        0.0819444444,
+        0.009375,
+        0.0166666667
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    },
+    {
+      "cell_id": "bottom_right",
+      "action": "right",
+      "sample_rect": [
+        0.7859375,
+        0.0819444444,
+        0.009375,
+        0.0166666667
+      ],
+      "decoder": "luma",
+      "pressed_polarity": "high"
+    }
+  ],
+  "inference_source": "codex_visual_draft: full 119781-frame luma scan plus exact frame-index/PTS-bound lossless PNG review; seven plainly canonical cells retained, redundant/noncanonical/composite cells omitted fail-closed",
+  "inference_confidence": 0.88,
+  "human_reviewed": true,
+  "evidence_frames_s": [
+    20.183333,
+    1402.683333,
+    208.183333,
+    895.516667,
+    72.916667,
+    821.116667,
+    556.8,
+    737.65,
+    481.5,
+    733.15,
+    674.416667,
+    544.333333,
+    526.1
+  ],
+  "temporal_offset_frames": 0,
+  "temporal_offset_source": "dash_hitstop_v1+reviewed_acceptance:1ac3d2eb4dfbb8f9bbfffd94aee3f3ac367ead07ff1e0c03a6495f96a650822f",
+  "temporal_offset_confidence": 0.9995,
+  "layout_review_acceptance": {
+    "format_version": "madeleine.wild-layout-acceptance.v1",
+    "artifact": "layout_acceptance.json",
+    "review_manifest_sha256": "b24d03963de1e44df347bafa427e8c69fc26865b3cb6f61c8f44727198ec836f",
+    "source_video_sha256": "33d16b7bd1c05547e8b9a9851865a7d6d66b7c1c7d79d815ee46c1747df304a9"
+  },
+  "temporal_offset_acceptance": {
+    "format_version": "madeleine.wild-offset-acceptance.v3",
+    "artifact": "offset_acceptance.json",
+    "calibration_sha256": "1ac3d2eb4dfbb8f9bbfffd94aee3f3ac367ead07ff1e0c03a6495f96a650822f",
+    "tier": "uncertain_adjacent",
+    "offset_uncertainty_frames": 1
+  }
+}

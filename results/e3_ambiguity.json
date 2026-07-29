@@ -1,0 +1,43 @@
+{
+  "sessions": [
+    "rec_20260724_180100",
+    "rec_20260724_190233"
+  ],
+  "total_active_frames": 160409,
+  "rooms_analyzed": 31,
+  "ambiguity_rate_vs_eps": {
+    "eps_0.25": 0.4479,
+    "eps_0.5": 0.6248,
+    "eps_1.0": 0.7258,
+    "eps_2.0": 0.8612,
+    "eps_4.0": 0.9555
+  },
+  "ambiguous_pairs_sampled": 200000,
+  "future_divergence_vs_horizon": {
+    "h_1": {
+      "mean_L2": 0.236,
+      "median_L2": 0.0,
+      "n": 200000
+    },
+    "h_2": {
+      "mean_L2": 0.364,
+      "median_L2": 0.0,
+      "n": 200000
+    },
+    "h_4": {
+      "mean_L2": 0.586,
+      "median_L2": 0.0,
+      "n": 200000
+    },
+    "h_8": {
+      "mean_L2": 0.972,
+      "median_L2": 0.569,
+      "n": 200000
+    },
+    "h_16": {
+      "mean_L2": 1.834,
+      "median_L2": 2.121,
+      "n": 200000
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "window": 32,
+  "window_mode": "past_only",
+  "input_config": "pixels",
+  "precomputed_features": true,
+  "backbone_feature_dim": 512,
+  "feature_deltas": true,
+  "embedding_dim": 256,
+  "temporal_dim": 256,
+  "segment_windows": 96,
+  "batch_size": 1536,
+  "eval_batch_size": 3072,
+  "learning_rate": 0.0003,
+  "class_balance": true,
+  "class_balance_max": 10.0,
+  "transition_weight": 8.0,
+  "active_targets_only": true,
+  "eval_interval": 250,
+  "max_steps": 2000,
+  "seed": 0,
+  "_note": "Matched precomputed-feature control: no future frames"
+}
