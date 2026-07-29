@@ -153,8 +153,10 @@ tranche, 33.2 media hours are fetched and byte-verified to durable storage,
 provisionally decoded — and the funnel held **every hour at zero until all
 gates closed**: nothing trains until the reviews pass. On 2026-07-28 the
 first six videos cleared their human reviews and the first publications
-completed (4.95 hours published through every gate at this writing, with
-~7.3 more decode-admitted and mid-publication behind the same gates). One
+completed; by the following morning the funnel was fully drained — 13.93
+hours across all seven human-cleared videos published through every gate,
+with the one remaining reviewed candidate excluded by a hard offset-gate
+failure on genuinely mixed evidence. One
 provisionally decoded video was earlier rejected by the mechanical gates
 for a broken dash cell — a decoder threshold defect since found, fixed, and
 regression-tested.
@@ -560,8 +562,9 @@ untouched session cannot yet separate content shift from model limits.
    jitter-cost asymmetry, and the dispersion diagnostics.
 
 Completed since the first draft: full-corpus feature validation, the matched
-103.41/148.32-hour scale arms, and their mapped-holdout and B1 development
-evaluations (see the results summary).
+103.41/148.32-hour scale arms, their mapped-holdout and B1 development
+evaluations, and the VPT-small topology comparison with its
+preregistered calibration follow-up (see the results summary).
 
 ## Beyond labeling: the verifier direction
 

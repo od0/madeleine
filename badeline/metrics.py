@@ -518,6 +518,7 @@ def summarize(
     boundaries: Sequence[int] | None = None,
     active: np.ndarray | None = None,
     fixed_transition_thresholds: Mapping[str, float] | None = None,
+    include_oracle: bool = True,
 ) -> dict[str, object]:
     """Return the complete set of per-key metrics without aggregate accuracy.
 
@@ -535,18 +536,6 @@ def summarize(
     else:
         frame_truth, frame_prob = truth, probabilities
 
-    oracle = per_key_transition_f1(
-        truth, probabilities, threshold=None, collar=0,
-        boundaries=boundaries, active=active,
-    )
-    oracle_thresholds = {key: oracle[key]["threshold"] for key in oracle}
-    collar_sensitivity = {
-        str(collar): per_key_transition_f1(
-            truth, probabilities, threshold=oracle_thresholds,
-            collar=collar, boundaries=boundaries, active=active,
-        )
-        for collar in (1, 2, 4)
-    }
     result: dict[str, object] = {
         "per_key_ap": per_key_ap(frame_truth, frame_prob),
         "per_key_f1": per_key_f1(frame_truth, frame_prob),
@@ -556,9 +545,28 @@ def summarize(
             truth, probabilities, threshold=0.5, collar=0,
             boundaries=boundaries, active=active,
         ),
-        "transition_f1_oracle": oracle,
-        "transition_f1_oracle_collars": collar_sensitivity,
+        "transition_f1_at_0.5_collars": {
+            str(collar): per_key_transition_f1(
+                truth, probabilities, threshold=0.5,
+                collar=collar, boundaries=boundaries, active=active,
+            )
+            for collar in (1, 2, 4)
+        },
     }
+    if include_oracle:
+        oracle = per_key_transition_f1(
+            truth, probabilities, threshold=None, collar=0,
+            boundaries=boundaries, active=active,
+        )
+        oracle_thresholds = {key: oracle[key]["threshold"] for key in oracle}
+        result["transition_f1_oracle"] = oracle
+        result["transition_f1_oracle_collars"] = {
+            str(collar): per_key_transition_f1(
+                truth, probabilities, threshold=oracle_thresholds,
+                collar=collar, boundaries=boundaries, active=active,
+            )
+            for collar in (1, 2, 4)
+        }
     if fixed_transition_thresholds is not None:
         result["transition_f1_fixed_dev"] = per_key_transition_f1(
             truth, probabilities,

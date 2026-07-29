@@ -159,6 +159,19 @@ results in the project.
   engine-truth capture, the 148-hour model posts the project's best exact
   transition matching yet. Exact event timing on the mapped holdout stays
   near 0.01 F1 at every scale — the recognition-versus-timing split again.
+- Implementing the actual VPT topology at
+  105.7M parameters — raw 128×128 pixels at 20 Hz, noncausal Conv3D,
+  Appendix-D spatial stack, bidirectional Transformer, natural per-key NLL,
+  20 epochs — produced the strongest development-surface ranking result:
+  0.3603 macro AP on identical corrected val-A support against 0.2622 for
+  the best similarly sized GRU, with five of seven per-key APs improved.
+  It failed one of six preregistered promotion clauses (rare-key coverage
+  at the fixed 0.5 threshold; `down` recall zero), so it is recorded as an
+  architecture success and not promoted. The calibration-then-retrain
+  follow-up was preregistered before any new data was collected. Details:
+  [results/idm/VPT_SMALL_113M_RESULTS.md](results/idm/VPT_SMALL_113M_RESULTS.md)
+  and the frozen
+  [preregistration](results/idm/VPT_SMALL_CALIBRATION_RETRAIN_PREREG.md).
 
 ### A new label channel: wild keyboard overlays
 
@@ -182,10 +195,12 @@ truth, and admission control.
   plus mechanical decode and publication gates that no reviewer can waive —
   and the funnel held every hour at zero until all gates closed. The first
   six videos cleared their human reviews on 2026-07-28, and the first
-  publications completed the same day: 4.95 hours are published through
-  every gate (four videos, a million train-ready frames), two more videos
-  are decode-admitted with ~7.3 hours mid-publication, and one more
-  human-cleared video is queued. In a controlled single-seed blend test,
+  publications completed the same day. As of the following morning the
+  funnel is fully drained: 13.93 hours across all seven human-cleared
+  videos are published through every gate (~2.95 million train-ready
+  frames), and the one remaining reviewed candidate is excluded by a
+  hard offset-gate failure on genuinely mixed evidence — the funnel
+  refusing, documented below. In a controlled single-seed blend test,
   substituting provisionally decoded wild labels for a fifth of the
   NitroGen draws cost no measurable AP (wild's marginal effect +0.0033;
   the blends trailed pure NitroGen because the corrected-local fraction
@@ -315,7 +330,7 @@ uv run python -m badeline.train --help
 uv run python -m badeline.eval --help
 ```
 
-The synthetic-fixture suite passes on a fresh clone (`uv run pytest -q` → 791
+The synthetic-fixture suite passes on a fresh clone (`uv run pytest -q` → 808
 passed, 59 skipped at this release); skipped tests require private artifacts listed in 'What
 is public'. It does not reproduce an experiment end to end, since that requires
 data the repository does not distribute. Reproducing capture requires a local copy of *Celeste*,

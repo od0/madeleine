@@ -1,12 +1,15 @@
 # IDM results summary
 
-Status as of 2026-07-28: curated 13.45-hour recipe frozen on local development
+Status as of 2026-07-29: curated 13.45-hour recipe frozen on local development
 validation; the 40.61-hour diagnostic, NitroGen-only training-held-out-video
 pilot, and both full-corpus scale arms are complete;
 the matched wild-provisional diagnostic and both source-balanced provisional
 blend diagnostics are complete; the six corrected own-v3 primary reruns are
-also complete and independently validated. Neither blend qualified for B1 or
-a new fresh capture.
+also complete and independently validated. The exact 105.7M VPT-small
+two-H100 run is complete: it beat both final GRUs in macro AP on exact
+common support but failed its all-clauses candidate gate on rare-key
+coverage/rate calibration. Neither blend nor VPT-small qualified for B1 or a
+new fresh capture.
 Local-development event metrics below use per-key oracle thresholds selected
 on the local development session (`val-A`) and must not be presented as locked
 final-test numbers. The NitroGen-only section instead selects oracle thresholds
@@ -72,6 +75,39 @@ tests, not guaranteed apples-to-apples VPT rungs.
 - Model: trainable 512→256 projection, projected-feature deltas, 256-unit GRU,
   seven binary heads, 32 centered frames (15 past, target, 16 future).
 - Loss: class-balanced BCE with 8× weight on onset/release labels.
+
+## VPT-small direct comparison
+
+The first genuine VPT-topology run is complete. Unlike the historical GRUs,
+it consumes 128 raw 128x128 frames at 20 Hz, applies the noncausal 5x1x1
+Conv3D before the Appendix-D spatial stack, uses four unmasked Transformer
+blocks, predicts all 128 positions, and trains for 20 epochs with natural
+per-key NLL. The width-only reduction yields 105,696,398 parameters, directly
+comparable in scale to the 112.95M GRU.
+
+On 4,224 identical active rows from corrected own-v3 val-A, final VPT-small
+reached 0.3603 macro AP, 0.2504 state F1, 0.0351 exact event F1, 0.1005
++/-2-native-frame event F1, and 84.89%/38.35% fixed-0.5 micro/joint key-state
+accuracy. The stronger final GRU on this support was the 36.9M model at 0.2622
+AP, 0.2491 state F1, 0.0378 exact, 0.0810 +/-2, and 64.29%/10.91% accuracy.
+Always released was 84.19%/35.58%.
+
+Five of six preregistered clauses passed. The candidate gate failed because
+`down` recall was zero and `dash`, `down`, `left`, and `up` predicted-positive
+rates fell outside the required 0.5x--2.0x prevalence band. The lowest-NLL
+epoch-2 diagnostic predicted every key released, so final epoch-20 weights
+remain the preregistered headline. This is an implementation and architecture
+success, but not authorization for more seeds or sealed evaluation. Full
+metrics and immutable checkpoint provenance are in
+[`VPT_SMALL_113M_RESULTS.md`](VPT_SMALL_113M_RESULTS.md).
+
+The follow-up decision tree is frozen before new data in
+[`VPT_SMALL_CALIBRATION_RETRAIN_PREREG.md`](VPT_SMALL_CALIBRATION_RETRAIN_PREREG.md).
+Calibration is expected to diagnose or repair the badly positioned dash/left
+scores and perhaps up, but `down` AP (0.0102) is below its 0.0137 prevalence
+anchor, so a monotonic scalar transform is not expected to recover that key.
+The original 5/6 result remains immutable; any calibrated system is a new
+prospectively evaluated variant.
 
 ## Primary three-seed result
 

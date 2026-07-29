@@ -91,6 +91,27 @@ curve.
 | Frozen 25.7M, 148.32 h all-valid | held-out mapped `y4n` | 66.14% | 10.19% | 80.76% / 19.21% | 98.73% / 91.45% |
 | Frozen 25.7M, 148.32 h all-valid | B1 | 60.67% | **15.36%** | 85.52% / 48.67% | 99.04% / 94.15% |
 
+### VPT-small exact common support
+
+The 105.7M VPT-small experiment uses a different, explicitly frozen support:
+4,224 active corrected own-v3 val-A rows that all compared models can predict.
+The VPT final checkpoint is the first model in its direct table to beat always
+released on both accuracy readings at threshold 0.5.
+
+| Weights | Micro | Joint | Always released micro / joint | Persistence micro / joint |
+|---|---:|---:|---:|---:|
+| **VPT-small final, epoch 20** | **84.89%** | **38.35%** | 84.19% / 35.58% | 98.98% / 93.51% |
+| VPT-small selected, epoch 2 | 84.19% | 35.58% | 84.19% / 35.58% | 98.98% / 93.51% |
+| 112.95M GRU final | 62.28% | 9.71% | 84.19% / 35.58% | 98.98% / 93.51% |
+| 112.95M GRU selected | 65.91% | 8.59% | 84.19% / 35.58% | 98.98% / 93.51% |
+| 36.9M GRU final | 64.29% | 10.91% | 84.19% / 35.58% | 98.98% / 93.51% |
+
+This is a real improvement over the majority-state baseline, but not a solved
+IDM. VPT-small exceeds always released by only 0.70 micro points, rare-key
+coverage is poor, and persistence remains 14.09 micro and 55.16 joint points
+higher. See [`VPT_SMALL_113M_RESULTS.md`](VPT_SMALL_113M_RESULTS.md) for AP,
+state/event F1, fixed predicted-positive rates, and the failed coverage gate.
+
 Neither reading is a flattering headline: the learned models lose to trivial
 baselines, while persistence reaches 93–94% joint accuracy despite placing
 every transition one frame late and therefore scoring exactly zero at collar-0

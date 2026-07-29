@@ -1,6 +1,6 @@
 # MADELEINE status
 
-Measured status as of 2026-07-28. Stable findings and engineering conclusions
+Measured status as of 2026-07-29. Stable findings and engineering conclusions
 are preserved in [the technical report](report/README.md), the
 [build retrospective](docs/history/how-this-was-built.md), and the
 [curated lessons](docs/engineering-lessons.md).
@@ -198,6 +198,22 @@ W1 label-quality experiment, S3**
    remain separate counters; human-admitted wild data reached its first nonzero hours on 2026-07-28 (see the wild snapshot above).
    Evidence: `results/wild/general-harvest-ytr-20260728T0530Z/` and
    `harvest/WILD_HARVEST_ENGINEERING_LOG.md`.
+7. **Two-stage modality reclassification (2026-07-29 06:48 UTC):** stages A and
+   B both ran to `state: complete` over the 627 fast-lane rows that have a
+   survey artifact. Stage A nominated 567 `decodable_input_hud` / 60
+   `uncertain` / **0 negatives**, reproducing at corpus scale the calibration
+   finding that it cannot discriminate a negative. Stage B, the pairwise
+   change verifier, split those into 223 confirmed (213.7 nominal h), 42
+   uncertain (54.2 h), and 362 deprioritized (339.1 h; 331 static-or-frozen,
+   31 no-HUD), moving 316 stage-A positives into the deprioritized bucket.
+   These are AI diagnostics: every row is `human_reviewed=false` and
+   `training_admitted=false`, and stage B orders a review queue rather than
+   rejecting anything — the calibrated false-static rate on clear positives
+   was 3 of 10, so the deprioritized bucket must be human-sampled before any
+   durable rejection. The four unclassified rows are the three terminal raw
+   residuals plus `v1068970940`, which is raw-complete but unsurveyed.
+   Evidence: `results/wild/reclassify-fleet-20260728T1500Z/` and its
+   calibration record `results/wild/reclassify-calib-20260728T0500Z/`.
 
 ## Models and experiments
 

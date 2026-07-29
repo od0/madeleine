@@ -13,8 +13,10 @@ Three committed measurements motivate this study and predict its outcome
 shape. E3 measured 44.8% same-pixels/different-action state ambiguity with an
 8–16-frame divergence horizon — the observational-equivalence phenomenon this
 study formalizes per press. E4 measured that ±1 frame of label timing error
-costs 4.5% macro event F1 while heavy transcoding costs nothing, so frame-exact
-timing is where label value concentrates. The 2026-07-28 lag-deconvolution
+costs 4.5 points of per-frame state macro-F1 while the tested internet-grade
+transcodes left the overlay fully decodable on retained, realigned frames
+(see the erratum below), so frame-exact timing is where label value
+concentrates. The 2026-07-28 lag-deconvolution
 diagnostic (`lag_deconvolution/`, private working repository) found the constant-lag mechanism unsupported
 — dash probability rises systematically early (median −7 frames) with no
 per-key shift recovering event F1 — establishing that the timing failure is
@@ -736,3 +738,24 @@ The presentation headline should remain:
 
 > Given the event identity and a candidate window for free, what pins the exact
 > frame, and how much of the residual is unidentifiable by construction?
+
+## Erratum (2026-07-29)
+
+An earlier version of this document described E4's jitter cost as "4.5% macro
+event F1" and heavy transcoding as costing "nothing". Both labels were wrong;
+the measured numbers are unchanged.
+
+- The jitter leg (`experiments/e4_metrology.py`, `jitter_leg`) shifts truth by
+  ±k frames and scores per-frame, per-key state macro-F1 against unshifted
+  truth. No event extraction or collar matching is involved. The correct
+  statement: a one-frame label shift lowers per-frame state macro-F1 by 4.5
+  points (four frames: 17.3).
+- The transcode leg re-parses the overlay from the degraded video on
+  frame-index-aligned surviving frames. It establishes that the overlay
+  remains fully decodable on retained frames under internet-grade transcodes;
+  it does not establish zero supervision loss, since a 30 fps refetch
+  discards half the 60 Hz evidence by construction and short events can
+  vanish entirely.
+
+The claim drifted from the correct wording (still present in the repository
+README) during summarization into this plan.
