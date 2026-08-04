@@ -255,13 +255,40 @@ This section is roadmap-level ordering; live execution state is tracked in
 
 ## Scope boundaries
 
-The repository is an IDM and data-quality study, not a complete game-playing
-agent. Behavior cloning or reinforcement learning on IDM-labeled video is a
-natural downstream project but is outside the current experimental claims.
-Likewise, the Wild20 corpus is useful only to the extent that its review and
-provenance gates remain auditable; raw hours are not counted as training yield.
+The repository began as an IDM and data-quality study, and those claims are
+complete on their own terms: that work is considered research-complete when
+the frozen engine-truth test has been evaluated, all reported results have
+reproducible artifact links, known selection contamination is explicit, and
+the central state-versus-timing finding survives that untouched test. The
+Wild20 corpus is useful only to the extent that its review and provenance
+gates remain auditable; raw hours are not counted as training yield.
 
-The work is considered research-complete when the frozen engine-truth test has
-been evaluated, all reported results have reproducible artifact links, known
-selection contamination is explicit, and the central state-versus-timing
-finding survives that untouched test.
+As of 2026-07-30 the repository additionally carries a second, separately
+gated claims section: the pseudo-labeling and behavior-cloning program of
+[results/idm/PSEUDO_LABEL_BC_PLAN.md](results/idm/PSEUDO_LABEL_BC_PLAN.md).
+Its research question is whether an IDM that passes its own quality gates can
+label a much larger Celeste video corpus well enough that a causal
+behavior-cloning model trained on those labels becomes a more capable
+behavioral prior than mapped-label and control-label policies, measured in
+deterministic rollouts and on held-out engine-truth action agreement. That
+program has its own entry gate, promote rule, and completion criteria; its
+outcomes do not amend the IDM study's conclusions, and reinforcement
+learning remains outside the repository's claims.
+
+Adopting the Wild7 public-video holdout as the primary deployment gate
+(2026-08-02) does not change the project's thesis about engine truth; it
+sharpens the instrument roles. An evaluation surface has two independent
+qualities: label fidelity and behavioral support for the quantity being
+measured. Engine-truth capture remains the only channel whose labels are
+definitionally correct, and it keeps sole authority over capture-contract
+regression and all exact-timing claims on the 60 Hz grid. But the local
+val-A session's near-absent `down` coverage (58 positive rows at 1.37
+percent prevalence) made it unable to measure that key, which is an
+evaluation-support failure, not a truth failure. The Wild7 surface has
+the opposite profile — decoded rather than engine-recorded truth, but
+deployment-distribution behavior at scale — and it is usable as truth at
+all only because the fail-closed admission machinery built for the
+ground-truth discipline certified its HUD decodes. Deployment readiness
+for labeling public video is therefore gated on the deployment
+distribution, while engine truth remains the metrology and timing
+channel; neither surface substitutes for the other.

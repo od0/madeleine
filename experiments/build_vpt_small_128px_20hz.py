@@ -92,14 +92,18 @@ def load_source_shard(
 
 
 def selected_rows(
-    engine_frame_idx: np.ndarray, phase: int
+    engine_frame_idx: np.ndarray, phase: int, *, row_step: int = 3
 ) -> tuple[np.ndarray, np.ndarray, list[tuple[int, int]]]:
+    if row_step <= 0:
+        raise ValueError("row_step must be positive")
+    if phase < 0 or phase >= row_step:
+        raise ValueError("phase must be in [0, row_step)")
     rows: list[np.ndarray] = []
     continuity: list[np.ndarray] = []
     output_runs: list[tuple[int, int]] = []
     cursor = 0
     for run_number, (start, end) in enumerate(contiguous_runs(engine_frame_idx)):
-        chosen = np.arange(start + phase, end, 3, dtype=np.int64)
+        chosen = np.arange(start + phase, end, row_step, dtype=np.int64)
         if not len(chosen):
             continue
         rows.append(chosen)
@@ -132,6 +136,8 @@ def derive_one(
     expected_hash: str | None,
     window: int,
     stride: int,
+    row_step: int = 3,
+    schema: str = SCHEMA,
 ) -> dict[str, Any]:
     source = source_root / f"{session_id}.npz"
     if not source.is_file():
@@ -142,7 +148,9 @@ def derive_one(
             f"{source}: sha256 {source_hash} != declared {expected_hash}"
         )
     frames, keys, engine_frame_idx, input_active = load_source_shard(source, session_id)
-    rows, continuity_id, runs = selected_rows(engine_frame_idx, phase)
+    rows, continuity_id, runs = selected_rows(
+        engine_frame_idx, phase, row_step=row_step
+    )
     if not len(rows):
         raise RuntimeError(f"{source}: phase {phase} selects no rows")
     target = output_root / f"{session_id}__p{phase}"
@@ -168,7 +176,7 @@ def derive_one(
         "window_start": write_array(target, "window_start", windows),
     }
     metadata = {
-        "schema_version": SCHEMA,
+        "schema_version": schema,
         "session_id": session_id,
         "phase": phase,
         "source": {
@@ -233,6 +241,8 @@ def main(argv: Iterable[str] | None = None) -> int:
             expected_hash=expected.get(session_id),
             window=args.window,
             stride=args.stride,
+            row_step=3,
+            schema=SCHEMA,
         )
         for session_id in sessions
         for phase in phases

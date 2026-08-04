@@ -102,6 +102,11 @@ released on both accuracy readings at threshold 0.5.
 |---|---:|---:|---:|---:|
 | **VPT-small final, epoch 20** | **84.89%** | **38.35%** | 84.19% / 35.58% | 98.98% / 93.51% |
 | VPT-small selected, epoch 2 | 84.19% | 35.58% | 84.19% / 35.58% | 98.98% / 93.51% |
+| Native60 VPT-small, 128f, 7,060 steps | **85.21%** | 36.34% | 84.19% / 35.58% | 98.98% / 93.51% |
+| Native60 VPT-small, 128f, 2,340 steps | 82.64% | 19.32% | 84.19% / 35.58% | 98.98% / 93.51% |
+| Native60 VPT-small, 384f, 2,340 steps | 80.98% | 27.27% | 84.19% / 35.58% | 98.98% / 93.51% |
+| 482.13M paper-IDM final, epoch 20 | 80.50% | 20.29% | 84.19% / 35.58% | 98.98% / 93.51% |
+| 482.13M paper-IDM selected, epoch 3 | 84.19% | 35.58% | 84.19% / 35.58% | 98.98% / 93.51% |
 | 112.95M GRU final | 62.28% | 9.71% | 84.19% / 35.58% | 98.98% / 93.51% |
 | 112.95M GRU selected | 65.91% | 8.59% | 84.19% / 35.58% | 98.98% / 93.51% |
 | 36.9M GRU final | 64.29% | 10.91% | 84.19% / 35.58% | 98.98% / 93.51% |
@@ -111,6 +116,21 @@ IDM. VPT-small exceeds always released by only 0.70 micro points, rare-key
 coverage is poor, and persistence remains 14.09 micro and 55.16 joint points
 higher. See [`VPT_SMALL_113M_RESULTS.md`](VPT_SMALL_113M_RESULTS.md) for AP,
 state/event F1, fixed predicted-positive rates, and the failed coverage gate.
+
+The native60 full arm posts the highest micro accuracy in this table, but not
+the strongest IDM. It trails old VPT-small by 2.01 joint points, 0.0592 macro
+AP, 0.0537 state F1, and 0.0153 tolerant-event F1, while emitting no `dash` or
+`down` positives at 0.5. Sparse-state micro accuracy again rewards the
+majority-state operating point; see
+[`VPT_NATIVE60_THREE_ARM_RESULTS.md`](VPT_NATIVE60_THREE_ARM_RESULTS.md).
+
+The matched 482.13M public-artifact paper-IDM makes the imbalance problem more
+obvious. Its lowest-validation-NLL checkpoint is exactly always released. The
+final checkpoint predicts positives only for `grab` and `right`, lowering
+micro accuracy by 3.69 points and joint accuracy by 15.29 points versus always
+released while reaching only 0.1844 macro AP. More parameters on the same
+13.45-hour population did not improve either accuracy reading; see
+[`VPT_PAPER_IDM_TIER_B_RESULTS.md`](VPT_PAPER_IDM_TIER_B_RESULTS.md).
 
 Neither reading is a flattering headline: the learned models lose to trivial
 baselines, while persistence reaches 93–94% joint accuracy despite placing
@@ -363,3 +383,28 @@ The direct conclusion under these benchmarks is:
   along a supposedly matched VPT curve;
 - every future evaluation should report micro and joint accuracy, always-
   released and persistence baselines, AP, state F1, and transition F1.
+
+## VPT-small `down` diagnosis on separate foreign support
+
+The frozen y4n mapped-foreign development scorecard contains 555,840 active
+rows with 2.3901% `down` prevalence. At the unchanged 0.5 threshold:
+
+| Endpoint | Down AP | Down recall | Down PPR | PPR / prevalence |
+|---|---:|---:|---:|---:|
+| Tier-B/Wild 13.45h | **0.4591** | **0.2116** | 0.6264% | 0.262 |
+| NitroGen unflagged 103.41h | 0.0441 | 0.0044 | 0.2432% | 0.102 |
+| 103.41h + 5% Ridge fine-tune | 0.0429 | 0.0233 | 0.7929% | 0.332 |
+
+All three endpoints make nonzero `down` predictions on this foreign support,
+whereas all three fixed native val-A reports have zero `down` recall at 0.5.
+The smaller Tier-B/Wild endpoint's strong 0.4591 foreign down AP demonstrates
+that the seven independent binary heads can represent down jointly with other
+keys. The 103-hour result shows that raw positive exposure is not sufficient:
+heterogeneous mapping quality and population shift can overwhelm additional
+hours. The Ridge fine-tune changes the operating point but does not improve
+ranking (down AP 0.0441 -> 0.0429), so it is not a repair.
+
+None of the three passes the 0.5--2.0 PPR/prevalence condition for `down` on
+y4n. This remains a development capability measurement, not a gate pass, and
+the y4n vertical-axis sign is indeterminate. See the full separate scorecard
+at [`vpt_small_foreign_scorecard_v1/SCORECARD.md`](vpt_small_foreign_scorecard_v1/SCORECARD.md).

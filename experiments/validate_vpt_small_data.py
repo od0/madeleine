@@ -41,10 +41,39 @@ def validate(root: Path) -> dict[str, Any]:
     marker_path = root / "complete.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     marker = json.loads(marker_path.read_text(encoding="utf-8"))
-    if manifest.get("schema_version") != "madeleine.vpt-small-20hz-shards.v1":
+    schemas = {
+        "madeleine.vpt-small-20hz-shards.v1": {
+            "marker": "madeleine.vpt-small-20hz-complete.v1",
+            "source_rate_hz": 60,
+            "derived_rate_hz": 20,
+            "row_step": 3,
+        },
+        "madeleine.vpt-small-60hz-shards.v1": {
+            "marker": "madeleine.vpt-small-60hz-complete.v1",
+            "source_rate_hz": 60,
+            "derived_rate_hz": 60,
+            "row_step": 1,
+        },
+    }
+    contract = schemas.get(manifest.get("schema_version"))
+    if contract is None:
         raise ValueError("unexpected VPT data manifest schema")
-    if marker.get("schema_version") != "madeleine.vpt-small-20hz-complete.v1":
+    if marker.get("schema_version") != contract["marker"]:
         raise ValueError("unexpected VPT data marker schema")
+    if int(manifest.get("source_rate_hz", -1)) != contract["source_rate_hz"]:
+        raise ValueError("unexpected source rate")
+    if int(manifest.get("derived_rate_hz", -1)) != contract["derived_rate_hz"]:
+        raise ValueError("unexpected derived rate")
+    row_step = int(contract["row_step"])
+    overlap_policy = manifest.get("center_overlap_policy")
+    if overlap_policy not in (None, "base-first-stable-tail-fill"):
+        raise ValueError("unsupported center-overlap policy")
+    window = int(manifest.get("window", -1))
+    stride = int(manifest.get("stride", -1))
+    if (window, stride) not in {(128, 64), (384, 192)}:
+        raise ValueError("unsupported VPT window/stride geometry")
+    if int(marker.get("window", window)) != window:
+        raise ValueError("marker window differs from manifest")
     if sha256_file(manifest_path) != marker["manifest"]["sha256"]:
         raise RuntimeError("completion marker does not bind manifest bytes")
     if manifest["content_sha256"] != marker["manifest"]["content_sha256"]:
@@ -62,6 +91,8 @@ def validate(root: Path) -> dict[str, Any]:
             raise RuntimeError(f"metadata hash mismatch: {metadata_path}")
         metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
         verify_content_hash(metadata, name=str(metadata_path))
+        if metadata.get("center_overlap_policy") != overlap_policy:
+            raise ValueError(f"record overlap policy differs from manifest: {directory}")
         arrays: dict[str, np.ndarray] = {}
         for name, receipt in metadata["arrays"].items():
             path = directory / receipt["file"]
@@ -88,13 +119,13 @@ def validate(root: Path) -> dict[str, Any]:
         engine = np.asarray(arrays["source_engine_frame_idx"])
         source_rows = np.asarray(arrays["source_row_index"])
         same = continuity[1:] == continuity[:-1]
-        if not np.all(np.diff(engine)[same] == 3):
-            raise ValueError(f"derived engine spacing is not 20 Hz: {directory}")
-        if not np.all(np.diff(source_rows)[same] == 3):
-            raise ValueError(f"derived source-row spacing is not 3: {directory}")
+        if not np.all(np.diff(engine)[same] == row_step):
+            raise ValueError(f"derived engine spacing differs from contract: {directory}")
+        if not np.all(np.diff(source_rows)[same] == row_step):
+            raise ValueError(f"derived source-row spacing differs from contract: {directory}")
         starts = np.asarray(arrays["window_start"])
         for start in starts:
-            stop = int(start) + 128
+            stop = int(start) + window
             if stop > expected_rows:
                 raise ValueError(f"window exceeds stream: {directory}")
             if np.any(continuity[int(start):stop] != continuity[int(start)]):
@@ -118,6 +149,8 @@ def validate(root: Path) -> dict[str, Any]:
         "derived_streams": streams,
         "derived_rows": rows,
         "windows": windows,
+        "window": window,
+        "stride": stride,
     }
 
 

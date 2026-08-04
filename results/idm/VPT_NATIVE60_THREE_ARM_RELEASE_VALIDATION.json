@@ -1,0 +1,114 @@
+{
+  "schema_version": "madeleine.vpt-small-native60-release-validation.v1",
+  "created_at": "2026-07-31T07:15:00Z",
+  "status": "pass_with_unrelated_full_suite_failure",
+  "frozen_source_commit": "3bcd3fee953ef72f5fda8405c316c63eae2d91d1",
+  "evaluation_contract": {
+    "surface": "corrected own-v3 val-A restricted to frozen old VPT-small final support",
+    "threshold": 0.5,
+    "weights": "final endpoints only",
+    "rows": 4224,
+    "streams": 21,
+    "reference_sidecar_sha256": "4039356c349c7d44add3a700a0c32fdc3a1019c339af1a308e57274cdfef546a",
+    "support_identity_passed": true,
+    "finite_values_passed": true
+  },
+  "generation_contracts": [
+    {
+      "profile": "128f",
+      "path": "experiments/configs/vpt_small_native60_128f_generation_contract.json",
+      "sha256": "efae92a5e421be5c40f82869547360cbed980044ea531db4ad692b400507a32e"
+    },
+    {
+      "profile": "384f",
+      "path": "experiments/configs/vpt_small_native60_384f_generation_contract.json",
+      "sha256": "74cd3725073e3f6f1c9b59cea87fc80243f02d0ac1db220876e64e940f3cb951",
+      "validation_manifest_sha256": "e0e60d791ede9ad13fedb1de07b934616f843cf5e59f5cc75ba50fd7ff8ff1e4",
+      "absolute_path_only_candidate_quarantined": true
+    }
+  ],
+  "arms": [
+    {
+      "name": "short2340",
+      "run_id": "vpt_small_105696398_tier_b_native60_short2340_s0",
+      "optimizer_steps": 2340,
+      "checkpoint_sha256": "f97d38facdae590d6f0b6e69ef5d1fce0b22509359f667ae7db6ff769c9ef8fb",
+      "checkpoint_r2_stream_readback_passed": true,
+      "all_checkpoint_receipts_present": true,
+      "evaluation_json": "results/idm/vpt_small_native60_run_evidence/short2340/eval/vpt_small_105696398_tier_b_native60_short2340_s0_final_val_a_common.json",
+      "evaluation_json_sha256": "b1ff071973fa8cde6cbd41fedf6c19c3ea60d4fdb2b491c55b5c01bc3210a2f0",
+      "evaluation_sidecar_sha256": "b314f0f0060ca2594ba8eeba94b8fdd33e79c19410cd18aa0a5b1bb1816b4caf",
+      "metrics": {
+        "macro_ap": 0.28898889023134433,
+        "macro_state_f1": 0.17815936540239122,
+        "macro_event_f1_collar_0": 0.021826729945430952,
+        "macro_event_f1_collar_2_native_frames": 0.060024291804921186,
+        "micro_accuracy": 0.8264339826839827,
+        "joint_accuracy": 0.19318181818181818,
+        "natural_nll": 3.135348320007324,
+        "brier": 0.1341053992509842
+      }
+    },
+    {
+      "name": "full20e",
+      "run_id": "vpt_small_105696398_tier_b_native60_full20e_s0",
+      "optimizer_steps": 7060,
+      "checkpoint_sha256": "43733c2e1804fdb6baab477ddfe58113342b459b7c761a199f9cd7873f0fe947",
+      "checkpoint_r2_stream_readback_passed": true,
+      "all_checkpoint_receipts_present": true,
+      "evaluation_json": "results/idm/vpt_small_native60_run_evidence/full20e/eval/vpt_small_105696398_tier_b_native60_full20e_s0_final_val_a_common.json",
+      "evaluation_json_sha256": "ae4e739618a3062c04f77af1ad9189475dff70fe062d176c1c4517c2d1281f58",
+      "evaluation_sidecar_sha256": "41e5df84276d8cf6ffd41c3364b85e8d7a311c558d83d45d1fa0ead66a708ff4",
+      "metrics": {
+        "macro_ap": 0.30102487394137833,
+        "macro_state_f1": 0.19677029941005802,
+        "macro_event_f1_collar_0": 0.017166898488639244,
+        "macro_event_f1_collar_2_native_frames": 0.085210943182138,
+        "micro_accuracy": 0.8521374458874459,
+        "joint_accuracy": 0.3633996212121212,
+        "natural_nll": 3.180068016052246,
+        "brier": 0.1211075484752655
+      }
+    },
+    {
+      "name": "span384",
+      "run_id": "vpt_small_105696398_tier_b_native60_span384_20e_s0",
+      "optimizer_steps": 2340,
+      "checkpoint_sha256": "52251fa10f6a0d03e786b71afcf44d85963cf32676496e9e580069be60959e5f",
+      "checkpoint_r2_stream_readback_passed": true,
+      "all_checkpoint_receipts_present": true,
+      "evaluation_json": "results/idm/vpt_small_native60_run_evidence/span384/eval/vpt_small_105696398_tier_b_native60_span384_20e_s0_final_val_a_common.json",
+      "evaluation_json_sha256": "5aeaf6f8991b01b735f6e0f8c665123d1bc31a046dba1f2152ee8687c4177883",
+      "evaluation_sidecar_sha256": "1f146ac898e7ef8c8e792433fffac85926f5aa328f8b0112096ce5413151d094",
+      "metrics": {
+        "macro_ap": 0.20710025898617657,
+        "macro_state_f1": 0.14779424391182402,
+        "macro_event_f1_collar_0": 0.012653076325428244,
+        "macro_event_f1_collar_2_native_frames": 0.02339068355152931,
+        "micro_accuracy": 0.8097943722943723,
+        "joint_accuracy": 0.2727272727272727,
+        "natural_nll": 3.773919105529785,
+        "brier": 0.14990206062793732
+      }
+    }
+  ],
+  "tests": {
+    "focused": {
+      "passed": 27,
+      "failed": 0
+    },
+    "full_repository": {
+      "passed": 953,
+      "failed": 1,
+      "native60_failures": 0,
+      "unrelated_failure": "test_report_own_v3_primary_reruns.py::test_tracked_own_v3_evidence_validates_and_matches_key_deltas: tracked own-v3 R2 object prefix mismatch"
+    },
+    "git_diff_check_passed": true
+  },
+  "durability": {
+    "all_run_artifacts_published": true,
+    "all_evaluation_artifacts_published_and_checked": true,
+    "all_final_checkpoint_r2_readbacks_passed": true,
+    "all_nodes_terminated_and_verified": true
+  }
+}

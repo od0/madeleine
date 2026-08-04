@@ -171,6 +171,7 @@ def fixed_report(
     weights: str,
     sidecar: Path,
     support_sidecar: Path,
+    surface: str = "corrected own-v3 val-A, exact VPT three-phase common support",
 ) -> dict[str, Any]:
     truth = common["truth"]
     probability = common["probability"]
@@ -215,7 +216,7 @@ def fixed_report(
     return json_ready({
         "schema_version": "madeleine.vpt-small-gru-common-support-eval.v1",
         "created_at": datetime.now(timezone.utc).isoformat(),
-        "surface": "corrected own-v3 val-A, exact VPT three-phase common support",
+        "surface": surface,
         "threshold": 0.5,
         "weights": {
             "checkpoint": str(checkpoint),
@@ -258,6 +259,17 @@ def fixed_report(
                 for key in KEY_ORDER
             ])),
         },
+        "per_key": {
+            key: {
+                "ap": detail["per_key_ap"][key],
+                "precision": float(precision[column]),
+                "recall": float(recall[column]),
+                "state_f1": float(state_f1[column]),
+                "prevalence": float(gated_truth[:, column].mean()),
+                "predicted_positive_rate": float(predicted[:, column].mean()),
+            }
+            for column, key in enumerate(KEY_ORDER)
+        },
         "metrics": detail,
         "key_state_accuracy": score_sidecar(sidecar, threshold=0.5),
         "sidecar": {
@@ -279,6 +291,10 @@ def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--preds-out", type=Path, required=True)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
+    parser.add_argument(
+        "--surface",
+        default="corrected own-v3 val-A, exact VPT three-phase common support",
+    )
     return parser.parse_args(argv)
 
 
@@ -307,6 +323,7 @@ def main(argv: Iterable[str] | None = None) -> int:
         weights=args.weights,
         sidecar=args.preds_out,
         support_sidecar=args.vpt_sidecar,
+        surface=args.surface,
     )
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")

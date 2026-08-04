@@ -11,6 +11,8 @@ from data.schema import KEY_ORDER
 from experiments.build_full_corpus_features import build_chunk_frames
 from experiments.validate_full_corpus_features import (
     CorpusExpectations,
+    EXPECTED_DIRECTION_RULE,
+    MAPPING_REPORT_SCHEMA_VERSION,
     NATIVE_MODE,
     VideoMetadata,
     validate_full_corpus_features,
@@ -71,11 +73,12 @@ def _fixture(tmp_path: Path) -> dict:
     }
     pq.write_table(pa.table(label_columns), label_dir / "labels_native.parquet")
     mapping = {
+        "schema_version": MAPPING_REPORT_SCHEMA_VERSION,
         "video_id": "video_a",
         "bind_map": {"jump": ["south"], "dash": ["west"], "grab": ["east"]},
         "confidence": 0.75,
         "flagged": False,
-        "axis_sign_indeterminate": False,
+        "direction_rule": EXPECTED_DIRECTION_RULE,
         "chunks_mapped": 1,
         "chunks_skipped": 0,
     }
@@ -181,13 +184,6 @@ def _fixture(tmp_path: Path) -> dict:
         resampled_sessions=0,
         native_frames=240,
         resampled_frames=0,
-        unflagged_videos=1,
-        flagged_videos=0,
-        unflagged_sessions=1,
-        flagged_sessions=0,
-        unflagged_frames=240,
-        flagged_frames=0,
-        axis_sign_indeterminate=0,
         tail_truncated_frames=960,
         skipped_short_frames=0,
     )
@@ -216,6 +212,23 @@ def test_validator_accepts_complete_structural_fixture(tmp_path: Path) -> None:
     assert report["observed"]["sessions"] == 1
     assert report["observed"]["train_frames"] == 240
     assert report["observed"]["tail_truncated_frames"] == 960
+    assert report["observed"]["mapping_reports_v2"] == 1
+    assert report["observed"]["direction_rule"] == EXPECTED_DIRECTION_RULE
+
+
+def test_validator_rejects_legacy_mapping_report(tmp_path: Path) -> None:
+    fixture = _fixture(tmp_path)
+    mapping_path = fixture["mapped_root"] / "video_a" / "mapping_report.json"
+    mapping = json.loads(mapping_path.read_text())
+    mapping.pop("schema_version")
+    mapping.pop("direction_rule")
+    mapping_path.write_text(json.dumps(mapping))
+
+    report = validate_full_corpus_features(**fixture)
+
+    assert not report["ok"]
+    assert any("mapping report schema" in error for error in report["errors"])
+    assert any("fixed NitroGen contract" in error for error in report["errors"])
 
 
 def test_validator_rejects_copy_instead_of_hard_link(tmp_path: Path) -> None:

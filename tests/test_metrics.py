@@ -112,6 +112,18 @@ def test_onset_timing_allows_exact_only_matching() -> None:
     assert timing["n_matched"] == 1
 
 
+def test_onset_timing_nearest_event_tie_prefers_earlier_prediction() -> None:
+    y_true, y_prob = _empty_case(12)
+    left = KEY_ORDER.index("left")
+    y_true[5, left] = True
+    y_prob[3, left] = 0.9
+    y_prob[7, left] = 0.9
+
+    timing = onset_timing_errors(y_true, y_prob, max_lag=3)["left"]
+
+    np.testing.assert_array_equal(timing["offsets"], [-2])
+
+
 def test_summary_has_no_accuracy_field() -> None:
     y_true, y_prob = _empty_case(3)
     summary = summarize(y_true, y_prob)

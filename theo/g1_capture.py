@@ -24,6 +24,72 @@ import numpy as np
 import Quartz
 
 FPS = 60
+PROGRESS_INTERVAL_SECONDS = 5.0
+
+
+def _format_duration(seconds: float) -> str:
+    """Compact duration for live capture progress."""
+    total_seconds = max(0.0, seconds)
+    hours, remainder = divmod(total_seconds, 3600)
+    minutes, secs = divmod(remainder, 60)
+    return f"{int(hours):02d}:{int(minutes):02d}:{secs:04.1f}"
+
+
+def _capture_snapshot(
+    base_meta: dict[str, object],
+    *,
+    status: str,
+    frames_written: int,
+    wall_clock_seconds: float,
+    grab_times: list[float],
+) -> dict[str, object]:
+    """Return metadata that remains meaningful during a partial capture."""
+    wall_clock_seconds = max(0.0, wall_clock_seconds)
+    video_duration_seconds = frames_written / FPS
+    effective_fps = (
+        frames_written / wall_clock_seconds if wall_clock_seconds > 0 else 0.0
+    )
+    deltas = np.diff(grab_times)
+    return {
+        **base_meta,
+        "status": status,
+        "updated_at": datetime.now(timezone.utc).isoformat(),
+        "frames_written": frames_written,
+        "wall_clock_seconds": round(wall_clock_seconds, 3),
+        "video_duration_seconds": round(video_duration_seconds, 3),
+        "effective_fps": round(effective_fps, 3),
+        # Retain the legacy field consumed by g1_assemble, but define it using
+        # wall time so encoder backpressure is visible instead of hidden by
+        # the CFR timestamps ffmpeg assigns to received frames.
+        "achieved_fps": round(effective_fps, 3),
+        "wall_minus_video_seconds": round(
+            wall_clock_seconds - video_duration_seconds, 3
+        ),
+        "tick_jitter_ms_p99": (
+            round(float(np.percentile(deltas, 99)) * 1e3, 2)
+            if len(deltas)
+            else None
+        ),
+    }
+
+
+def _write_capture_meta(path: Path, meta: dict[str, object]) -> None:
+    """Atomically replace the latest incremental capture metadata."""
+    temporary = path.with_name(f".{path.name}.tmp")
+    temporary.write_text(json.dumps(meta, indent=2) + "\n")
+    temporary.replace(path)
+
+
+def _print_capture_progress(meta: dict[str, object]) -> None:
+    print(
+        "capture progress: "
+        f"wall={_format_duration(float(meta['wall_clock_seconds']))} "
+        f"video={_format_duration(float(meta['video_duration_seconds']))} "
+        f"effective_fps={float(meta['effective_fps']):.3f} "
+        f"frames={meta['frames_written']}/{meta['requested_frames']}",
+        file=sys.stderr,
+        flush=True,
+    )
 
 
 def find_celeste_window() -> dict[str, int]:
@@ -153,23 +219,8 @@ def record(seconds: float, out_dir: Path, use_display: bool = False,
 
     n_frames = int(round(seconds * FPS))
     started_at = datetime.now(timezone.utc).isoformat()
-    grab_times: list[float] = []
-    period = 1.0 / FPS
-    with mss.mss() as sct:
-        t_next = time.perf_counter()
-        for _ in range(n_frames):
-            now = time.perf_counter()
-            if now < t_next:
-                time.sleep(t_next - now)
-            grab_times.append(time.perf_counter())
-            frame = sct.grab(rect)
-            ffmpeg.stdin.write(frame.raw)
-            t_next += period
-    ffmpeg.stdin.close()
-    ffmpeg.wait()
-
-    deltas = np.diff(grab_times)
-    meta = {
+    meta_path = out_dir / "capture_meta.json"
+    base_meta: dict[str, object] = {
         "tool": "g1_capture(mss+ffmpeg)",
         "window_rect": rect,
         "display_rect": disp,
@@ -177,15 +228,90 @@ def record(seconds: float, out_dir: Path, use_display: bool = False,
         "canvas_scale": round(w / 1920.0, 6),
         "captured_px": [w, h],
         "requested_fps": FPS,
-        "achieved_fps": round(1.0 / float(np.mean(deltas)), 3),
-        "tick_jitter_ms_p99": round(float(np.percentile(deltas, 99)) * 1e3, 2),
-        "frames_written": n_frames,
+        "requested_seconds": seconds,
+        "requested_frames": n_frames,
         "encode": ("h264_videotoolbox b20M yuv420p cfr60" if encoder == "vt"
                    else "libx264 crf16 veryfast yuv420p cfr60"),
+        "video_path": str(video_path),
         "started_at": started_at,
     }
-    (out_dir / "capture_meta.json").write_text(json.dumps(meta, indent=2))
+    grab_times: list[float] = []
+    period = 1.0 / FPS
+    frames_written = 0
+    capture_started = time.perf_counter()
+    next_progress = capture_started + PROGRESS_INTERVAL_SECONDS
+    meta = _capture_snapshot(
+        base_meta,
+        status="recording",
+        frames_written=0,
+        wall_clock_seconds=0.0,
+        grab_times=grab_times,
+    )
+    _write_capture_meta(meta_path, meta)
+
+    capture_error: BaseException | None = None
+    try:
+        with mss.mss() as sct:
+            t_next = capture_started
+            for _ in range(n_frames):
+                now = time.perf_counter()
+                if now < t_next:
+                    time.sleep(t_next - now)
+                grabbed_at = time.perf_counter()
+                frame = sct.grab(rect)
+                ffmpeg.stdin.write(frame.raw)
+                grab_times.append(grabbed_at)
+                frames_written += 1
+                t_next += period
+
+                now = time.perf_counter()
+                if now >= next_progress:
+                    meta = _capture_snapshot(
+                        base_meta,
+                        status="recording",
+                        frames_written=frames_written,
+                        wall_clock_seconds=now - capture_started,
+                        grab_times=grab_times,
+                    )
+                    _write_capture_meta(meta_path, meta)
+                    _print_capture_progress(meta)
+                    next_progress = now + PROGRESS_INTERVAL_SECONDS
+    except BaseException as exc:
+        capture_error = exc
+    capture_stopped = time.perf_counter()
+
+    try:
+        ffmpeg.stdin.close()
+    except (BrokenPipeError, OSError) as exc:
+        if capture_error is None:
+            capture_error = exc
+    return_code = ffmpeg.wait()
+    if return_code != 0 and capture_error is None:
+        capture_error = subprocess.CalledProcessError(return_code, ffmpeg.args)
+
+    if capture_error is None and frames_written == n_frames:
+        status = "complete"
+    elif isinstance(capture_error, KeyboardInterrupt):
+        status = "interrupted"
+    else:
+        status = "failed"
+    meta = _capture_snapshot(
+        base_meta,
+        status=status,
+        frames_written=frames_written,
+        wall_clock_seconds=capture_stopped - capture_started,
+        grab_times=grab_times,
+    )
+    meta["finished_at"] = datetime.now(timezone.utc).isoformat()
+    meta["ffmpeg_return_code"] = return_code
+    if capture_error is not None:
+        meta["error"] = type(capture_error).__name__
+    _write_capture_meta(meta_path, meta)
+    _print_capture_progress(meta)
     print(json.dumps(meta))
+
+    if capture_error is not None:
+        raise capture_error
 
 
 def main() -> None:

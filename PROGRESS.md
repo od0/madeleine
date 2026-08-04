@@ -1,6 +1,6 @@
 # MADELEINE status
 
-Measured status as of 2026-07-29. Stable findings and engineering conclusions
+Measured status as of 2026-08-03. Stable findings and engineering conclusions
 are preserved in [the technical report](report/README.md), the
 [build retrospective](docs/history/how-this-was-built.md), and the
 [curated lessons](docs/engineering-lessons.md).
@@ -36,6 +36,20 @@ seed-variable, and neither family improved oracle +/-2-frame timing. The mask
 sliver did not explain the own-only ranking failure. Exact attribution and
 checkpoint hashes are in
 [the corrected own-v3 report](results/idm/OWN_V3_RERUN.md).
+
+Two independent NitroGen label defects were found and repaired
+(2026-08-01 through 2026-08-02): a vertical-axis contract violation that
+inverted analog up/down labels in 22 of 210 videos, and a bind-inference
+defect that starved dash in 13 videos; the consolidated record is
+[results/idm/NITROGEN_LABEL_INCIDENTS.md](results/idm/NITROGEN_LABEL_INCIDENTS.md).
+A 105.7M VPT-topology model trained from scratch on the resolved-v3
+corpus (210 videos, 148.3 hours) is the current strongest checkpoint:
+0.6165 equal-video / 0.6334 row-weighted macro AP on the held-out Wild7
+deployment gate, the strongest held-out result observed, single-seed,
+reported without causal decomposition. Wild7 (seven admitted public
+videos, HUD-decoded truth) is now the primary deployment gate per
+[results/idm/VPT_SMALL_WILD_ADMITTED7_PRIMARY_GATE.md](results/idm/VPT_SMALL_WILD_ADMITTED7_PRIMARY_GATE.md);
+val-A is a secondary engine-truth regression surface.
 
 The node, credentials, and live process coordinates are intentionally not part
 of this public status file. Completion is defined by validated artifacts and
@@ -214,6 +228,13 @@ W1 label-quality experiment, S3**
    residuals plus `v1068970940`, which is raw-complete but unsurveyed.
    Evidence: `results/wild/reclassify-fleet-20260728T1500Z/` and its
    calibration record `results/wild/reclassify-calib-20260728T0500Z/`.
+   A 48-video seeded stratified AI-diagnostic sample of the deprioritized
+   bucket (2026-07-29) measured a weighted false-static rate of **14.7%**
+   (~53 implied videos; 9 confirmed in sample, 7.2 nominal h), concentrated
+   in labeled-action overlays (4 of 10) whose fill-based state indication
+   defeats the pairwise comparator; pending Bryan's confirmation of the
+   nine strips. Evidence:
+   `results/wild/reclassify-fleet-20260728T1500Z/deprioritized-sample-20260729/`.
 
 ## Models and experiments
 
@@ -244,6 +265,28 @@ W1 label-quality experiment, S3**
   Prediction sidecars and the selected checkpoint were archived with hashes.
 - `[x]` Matched full-corpus scale comparison after feature validation. Both
   arms and their mapped-label evaluations are complete and validated.
+
+### NitroGen label corrections and VPT-topology runs
+
+- `[x]` Vertical-axis mapping incident recorded, repaired from raw
+  controller arrays (corrected-v2), and independently verified over all
+  32,037,600 rows (2026-08-01).
+- `[x]` All-seven-key mapping audit: dash starvation and grab-fallback
+  defects found; per-action resolved bind sets built under the
+  upstream-preference policy (mapper v3/v3.1) and the v3 corpus rebuilt
+  and published with independent verification (2026-08-02). 227 of 630
+  bind entries remain policy-resolved pending final human review, so v3
+  results are described as resolved mapped labels, not individually
+  human-verified bindings.
+- `[x]` Corrected-v2 unflagged92 retrain and the from-scratch resolved-v3
+  full-210 production run complete with byte-identical duplicate
+  inference passes on every evaluation (2026-08-03).
+- `[x]` Nine retained checkpoints scored once each on identical Wild7
+  support
+  ([scorecard](results/idm/vpt_wild7_checkpoint_parity_v1/scorecard.json)).
+- `[x]` Wild7 adopted as the primary deployment gate; resolved-v3 is the
+  frozen comparison baseline (0.6165 equal-video / 0.6334 row-weighted
+  macro AP, dash 0.5630 over the 0.3855 bar).
 
 ### Evaluation gates
 
@@ -334,6 +377,31 @@ W1 label-quality experiment, S3**
    monotonicity/reset checks to the session validator.
 6. Test a transition-aligned objective and checkpoint rule.
 7. Consolidate the technical report, figures, limitations, and artifact map.
+8. **Pseudo-labeling and behavior-cloning program, stage 0** (plan drafted
+   2026-07-30:
+   [results/idm/PSEUDO_LABEL_BC_PLAN.md](results/idm/PSEUDO_LABEL_BC_PLAN.md);
+   nothing provisioned or admitted yet). Concurrent with the IDM ladder, in
+   this order: (a) GPU inference benchmark for the VPT-small labeler on one
+   H100, both window geometries — the receipt every labeling cost estimate
+   is waiting on; (b) the deterministic rollout harness (input injection in
+   the engine-truth mod, lockstep frame stepping, in-loop masked
+   observation capture, replay-diff determinism validation) — the program's
+   wall-clock long pole and prerequisite for any promote decision; (c) the
+   ~32M causal pilot policy with its causality test and real-data smoke;
+   (d) freeze the promote-study preregistration (margins, seeds, arms,
+   baselines) and sign the `pseudo_v1` tier spec; (e) run the Phase 6
+   promote pilot on the frozen 66-video / 26.9278 h labeler-unseen promote
+   reserve (receipt in `results/idm/vpt_promote_reserve_v1/`) once any IDM
+   passes the labeler-eligibility gate; the wider admitted population
+   (161.9664 h per the immutable build receipts) remains the tier A
+   labeling substrate. Census acquisition tranches (capped, CPU
+   only) may start ahead of the gate on Bryan's approval.
+9. **Public push for the resolved-v3 result (in preparation).** The
+   release bundle per the gate report's plan: the incident narrative,
+   the v3 configuration and checkpoint identity, the Wild7 comparison
+   tables, the secondary val-A result, and reproducible scoring
+   commands. Content is collected in the working repository; the export
+   and push happen only after owner review.
 
 ## Known issues
 

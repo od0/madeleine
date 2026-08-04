@@ -1,0 +1,60 @@
+{
+  "schema_version": "madeleine.vpt-small-config.v1",
+  "study_id": "vpt_small_105696398_tier_b_native60_span384_20e_s0",
+  "model": {
+    "frames": 384,
+    "image_size": 128,
+    "input_channels": 3,
+    "temporal_channels": 128,
+    "temporal_kernel": 5,
+    "spatial_widths": [64, 128, 128],
+    "residual_blocks_per_stack": 2,
+    "frame_hidden": 256,
+    "d_model": 1408,
+    "attention_heads": 11,
+    "mlp_width": 5632,
+    "transformer_blocks": 4,
+    "action_keys": 7,
+    "activation_checkpointing": true
+  },
+  "augmentation": {
+    "hue": 0.2,
+    "saturation": 0.2,
+    "brightness": 0.2,
+    "contrast": 0.2,
+    "rotation_degrees": 2.0,
+    "scale": 0.02,
+    "shear_degrees": 2.0,
+    "translate_pixels": 2.0
+  },
+  "training": {
+    "epochs": 20,
+    "global_batch": 128,
+    "microbatch": 4,
+    "eval_batch_size": 1,
+    "learning_rate": 0.003,
+    "betas": [0.9, 0.999],
+    "epsilon": 1e-8,
+    "weight_decay": 0.01,
+    "optimizer": "adam",
+    "schedule": "linear_to_zero",
+    "loss": "natural_factored_nll",
+    "precision": "bf16",
+    "seed": 0,
+    "num_workers": 2,
+    "log_interval": 5,
+    "allow_tf32": true,
+    "class_weighting": false,
+    "event_weighting": false,
+    "focal_loss": false,
+    "gradient_clipping": false,
+    "warmup_steps": 0
+  },
+  "inference": {
+    "window": 384,
+    "stride": 192,
+    "retained_positions": [96, 288],
+    "native_rate_phases": [0],
+    "fixed_probability_threshold": 0.5
+  }
+}

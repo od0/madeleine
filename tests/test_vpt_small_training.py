@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 
 import pytest
@@ -9,9 +10,55 @@ from badeline.vpt_small import natural_factored_nll
 from experiments.train_vpt_small import (
     EpochRankSampler,
     capture_rng_state,
+    git_commit,
+    initialize_model_checkpoint,
+    resolve_optimizer_endpoints,
     resume_checkpoint,
     save_checkpoint,
 )
+
+
+def test_source_commit_can_be_bound_explicitly(monkeypatch: pytest.MonkeyPatch) -> None:
+    declared = "A" * 40
+    monkeypatch.setenv("MADELEINE_SOURCE_COMMIT", declared)
+    assert git_commit() == declared.lower()
+
+
+def test_explicit_source_commit_rejects_malformed_value(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("MADELEINE_SOURCE_COMMIT", "not-a-commit")
+    with pytest.raises(ValueError, match="40-character SHA-1"):
+        git_commit()
+
+
+def test_resume_stop_does_not_shorten_scheduler_endpoint() -> None:
+    assert resolve_optimizer_endpoints(
+        200,
+        max_optimizer_steps=None,
+        stop_after_optimizer_steps=10,
+    ) == (200, 10)
+
+
+def test_smoke_maximum_still_defines_short_scheduler_endpoint() -> None:
+    assert resolve_optimizer_endpoints(
+        20_000,
+        max_optimizer_steps=200,
+        stop_after_optimizer_steps=None,
+    ) == (200, 200)
+
+
+def test_declared_short_endpoint_uses_its_own_linear_decay() -> None:
+    parameter = torch.nn.Parameter(torch.tensor(1.0))
+    optimizer = torch.optim.Adam([parameter], lr=0.003, weight_decay=0.01)
+    short_endpoint = 3
+    scheduler = torch.optim.lr_scheduler.LambdaLR(
+        optimizer, lr_lambda=lambda step: max(0.0, 1.0 - step / short_endpoint)
+    )
+    for _ in range(short_endpoint):
+        optimizer.step()
+        scheduler.step()
+    assert optimizer.param_groups[0]["lr"] == 0.0
 
 
 def test_two_rank_sampler_reconstructs_padded_global_batches() -> None:
@@ -120,4 +167,61 @@ def test_epoch_checkpoint_restores_augmentation_rng_and_rejects_partial(
             rank=0,
             device=torch.device("cpu"),
             augmentation_generator=generator,
+        )
+
+
+def test_initialize_checkpoint_loads_only_hash_bound_model_weights(
+    tmp_path: Path,
+) -> None:
+    torch.manual_seed(41)
+    source = torch.nn.Linear(3, 2)
+    optimizer = torch.optim.Adam(source.parameters(), lr=0.003)
+    scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lambda _: 1.0)
+    source_config = {"width": 3}
+    checkpoint = tmp_path / "source.pt"
+    save_checkpoint(
+        checkpoint,
+        model=source,
+        optimizer=optimizer,
+        scheduler=scheduler,
+        config={"model": source_config},
+        epoch=20,
+        optimizer_step=17_960,
+        best_validation_nll=1.0,
+        best_epoch=20,
+        completed_epoch=True,
+        rng_by_rank=[{}],
+        train_manifest_sha256="a" * 64,
+        val_manifest_sha256="b" * 64,
+    )
+    target = torch.nn.Linear(3, 2)
+    target_optimizer = torch.optim.Adam(target.parameters(), lr=0.0001)
+    initial_optimizer = target_optimizer.state_dict()
+    receipt = initialize_model_checkpoint(
+        checkpoint,
+        model=target,
+        expected_sha256=hashlib.sha256(checkpoint.read_bytes()).hexdigest(),
+        expected_model_config=source_config,
+    )
+    assert receipt["epoch"] == 20
+    assert receipt["optimizer_step"] == 17_960
+    assert all(
+        torch.equal(left, right)
+        for left, right in zip(source.parameters(), target.parameters(), strict=True)
+    )
+    assert target_optimizer.state_dict() == initial_optimizer
+
+    with pytest.raises(ValueError, match="SHA-256 mismatch"):
+        initialize_model_checkpoint(
+            checkpoint,
+            model=target,
+            expected_sha256="0" * 64,
+            expected_model_config=source_config,
+        )
+    with pytest.raises(ValueError, match="model config differs"):
+        initialize_model_checkpoint(
+            checkpoint,
+            model=target,
+            expected_sha256=hashlib.sha256(checkpoint.read_bytes()).hexdigest(),
+            expected_model_config={"width": 4},
         )

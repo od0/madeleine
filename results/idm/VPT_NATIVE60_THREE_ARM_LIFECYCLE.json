@@ -1,0 +1,86 @@
+{
+  "schema_version": "madeleine.vpt-small-native60-lifecycle.v1",
+  "study": "vpt-small-native60-v1",
+  "source_commit": "3bcd3fee953ef72f5fda8405c316c63eae2d91d1",
+  "created_at": "2026-07-31T07:10:00Z",
+  "location_policy": "US-only",
+  "training_topology": {
+    "one_arm_per_node": true,
+    "world_size": 1,
+    "global_batch": 128,
+    "microbatch_per_rank": 4,
+    "accumulation_steps": 32,
+    "seed": 0
+  },
+  "arms": [
+    {
+      "name": "short2340",
+      "run_id": "vpt_small_105696398_tier_b_native60_short2340_s0",
+      "pod_id": "5f073d763d5f4e86a1304074598bfcfa",
+      "provider": "lambdalabs",
+      "gpu_inventory": "2 x NVIDIA H100 SXM5; one training process, second GPU deliberately idle",
+      "price_usd_per_hour": 8.38,
+      "pod_created_at": "2026-07-30T15:08:34.767Z",
+      "training_started_at": "2026-07-30T16:31:58.942800Z",
+      "training_completed_at": "2026-07-30T19:55:50.319956Z",
+      "training_elapsed_seconds": 12231.377102156,
+      "pod_terminated_at": "2026-07-30T20:10:17.949Z",
+      "lifecycle_seconds": 18103.182,
+      "lifecycle_cost_usd": 42.1402,
+      "optimizer_steps": 2340,
+      "final_checkpoint_sha256": "f97d38facdae590d6f0b6e69ef5d1fce0b22509359f667ae7db6ff769c9ef8fb",
+      "r2_readback_verified": true,
+      "termination_verified": true
+    },
+    {
+      "name": "span384",
+      "run_id": "vpt_small_105696398_tier_b_native60_span384_20e_s0",
+      "pod_id": "dd67c2cee89f4ae38e893799aff8ae47",
+      "provider": "massed",
+      "gpu_inventory": "1 x NVIDIA H100 PCIe",
+      "price_usd_per_hour": 2.35,
+      "pod_created_at": "2026-07-30T16:00:14.347Z",
+      "training_started_at": "2026-07-30T16:54:03.435132Z",
+      "training_completed_at": "2026-07-31T05:55:54.801051Z",
+      "training_elapsed_seconds": 46911.365919692,
+      "pod_terminated_at": "2026-07-31T06:09:31.007Z",
+      "lifecycle_seconds": 50956.66,
+      "lifecycle_cost_usd": 33.2634,
+      "optimizer_steps": 2340,
+      "final_checkpoint_sha256": "52251fa10f6a0d03e786b71afcf44d85963cf32676496e9e580069be60959e5f",
+      "r2_readback_verified": true,
+      "termination_verified": true
+    },
+    {
+      "name": "full20e",
+      "run_id": "vpt_small_105696398_tier_b_native60_full20e_s0",
+      "pod_id": "b2e5ef58813549c2aecbde63c5196e59",
+      "provider": "massed",
+      "gpu_inventory": "1 x NVIDIA H100 PCIe",
+      "price_usd_per_hour": 2.35,
+      "pod_created_at": "2026-07-30T16:00:00.410Z",
+      "training_started_at": "2026-07-30T16:50:38.914171Z",
+      "training_completed_at": "2026-07-31T06:57:44.394853Z",
+      "training_elapsed_seconds": 50825.476327686,
+      "pod_terminated_at": "2026-07-31T07:08:50.733Z",
+      "lifecycle_seconds": 54530.323,
+      "lifecycle_cost_usd": 35.5962,
+      "optimizer_steps": 7060,
+      "final_checkpoint_sha256": "43733c2e1804fdb6baab477ddfe58113342b459b7c761a199f9cd7873f0fe947",
+      "r2_readback_verified": true,
+      "termination_verified": true
+    }
+  ],
+  "total_lifecycle_cost_usd": 110.9998,
+  "r2_prefixes": {
+    "runs": "private:runs/idm/v3/vpt-small-native60-v1/",
+    "results": "private:results/idm/v3/vpt-small-native60-v1/",
+    "generation": "private:provenance/idm/vpt-small-native60-v1/"
+  },
+  "completion": {
+    "all_final_checkpoints_stream_read_back": true,
+    "all_checkpoint_receipts_present": true,
+    "all_evaluations_published_and_checked": true,
+    "all_nodes_terminated": true
+  }
+}

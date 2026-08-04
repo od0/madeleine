@@ -224,9 +224,16 @@ def onset_timing_errors(
         for true_onset in true_onsets:
             if predicted_onsets.size == 0:
                 continue
-            candidate_offsets = predicted_onsets - true_onset
-            nearest_index = int(np.argmin(np.abs(candidate_offsets)))
-            nearest_offset = int(candidate_offsets[nearest_index])
+            insertion = int(np.searchsorted(predicted_onsets, true_onset))
+            if insertion == 0:
+                nearest_offset = int(predicted_onsets[0] - true_onset)
+            elif insertion == len(predicted_onsets):
+                nearest_offset = int(predicted_onsets[-1] - true_onset)
+            else:
+                earlier = int(predicted_onsets[insertion - 1] - true_onset)
+                later = int(predicted_onsets[insertion] - true_onset)
+                # The previous full-array argmin chose the earlier event on a tie.
+                nearest_offset = earlier if abs(earlier) <= abs(later) else later
             if abs(nearest_offset) <= lag_limit:
                 offsets.append(nearest_offset)
 

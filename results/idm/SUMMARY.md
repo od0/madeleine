@@ -1,15 +1,31 @@
 # IDM results summary
 
-Status as of 2026-07-29: curated 13.45-hour recipe frozen on local development
-validation; the 40.61-hour diagnostic, NitroGen-only training-held-out-video
+NitroGen label-correction disclosure (2026-08-03): every mapped-label
+training result in this summary was trained before two NitroGen mapping
+defects were repaired — a vertical-axis contract violation that inverted
+analog up/down labels in 22 of 210 videos, and a bind-inference defect
+that starved dash supervision in 13 videos. Those numbers remain valid as
+records of what the contaminated corpora produced, but they no longer
+describe the current corpus, and this summary's `down` interpretation on
+val-A was subsequently traced to evaluation support rather than model
+capability. The incident record and corrected results are in
+[NITROGEN_LABEL_INCIDENTS.md](NITROGEN_LABEL_INCIDENTS.md); the current
+strongest checkpoint and the primary deployment gate are in
+[VPT_SMALL_WILD_ADMITTED7_PRIMARY_GATE.md](VPT_SMALL_WILD_ADMITTED7_PRIMARY_GATE.md).
+
+Status as of 2026-07-31: curated 13.45-hour recipe frozen on local development
+validation; the three-arm native-60-Hz VPT-small control, the 40.61-hour
+diagnostic, NitroGen-only training-held-out-video
 pilot, and both full-corpus scale arms are complete;
 the matched wild-provisional diagnostic and both source-balanced provisional
 blend diagnostics are complete; the six corrected own-v3 primary reruns are
 also complete and independently validated. The exact 105.7M VPT-small
 two-H100 run is complete: it beat both final GRUs in macro AP on exact
 common support but failed its all-clauses candidate gate on rare-key
-coverage/rate calibration. Neither blend nor VPT-small qualified for B1 or a
-new fresh capture.
+coverage/rate calibration. The exact 482.13M public-artifact paper-IDM matched
+run is also complete: its implementation gate passed, but it reached only
+0.1844 macro AP and badly underperformed VPT-small on exact common support.
+Neither blend nor the raw VPT-small result qualified for B1.
 Local-development event metrics below use per-key oracle thresholds selected
 on the local development session (`val-A`) and must not be presented as locked
 final-test numbers. The NitroGen-only section instead selects oracle thresholds
@@ -108,6 +124,40 @@ scores and perhaps up, but `down` AP (0.0102) is below its 0.0137 prevalence
 anchor, so a monotonic scalar transform is not expected to recover that key.
 The original 5/6 result remains immutable; any calibrated system is a new
 prospectively evaluated variant.
+
+The separate native-rate control is also complete. Three from-scratch
+VPT-small arms tested 128 frames at 60 Hz for 2,340 and 7,060 updates and a
+384-frame, 6.4-second span-matched arm for 2,340 updates. On the same 4,224
+rows, the best native arm (128 frames, 7,060 updates) reached 0.3010 macro AP,
+0.1968 state F1, 0.0172 exact event F1, and 0.0852 +/-2 event F1, all below the
+old 20-Hz final's 0.3603 / 0.2504 / 0.0351 / 0.1005. The span-matched arm was
+worse at 0.2071 / 0.1478 / 0.0127 / 0.0234. Native 60-Hz full-graph training
+therefore does not replace the old model under the tested recipe; details are
+in [`VPT_NATIVE60_THREE_ARM_RESULTS.md`](VPT_NATIVE60_THREE_ARM_RESULTS.md).
+
+## VPT public-artifact 4x IDM on matched Tier-B data
+
+The exact 482,133,390-parameter public-artifact graph completed the same
+13.45-hour, 20-epoch, 2,340-step recipe on a Flex-start Cloud TPU `v6e-4`.
+Training took 39,900.60 seconds (11:05:00.6); train NLL fell from 4.2435 at
+epoch 1 to 2.7019 at epoch 20, while validation NLL selected epoch 3 and then
+worsened. All 20 distributed checkpoints were independently byte-stream
+verified in R2.
+
+On the exact 4,224-row VPT-small common support, final paper-IDM reached
+0.1844 macro AP, 0.0840 state F1, 0.0077 exact event F1, 0.0191 +/-2-native
+event F1, and 80.50%/20.29% micro/joint accuracy. VPT-small final was 0.3603,
+0.2504, 0.0351, 0.1005, and 84.89%/38.35%, respectively. Always released was
+84.19%/35.58%. The paper-IDM selected epoch-3 checkpoint predicted every key
+released; final weights predicted positives only for `grab` and `right`.
+
+This is a faithful-implementation success but a strongly negative matched-data
+capacity result. The frozen protocol allows maximum-foreign-data generation
+construction because the run remained finite, reduced training loss, learned
+ranking above prevalence, and had no unresolved XLA/fidelity/support failure.
+It does not authorize the later training launch. Full per-key metrics, hashes,
+caveats, and the exact Phase-3/Phase-4 boundary are in
+[`VPT_PAPER_IDM_TIER_B_RESULTS.md`](VPT_PAPER_IDM_TIER_B_RESULTS.md).
 
 ## Primary three-seed result
 
@@ -760,3 +810,30 @@ accepted videos, while all-video feature generation still required a final
 manifest and completion marker. The object store remained the verified durable
 source of truth and recovery path, so no redundant 341 GB byte-for-byte
 download was performed.
+
+## Separate native and foreign VPT-small scorecards — 2026-08-01
+
+The VPT-small endpoints now have a separate mapped-foreign development
+scorecard on the excluded y4n video. A frozen three-phase 128x128/20 Hz build
+provides identical support across all three endpoints: 48 streams, 560,400
+derived rows, 8,685 windows, and 555,840 active scored rows. The generation,
+all three fixed endpoint reports, predictions, and marker-last completion
+receipts were independently read back from R2.
+
+The result materially changes the interpretation of the native-only table.
+The 13.45-hour Tier-B/Wild VPT-small reaches **0.7381 macro AP** on y4n,
+including **0.4591 down AP**, versus 0.3603/0.0102 on native val-A. The
+103.41-hour unflagged NitroGen model reaches 0.4177/0.0441 on y4n versus
+0.4209/0.0109 on native val-A. The 5% Ridge fine-tune reaches 0.4121/0.0429
+on y4n and 0.4030/0.0116 on native val-A. Thus the model can rank concurrent
+`down` actions on foreign gameplay; the native failure is domain- and
+data-quality-sensitive, not proof of a missing action head.
+
+More foreign hours are not monotonically better: the 103-hour model trails
+the smaller Tier-B/Wild model on every key's y4n AP, and the Ridge fine-tune
+raises down prediction frequency without improving down AP, macro AP, or NLL.
+Native-keyboard eligibility and Internet-labeling development therefore remain
+separate scorecards with no blended headline. y4n is development-only and has
+an indeterminate vertical-axis sign; a final foreign claim still needs a
+prospectively frozen multi-video advanced-gameplay test. Full results are in
+[`vpt_small_foreign_scorecard_v1/SCORECARD.md`](vpt_small_foreign_scorecard_v1/SCORECARD.md).

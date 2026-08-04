@@ -48,6 +48,17 @@ NATIVE_MODE = "opencv_native_60hz"
 RESAMPLED_MODE = "ffmpeg_timestamp_resample_60hz"
 FRAMES_PER_HOUR_60HZ = 216_000
 MAX_RESAMPLED_TAIL_REPEAT = 3
+MAPPING_REPORT_SCHEMA_VERSION = "madeleine.nitrogen.mapping-report.v2"
+EXPECTED_DIRECTION_RULE = {
+    "source": "NitroGen dataset coordinate contract",
+    "source_revision": "b171bc8ed2e3c311e9305ebb993c56ef565ab509",
+    "axis_threshold": 0.5,
+    "left": "dpad_left OR j_left_x < -axis_threshold",
+    "right": "dpad_right OR j_left_x > axis_threshold",
+    "up": "dpad_up OR j_left_y < -axis_threshold",
+    "down": "dpad_down OR j_left_y > axis_threshold",
+    "comparisons": "strict",
+}
 
 
 @dataclass(frozen=True)
@@ -64,13 +75,6 @@ class CorpusExpectations:
     resampled_sessions: int
     native_frames: int
     resampled_frames: int
-    unflagged_videos: int
-    flagged_videos: int
-    unflagged_sessions: int
-    flagged_sessions: int
-    unflagged_frames: int
-    flagged_frames: int
-    axis_sign_indeterminate: int
     tail_truncated_frames: int
     skipped_short_frames: int
 
@@ -88,13 +92,6 @@ FULL_211_EXPECTATIONS = CorpusExpectations(
     resampled_sessions=94,
     native_frames=30_706_800,
     resampled_frames=1_891_200,
-    unflagged_videos=93,
-    flagged_videos=118,
-    unflagged_sessions=1_078,
-    flagged_sessions=476,
-    unflagged_frames=22_896_000,
-    flagged_frames=9_702_000,
-    axis_sign_indeterminate=181,
     tail_truncated_frames=0,
     skipped_short_frames=0,
 )
@@ -368,7 +365,7 @@ def validate_full_corpus_features(
     total_skipped = 0
     total_imputed = 0
     flagged_videos = 0
-    axis_indeterminate = 0
+    mapping_reports_v2 = 0
     unflagged_frames = 0
     flagged_frames = 0
     confidences: list[float] = []
@@ -383,6 +380,21 @@ def validate_full_corpus_features(
         if not mapping_path.is_file() or not feature_manifest_path.is_file():
             continue
         mapping = json.loads(mapping_path.read_text())
+        mapping_schema = mapping.get("schema_version")
+        direction_rule = mapping.get("direction_rule")
+        current_mapping_report = (
+            mapping_schema == MAPPING_REPORT_SCHEMA_VERSION
+            and direction_rule == EXPECTED_DIRECTION_RULE
+        )
+        mapping_reports_v2 += int(current_mapping_report)
+        require(
+            mapping_schema == MAPPING_REPORT_SCHEMA_VERSION,
+            f"{video_id}: mapping report schema {mapping_schema!r} is not v2",
+        )
+        require(
+            direction_rule == EXPECTED_DIRECTION_RULE,
+            f"{video_id}: mapping direction rule is not the fixed NitroGen contract",
+        )
         feature_manifest = json.loads(feature_manifest_path.read_text())
         reports = feature_manifest.get("videos", [])
         if len(reports) != 1:
@@ -433,7 +445,6 @@ def validate_full_corpus_features(
 
         flagged = bool(mapping.get("flagged"))
         flagged_videos += int(flagged)
-        axis_indeterminate += int(bool(mapping.get("axis_sign_indeterminate")))
         confidence = float(mapping.get("confidence", float("nan")))
         require(math.isfinite(confidence), f"{video_id}: non-finite bind confidence")
         confidences.append(confidence)
@@ -666,20 +677,10 @@ def validate_full_corpus_features(
             "native frame count mismatch")
     require(mode_frame_counts[RESAMPLED_MODE] == expectations.resampled_frames,
             "resampled frame count mismatch")
-    require(flagged_videos == expectations.flagged_videos,
-            "flagged video count mismatch")
-    require(len(plans) - flagged_videos == expectations.unflagged_videos,
-            "unflagged video count mismatch")
-    require(len(expected_unflagged) == expectations.unflagged_sessions,
-            "unflagged session count mismatch")
-    require(len(expected_sessions) - len(expected_unflagged) == expectations.flagged_sessions,
-            "flagged session count mismatch")
-    require(unflagged_frames == expectations.unflagged_frames,
-            "unflagged frame count mismatch")
-    require(flagged_frames == expectations.flagged_frames,
-            "flagged frame count mismatch")
-    require(axis_indeterminate == expectations.axis_sign_indeterminate,
-            "axis-sign-indeterminate video count mismatch")
+    require(mapping_reports_v2 == len(plans),
+            "not every video has the required v2 fixed-direction mapping report")
+    require(unflagged_frames + flagged_frames == total_train_frames,
+            "flagged/unflagged frame totals do not reconcile")
 
     expected_mode_manifest = {mode: count for mode, count in {
         NATIVE_MODE: expectations.native_videos,
@@ -694,12 +695,20 @@ def validate_full_corpus_features(
         "source_label_frames": expectations.source_label_frames,
         "tail_truncated_frames": expectations.tail_truncated_frames,
         "skipped_short_frames": expectations.skipped_short_frames,
-        "unflagged_video_count": expectations.unflagged_videos,
-        "unflagged_session_count": expectations.unflagged_sessions,
     }
     for key, expected in scalar_expectations.items():
         require(int(manifest.get(key, -1)) == expected,
                 f"final manifest {key}={manifest.get(key)!r} != {expected}")
+    require(
+        int(manifest.get("unflagged_video_count", -1))
+        == len(plans) - flagged_videos,
+        "final manifest unflagged video count does not match v2 mapping reports",
+    )
+    require(
+        int(manifest.get("unflagged_session_count", -1))
+        == len(expected_unflagged),
+        "final manifest unflagged session count does not match v2 mapping reports",
+    )
     require(int(manifest.get("imputed_tail_frames", -1)) == total_imputed,
             "final imputed-tail aggregate mismatch")
     require(_close(manifest.get("train_label_hours_at_60hz", -1),
@@ -776,7 +785,9 @@ def validate_full_corpus_features(
         "flagged_sessions": len(expected_sessions) - len(expected_unflagged),
         "unflagged_frames": unflagged_frames,
         "flagged_frames": flagged_frames,
-        "axis_sign_indeterminate": axis_indeterminate,
+        "mapping_report_schema_version": MAPPING_REPORT_SCHEMA_VERSION,
+        "direction_rule": EXPECTED_DIRECTION_RULE,
+        "mapping_reports_v2": mapping_reports_v2,
         "bind_confidence": confidence_summary,
         "long_context_target_frames": long_context_targets,
         "long_context_target_hours_at_60hz": (

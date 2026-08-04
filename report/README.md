@@ -1,5 +1,13 @@
 # Recovering actions from *Celeste* video
 
+> **Status (2026-08-03):** this report covers the project through the
+> sealed engine-truth tests and predates the NitroGen label corrections
+> and the current strongest model. For the current results, read the
+> [Wild7 deployment gate](../results/idm/VPT_SMALL_WILD_ADMITTED7_PRIMARY_GATE.md),
+> the [resolved-v3 run](../results/idm/vpt_small_nitrogen210_resolved_v3_v1/RESULTS.md),
+> and the [label-incident record](../results/idm/NITROGEN_LABEL_INCIDENTS.md).
+> Corpus figures cited below describe the pre-correction inventory.
+
 ## Abstract
 
 MADELEINE (Measurement And Decoding of Evidence-Linked Environment Inputs

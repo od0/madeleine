@@ -57,6 +57,14 @@ def atomic_json(path: Path, value: Any) -> None:
 
 
 def git_commit() -> str:
+    declared = os.environ.get("MADELEINE_SOURCE_COMMIT")
+    if declared is not None:
+        normalized = declared.strip().lower()
+        if len(normalized) != 40 or any(
+            character not in "0123456789abcdef" for character in normalized
+        ):
+            raise ValueError("MADELEINE_SOURCE_COMMIT must be a 40-character SHA-1")
+        return normalized
     try:
         return subprocess.check_output(
             ["git", "rev-parse", "HEAD"], text=True, stderr=subprocess.DEVNULL
@@ -73,10 +81,17 @@ class VPTWindowDataset(Dataset[dict[str, Tensor]]):
         self.root = self.manifest_path.parent
         self.manifest_sha256 = sha256_file(self.manifest_path)
         self.manifest = json.loads(self.manifest_path.read_text(encoding="utf-8"))
-        if self.manifest.get("schema_version") != "madeleine.vpt-small-20hz-shards.v1":
+        if self.manifest.get("schema_version") not in {
+            "madeleine.vpt-small-20hz-shards.v1",
+            "madeleine.vpt-small-60hz-shards.v1",
+        }:
             raise ValueError(f"unsupported data manifest: {self.manifest_path}")
-        if self.manifest.get("window") != 128 or self.manifest.get("stride") != 64:
-            raise ValueError("VPT-small data manifest must freeze window 128, stride 64")
+        self.window = int(self.manifest.get("window", -1))
+        self.stride = int(self.manifest.get("stride", -1))
+        if (self.window, self.stride) not in {(128, 64), (384, 192)}:
+            raise ValueError(
+                "VPT-small data manifest must freeze window/stride 128/64 or 384/192"
+            )
         self.records = list(self.manifest["records"])
         self.locations: list[tuple[int, int]] = []
         for record_index, record in enumerate(self.records):
@@ -92,7 +107,7 @@ class VPTWindowDataset(Dataset[dict[str, Tensor]]):
         if len(self.locations) != int(self.manifest["totals"]["windows"]):
             raise RuntimeError("manifest window total does not match stream indexes")
         if not self.locations:
-            raise ValueError("manifest contains no complete 128-frame windows")
+            raise ValueError("manifest contains no complete VPT windows")
         self.cache_streams = int(cache_streams)
         self._cache: OrderedDict[int, tuple[np.ndarray, np.ndarray]] = OrderedDict()
 
@@ -122,10 +137,10 @@ class VPTWindowDataset(Dataset[dict[str, Tensor]]):
     def __getitem__(self, index: int) -> dict[str, Tensor]:
         record_index, start = self.locations[index]
         frames, keys = self._load_stream(record_index)
-        stop = start + 128
+        stop = start + self.window
         frame_block = np.array(frames[start:stop], copy=True)
         key_block = np.array(keys[start:stop], copy=True)
-        if frame_block.shape[0] != 128:
+        if frame_block.shape[0] != self.window:
             raise RuntimeError("window index crosses a stream boundary")
         return {
             "frames": torch.from_numpy(frame_block).permute(0, 3, 1, 2),
@@ -342,6 +357,50 @@ def resume_checkpoint(
     return payload
 
 
+def initialize_model_checkpoint(
+    path: Path,
+    *,
+    model: nn.Module,
+    expected_sha256: str,
+    expected_model_config: dict[str, Any],
+) -> dict[str, Any]:
+    """Load model weights only from one hash-bound completed checkpoint."""
+
+    normalized_sha256 = expected_sha256.strip().lower()
+    if len(normalized_sha256) != 64 or any(
+        character not in "0123456789abcdef" for character in normalized_sha256
+    ):
+        raise ValueError("initialize-from SHA-256 must be 64 lowercase hex characters")
+    observed_sha256 = sha256_file(path)
+    if observed_sha256 != normalized_sha256:
+        raise ValueError(
+            f"initialize-from checkpoint SHA-256 mismatch: {observed_sha256}"
+        )
+    payload = torch.load(path, map_location="cpu", weights_only=False)
+    if payload.get("schema_version") != CHECKPOINT_SCHEMA:
+        raise ValueError("unsupported VPT-small initialize-from checkpoint")
+    if payload.get("completed_epoch") is not True:
+        raise ValueError(
+            "VPT-small initialize-from requires a completed epoch checkpoint"
+        )
+    source_config = payload.get("config")
+    if (
+        not isinstance(source_config, dict)
+        or source_config.get("model") != expected_model_config
+    ):
+        raise ValueError("initialize-from checkpoint model config differs")
+    unwrap(model).load_state_dict(payload["model"])
+    return {
+        "path": str(path.resolve()),
+        "sha256": observed_sha256,
+        "source_commit": payload.get("source_commit"),
+        "epoch": int(payload["epoch"]),
+        "optimizer_step": int(payload["optimizer_step"]),
+        "train_manifest_sha256": payload.get("train_manifest_sha256"),
+        "val_manifest_sha256": payload.get("val_manifest_sha256"),
+    }
+
+
 def capture_rng_state(
     *, device: torch.device, augmentation_generator: torch.Generator
 ) -> dict[str, Any]:
@@ -381,13 +440,39 @@ def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--val-manifest", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--resume", type=Path)
+    parser.add_argument("--initialize-from", type=Path)
+    parser.add_argument("--initialize-from-sha256")
     parser.add_argument("--max-optimizer-steps", type=int)
+    parser.add_argument("--stop-after-optimizer-steps", type=int)
     parser.add_argument("--microbatch", type=int)
     return parser.parse_args(argv)
 
 
+def resolve_optimizer_endpoints(
+    production_steps: int,
+    *,
+    max_optimizer_steps: int | None,
+    stop_after_optimizer_steps: int | None,
+) -> tuple[int, int]:
+    """Return the scheduler endpoint and this invocation's stop point."""
+
+    scheduler_endpoint = min(production_steps, max_optimizer_steps or production_steps)
+    stop_endpoint = min(
+        scheduler_endpoint, stop_after_optimizer_steps or scheduler_endpoint
+    )
+    if scheduler_endpoint < 1 or stop_endpoint < 1:
+        raise ValueError("optimizer endpoints must be positive")
+    return scheduler_endpoint, stop_endpoint
+
+
 def main(argv: Iterable[str] | None = None) -> int:
     args = parse_args(argv)
+    if args.resume is not None and args.initialize_from is not None:
+        raise ValueError("--resume and --initialize-from are mutually exclusive")
+    if (args.initialize_from is None) != (args.initialize_from_sha256 is None):
+        raise ValueError(
+            "--initialize-from and --initialize-from-sha256 must be provided together"
+        )
     if args.out.exists() and any(args.out.iterdir()) and args.resume is None:
         raise FileExistsError(f"refusing nonempty output directory: {args.out}")
     args.out.mkdir(parents=True, exist_ok=True)
@@ -395,10 +480,24 @@ def main(argv: Iterable[str] | None = None) -> int:
     model_config = VPTSmallConfig.from_dict(config["model"])
     augmentation_config = VPTAugmentationConfig.from_dict(config["augmentation"])
     training = config["training"]
+    run_kind = str(training.get("run_kind", "production"))
+    if run_kind not in {"production", "finetune"}:
+        raise ValueError("training.run_kind must be production or finetune")
     if training["optimizer"] != "adam" or training["loss"] != "natural_factored_nll":
         raise ValueError("VPT-small production path requires Adam and natural NLL")
-    if int(training["epochs"]) != 20 and args.max_optimizer_steps is None:
+    if (
+        run_kind == "production"
+        and int(training["epochs"]) != 20
+        and args.max_optimizer_steps is None
+    ):
         raise ValueError("production VPT-small requires exactly 20 epochs")
+    if run_kind == "finetune":
+        if args.initialize_from is None and args.resume is None:
+            raise ValueError("fine-tuning requires --initialize-from or --resume")
+        if int(training["epochs"]) < 1:
+            raise ValueError("fine-tuning epochs must be positive")
+    elif args.initialize_from is not None:
+        raise ValueError("--initialize-from requires training.run_kind=finetune")
 
     rank, local_rank, world_size = setup_distributed()
     device = production_device(local_rank)
@@ -410,6 +509,13 @@ def main(argv: Iterable[str] | None = None) -> int:
 
     train_dataset = VPTWindowDataset(args.train_manifest)
     val_dataset = VPTWindowDataset(args.val_manifest)
+    if train_dataset.window != model_config.frames or val_dataset.window != model_config.frames:
+        raise ValueError("model frame count differs from a data-manifest window")
+    if (train_dataset.window, train_dataset.stride) != (
+        val_dataset.window,
+        val_dataset.stride,
+    ):
+        raise ValueError("train and validation window geometry differs")
     global_batch = int(training["global_batch"])
     microbatch = int(args.microbatch or training["microbatch"])
     if global_batch % (world_size * microbatch):
@@ -454,8 +560,18 @@ def main(argv: Iterable[str] | None = None) -> int:
         eps=float(training["epsilon"]),
         weight_decay=float(training["weight_decay"]),
     )
-    production_steps = sampler.steps * int(training["epochs"])
-    endpoint = min(production_steps, args.max_optimizer_steps or production_steps)
+    full_exposure_steps = sampler.steps * int(training["epochs"])
+    declared_endpoint = training.get("endpoint_optimizer_steps")
+    production_steps = (
+        int(declared_endpoint) if declared_endpoint is not None else full_exposure_steps
+    )
+    if production_steps <= 0 or production_steps > full_exposure_steps:
+        raise ValueError("declared optimizer endpoint is outside the 20-epoch population")
+    endpoint, stop_endpoint = resolve_optimizer_endpoints(
+        production_steps,
+        max_optimizer_steps=args.max_optimizer_steps,
+        stop_after_optimizer_steps=args.stop_after_optimizer_steps,
+    )
     scheduler = torch.optim.lr_scheduler.LambdaLR(
         optimizer, lr_lambda=lambda step: max(0.0, 1.0 - step / endpoint)
     )
@@ -464,6 +580,7 @@ def main(argv: Iterable[str] | None = None) -> int:
     optimizer_step = 0
     best_validation_nll = math.inf
     best_epoch = -1
+    initialization: dict[str, Any] | None = None
     if args.resume is not None:
         resumed = resume_checkpoint(
             args.resume,
@@ -478,6 +595,13 @@ def main(argv: Iterable[str] | None = None) -> int:
         optimizer_step = int(resumed["optimizer_step"])
         best_validation_nll = float(resumed["best_validation_nll"])
         best_epoch = int(resumed["best_epoch"])
+    elif args.initialize_from is not None:
+        initialization = initialize_model_checkpoint(
+            args.initialize_from,
+            model=model,
+            expected_sha256=str(args.initialize_from_sha256),
+            expected_model_config=config["model"],
+        )
 
     dtype = torch.bfloat16 if training["precision"] == "bf16" else torch.float32
     run_meta = {
@@ -500,13 +624,16 @@ def main(argv: Iterable[str] | None = None) -> int:
         "optimizer_steps_per_epoch": sampler.steps,
         "repeated_windows_per_epoch": sampler.repeated_per_epoch,
         "production_optimizer_steps": production_steps,
+        "full_exposure_optimizer_steps": full_exposure_steps,
         "actual_endpoint": endpoint,
+        "stop_after_optimizer_steps": stop_endpoint,
         "parameter_inventory": inventory,
         "device": str(device),
         "torch": torch.__version__,
         "cuda": torch.version.cuda,
         "gpu": torch.cuda.get_device_name(device) if device.type == "cuda" else None,
         "resume": str(args.resume) if args.resume else None,
+        "initialize_from": initialization,
     }
     if rank == 0:
         atomic_json(args.out / "run_meta.json", run_meta)
@@ -521,6 +648,7 @@ def main(argv: Iterable[str] | None = None) -> int:
             raise RuntimeError("resume history does not end at the checkpoint epoch")
     training_started = time.monotonic()
     stop = False
+    final_checkpoint_record: dict[str, Any] | None = None
     for epoch in range(start_epoch, int(training["epochs"])):
         sampler.set_epoch(epoch)
         model.train()
@@ -567,7 +695,7 @@ def main(argv: Iterable[str] | None = None) -> int:
                 }
                 with (args.out / "train.jsonl").open("a", encoding="utf-8") as handle:
                     handle.write(json.dumps(record, sort_keys=True) + "\n")
-            if optimizer_step >= endpoint:
+            if optimizer_step >= stop_endpoint:
                 stop = True
                 break
 
@@ -596,8 +724,13 @@ def main(argv: Iterable[str] | None = None) -> int:
                 "learning_rate": optimizer.param_groups[0]["lr"],
             }
             history.append(history_row)
+            checkpoint_name = (
+                f"checkpoint_epoch_{epoch + 1:02d}.pt"
+                if completed_epoch
+                else f"checkpoint_step_{optimizer_step:08d}.pt"
+            )
             checkpoint_record = save_checkpoint(
-                args.out / f"checkpoint_epoch_{epoch + 1:02d}.pt",
+                args.out / checkpoint_name,
                 model=model,
                 optimizer=optimizer,
                 scheduler=scheduler,
@@ -614,20 +747,23 @@ def main(argv: Iterable[str] | None = None) -> int:
             if improved:
                 atomic_json(args.out / "best_checkpoint.json", checkpoint_record)
             atomic_json(history_path, history)
+            final_checkpoint_record = checkpoint_record
         if world_size > 1:
             dist.barrier()
         if stop:
             break
 
     if rank == 0:
+        if final_checkpoint_record is None:
+            raise RuntimeError("training produced no checkpoint")
         elapsed = time.monotonic() - training_started
-        final_checkpoint = args.out / f"checkpoint_epoch_{history[-1]['epoch']:02d}.pt"
         completion = {
             "schema_version": "madeleine.vpt-small-training-complete.v1",
             "completed_at": datetime.now(timezone.utc).isoformat(),
             "completed_production_endpoint": optimizer_step == production_steps,
             "optimizer_steps": optimizer_step,
             "production_optimizer_steps": production_steps,
+            "full_exposure_optimizer_steps": full_exposure_steps,
             "epochs_recorded": len(history),
             "best_epoch": best_epoch,
             "best_validation_nll": best_validation_nll,
@@ -636,11 +772,7 @@ def main(argv: Iterable[str] | None = None) -> int:
             "peak_vram_bytes": (
                 torch.cuda.max_memory_allocated(device) if device.type == "cuda" else 0
             ),
-            "final_checkpoint": {
-                "filename": final_checkpoint.name,
-                "bytes": final_checkpoint.stat().st_size,
-                "sha256": sha256_file(final_checkpoint),
-            },
+            "final_checkpoint": final_checkpoint_record,
         }
         atomic_json(args.out / "complete.json", completion)
         print(json.dumps(completion, sort_keys=True))

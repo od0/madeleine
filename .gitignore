@@ -91,3 +91,10 @@ results/wild20/**/labels_*.parquet
 results/wild/
 results/env/
 results/provenance/lane_logs/
+
+# ALBERTINE-RL local datasets, fetches, and run products. Source, compact
+# manifests, and synthetic fixtures remain tracked.
+/albertine/studies/rl_cross_audit/data/runtime/
+/albertine/studies/rl_cross_audit/data/rocket_science/local/
+/albertine/studies/rl_cross_audit/data/nitrogen_rl/local/
+/albertine/studies/rl_cross_audit/runs/

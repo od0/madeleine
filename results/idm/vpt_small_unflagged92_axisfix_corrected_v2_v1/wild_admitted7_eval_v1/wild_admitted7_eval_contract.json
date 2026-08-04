@@ -1,0 +1,104 @@
+{
+  "schema_version": "madeleine.vpt-small-wild-admitted7-evaluation-contract.v1",
+  "purpose": "Measure readiness to label unseen public Celeste footage using controller-HUD-derived truth rather than local engine truth.",
+  "checkpoint": {
+    "run_id": "vpt_small_105696398_unflagged92_103p4056h_axisfix_corrected_v2_s0",
+    "epoch": 20,
+    "optimizer_step": 17960,
+    "sha256": "628a3311a65a9e58fd30cbafcff1fe97311f4af885d5db8566cff4363050e4c5",
+    "r2_object": "private:runs/idm/v2/vpt_small_105696398_unflagged92_103p4056h_axisfix_corrected_v2_s0/checkpoint_epoch_20.pt"
+  },
+  "evaluation_population": {
+    "name": "Wild admitted7 phase0 20 Hz deployment support",
+    "source_r2_prefix": "private:shards/vpt-small-wild-admitted7-128px-20hz-v1",
+    "videos": [
+      "6vEpVqbrvSE",
+      "Y6AeZFCU4LY",
+      "b43KAaem61g",
+      "kdQbIoMxzZw",
+      "nRMVyWdNsTo",
+      "ss3nhAUaScE",
+      "v498642684"
+    ],
+    "video_count": 7,
+    "session_count": 1455,
+    "native60_rows": 2947146,
+    "native60_hours": 13.644194444444445,
+    "phase0_rows": 982845,
+    "phase0_hours": 13.650625,
+    "windows": 13166,
+    "expected_center_supported_rows": 842624,
+    "objects": 11640,
+    "object_bytes": 48340881598,
+    "build_manifest_sha256": "9d4064142a3fd7fa02a680948557700a6ee4223f472fd2afc735e6bfa81b04fb",
+    "build_manifest_content_sha256": "a9ed1f738f28627cec851228ec2debf5e4d530ff94950d2cd26f61ce59724327",
+    "object_inventory_sha256": "5e78d1c7f8010b9d848007491c9563074de51c6e97d469861e6434464aa5b0f7",
+    "validation_sha256": "3c5ae785a2a5e040f8e1d72febba2dd938d58c5ba76ee0ef8837a70fe6243080",
+    "publication_receipt_sha256": "f1fd9b9cc2fb1a45a120c0c87be54129ebdb47adf7eb889696d60940e0005f14",
+    "input_contract_sha256": "8bd1e8e74fb92a74f697f5b361b09fb49dc44e60155f83e059dc796535278775"
+  },
+  "label_contract": {
+    "key_order": [
+      "left",
+      "right",
+      "up",
+      "down",
+      "jump",
+      "dash",
+      "grab"
+    ],
+    "truth_source": "Seven-action controller/key HUD decoded from public gameplay video and aligned to gameplay using the admitted Wild offset contract.",
+    "local_engine_truth_used": false,
+    "nitrogen_analog_mapping_used": false,
+    "answer_hud_visible_to_model": false,
+    "masking": "The Wild shard builder masks the complete HUD before resize and zeros a dilated output rectangle after interpolation."
+  },
+  "leakage_contract": {
+    "training_population": "Exact historical unflagged92 NitroGen membership only.",
+    "wild_videos_in_training": 0,
+    "wild_sessions_in_training": 0,
+    "checkpoint_initialization": "scratch",
+    "selection_or_calibration_on_this_population": false
+  },
+  "protocol": {
+    "support_mode": "deployment-20hz-phase0",
+    "window": 128,
+    "stride": 64,
+    "retained_center_positions": [
+      32,
+      96
+    ],
+    "input_active_gate": true,
+    "state_threshold": 0.5,
+    "threshold_tuning": false,
+    "primary_metrics": [
+      "per-key average precision",
+      "row-weighted macro average precision",
+      "equal-video macro average precision"
+    ],
+    "secondary_metrics": [
+      "raw-0.5 per-key state precision/recall/F1",
+      "micro key accuracy",
+      "joint seven-key accuracy",
+      "per-video support and prevalence"
+    ]
+  },
+  "implementation": {
+    "path": "experiments/eval_vpt_small.py",
+    "sha256": "4102ce29ef529f72cb6df8e2618079002f86839edf0957b3b211c6175e49e2bd",
+    "metrics_path": "badeline/metrics.py",
+    "metrics_sha256": "31f457be7c6c78d75cd8c61d81a6eb50cf8453ef2b4d331c7f75ea0e76b4c0f2",
+    "summarizer_path": "experiments/summarize_vpt_small_wild_eval.py",
+    "summarizer_sha256": "af56d7ec10c9afd89bad2975673a8b554a697797631fa411414051b0e06ed83f",
+    "holdout_scorer_path": "experiments/score_vpt_small_wild_holdout.py",
+    "holdout_scorer_sha256": "eb368ef20f036c792ce710ea4532fc6c400b14590acd229dbcf37ad90f71876f",
+    "sidecar_normalizer_path": "experiments/normalize_vpt_phase0_sidecar.py",
+    "sidecar_normalizer_sha256": "2d9142fea05b6985ac9f8126595b8c9eeca4fd25dbb5caf433cc4624268ecd8a",
+    "source_commit": "ac6e447ab907b92941ca2d0519b869352792ba79"
+  },
+  "output": {
+    "evaluation_id": "vpt_small_105696398_unflagged92_103p4056h_axisfix_corrected_v2_s0_wild_admitted7_eval_v1",
+    "r2_prefix": "private:runs/idm/v2/vpt_small_105696398_unflagged92_103p4056h_axisfix_corrected_v2_s0/evaluations/wild-admitted7-v1",
+    "completion_marker": "EVALUATION_COMPLETE.json"
+  }
+}

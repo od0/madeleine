@@ -1,0 +1,96 @@
+{
+  "augmentation": {
+    "brightness": 0.2,
+    "contrast": 0.2,
+    "hue": 0.2,
+    "rotation_degrees": 2.0,
+    "saturation": 0.2,
+    "scale": 0.02,
+    "shear_degrees": 2.0,
+    "translate_pixels": 2.0
+  },
+  "data_authority": {
+    "bind_resolution_sha256": "0321208e7db31962483a07bb7ab9acda7b85a9439dbef384aeebdd5dea3936e7",
+    "build_contract_content_sha256": "a9f35b44b70effee64596d14bade36b6f534a798a66cd8d9c2cbb5e775de9a92",
+    "build_contract_file_sha256": "92477a46c5e9a6eaf7db68e6fc23215b22577e8b33cf7bd628fe2b8b1a7aa0b3",
+    "direction_columns_identical_to_v2": true,
+    "label_description": "resolved mapped labels (upstream-preferred policy; 227 entries pending final review)",
+    "mapped_prefix": "private:mapped-labels/nitrogen-all-valid-210train-v3",
+    "mapper": "nitrogen.map_actions/3.1",
+    "object_inventory_file_sha256": "0f36e40cb638543d969ee0421d6949f84d226c8d47ded06b63347c2956652e42",
+    "population": {
+      "gameplay_hours": 148.32222222222222,
+      "native60_rows": 32037600,
+      "nitrogen_videos": 210,
+      "phase0_rows": 10679200,
+      "source_sessions": 1538,
+      "windows": 164674
+    },
+    "vpt_build_manifest_content_sha256": "044b6de0a0d876a4e0df61c3b295e8a431fae1335bef5f74b841fa2d00e1896c",
+    "vpt_build_manifest_file_sha256": "a716705139067dbd80c4ad206a9dbd8a585a7e6b0e8c1c955d4a1dfefae3e746",
+    "vpt_prefix": "private:shards/vpt-small-nitrogen-all-valid-128px-20hz-v3"
+  },
+  "inference": {
+    "fixed_probability_threshold": 0.5,
+    "native_rate_phases": [
+      0,
+      1,
+      2
+    ],
+    "retained_positions": [
+      32,
+      96
+    ],
+    "stride": 64,
+    "window": 128
+  },
+  "model": {
+    "action_keys": 7,
+    "activation_checkpointing": true,
+    "attention_heads": 11,
+    "d_model": 1408,
+    "frame_hidden": 256,
+    "frames": 128,
+    "image_size": 128,
+    "input_channels": 3,
+    "mlp_width": 5632,
+    "residual_blocks_per_stack": 2,
+    "spatial_widths": [
+      64,
+      128,
+      128
+    ],
+    "temporal_channels": 128,
+    "temporal_kernel": 5,
+    "transformer_blocks": 4
+  },
+  "schema_version": "madeleine.vpt-small-config.v1",
+  "study_id": "vpt_small_105696398_nitrogen210_resolved_v3_s0",
+  "training": {
+    "allow_tf32": true,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "class_weighting": false,
+    "endpoint_optimizer_steps": 25740,
+    "epochs": 20,
+    "epsilon": 1e-08,
+    "eval_batch_size": 1,
+    "event_weighting": false,
+    "focal_loss": false,
+    "global_batch": 128,
+    "gradient_clipping": false,
+    "learning_rate": 0.003,
+    "log_interval": 5,
+    "loss": "natural_factored_nll",
+    "microbatch": 4,
+    "num_workers": 4,
+    "optimizer": "adam",
+    "precision": "bf16",
+    "schedule": "linear_to_zero",
+    "seed": 0,
+    "warmup_steps": 0,
+    "weight_decay": 0.01
+  }
+}

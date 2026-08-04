@@ -114,3 +114,60 @@ separately. The visual scan was preserved at 49/211 and may continue only when
 it does not delay feature generation or higher-value model training; its
 completion is not a feature or training gate. Current job state is maintained
 only in `../../PROGRESS.md`.
+
+## Proposed pseudo-label admission tier (`pseudo_v1`)
+
+Status: **proposed 2026-07-30, not adopted**. This tier admits video for
+pseudo-labeling and behavior-cloning training under
+[PSEUDO_LABEL_BC_PLAN.md](PSEUDO_LABEL_BC_PLAN.md). It becomes active only
+when Bryan signs the tier acceptance artifact; until then no video is
+admitted under it. It sits beside, never inside, the canonical wild
+admission path: the seven-stage overlay pipeline in `harvest/WILD20.md`
+continues to govern any video whose visible labels are to be decoded and
+used as supervision.
+
+The tier exists because pseudo-labels come from the model's view of the
+gameplay pixels, so the overlay-decoding half of wild admission (layout cell
+decoding, compositor-offset calibration, bind-confidence gates, per-video
+layout acceptance) protects nothing in this path. Everything that protects
+the pixels and the timeline is retained fail-closed:
+
+1. **Masking.** Every input overlay, frame-index strip, or key display is
+   masked before resize with the dilated re-mask and zero-verification
+   discipline of `data/build_dataset.py`, and sampled leak scans block the
+   batch on any hit. A behavior-cloning model can read an overlay exactly as
+   an IDM can. A video whose overlay cannot be masked is excluded, never
+   passed through unmasked.
+2. **Temporal boundaries.** Windows never cross PTS gaps, resets, or
+   excluded ranges. Variable-rate sources are timestamp-sampled under the
+   existing policy; nominal container rates are never trusted.
+3. **Measured cadence.** Per-span measured 60 Hz (with the documented Twitch
+   16/17 ms quantization tolerance), from PTS evidence, not metadata.
+4. **Dedup and provenance.** Admission is blocked by an eval-asset denylist
+   enforced in the builder by video ID, media SHA-256, and sampled content
+   hash, covering every own session, sealed session and battery, the
+   NitroGen holdout video, wild evaluation videos, and the future sealed
+   behavior-cloning test. Every artifact hash-chains to its fetch packet,
+   boundary artifact, mask evidence, labeler checkpoint, and code commit.
+5. **Viewport.** Fullscreen verdicts only; layout videos are filtered, not
+   cropped.
+
+Deliberately relaxed, with the rationale recorded here: overlay decode and
+its gates (no labels are read from overlays); compositor-offset measurement
+(no overlay timeline exists in the label path); per-video human layout
+acceptance, replaced by proposed mask rectangles plus stratified sampled
+human review — at least 10 videos or 5 percent of each batch of at most 100,
+whichever is larger, with any sampled mask leak or a sampled boundary
+false-positive rate above 10 percent blocking the whole batch.
+Machine-proposed gameplay boundaries are admissible into this tier only,
+with the existing signal-quality floors kept as automatic blockers; they
+remain inadmissible for canonical label-bearing admission.
+
+Automatic per-video gates, applied before any human review: per-key
+predicted-positive rate within a preregistered band of corpus prevalence,
+probability-entropy and flicker caps, and a blip-rate audit against the
+measured NitroGen anchor. Failing videos are quarantined for review, never
+silently dropped. Labels admitted under this tier carry
+`label_kind: "pseudo"` per
+[specs/pseudo_labels.md](../../specs/pseudo_labels.md) and their hours are
+reported beside, never summed with, mapped and engine-truth hours.

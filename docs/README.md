@@ -19,6 +19,15 @@
 
 ## Results and evidence
 
+Current results first:
+
+- [Resolved-v3 production run](../results/idm/vpt_small_nitrogen210_resolved_v3_v1/RESULTS.md)
+- [Wild7 deployment gate](../results/idm/VPT_SMALL_WILD_ADMITTED7_PRIMARY_GATE.md)
+- [NitroGen label-incident record](../results/idm/NITROGEN_LABEL_INCIDENTS.md)
+- [Wild7 checkpoint parity scorecard](../results/idm/vpt_wild7_checkpoint_parity_v1/README.md)
+
+Historical and supporting:
+
 - [IDM results summary](../results/idm/SUMMARY.md)
 - [Key-state accuracy and baselines](../results/idm/KEYPRESS_ACCURACY.md)
 - [NitroGen-only holdout](../results/idm/NITROGEN_HOLDOUT.md)

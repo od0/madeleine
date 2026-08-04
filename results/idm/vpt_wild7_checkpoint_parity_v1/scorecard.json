@@ -1,0 +1,238 @@
+{
+  "schema_version": "madeleine.vpt-wild7-checkpoint-parity.v1",
+  "created_at": "2026-08-03T13:35:01Z",
+  "primary_surface": {
+    "name": "Wild admitted7",
+    "rows": 842624,
+    "streams": 1234,
+    "videos": 7,
+    "support": "identical deployment-20hz phase0 rows",
+    "threshold": 0.5
+  },
+  "key_order": [
+    "left",
+    "right",
+    "up",
+    "down",
+    "jump",
+    "dash",
+    "grab"
+  ],
+  "runs": [
+    {
+      "display_name": "Paper-IDM 482M, Tier-B",
+      "run_id": "vpt_paper_idm_482m_tier_b",
+      "kicked_off_et": "2026-07-30 08:34",
+      "training_time": "11h 05m",
+      "historical_reported_macro_ap": 0.1844,
+      "wild7_relationship": "unseen",
+      "wild7": {
+        "macro_ap": 0.30350152784242784,
+        "micro_key_accuracy": 0.7070844002951325,
+        "per_key_ap": {
+          "left": 0.20534222935232024,
+          "right": 0.5438539742251114,
+          "up": 0.3059844574482982,
+          "down": 0.1781452334182373,
+          "jump": 0.27906240754594624,
+          "dash": 0.16875573867327015,
+          "grab": 0.4433666542338116
+        }
+      },
+      "checkpoint_sha256": "820804ca56a732b97d1c126d7e86a4a6e48b0503c7b628f5c40863c5d3abdb82",
+      "prediction_sha256": "5e2e4602453e97cbd524ae3ebeb2912df2898b19beea7e982a9aa7892c4a971c",
+      "r2_report": "private:results/idm/v1/wild7-older-checkpoint-parity-v1/paper-idm/report-lane0.json"
+    },
+    {
+      "display_name": "VPT-small native60 short",
+      "run_id": "vpt_small_105696398_tier_b_native60_short2340_s0",
+      "kicked_off_et": "2026-07-30 12:32",
+      "training_time": "3h 24m",
+      "historical_reported_macro_ap": 0.289,
+      "wild7_relationship": "unseen",
+      "wild7": {
+        "macro_ap": 0.40468796563875753,
+        "micro_key_accuracy": 0.7403698785833641,
+        "per_key_ap": {
+          "left": 0.4888010874802394,
+          "right": 0.8122349046395524,
+          "up": 0.25355870924814694,
+          "down": 0.16729344232156662,
+          "jump": 0.36254741503530513,
+          "dash": 0.1991305878997498,
+          "grab": 0.5492496128467428
+        }
+      },
+      "checkpoint_sha256": "f97d38facdae590d6f0b6e69ef5d1fce0b22509359f667ae7db6ff769c9ef8fb",
+      "prediction_sha256": "a0c22d52593c532944e2e0b4e379511ae86c803b46b4d169612651e8518b78fc",
+      "r2_report": "private:results/idm/v1/wild7-older-checkpoint-parity-v1/native60-short/report-lane0.json"
+    },
+    {
+      "display_name": "VPT-small native60 full",
+      "run_id": "vpt_small_105696398_tier_b_native60_full20e_s0",
+      "kicked_off_et": "2026-07-30 12:51",
+      "training_time": "14h 07m",
+      "historical_reported_macro_ap": 0.301,
+      "wild7_relationship": "unseen",
+      "wild7": {
+        "macro_ap": 0.4155402757167253,
+        "micro_key_accuracy": 0.7385076685618802,
+        "per_key_ap": {
+          "left": 0.5017340276124114,
+          "right": 0.8354263697140494,
+          "up": 0.2314904459710952,
+          "down": 0.15918022378465427,
+          "jump": 0.4039778655351709,
+          "dash": 0.23344134278682854,
+          "grab": 0.5435316546128675
+        }
+      },
+      "checkpoint_sha256": "43733c2e1804fdb6baab477ddfe58113342b459b7c761a199f9cd7873f0fe947",
+      "prediction_sha256": "e2d8434fa977e8d9c3e0d5af753be043b9d6f94dc31bda119d448a24a78edeef",
+      "r2_report": "private:results/idm/v1/wild7-older-checkpoint-parity-v1/native60-full/report-lane0.json"
+    },
+    {
+      "display_name": "VPT-small native60 span384",
+      "run_id": "vpt_small_105696398_tier_b_native60_span384_20e_s0",
+      "kicked_off_et": "2026-07-30 12:54",
+      "training_time": "13h 02m",
+      "historical_reported_macro_ap": 0.2071,
+      "wild7_relationship": "unseen",
+      "wild7": {
+        "macro_ap": 0.3594774957948657,
+        "micro_key_accuracy": 0.7239868723009484,
+        "per_key_ap": {
+          "left": 0.33295214229195286,
+          "right": 0.708463170727363,
+          "up": 0.26541750444321116,
+          "down": 0.1668760195496145,
+          "jump": 0.31995706774648985,
+          "dash": 0.18569054162261994,
+          "grab": 0.5369860241828086
+        }
+      },
+      "checkpoint_sha256": "52251fa10f6a0d03e786b71afcf44d85963cf32676496e9e580069be60959e5f",
+      "prediction_sha256": "79633c5ab1b13b5e47bbc860086eb655b9a0afb3a7048b13afdb61b91502dbc2",
+      "r2_report": "private:results/idm/v1/wild7-older-checkpoint-parity-v1/native60-span384/report-lane0.json",
+      "evaluation_note": "One 382-row native continuity run repeated its final two context frames to preserve the identical scored center rows required by the 128-frame 20 Hz reference support."
+    },
+    {
+      "display_name": "VPT-small unflagged92, 103.4h",
+      "run_id": "vpt_small_105696398_unflagged92_103p4056h_s0",
+      "kicked_off_et": "2026-07-30 20:03",
+      "training_time": "3h 22m",
+      "historical_reported_macro_ap": 0.420851,
+      "wild7_relationship": "unseen",
+      "wild7": {
+        "macro_ap": 0.5207304979623111,
+        "micro_key_accuracy": 0.7727569727761985,
+        "per_key_ap": {
+          "left": 0.6606314762675891,
+          "right": 0.8613146150380973,
+          "up": 0.44841805921730743,
+          "down": 0.26467295846764827,
+          "jump": 0.4491984306522544,
+          "dash": 0.3854985542817091,
+          "grab": 0.5753793918115723
+        }
+      },
+      "checkpoint_sha256": "bccbac16b7567bf6d384efdc8c87e22058e0d91b9aa1beaadb87331f5f8f0170",
+      "prediction_sha256": "cbec291bd9adf294fb583f1401c4b7af22bb86a15feb685e1f8f8e71687dea47",
+      "r2_report": "private:results/idm/v1/wild7-older-checkpoint-parity-v1/unflagged92-v1/report-lane0.json"
+    },
+    {
+      "display_name": "VPT-small down-ridge fine-tune",
+      "run_id": "vpt_small_105696398_unflagged92_down_ridge5pct_ft5e_s0",
+      "kicked_off_et": "2026-07-31 09:59",
+      "training_time": "4m 17s",
+      "historical_reported_macro_ap": 0.403,
+      "wild7_relationship": "unseen",
+      "wild7": {
+        "macro_ap": 0.5141172690136101,
+        "micro_key_accuracy": 0.7689121804539832,
+        "per_key_ap": {
+          "left": 0.6480770853527476,
+          "right": 0.8582032922808644,
+          "up": 0.439580654566385,
+          "down": 0.309915625353839,
+          "jump": 0.4324160395283806,
+          "dash": 0.3465124484536797,
+          "grab": 0.5641157375593746
+        }
+      },
+      "checkpoint_sha256": "cd36dbab1fd23848fefc288257911e957690234012c1f4c3d6a636198f1984c9",
+      "prediction_sha256": "d12d22bc2e1aedccf88be448c4e6fd6141637eea233bdbc4f5f0787c9ba9e84f",
+      "r2_report": "private:results/idm/v1/wild7-older-checkpoint-parity-v1/down-ridge/report-lane0.json"
+    },
+    {
+      "display_name": "VPT-small full-foreign, 161.97h",
+      "run_id": "vpt_small_105696398_full_foreign161p9664h_20e_s0",
+      "kicked_off_et": "2026-07-31 11:32",
+      "training_time": "5h 12m",
+      "historical_reported_macro_ap": 0.4235,
+      "wild7_relationship": "training_overlap",
+      "wild7": {
+        "macro_ap": 0.6085090159739057,
+        "micro_key_accuracy": 0.7930027424535058,
+        "per_key_ap": {
+          "left": 0.6989298295024102,
+          "right": 0.8836457306244434,
+          "up": 0.5430569511868182,
+          "down": 0.40841017263801105,
+          "jump": 0.5155496485827862,
+          "dash": 0.5421213375796621,
+          "grab": 0.6678494417032095
+        }
+      },
+      "checkpoint_sha256": "f3d0fb333cb2690347f432658c8cf2979d43c65b0bc7a8aec6ba38534c034eae",
+      "prediction_sha256": "4cd5adcc35c4bfd51a7fa3ecaaa53a2e2244c85f05dea4d0bcdb2c561f2d0464",
+      "r2_report": "private:results/idm/v1/wild7-older-checkpoint-parity-v1/full-foreign/report-lane0.json"
+    },
+    {
+      "display_name": "VPT-small corrected-v2 unflagged92",
+      "run_id": "vpt_small_105696398_unflagged92_103p4056h_axisfix_corrected_v2_s0",
+      "kicked_off_et": "2026-08-02 10:27",
+      "training_time": "3h 23m",
+      "historical_reported_macro_ap": 0.2715,
+      "wild7_relationship": "unseen",
+      "wild7": {
+        "macro_ap": 0.48273072641427534,
+        "micro_key_accuracy": 0.7599274918079034,
+        "per_key_ap": {
+          "left": 0.5659861530420557,
+          "right": 0.8295956518876927,
+          "up": 0.44952648149025043,
+          "down": 0.3244517015714121,
+          "jump": 0.3862887952434375,
+          "dash": 0.23908061631514646,
+          "grab": 0.5841856853499321
+        }
+      },
+      "checkpoint_sha256": "628a3311a65a9e58fd30cbafcff1fe97311f4af885d5db8566cff4363050e4c5",
+      "prediction_sha256": "9cfdbfac6fb20a403f5fb7a7c576d9cfda6c508d237706750422c9db087bc5d8",
+      "r2_report": "private:runs/idm/v2/vpt_small_105696398_unflagged92_103p4056h_axisfix_corrected_v2_s0/evaluations/wild-admitted7-v1/evaluation.json"
+    },
+    {
+      "display_name": "VPT-small full-210 resolved-v3",
+      "run_id": "vpt_small_105696398_nitrogen210_resolved_v3_s0",
+      "historical_reported_macro_ap": null,
+      "wild7_relationship": "unseen",
+      "wild7": {
+        "macro_ap": 0.6334248929700997,
+        "micro_key_accuracy": 0.7987777297042165,
+        "per_key_ap": {
+          "left": 0.7610512552279265,
+          "right": 0.9022631961419937,
+          "up": 0.6094991173062475,
+          "down": 0.39529991318150526,
+          "jump": 0.5675450438453027,
+          "dash": 0.5629566372959027,
+          "grab": 0.63535908779182
+        }
+      },
+      "checkpoint_sha256": "c0371c1afdf5bf835f0216099656f939f5940b0ad5ad3a51cb445fa34f6fa483",
+      "prediction_sha256": "3b870f588dbd2f17be9d8a303d8dd7cc348d3cca319cbd733b5c45729594a83f",
+      "r2_report": "private:runs/idm/v3/vpt_small_105696398_nitrogen210_resolved_v3_s0/evaluations/wild-admitted7-v1/evaluation.json"
+    }
+  ]
+}

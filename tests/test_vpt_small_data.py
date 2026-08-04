@@ -7,6 +7,7 @@ from pathlib import Path
 import numpy as np
 
 from experiments.build_vpt_small_128px_20hz import main
+from experiments.complete_vpt_small_tail_windows import complete_tail_windows
 from experiments.validate_vpt_small_data import validate
 
 
@@ -65,3 +66,14 @@ def test_builder_subsamples_within_runs_and_never_crosses_gap(tmp_path: Path) ->
     report = validate(output)
     assert report["ok"] is True
     assert report["derived_rows"] == 300
+
+    completed = tmp_path / "tail-complete"
+    completion = complete_tail_windows(output, completed)
+    completed_starts = np.load(completed / f"{session_id}__p0" / "window_start.npy")
+    assert np.array_equal(completed_starts, [0, 150, 22, 172])
+    assert completion["tail_windows"] == 2
+    completed_manifest = json.loads(
+        (completed / "build_manifest.json").read_text(encoding="utf-8")
+    )
+    assert completed_manifest["center_overlap_policy"] == "base-first-stable-tail-fill"
+    assert validate(completed)["ok"] is True

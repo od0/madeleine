@@ -1,8 +1,13 @@
 # Dataset card
 
-Card date: 2026-07-26. This card describes the private working corpus behind
-the MADELEINE experiments; it is not a redistributable dataset release.
-Volatile job state lives in [../PROGRESS.md](../PROGRESS.md).
+Card date: 2026-07-26, mapping and evaluation sections revised 2026-08-03.
+This card describes the private working corpus behind the MADELEINE
+experiments; it is not a redistributable dataset release. Volatile job
+state lives in [../PROGRESS.md](../PROGRESS.md). Two NitroGen mapping
+defects were found and repaired after the original card date; the current
+label authority is the resolved-v3 corpus described under Controller
+mapping, and the incident record is
+[../results/idm/NITROGEN_LABEL_INCIDENTS.md](../results/idm/NITROGEN_LABEL_INCIDENTS.md).
 
 Intended use: research on inverse dynamics models for *Celeste* — when
 actions are recoverable from visual evidence and how supervision quality
@@ -149,21 +154,27 @@ NitroGen actions use positional gamepad controls. MADELEINE maps them to:
 left, right, up, down, jump, dash, grab
 ```
 
-Directions combine d-pad and joystick sign. Face-button and shoulder/trigger
-bindings are inferred per video and retain a confidence score. Joystick
-vertical sign is also inferred rather than assumed because it varies across
-sources.
+Directions combine d-pad state and joystick sign under NitroGen's
+dataset-wide coordinate contract: negative Y is up. The sign is never
+inferred per video. An early mapper version did infer it per video and
+deterministically inverted analog-derived up/down labels in 22 of 210
+training videos; the repair rebuilt directions from the raw controller
+arrays and was independently verified over all 32,037,600 rows. The full
+account is in
+[../results/idm/NITROGEN_LABEL_INCIDENTS.md](../results/idm/NITROGEN_LABEL_INCIDENTS.md).
 
-For the strict 211-video corpus:
-
-- 93 videos / 106.00 hours use higher-confidence inferred bindings;
-- 118 videos / 44.92 hours use a broad fallback;
-- 30 videos / 45.51 hours have determinate axis sign;
-- 181 videos / 105.41 hours use an indeterminate-sign fallback.
-
-The broad fallback preserves possible positive labels by OR-ing multiple
-plausible buttons. It improves recall at the cost of action semantics and is
-therefore a separate cohort, not hidden noise.
+Jump, dash, and grab use one resolved button set per (video, action)
+across all 210 training videos — upstream `actions_processed` evidence
+preferred where it exists, per-action behavioral inference elsewhere,
+multi-bind aware. This replaced an earlier video-wide confidence flag
+whose broad fallback OR-ed multiple plausible buttons and whose inference
+could starve dash (same incident record). Of the 630 resolved entries,
+227 are policy-resolved pending final human review, so labels from this
+corpus are described as resolved mapped labels under an
+upstream-preferred policy, not as individually human-verified bindings.
+The current training population is 210 videos / 148.3222 hours; the
+historical 92-video / 103.4056-hour higher-confidence cohort remains
+frozen for matched comparisons.
 
 ## Masking and layout
 
@@ -222,7 +233,10 @@ production contract is [../harvest/WILD20.md](../harvest/WILD20.md).
 ## Splits and evaluation
 
 - No session or source video crosses train and evaluation splits.
-- Local engine truth is the primary evaluation surface.
+- The primary deployment benchmark is the seven-video admitted-wild
+  holdout (HUD-decoded truth, zero training overlap); local engine truth
+  is the timing-metrology and regression surface. The gate policy is
+  [../results/idm/VPT_SMALL_WILD_ADMITTED7_PRIMARY_GATE.md](../results/idm/VPT_SMALL_WILD_ADMITTED7_PRIMARY_GATE.md).
 - NitroGen holdouts are mapped-label diagnostics and are named as such.
 - Thresholds selected on a development split are frozen before untouched
   engine-truth evaluation.
